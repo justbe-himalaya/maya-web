@@ -33,6 +33,13 @@
             background-position: center;
             background-attachment: fixed;
         }
+        
+        /* 모바일에서 fixed 배경 문제 해결 */
+        @media (max-width: 768px) {
+            .hero-bg {
+                background-attachment: scroll;
+            }
+        }
         .buddha-bg {
             background-image: url('https://images.unsplash.com/photo-1596193422427-163933ipa8a9?q=80&w=1974&auto=format&fit=crop');
             background-size: cover;
