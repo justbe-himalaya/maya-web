@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JustBe 히말라야 불사 모연</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        /* 커스텀 폰트 적용 */
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        h1, h2, h3, .font-serif {
+            font-family: 'Noto Serif KR', serif;
+        }
+        /* 스크롤 애니메이션을 위한 기본 스타일 */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* 배경 이미지 스타일 */
+        .hero-bg {
+            background-image: url('https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .buddha-bg {
+            background-image: url('https://images.unsplash.com/photo-1596193422427-163933ipa8a9?q=80&w=1974&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-gray-800">
+
+    <!-- Hero Section -->
+    <header class="hero-bg h-screen text-white flex flex-col justify-center items-center relative">
+        <div class="absolute inset-0 bg-black/50"></div>
+        <div class="relative z-10 text-center p-8 scroll-reveal">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4 leading-tight">JustBe 히말라야 불사 모연</h1>
+            <p class="text-lg md:text-2xl font-light">길 위에서 길을 찾다, 우리 시대의 순례길을 열어갑니다.</p>
+        </div>
+        <div class="absolute bottom-10 z-10 animate-bounce">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+        </div>
+    </header>
+
+    <main class="w-full">
+        <!-- Introduction Section -->
+        <section class="py-20 md:py-32 bg-white">
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <div class="scroll-reveal">
+                    <h2 class="text-3xl md:text-4xl font-serif font-bold mb-8 text-gray-900">원력의 첫걸음, 붓다로드</h2>
+                    <div class="text-lg leading-relaxed text-gray-600">
+                        <p class="mb-6">
+                            석가모니 부처님의 위대한 진리와<br>
+                            화합승가에 귀의하며,
+                        </p>
+                        <p class="mb-6">
+                            부처님께서는 길 위에서 태어나시고,<br>
+                            평생 길 위에서 수행하며 진리의 등불을 전하셨습니다.
+                        </p>
+                        <p class="mb-6">
+                            저희는 그 빛을 잇는 순례자가 되어<br>
+                            히말라야 안나푸르나(8,091m) <br>
+                            호수도시 포카라 1,400m 언덕 위에 <br>
+                            대한민국 최초의 사찰과 베이스캠프를 세우고자 합니다.
+                        </p>
+                        <p class="mb-6">
+                            2,600여 년 전 <br>
+                            부처님께서 걸으셨던<br>
+                            룸비니에서 안나푸르나로 이어지는 <br>
+                            옛 수행길을 복원하여,<br>
+                            진리를 찾는 이들이 함께 걸을 수 있는<br>
+                            우리 시대의 순례길 ‘붓다로드(Buddha Road, 가칭)'를 열고자 합니다.
+                        </p>
+                        <p>
+                            이 원력의 첫걸음에<br>
+                            함께할 도반과 인연들을 간절히 모십니다.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Maitreya Story Section -->
+        <section class="py-20 md:py-32 bg-slate-100">
+            <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+                <div class="scroll-reveal">
+                    <div class="aspect-w-1 aspect-h-1 rounded-lg overflow-hidden shadow-2xl bg-gray-200">
+                        <img src="https://i.ibb.co/yWzJzXf/Kakao-Talk-Photo-2025-07-25-01-04-36.jpg" 
+                             alt="히말라야로 향하는 서칠교 작가님의 미륵보살님" 
+                             class="w-full h-full object-cover" 
+                             onerror="this.outerHTML='<div class=\'flex items-center justify-center h-full bg-gray-200 text-gray-600 text-center p-4 rounded-lg\'><p><strong>이미지 표시 오류</strong><br>사진을 불러오는 데 기술적인 문제가 발생했습니다.</p></div>'">
+                    </div>
+                </div>
+                <div class="scroll-reveal">
+                    <h2 class="text-3xl md:text-4xl font-serif font-bold mb-6 text-gray-900">화마를 딛고 히말라야로</h2>
+                    <div class="text-lg leading-relaxed text-gray-600">
+                        <p class="mb-6">
+                            화마(火魔)를 딛고 다시 피어난<br>
+                            서칠교 작가님의 불심,<br>
+                            그리고 불길 속에서도 살아남은<br>
+                            미륵보살님의 원력을 <br>
+                            히말라야로 모시려 합니다.
+                        </p>
+                        <p class="mb-6">
+                            이 보살님은<br>
+                            서 작가님의 공방 화재 현장에서<br>
+                            기적처럼 남아 계신 세 분 중 한 분—<br>
+                            약사여래불, 금강역사, 그리고 미륵보살님 중<br>
+                            가장 먼저 히말라야로 향하십니다.
+                        </p>
+                        <p class="mb-6">
+                            오는 9월 22일,<br>
+                            제가 직접 히말라야에 모셔가며<br>
+                            여러분의 마음 하나하나가<br>
+                            이 첫 불사의 불꽃이 되기를 발원합니다.
+                        </p>
+                         <p class="text-gray-700 font-medium">
+                            이 인연공덕으로<br>
+                            히말라야 프로젝트에 <br>
+                            희망의 등불이 켜지기를<br><br>
+                            그리고 화주 동참자의 가족들께<br>
+                            제불보살님의 무한한 가피가<br>
+                            함께하시기를 <br>
+                            간절히 발원합니다.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Donation Section -->
+        <section id="donation" class="py-20 md:py-32 bg-white">
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <div class="scroll-reveal">
+                    <h2 class="text-3xl md:text-4xl font-serif font-bold mb-4 text-gray-900">📿 동참 안내</h2>
+                    <p class="text-lg text-gray-600 mb-12">여러분의 소중한 마음이 모여 희망의 등불을 밝힙니다.</p>
+
+                    <!-- Progress Bar -->
+                    <div class="mb-12">
+                        <div class="flex justify-between items-center mb-2 text-gray-700">
+                            <span class="font-medium">모연 목표: 300명</span>
+                            <span id="progress-text" class="font-medium">현재 68명 동참 (22.7%)</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-4">
+                            <div id="progress-bar" class="bg-amber-600 h-4 rounded-full transition-all duration-1000 ease-out" style="width: 22.7%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-8 text-left">
+                        <div class="bg-slate-50 p-8 rounded-lg shadow-md border border-slate-200">
+                            <h3 class="text-2xl font-serif font-bold mb-4 text-gray-800">동참 방법</h3>
+                            <ul class="space-y-3 text-gray-700">
+                                <li><strong class="text-amber-700">금액:</strong> 1인 10만원</li>
+                                <li><strong class="text-amber-700">계좌:</strong> 농협 301-0319-5339-51 (홍대선원)</li>
+                                <li><strong class="text-amber-700">문자 접수:</strong> <a href="sms:010-5708-2423" class="hover:text-amber-800">010-5708-2423</a></li>
+                                <li><strong class="text-amber-700">문자 내용:</strong> 이름(또는 법명) + "미륵"</li>
+                            </ul>
+                            <button id="copy-btn" class="mt-6 w-full bg-gray-800 text-white py-3 px-6 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition-colors">
+                                계좌번호 복사하기
+                            </button>
+                            <p id="copy-message" class="text-center text-green-600 mt-2 h-4"></p>
+                        </div>
+
+                        <div class="bg-slate-50 p-8 rounded-lg shadow-md border border-slate-200">
+                            <h3 class="text-2xl font-serif font-bold mb-4 text-gray-800">인연 공덕</h3>
+                             <div class="flex items-center mb-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-amber-600 mr-4" viewBox="0 0 20 20" fill="currentColor">
+                                  <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
+                                  <path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd" />
+                                </svg>
+                                <p class="text-gray-700">준한스님께서 직접 불사자 이름을 붓글씨로 적어 미륵보살님 복장점안 의식 때 축원과 함께 봉안합니다.</p>
+                            </div>
+                            <p class="text-gray-700 leading-relaxed mt-4">
+                                이 인연공덕으로 히말라야 프로젝트에 희망의 등불이 켜지고, 화주 동참자 가족들께 제불보살님의 무한한 가피가 함께하시기를 간절히 발원합니다.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Closing Section -->
+        <section class="buddha-bg text-white">
+            <div class="py-20 md:py-32 bg-black/60">
+                <div class="max-w-4xl mx-auto px-6 text-center">
+                    <div class="scroll-reveal">
+                        <img src="https://placehold.co/120x120/ffffff/4a5568?text=合掌" alt="합장하는 모습" class="w-24 h-24 rounded-full mx-auto mb-6 border-2 border-white/50" onerror="this.onerror=null;this.src='https://placehold.co/120x120/ffffff/4a5568?text=合掌';">
+                        <h3 class="text-2xl md:text-3xl font-serif mb-8">JustBe 비구 준한 합장</h3>
+                        <p class="text-lg md:text-xl font-light">
+                            JustBe 히말라야 프로젝트에 사부대중의 동참을 기다립니다.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="max-w-6xl mx-auto px-6 text-center text-gray-400">
+            <p>&copy; 2024 JustBe Himalaya Project. All rights reserved.</p>
+            <p class="mt-2">문의: 010-5708-2423 | 계좌: 농협 301-0319-5339-51 (홍대선원)</p>
+        </div>
+    </footer>
+
+    <script>
+        // --- 데이터 설정 ---
+        const currentDonors = 68;
+        const goalDonors = 300;
+        const accountNumber = '301-0319-5339-51';
+
+        // --- 진행률 표시줄 업데이트 ---
+        function updateProgressBar() {
+            const percentage = (currentDonors / goalDonors) * 100;
+            const progressBar = document.getElementById('progress-bar');
+            const progressText = document.getElementById('progress-text');
+
+            // 뷰포트에 들어왔을 때 애니메이션 시작
+            const observer = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    progressBar.style.width = `${percentage}%`;
+                    observer.disconnect(); // 애니메이션은 한 번만 실행
+                }
+            }, { threshold: 0.5 });
+            
+            observer.observe(progressBar);
+
+            progressText.textContent = `현재 ${currentDonors}명 동참 (${percentage.toFixed(1)}%)`;
+        }
+        
+        // --- 계좌번호 복사 기능 ---
+        function setupCopyButton() {
+            const copyBtn = document.getElementById('copy-btn');
+            const copyMessage = document.getElementById('copy-message');
+
+            copyBtn.addEventListener('click', () => {
+                // 임시 textarea를 만들어 복사 실행
+                const tempTextArea = document.createElement('textarea');
+                tempTextArea.value = accountNumber;
+                document.body.appendChild(tempTextArea);
+                tempTextArea.select();
+                try {
+                    document.execCommand('copy');
+                    copyMessage.textContent = '계좌번호가 복사되었습니다.';
+                } catch (err) {
+                    copyMessage.textContent = '복사에 실패했습니다.';
+                    console.error('Fallback: Oops, unable to copy', err);
+                }
+                document.body.removeChild(tempTextArea);
+
+                // 2초 후에 메시지 사라짐
+                setTimeout(() => {
+                    copyMessage.textContent = '';
+                }, 2000);
+            });
+        }
+
+        // --- 스크롤 애니메이션 ---
+        function setupScrollAnimations() {
+            const scrollElements = document.querySelectorAll('.scroll-reveal');
+
+            const elementInView = (el, dividend = 1) => {
+                const elementTop = el.getBoundingClientRect().top;
+                return (
+                    elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend
+                );
+            };
+
+            const displayScrollElement = (element) => {
+                element.classList.add('visible');
+            };
+
+            const handleScrollAnimation = () => {
+                scrollElements.forEach((el) => {
+                    if (elementInView(el, 1.25)) {
+                        displayScrollElement(el);
+                    }
+                });
+            };
+
+            // 초기 로드 시 한 번 실행
+            handleScrollAnimation();
+            // 스크롤 이벤트에 연결
+            window.addEventListener('scroll', handleScrollAnimation);
+        }
+
+        // --- 페이지 로드 시 함수 실행 ---
+        document.addEventListener('DOMContentLoaded', () => {
+            updateProgressBar();
+            setupCopyButton();
+            setupScrollAnimations();
+        });
+    </script>
+
+</body>
+</html>
