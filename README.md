@@ -39,3 +39,23 @@
     ```
 
 3.  `index.html` 파일을 웹 브라우저에서 직접 열어서 확인합니다.
+
+## 📊 동참자 수 관리 (Donor Count Management)
+
+동참자 수는 `data/donors.json` 파일에서 관리됩니다.
+
+### 업데이트 방법:
+1. GitHub에서 `data/donors.json` 파일 편집
+2. `"count"` 값만 변경 (예: `68` → `75`)
+3. "Commit changes" 버튼으로 저장
+4. 웹사이트에서 자동으로 업데이트된 숫자 확인
+
+### JSON 파일 구조:
+```json
+{
+  "count": 76,
+  "goal": 300,
+  "lastUpdated": "2025-01-25T12:00:00Z",
+  "updatedBy": "관리자"
+}
+```
