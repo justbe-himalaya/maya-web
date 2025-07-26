@@ -218,9 +218,27 @@
 
     <script>
         // --- 데이터 설정 ---
-        const currentDonors = 68;
-        const goalDonors = 300;
         const accountNumber = '301-0319-5339-51';
+        let currentDonors = 68; // 기본값
+        let goalDonors = 300; // 기본값
+        
+        // JSON에서 동참자 수 가져오기
+        async function loadDonorData() {
+            try {
+                const response = await fetch('./data/donors.json');
+                const data = await response.json();
+                currentDonors = data.count;
+                goalDonors = data.goal;
+                
+                // UI 업데이트
+                updateProgressBar();
+                console.log('동참자 데이터 로드 완료:', data);
+            } catch (error) {
+                console.warn('동참자 데이터 로드 실패, 기본값 사용:', error);
+                // 기본값으로 UI 업데이트
+                updateProgressBar();
+            }
+        }
 
         // --- 진행률 표시줄 업데이트 ---
         function updateProgressBar() {
@@ -299,7 +317,7 @@
 
         // --- 페이지 로드 시 함수 실행 ---
         document.addEventListener('DOMContentLoaded', () => {
-            updateProgressBar();
+            loadDonorData(); // JSON에서 데이터 로드 (내부적으로 updateProgressBar 호출)
             setupCopyButton();
             setupScrollAnimations();
         });
