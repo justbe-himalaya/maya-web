@@ -519,7 +519,7 @@
         // JSON에서 동참자 수 가져오기
         async function loadDonorData() {
             try {
-                const response = await fetch('./data/donors.json');
+                const response = await fetch('./data/donors.json?' + Date.now());
                 const data = await response.json();
                 currentDonors = data.count;
                 goalDonors = data.goal;
