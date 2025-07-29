@@ -28,7 +28,7 @@
         }
         /* 배경 이미지 스타일 */
         .hero-bg {
-            background-image: url('https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=2070&auto=format&fit=crop');
+            background-image: url('resource/img/snowmt.jpeg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -41,7 +41,7 @@
             }
         }
         .buddha-bg {
-            background-image: url('https://images.unsplash.com/photo-1596193422427-163933ipa8a9?q=80&w=1974&auto=format&fit=crop');
+            background-image: url('resource/img/shadow.jpeg');
             background-size: cover;
             background-position: center;
         }
@@ -59,7 +59,7 @@
                 <div class="text-3xl ml-4">🇳🇵</div>
             </div>
             <h1 class="text-4xl md:text-6xl font-bold mb-4 leading-tight">JustBe Himalaya Project</h1>
-            <p class="text-xl md:text-3xl font-light mb-4 text-amber-200">"2600년 전, 부처님의 길을 다시 걷다"</p>
+            <p class="text-xl md:text-3xl font-light mb-4 text-amber-200">"2600년 전, 부처님의 옛 길을 다시 걷다"</p>
         </div>
         <div class="absolute bottom-10 z-10 animate-bounce">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -73,32 +73,46 @@
         <section class="py-20 md:py-32 bg-white">
             <div class="max-w-6xl mx-auto px-6">
                 <div class="text-center mb-16 scroll-reveal">
-                    <h2 class="text-3xl md:text-4xl font-serif font-bold mb-8 text-gray-900">프로젝트 개요</h2>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-8 text-gray-900">Project 원력 <span class="text-gray-500 text-lg md:text-2xl">願力</span></h2>
                     <p class="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-                        JustBe Himalaya 프로젝트는 네팔 포카라(Pokhara) 인근 히말라야 품디콧(Pumdikot) 지역에 
-                        <strong class="text-amber-700">한국 불교 최초의 국제선원</strong>과 수행 마을 (JustBe Himalaya Basecamp)을 조성하고, 
-                        부처님 탄생지인 룸비니 ~ 포카라를 잇는 160km 순례길을 복원하는 
-                        <strong class="text-amber-700">문화·교육·환경 기반의 공익 프로젝트</strong>입니다.
+                        JustBe Himalaya 프로젝트는 네팔 포카라(Pokhara) 인근 히말라야 품디콧(Pumdikot) 언덕에<br> 
+                        <strong class="text-amber-700">한국 불교 최초의 사찰</strong>과 수행 마을 (Himalaya Korean Basecamp)을 조성하고,<br> 
+                        부처님 탄생지인 룸비니 ~ 포카라를 잇는 160km 
+                        <strong class="text-amber-700">히말라야 순례길을 복원</strong>하는 <br>
+                        공익 프로젝트입니다.
                     </p>
                 </div>
                 
                 <div class="grid md:grid-cols-3 gap-8 scroll-reveal">
-                    <div class="text-center p-6 bg-slate-50 rounded-lg border border-slate-200">
-                        <div class="text-4xl mb-4">🏔️</div>
-                        <h3 class="text-xl font-serif font-bold mb-3 text-gray-800">히말라야 국제선원</h3>
-                        <p class="text-gray-600">포카라 품디콧 지역에 360° 명상홀, 공양간, 숙소, 법당을 갖춘 JustBe Himalaya Temple 건립</p>
+                    <div class="text-center p-6 bg-gray-50/30 rounded-lg border border-gray-200/50">
+                        <div class="w-16 h-16 mx-auto mb-4 flex justify-center items-center opacity-60">
+                            <img src="resource/img/justbelogo.png" alt="JustBe Logo" class="w-16 h-14" onerror="this.outerHTML='<div class=\'text-4xl\'>🏔️</div>'">
+                        </div>
+                        <h3 class="text-xl font-serif font-bold mb-3 text-gray-700">JustBe Temple 히말라야</h3>
+                        <p class="text-gray-500">포카라 품디콧 지역에 360° 명상홀, 공양간, 숙소, 법당을 갖춘 JustBe Himalaya Temple 건립</p>
                     </div>
                     
-                    <div class="text-center p-6 bg-slate-50 rounded-lg border border-slate-200">
-                        <div class="text-4xl mb-4">🛤️</div>
-                        <h3 class="text-xl font-serif font-bold mb-3 text-gray-800">붓다로드 복원</h3>
-                        <p class="text-gray-600">부처님 탄생지 룸비니에서 포카라까지 160km 불교 수행길을 현대적으로 복원</p>
+                    <div class="text-center p-6 bg-gray-50/30 rounded-lg border border-gray-200/50">
+                        <div class="w-16 h-16 mx-auto mb-4 rounded-lg overflow-hidden opacity-60">
+                            <img src="resource/img/shadow.jpeg" 
+                                 alt="붓다로드" 
+                                 class="w-full h-full object-cover" 
+                                 onerror="this.outerHTML='<div class=\'w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center text-gray-400\'><span>🛤️</span></div>'">
+                        </div>
+                        <h3 class="text-xl font-serif font-bold mb-3 text-gray-700">붓다로드 복원</h3>
+                        <p class="text-gray-500">부처님 탄생지 룸비니에서 포카라까지 160km 불교 수행길을 현대적으로 복원</p>
                     </div>
                     
-                    <div class="text-center p-6 bg-slate-50 rounded-lg border border-slate-200">
-                        <div class="text-4xl mb-4">🤝</div>
-                        <h3 class="text-xl font-serif font-bold mb-3 text-gray-800">한-네 문화외교</h3>
-                        <p class="text-gray-600">한국과 네팔 간의 불교·문화 외교 확대와 지역 공동체 발전에 기여</p>
+                    <div class="text-center p-6 bg-gray-50/30 rounded-lg border border-gray-200/50">
+                        <div class="w-20 h-16 mx-auto mb-4 flex justify-center items-center opacity-60">
+                            <div class="flex items-center gap-2">
+                                <span class="text-3xl">🇰🇷</span>
+                                <span class="text-2xl">🤝</span>
+                                <span class="text-3xl">🇳🇵</span>
+                            </div>
+                        </div>
+                        <h3 class="text-xl font-serif font-bold mb-3 text-gray-700">한-네 문화외교</h3>
+                        <p class="text-gray-500">한국과 네팔 간의 불교·문화 외교 확대와 지역 공동체 발전에 기여</p>
                     </div>
                 </div>
             </div>
@@ -116,10 +130,11 @@
                         <div class="flex items-start">
                             <div class="text-2xl mr-4 mt-1">🙏</div>
                             <div>
-                                <h3 class="text-xl font-serif font-bold mb-3 text-gray-800">성스러운 순례길 복원</h3>
+                                <h3 class="text-xl font-serif font-bold mb-3 text-gray-800">싯다르타 태자의 옛 순례길 복원</h3>
                                 <p class="text-gray-600 leading-relaxed">
-                                    부처님 태어나신 룸비니와 수행자의 이상지 히말라야 안나푸르나를 
-                                    '붓다로드(Buddha Road)'로 연결하는 옛 순례길을 현대에 되살립니다.
+                                    부처님 태어나신 룸비니와 히말라야 안나푸르나를 '붓다로드(Buddha Road)'로
+                                    연결하는 옛 순례길을 현대에 되살리고, 세계의 많은 이들이 이 길을 걸으며
+                                    소중한 인연을 만나고 진리를 구하는 여정을 함께하기를 발원합니다.
                                 </p>
                             </div>
                         </div>
@@ -129,10 +144,11 @@
                         <div class="flex items-start">
                             <div class="text-2xl mr-4 mt-1">🌱</div>
                             <div>
-                                <h3 class="text-xl font-serif font-bold mb-3 text-gray-800">미래형 히말라야 공동체</h3>
+                                <h3 class="text-xl font-serif font-bold mb-3 text-gray-800">친환경 히말라야 미래도시</h3>
                                 <p class="text-gray-600 leading-relaxed">
-                                    명상, 수행, 치유, 생태, 교육을 아우르는 지속가능한 
-                                    히말라야 공동체 모델을 제안합니다.
+                                    히말라야 자연환경과 네팔 지역민들과의 상생을 바탕으로, 순례자들이 명상과 수행이 
+                                    생활화된 친환경 베이스캠프 마을에서 치유와 교육이 어우러진 지속가능한 
+                                    공동체를 만들어갑니다.
                                 </p>
                             </div>
                         </div>
@@ -142,10 +158,10 @@
                         <div class="flex items-start">
                             <div class="text-2xl mr-4 mt-1">🌏</div>
                             <div>
-                                <h3 class="text-xl font-serif font-bold mb-3 text-gray-800">문화외교 우호모델</h3>
+                                <h3 class="text-xl font-serif font-bold mb-3 text-gray-800">한국-네팔 형제국 문화교류</h3>
                                 <p class="text-gray-600 leading-relaxed">
-                                    한국과 네팔 간의 불교·문화 외교 확대를 통해 
-                                    양국 우호 협력의 새로운 모델을 실현합니다.
+                                    불교라는 공통 뿌리를 가진 한국과 네팔이 형제처럼 손잡고 
+                                    문화를 나누며 함께 성장하는 새로운 교류 모델을 실현합니다.
                                 </p>
                             </div>
                         </div>
@@ -158,30 +174,24 @@
         <section class="py-20 md:py-32 bg-white">
             <div class="max-w-6xl mx-auto px-6">
                 <div class="text-center mb-16 scroll-reveal">
-                    <h2 class="text-3xl md:text-4xl font-serif font-bold mb-8 text-gray-900">주요 계획</h2>
+                    <h2 class="text-3xl md:text-4xl font-serif font-bold mb-8 text-gray-900">Master Plan                </h2>
                 </div>
                 
                 <div class="scroll-reveal">
                     <div class="overflow-x-auto">
                         <table class="w-full bg-white border border-slate-300 rounded-lg shadow-md">
-                            <thead class="bg-slate-100">
-                                <tr>
-                                    <th class="px-6 py-4 text-left font-serif font-bold text-gray-800 border-b border-slate-300">분야</th>
-                                    <th class="px-6 py-4 text-left font-serif font-bold text-gray-800 border-b border-slate-300">내용</th>
-                                </tr>
-                            </thead>
                             <tbody class="divide-y divide-slate-200">
                                 <tr class="hover:bg-slate-50">
                                     <td class="px-6 py-4 font-semibold text-amber-700">붓다로드</td>
-                                    <td class="px-6 py-4 text-gray-600">룸비니~포카라 160km 불교 수행길 복원<br>지자체/사찰/공익단체 협업 모델</td>
+                                    <td class="px-6 py-4 text-gray-600">룸비니~포카라 160km 태자 싯다르타 순례길 복원<br>지자체/사찰/공익단체 협업 모델</td>
                                 </tr>
                                 <tr class="hover:bg-slate-50">
-                                    <td class="px-6 py-4 font-semibold text-amber-700">히말라야 국제선원</td>
+                                    <td class="px-6 py-4 font-semibold text-amber-700">JustBe Temple 히말라야</td>
                                     <td class="px-6 py-4 text-gray-600">JustBe Himalaya Temple: 360° 명상홀, 공양간, 숙소, 법당</td>
                                 </tr>
                                 <tr class="hover:bg-slate-50">
                                     <td class="px-6 py-4 font-semibold text-amber-700">수행마을</td>
-                                    <td class="px-6 py-4 text-gray-600">JustBe Himalaya Basecamp<br>장기체류형 숙소, 공동체 공간, 사찰식 부엌, 에코팜</td>
+                                    <td class="px-6 py-4 text-gray-600">Himalaya Korean Basecamp<br>장기체류형 숙소, 공동체 공간, 사찰식 부엌, 에코팜</td>
                                 </tr>
                                 <tr class="hover:bg-slate-50">
                                     <td class="px-6 py-4 font-semibold text-amber-700">디지털 플랫폼</td>
@@ -198,52 +208,139 @@
             </div>
         </section>
 
-        <!-- First Step Implementation Section -->
+        <!-- Implementation Journey Section -->
         <section class="py-20 md:py-32 bg-slate-100">
             <div class="max-w-6xl mx-auto px-6">
                 <div class="text-center mb-16 scroll-reveal">
-                    <h2 class="text-3xl md:text-4xl font-serif font-bold mb-4 text-gray-900">1단계 실천 - 미륵보살님 봉안</h2>
-                    <p class="text-lg text-gray-600">JustBe 히말라야 프로젝트의 첫 번째 실천 단계입니다</p>
+                    <h2 class="text-3xl md:text-4xl font-serif font-bold mb-8 text-gray-900">JustBe 히말라야 프로젝트 실천 여정</h2>
                 </div>
                 
-                <div class="grid md:grid-cols-2 gap-12 items-center">
-                    <div class="scroll-reveal">
-                        <div class="aspect-w-1 aspect-h-1 rounded-lg overflow-hidden shadow-2xl bg-gray-200">
-                            <img src="resource/img/maya.jpeg" 
-                                 alt="히말라야로 향하는 서칠교 작가님의 미륵보살님" 
-                                 class="w-full h-full object-cover" 
-                                 onerror="this.outerHTML='<div class=\'flex items-center justify-center h-full bg-gray-200 text-gray-600 text-center p-4 rounded-lg\'><p><strong>이미지 표시 오류</strong><br>사진을 불러오는 데 기술적인 문제가 발생했습니다.</p></div>'">
+                <!-- 모연과 준비 -->
+                <div class="mb-16 scroll-reveal">
+                    <div class="grid md:grid-cols-3 gap-8 items-center">
+                        <div class="md:col-span-1">
+                            <div class="aspect-w-1 aspect-h-1 rounded-lg overflow-hidden shadow-2xl bg-gray-200">
+                                <img src="resource/img/maya.jpeg" 
+                                     alt="히말라야로 향하는 佛母 서칠교 작가님의 미륵보살님" 
+                                     class="w-full h-full object-cover" 
+                                     onerror="this.outerHTML='<div class=\'flex items-center justify-center h-full bg-gray-200 text-gray-600 text-center p-4 rounded-lg\'><p><strong>이미지 표시 오류</strong><br>사진을 불러오는 데 기술적인 문제가 발생했습니다.</p></div>'">
+                            </div>
+                        </div>
+                        <div class="md:col-span-2">
+                            <div class="bg-white rounded-lg p-8 border border-slate-200 shadow-md">
+                                <div class="flex items-center mb-6">
+                                    <div class="text-2xl mr-4">💫</div>
+                                    <h3 class="text-2xl font-serif font-bold text-gray-800">모연과 준비</h3>
+                                </div>
+                                <div class="space-y-4 text-gray-600 leading-relaxed">
+                                    <p>
+                                        佛母 서칠교 작가님의 공방 화재에서 기적처럼 살아남으신 네 분의 불보살님(약사여래불, 미륵보살, 두 분의 금강역사) 중 
+                                        가장 먼저 <strong class="text-amber-700">미륵보살님</strong>을 히말라야 성지로 모시기 위한 
+                                        화주 모연과 프로젝트 준비를 진행합니다.
+                                    </p>
+                                    <p>
+                                        <strong class="text-amber-700">한국불교 최초의 히말라야 도량</strong> 건립과 
+                                        <strong class="text-amber-700">붓다로드 복원</strong>이라는 
+                                        큰 원력을 실현하기 위한 첫걸음으로서, 함께 마음을 모아 준비해 나가겠습니다.
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="scroll-reveal">
-                        <div class="bg-amber-50 border border-amber-200 rounded-lg p-6 mb-8">
-                            <div class="flex items-center mb-4">
-                                <div class="text-2xl mr-3">🏔️</div>
-                                <h3 class="text-xl font-serif font-bold text-amber-800">프로젝트 1단계 목표</h3>
-                            </div>
-                            <p class="text-amber-700 leading-relaxed">
-                                화마(火魔)를 딛고 살아남은 미륵보살님을 히말라야에 봉안하여 
-                                JustBe Himalaya Temple 건립의 첫 번째 석을 놓는 의미 있는 시작입니다.
-                            </p>
+                </div>
+                
+                <!-- 히말라야 봉안 여정 -->
+                <div class="scroll-reveal">
+                    <div class="bg-white rounded-lg p-8 border border-slate-200 shadow-md mb-8">
+                        <div class="flex items-center mb-6">
+                            <div class="text-2xl mr-4">🏔️</div>
+                            <h3 class="text-2xl font-serif font-bold text-gray-800">히말라야로 모시는 여정</h3>
                         </div>
                         
-                        <div class="text-lg leading-relaxed text-gray-600">
-                            <p class="mb-6">
-                                서칠교 작가님의 공방 화재 현장에서 기적처럼 남아 계신 세 분의 부처님 중 
-                                <strong class="text-amber-700">미륵보살님</strong>을 가장 먼저 히말라야로 모시며, 
-                                전체 프로젝트의 원력을 세워갑니다.
-                            </p>
-                            <p class="mb-6">
-                                이번 봉안은 단순한 불상 모시기가 아닌, 
-                                <strong class="text-amber-700">한국 불교 최초의 히말라야 국제선원</strong> 건립과 
-                                <strong class="text-amber-700">붓다로드 복원</strong>이라는 
-                                거대한 원력의 첫 실천입니다.
-                            </p>
-                            <p class="text-gray-700 font-medium">
-                                여러분의 동참으로 이 원력의 첫 불꽃이 타오르고, 
-                                한국과 네팔을 잇는 불교 문화 교류의 새로운 장이 열리기를 발원합니다.
-                            </p>
+                        <div class="space-y-6">
+                            <div class="bg-slate-50 rounded-lg p-6 border border-slate-200">
+                                <div class="flex items-center mb-4">
+                                    <div class="text-xl mr-3">🕯️</div>
+                                    <h4 class="text-xl font-serif font-bold text-gray-800">2025년 9월 28일 - 미륵연화 보살님 점안</h4>
+                                </div>
+                                <div class="space-y-3 text-gray-600 leading-relaxed">
+                                    <p>
+                                        미륵보살님 화주가 원만히 성취된 후, 히말라야 포카라 품디콧 언덕의 JustBe Temple 성지로 정중히 모시어 
+                                        히말라야 도량에서의 첫 점안 의식을 여법히 봉행하며, 21일간 동참해주신 모든 분들의 축원을 올려드립니다.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- 히말라야 초대 -->
+                            <div class="bg-gradient-to-br from-amber-50 to-orange-50 rounded-lg p-6 border-2 border-amber-200 shadow-lg max-w-2xl mx-auto">
+                                <div class="flex items-center justify-center mb-6">
+                                    <div class="text-xl mr-3">🌸</div>
+                                    <h4 class="text-xl font-serif font-bold text-amber-800">히말라야 성지 초대</h4>
+                                </div>
+                                <div class="text-center space-y-4 text-gray-700 leading-relaxed">
+                                    <p class="text-lg font-medium text-amber-700">
+                                        9월 26일부터 10월 15일까지 화주 불사에 인연 맺어주신 분들을<br>
+                                        JustBe 히말라야로 초대합니다.
+                                    </p>
+                                    
+                                    <p class="text-gray-600">
+                                        먼저 미륵연화보살님을 모시고, 점안식과 함께 3주간 축원 기도를 올리며,<br>
+                                        약사여래불을 모실 법단을 함께 마련하고 싶습니다.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-slate-50 rounded-lg p-6 border border-slate-200">
+                                <div class="flex items-center mb-4">
+                                    <div class="text-xl mr-3">🪷</div>
+                                    <h4 class="text-xl font-serif font-bold text-gray-800">2025년 9월 1일부터 - 약사여래 부처님 화주</h4>
+                                </div>
+                                <div class="space-y-3 text-gray-600 leading-relaxed">
+                                    <p>
+                                        홍대선원 개원 3주년의 뜻깊은 날을 맞이하여 히말라야에 <strong class="text-amber-700">약사여래 부처님과 금강역사 두 분</strong>을 
+                                        모시기 위한 화주 불사를 시작합니다.
+                                    </p>
+                                    <p>
+                                        부처님의 초기 제자 1250명의 비구 대중처럼, 
+                                        <strong class="text-amber-700">1250명의 인연</strong>이 함께 모여 
+                                        이 성스러운 원력을 성취하고자 합니다.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-slate-50 rounded-lg p-6 border border-slate-200">
+                                <div class="flex items-center mb-4">
+                                    <div class="text-xl mr-3">🙏</div>
+                                    <h4 class="text-xl font-serif font-bold text-gray-800">2025년 11월 7일 - 약사여래 부처님·금강역사 점안 및 고불식</h4>
+                                </div>
+                                <div class="space-y-3 text-gray-600 leading-relaxed">
+                                    <p>
+                                        히말라야의 청정한 기운이 감도는 성지에서 <strong class="text-amber-700">약사여래 부처님과 금강역사 두 분</strong>을 
+                                        정중히 점안하고 성스러운 고불식을 엄숙히 봉행합니다.
+                                    </p>
+                                    <p>
+                                        이와 함께 <strong class="text-amber-700">네팔 현지 법인 설립</strong>을 통하여 
+                                        JustBe Himalaya Temple의 공식적인 기반을 확고히 마련하며, 
+                                        <strong class="text-amber-700">미륵보살님, 약사여래 부처님, 금강역사 총 네 분</strong>이 
+                                        함께 계시는 성스러운 삼존 도량이 완성됩니다.
+                                    </p>
+                                </div>
+                            </div>
                         </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-12 scroll-reveal">
+                    <div class="bg-amber-50 border border-amber-200 rounded-lg p-8 max-w-4xl mx-auto">
+                        <div class="flex items-center justify-center mb-4">
+                            <div class="text-3xl mr-3">✨</div>
+                            <h3 class="text-xl font-serif font-bold text-amber-800">원력 성취의 시작</h3>
+                        </div>
+                        <p class="text-amber-700 leading-relaxed">
+                            여러분의 동참으로 시작된 모연부터 네 불보살님의 완전한 봉안까지, <br>
+                            2600년 전 부처님의 길이 히말라야에서 다시 열리며 <br>
+                            한국과 네팔을 잇는 불교 문화 교류의 새로운 역사가 시작됩니다.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -253,7 +350,7 @@
         <section id="donation" class="py-20 md:py-32 bg-white">
             <div class="max-w-4xl mx-auto px-6 text-center">
                 <div class="scroll-reveal">
-                    <h2 class="text-3xl md:text-4xl font-serif font-bold mb-4 text-gray-900">📿 미륵보살 불사 동참 안내</h2>
+                    <h2 class="text-3xl md:text-4xl font-serif font-bold mb-4 text-gray-900">📿 미륵연화보살님 화주 동참 안내</h2>
                     <p class="text-lg text-gray-600 mb-12">여러분의 소중한 마음이 모여 희망의 등불을 밝힙니다.</p>
 
                     <!-- Progress Bar -->
@@ -301,12 +398,8 @@
         </section>
 
         <!-- Gallery Section -->
-        <section class="py-20 md:py-32 bg-white">
+        <section class="py-10 md:py-20 bg-white">
             <div class="max-w-6xl mx-auto px-6">
-                <div class="text-center mb-12 scroll-reveal">
-                    <h2 class="text-3xl md:text-4xl font-serif font-bold mb-4 text-gray-900">JustBe 히말라야 프로젝트의 시작</h2>
-                    <p class="text-lg text-gray-600">부처님께서 걸으셨던 성스러운 길과 화마에 살아남으신 미륵보살님</p>
-                </div>
                 
                 <div class="grid md:grid-cols-2 gap-8">
                     <div class="scroll-reveal">
@@ -347,10 +440,11 @@
                             <div class="flex-1">
                                 <h3 class="text-xl font-serif font-bold mb-3 text-gray-800">기반 조성 및 네트워크 구축</h3>
                                 <ul class="text-gray-600 leading-relaxed space-y-2">
-                                    <li>• 사전조사 및 현지 교류 확대</li>
-                                    <li>• 붓다로드 리서치 및 경로 설계</li>
-                                    <li>• 한국-네팔 정부기관 및 단체와의 협력 체계 구축</li>
                                     <li>• 모연 캠페인 및 후원자 네트워크 확장</li>
+                                    <li>• 미륵보살, 약사여래불, 금강역사 점안 및 고불식</li>                                    
+                                    <li>• JustBe Himalaya 법인 설립</li>                                    
+                                    <li>• 사전조사 및 현지 교류 확대</li>
+                                    <li>• 한국-네팔 정부기관 및 단체와의 협력 체계 구축</li>
                                 </ul>
                             </div>
                         </div>
@@ -362,8 +456,9 @@
                             <div class="flex-1">
                                 <h3 class="text-xl font-serif font-bold mb-3 text-gray-800">실행 단계 진입</h3>
                                 <ul class="text-gray-600 leading-relaxed space-y-2">
-                                    <li>• JustBe Himalaya 법인 설립</li>
-                                    <li>• 히말라야 국제선원 부지 확보</li>
+                                    <li>• 제 3회 히말라야 새해맞이 정초 구법순례 <button class="text-amber-700 underline hover:text-amber-800 cursor-pointer" onclick="toggleGubeobImage()">(참여하기)</button></li>
+                                    <li>• Himalaya Korean Basecamp 부지 확보</li>
+                                    <li>• 붓다로드 리서치 및 경로 설계</li>
                                     <li>• 시범 숙소 및 베이스캠프 운영 시작</li>
                                     <li>• 한국-네팔 간 공식 MOU 체결</li>
                                 </ul>
@@ -372,11 +467,12 @@
                     </div>
                 </div>
                 
+                
                 <div class="text-center mt-12 scroll-reveal">
                     <div class="bg-amber-50 border border-amber-200 rounded-lg p-6">
                         <p class="text-amber-800 font-medium text-lg">
-                            "인연으로 다시 걷는 부처님의 길"<br>
-                            이 길 위에서 만날 소중한 인연을 기다립니다.
+                            "인연으로 다시 걷는 부처님의 옛 순례길"<br>
+                            이 길 위에서 만날 소중한 도반을 기다립니다.
                         </p>
                         <p class="text-amber-700 mt-4 italic">JustBe 준한 합장</p>
                     </div>
@@ -513,6 +609,36 @@
             window.addEventListener('scroll', handleScrollAnimation);
         }
 
+        // --- 구법순례 이미지 모달 함수 ---
+        function toggleGubeobImage() {
+            const modal = document.getElementById('gubeob-modal');
+            modal.classList.remove('hidden');
+            // 배경 스크롤 방지
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeGubeobModal() {
+            const modal = document.getElementById('gubeob-modal');
+            modal.classList.add('hidden');
+            // 배경 스크롤 복원
+            document.body.style.overflow = 'auto';
+        }
+
+        // ESC 키로 모달 닫기
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeGubeobModal();
+            }
+        });
+
+        // 모달 배경 클릭 시 닫기
+        document.addEventListener('click', (e) => {
+            const modal = document.getElementById('gubeob-modal');
+            if (e.target === modal) {
+                closeGubeobModal();
+            }
+        });
+
         // --- 페이지 로드 시 함수 실행 ---
         document.addEventListener('DOMContentLoaded', () => {
             loadDonorData(); // JSON에서 데이터 로드 (내부적으로 updateProgressBar 호출)
@@ -520,6 +646,31 @@
             setupScrollAnimations();
         });
     </script>
+
+    <!-- 구법순례 이미지 모달 -->
+    <div id="gubeob-modal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg max-w-4xl max-h-[90vh] overflow-auto m-4 relative">
+            <!-- 닫기 버튼 -->
+            <button onclick="closeGubeobModal()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 z-10">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            
+            <!-- 모달 내용 -->
+            <div class="p-6">
+                <div class="text-center mb-6">
+                    <h3 class="text-2xl font-serif font-bold text-amber-800">제 3회 히말라야 새해맞이 정초 구법순례</h3>
+                </div>
+                <div class="max-w-3xl mx-auto">
+                    <img src="resource/img/gubeob.jpeg" 
+                         alt="히말라야 정초기도 구법순례" 
+                         class="w-full rounded-lg shadow-lg"
+                         onerror="this.outerHTML='<div class=\'flex items-center justify-center h-64 bg-gray-200 text-gray-600 rounded-lg\'><p class=\'text-center\'><strong>이미지 표시 오류</strong><br>사진을 불러오는 데 문제가 발생했습니다.</p></div>'">
+                </div>
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>
