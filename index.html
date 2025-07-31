@@ -260,6 +260,102 @@
                     </div>
                 </div>
                 
+                <!-- Donation Section -->
+                <section id="donation" class="py-12 md:py-20 bg-white">
+                    <div class="max-w-4xl mx-auto px-6 text-center">
+                        <div class="scroll-reveal">
+                            <h2 class="text-3xl md:text-4xl font-serif font-bold mb-4 text-gray-900" 
+                                data-kr="📿 미륵연화보살님 화주 동참 안내" 
+                                data-en="📿 Maitreya Lotus Bodhisattva Sponsorship Guide">📿 미륵연화보살님 화주 동참 안내</h2>
+                            <p class="text-lg text-gray-600 mb-8"
+                               data-kr="여러분의 소중한 마음이 모여 희망의 등불을 밝힙니다."
+                               data-en="Your precious hearts come together to light the lamp of hope.">여러분의 소중한 마음이 모여 희망의 등불을 밝힙니다.</p>
+
+                            <!-- Progress Bar -->
+                            <div class="mb-8">
+                                <div class="flex justify-between items-center mb-2 text-gray-700">
+                                    <span class="font-medium">모연 목표: 300명</span>
+                                    <span id="progress-text" class="font-medium">현재 68명 동참 (22.7%)</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-4">
+                                    <div id="progress-bar" class="bg-amber-600 h-4 rounded-full transition-all duration-1000 ease-out" style="width: 22.7%;"></div>
+                                </div>
+                            </div>
+
+                            <div class="grid md:grid-cols-2 gap-8 text-left">
+                                <div class="bg-slate-50 p-8 rounded-lg shadow-md border border-slate-200">
+                                    <h3 class="text-2xl font-serif font-bold mb-4 text-gray-800"
+                                        data-kr="동참 방법"
+                                        data-en="How to Participate">동참 방법</h3>
+                                    <ul class="space-y-3 text-gray-700">
+                                        <li data-kr="<strong class='text-amber-700'>금액:</strong> 1인 10만원"
+                                            data-en="<strong class='text-amber-700'>Amount:</strong> 100,000 KRW per person"><strong class="text-amber-700">금액:</strong> 1인 10만원</li>
+                                        <li data-kr="<strong class='text-amber-700'>계좌:</strong> 농협 301-0319-5339-51 (홍대선원)"
+                                            data-en="<strong class='text-amber-700'>Account:</strong> Nonghyup 301-0319-5339-51 (Hongdae Zen Center)"><strong class="text-amber-700">계좌:</strong> 농협 301-0319-5339-51 (홍대선원)</li>
+                                        <li data-kr="<strong class='text-amber-700'>문자 접수:</strong> <a href='sms:010-5708-2423' class='hover:text-amber-800'>010-5708-2423</a>"
+                                            data-en="<strong class='text-amber-700'>SMS Registration:</strong> <a href='sms:010-5708-2423' class='hover:text-amber-800'>010-5708-2423</a>"><strong class="text-amber-700">문자 접수:</strong> <a href="sms:010-5708-2423" class="hover:text-amber-800">010-5708-2423</a></li>
+                                        <li data-kr='<strong class="text-amber-700">문자 내용:</strong> 이름(법명 및 주소, 회사 이름도 가능) + "미륵"'
+                                            data-en='<strong class="text-amber-700">SMS Content:</strong> Name (Dharma name, address, or company name) + "Maitreya"'><strong class="text-amber-700">문자 내용:</strong> 이름(법명 및 주소, 회사 이름도 가능) + "미륵"</li>
+                                    </ul>
+                                    <button id="copy-btn" class="mt-6 w-full bg-gray-800 text-white py-3 px-6 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition-colors"
+                                            data-kr="계좌번호 복사하기"
+                                            data-en="Copy Account Number">
+                                        계좌번호 복사하기
+                                    </button>
+                                    <p id="copy-message" class="text-center text-green-600 mt-2 h-4"></p>
+                                </div>
+
+                                <div class="bg-slate-50 p-8 rounded-lg shadow-md border border-slate-200">
+                                    <h3 class="text-2xl font-serif font-bold mb-4 text-gray-800"
+                                        data-kr="인연 공덕"
+                                        data-en="Merit & Blessings">인연 공덕</h3>
+                                     <div class="flex items-center mb-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-amber-600 mr-4" viewBox="0 0 20 20" fill="currentColor">
+                                          <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
+                                          <path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd" />
+                                        </svg>
+                                        <p class="text-gray-700"
+                                           data-kr="준한스님께서 직접 동참자의 이름과 법명 또는 회사 이름을 붓글씨로 적어 미륵보살님 복장점안 의식 때 축원과 함께 봉안합니다."
+                                           data-en="Venerable Junhan will personally write the names, dharma names, or company names of participants in calligraphy and enshrine them with prayers during the Maitreya Bodhisattva consecration ceremony.">준한스님께서 직접 동참자의 이름과 법명 또는 회사 이름을 붓글씨로 적어 미륵보살님 복장점안 의식 때 축원과 함께 봉안합니다.</p>
+                                    </div>
+                                    <p class="text-gray-700 leading-relaxed mt-4"
+                                       data-kr="이 인연공덕으로 히말라야 프로젝트에 희망의 등불이 켜지고, 화주 동참자 가족들께 제불보살님의 무한한 가피가 함께하시기를 간절히 발원합니다."
+                                       data-en="Through this karmic merit, may the lamp of hope be lit for the Himalaya Project, and may the infinite blessings of all Buddhas and Bodhisattvas be with the families of all sponsoring participants.">
+                                        이 인연공덕으로 히말라야 프로젝트에 희망의 등불이 켜지고, 화주 동참자 가족들께 제불보살님의 무한한 가피가 함께하시기를 간절히 발원합니다.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Gallery Section -->
+                <section class="py-10 md:py-20 bg-white">
+                    <div class="max-w-6xl mx-auto px-6">
+                        
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div class="scroll-reveal">
+                                <div class="aspect-[4/5] rounded-lg overflow-hidden shadow-xl">
+                                    <img src="resource/img/gallery1.jpeg" 
+                                         alt="히말라야 순례길의 모습" 
+                                         class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                                         onerror="this.outerHTML='<div class=\'flex items-center justify-center h-full bg-gray-200 text-gray-600 rounded-lg\'><p class=\'text-center\'><strong>이미지 표시 오류</strong><br>사진을 불러오는 데 문제가 발생했습니다.</p></div>'">
+                                </div>
+                            </div>
+                            
+                            <div class="scroll-reveal">
+                                <div class="aspect-[4/5] rounded-lg overflow-hidden shadow-xl">
+                                    <img src="resource/img/gallery2.jpeg" 
+                                         alt="히말라야 베이스캠프 비전" 
+                                         class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                                         onerror="this.outerHTML='<div class=\'flex items-center justify-center h-full bg-gray-200 text-gray-600 rounded-lg\'><p class=\'text-center\'><strong>이미지 표시 오류</strong><br>사진을 불러오는 데 문제가 발생했습니다.</p></div>'">
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </section>
+                
                 <!-- 히말라야 봉안 여정 -->
                 <div class="scroll-reveal">
                     <div class="bg-white rounded-lg p-8 border border-slate-200 shadow-md mb-8">
@@ -355,102 +451,6 @@
                                     </div>
                                 </div>
                             </div>                            
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-        </section>
-
-        <!-- Donation Section -->
-        <section id="donation" class="py-12 md:py-20 bg-white">
-            <div class="max-w-4xl mx-auto px-6 text-center">
-                <div class="scroll-reveal">
-                    <h2 class="text-3xl md:text-4xl font-serif font-bold mb-4 text-gray-900" 
-                        data-kr="📿 미륵연화보살님 화주 동참 안내" 
-                        data-en="📿 Maitreya Lotus Bodhisattva Sponsorship Guide">📿 미륵연화보살님 화주 동참 안내</h2>
-                    <p class="text-lg text-gray-600 mb-8"
-                       data-kr="여러분의 소중한 마음이 모여 희망의 등불을 밝힙니다."
-                       data-en="Your precious hearts come together to light the lamp of hope.">여러분의 소중한 마음이 모여 희망의 등불을 밝힙니다.</p>
-
-                    <!-- Progress Bar -->
-                    <div class="mb-8">
-                        <div class="flex justify-between items-center mb-2 text-gray-700">
-                            <span class="font-medium">모연 목표: 300명</span>
-                            <span id="progress-text" class="font-medium">현재 68명 동참 (22.7%)</span>
-                        </div>
-                        <div class="w-full bg-gray-200 rounded-full h-4">
-                            <div id="progress-bar" class="bg-amber-600 h-4 rounded-full transition-all duration-1000 ease-out" style="width: 22.7%;"></div>
-                        </div>
-                    </div>
-
-                    <div class="grid md:grid-cols-2 gap-8 text-left">
-                        <div class="bg-slate-50 p-8 rounded-lg shadow-md border border-slate-200">
-                            <h3 class="text-2xl font-serif font-bold mb-4 text-gray-800"
-                                data-kr="동참 방법"
-                                data-en="How to Participate">동참 방법</h3>
-                            <ul class="space-y-3 text-gray-700">
-                                <li data-kr="<strong class='text-amber-700'>금액:</strong> 1인 10만원"
-                                    data-en="<strong class='text-amber-700'>Amount:</strong> 100,000 KRW per person"><strong class="text-amber-700">금액:</strong> 1인 10만원</li>
-                                <li data-kr="<strong class='text-amber-700'>계좌:</strong> 농협 301-0319-5339-51 (홍대선원)"
-                                    data-en="<strong class='text-amber-700'>Account:</strong> Nonghyup 301-0319-5339-51 (Hongdae Zen Center)"><strong class="text-amber-700">계좌:</strong> 농협 301-0319-5339-51 (홍대선원)</li>
-                                <li data-kr="<strong class='text-amber-700'>문자 접수:</strong> <a href='sms:010-5708-2423' class='hover:text-amber-800'>010-5708-2423</a>"
-                                    data-en="<strong class='text-amber-700'>SMS Registration:</strong> <a href='sms:010-5708-2423' class='hover:text-amber-800'>010-5708-2423</a>"><strong class="text-amber-700">문자 접수:</strong> <a href="sms:010-5708-2423" class="hover:text-amber-800">010-5708-2423</a></li>
-                                <li data-kr='<strong class="text-amber-700">문자 내용:</strong> 이름(법명 및 주소, 회사 이름도 가능) + "미륵"'
-                                    data-en='<strong class="text-amber-700">SMS Content:</strong> Name (Dharma name, address, or company name) + "Maitreya"'><strong class="text-amber-700">문자 내용:</strong> 이름(법명 및 주소, 회사 이름도 가능) + "미륵"</li>
-                            </ul>
-                            <button id="copy-btn" class="mt-6 w-full bg-gray-800 text-white py-3 px-6 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition-colors"
-                                    data-kr="계좌번호 복사하기"
-                                    data-en="Copy Account Number">
-                                계좌번호 복사하기
-                            </button>
-                            <p id="copy-message" class="text-center text-green-600 mt-2 h-4"></p>
-                        </div>
-
-                        <div class="bg-slate-50 p-8 rounded-lg shadow-md border border-slate-200">
-                            <h3 class="text-2xl font-serif font-bold mb-4 text-gray-800"
-                                data-kr="인연 공덕"
-                                data-en="Merit & Blessings">인연 공덕</h3>
-                             <div class="flex items-center mb-4">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-amber-600 mr-4" viewBox="0 0 20 20" fill="currentColor">
-                                  <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
-                                  <path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd" />
-                                </svg>
-                                <p class="text-gray-700"
-                                   data-kr="준한스님께서 직접 동참자의 이름과 법명 또는 회사 이름을 붓글씨로 적어 미륵보살님 복장점안 의식 때 축원과 함께 봉안합니다."
-                                   data-en="Venerable Junhan will personally write the names, dharma names, or company names of participants in calligraphy and enshrine them with prayers during the Maitreya Bodhisattva consecration ceremony.">준한스님께서 직접 동참자의 이름과 법명 또는 회사 이름을 붓글씨로 적어 미륵보살님 복장점안 의식 때 축원과 함께 봉안합니다.</p>
-                            </div>
-                            <p class="text-gray-700 leading-relaxed mt-4"
-                               data-kr="이 인연공덕으로 히말라야 프로젝트에 희망의 등불이 켜지고, 화주 동참자 가족들께 제불보살님의 무한한 가피가 함께하시기를 간절히 발원합니다."
-                               data-en="Through this karmic merit, may the lamp of hope be lit for the Himalaya Project, and may the infinite blessings of all Buddhas and Bodhisattvas be with the families of all sponsoring participants.">
-                                이 인연공덕으로 히말라야 프로젝트에 희망의 등불이 켜지고, 화주 동참자 가족들께 제불보살님의 무한한 가피가 함께하시기를 간절히 발원합니다.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Gallery Section -->
-        <section class="py-10 md:py-20 bg-white">
-            <div class="max-w-6xl mx-auto px-6">
-                
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div class="scroll-reveal">
-                        <div class="aspect-[4/5] rounded-lg overflow-hidden shadow-xl">
-                            <img src="resource/img/gallery1.jpeg" 
-                                 alt="히말라야 순례길의 모습" 
-                                 class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                                 onerror="this.outerHTML='<div class=\'flex items-center justify-center h-full bg-gray-200 text-gray-600 rounded-lg\'><p class=\'text-center\'><strong>이미지 표시 오류</strong><br>사진을 불러오는 데 문제가 발생했습니다.</p></div>'">
-                        </div>
-                    </div>
-                    
-                    <div class="scroll-reveal">
-                        <div class="aspect-[4/5] rounded-lg overflow-hidden shadow-xl">
-                            <img src="resource/img/gallery2.jpeg" 
-                                 alt="히말라야 베이스캠프 비전" 
-                                 class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                                 onerror="this.outerHTML='<div class=\'flex items-center justify-center h-full bg-gray-200 text-gray-600 rounded-lg\'><p class=\'text-center\'><strong>이미지 표시 오류</strong><br>사진을 불러오는 데 문제가 발생했습니다.</p></div>'">
                         </div>
                     </div>
                 </div>
