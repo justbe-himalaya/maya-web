@@ -619,7 +619,8 @@
                         
                         <!-- Support JustBe 버튼 -->
                         <div class="mt-12 text-center">
-                            <a href="https://linktr.ee/justbe.support" 
+                            <a id="support-justbe-btn"
+                               href="https://www.ihappynanum.com/Nanum/B/ERKTHL9CZX" 
                                target="_blank" 
                                rel="noopener noreferrer"
                                class="inline-flex items-center bg-white/90 hover:bg-white text-gray-800 font-medium px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl backdrop-blur-sm"
@@ -988,6 +989,12 @@
             elements.forEach(element => {
                 element.innerHTML = element.getAttribute('data-en');
             });
+            
+            // Support JustBe 버튼 링크를 영문용으로 변경
+            const supportBtn = document.getElementById('support-justbe-btn');
+            if (supportBtn) {
+                supportBtn.href = 'https://linktr.ee/justbe.support';
+            }
         }
 
         function switchToKorean() {
@@ -995,6 +1002,12 @@
             elements.forEach(element => {
                 element.innerHTML = element.getAttribute('data-kr');
             });
+            
+            // Support JustBe 버튼 링크를 한글용으로 변경
+            const supportBtn = document.getElementById('support-justbe-btn');
+            if (supportBtn) {
+                supportBtn.href = 'https://www.ihappynanum.com/Nanum/B/ERKTHL9CZX';
+            }
         }
 
         // --- 캐시 버스팅을 위한 이미지 로드 ---
