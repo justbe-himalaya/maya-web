@@ -5,6 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JustBe 히말라야 불사 모연</title>
     
+    <!-- Cache Control for KakaoTalk -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    
+    <!-- Preload hero image with cache busting -->
+    <link rel="preload" as="image">
+    <script>
+        // Dynamic preload with cache busting for KakaoTalk
+        const isKakao = /KAKAOTALK/i.test(navigator.userAgent);
+        if (isKakao) {
+            const timestamp = Date.now();
+            const randomParam = Math.random().toString(36).substring(7);
+            const preloadLink = document.querySelector('link[rel="preload"][as="image"]');
+            preloadLink.href = `resource/img/hero_bg_low_res.jpeg?v=${timestamp}&r=${randomParam}&bust=1`;
+        } else {
+            const preloadLink = document.querySelector('link[rel="preload"][as="image"]');
+            preloadLink.href = 'resource/img/hero_bg_low_res.jpeg';
+        }
+    </script>
+    
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://himalaya.justbetemple.org/">
@@ -47,7 +68,7 @@
         }
         /* 배경 이미지 스타일 */
         .hero-bg {
-            background-image: url('resource/img/hero_bg_low_res.jpeg?v=20250731');
+            background-image: url('resource/img/hero_bg_low_res.jpeg');
             background-size: cover;
             background-position: center top;
             background-attachment: fixed;
@@ -128,11 +149,11 @@
                 </div>
                 
                 <div class="grid md:grid-cols-3 gap-8 scroll-reveal">
-                    <div class="text-center p-8 bg-gray-50/30 rounded-lg border border-gray-200/50">
-                        <div class="w-16 h-16 mx-auto mb-4 flex justify-center items-center opacity-60">
+                    <div class="text-center p-6 bg-gray-50/30 rounded-lg border border-gray-200/50">
+                        <div class="w-16 h-16 mx-auto mb-3 flex justify-center items-center opacity-60">
                             <img src="resource/img/justbe_img.png" alt="JustBe Logo" class="w-16 h-14" onerror="this.outerHTML='<div class=\'text-4xl\'>🏔️</div>'">
                         </div>
-                        <h3 class="text-xl font-serif font-bold mb-4 text-gray-700" data-kr="JustBe Temple 히말라야" data-en="JustBe Temple Himalaya">JustBe Temple 히말라야</h3>
+                        <h3 class="text-xl font-serif font-bold mb-3 text-gray-700" data-kr="JustBe Temple 히말라야" data-en="JustBe Temple Himalaya">JustBe Temple 히말라야</h3>
                         <p class="text-gray-600 leading-relaxed text-sm"
                            data-kr="포카라 품디콧 언덕(1400m 고지)에 360° 명상홀, 공양간, 숙소, 법당을 갖춘 <strong class='text-amber-700'>도량</strong>을 건립합니다. 치유와 교육이 어우러진 친환경 수행 공동체를 조성합니다."
                            data-en="Establishing a <strong class='text-amber-700'>temple</strong> on Pumdikot Hill (1400m altitude) in Pokhara, featuring a 360° meditation hall, kitchen, accommodation, and dharma hall. Creating an eco-friendly practice community that harmonizes healing and education.">
@@ -142,14 +163,14 @@
                         </p>
                     </div>
                     
-                    <div class="text-center p-8 bg-gray-50/30 rounded-lg border border-gray-200/50">
+                    <div class="text-center p-6 bg-gray-50/30 rounded-lg border border-gray-200/50">
                         <div class="w-16 h-16 mx-auto mb-4 rounded-lg overflow-hidden opacity-60">
                             <img src="resource/img/shadow.jpeg" 
                                  alt="붓다로드" 
                                  class="w-full h-full object-cover" 
                                  onerror="this.outerHTML='<div class=\'w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center text-gray-400\'><span>🛤️</span></div>'">
                         </div>
-                        <h3 class="text-xl font-serif font-bold mb-4 text-gray-700" data-kr="붓다로드" data-en="Buddha Road">붓다로드</h3>
+                        <h3 class="text-xl font-serif font-bold mb-3 text-gray-700" data-kr="붓다로드" data-en="Buddha Road">붓다로드</h3>
                         <p class="text-gray-600 leading-relaxed text-sm"
                            data-kr="부처님 탄생지 룸비니와 히말라야 안나푸르나를 연결하는 <strong class='text-amber-700'>160km 불교 순례길</strong>을 현대에 되살려, 세계의 많은 이들이 이 길을 걸으며 소중한 인연을 만나고 진리를 구하는 여정을 함께하는 길을 복원합니다."
                            data-en="Reviving the <strong class='text-amber-700'>160km Buddhist pilgrimage route</strong> connecting Lumbini (Buddha's birthplace) and the Himalayas Annapurna in modern times, restoring this sacred path where people from around the world can walk together, meet precious connections, and seek truth on their spiritual journey.">
@@ -160,15 +181,15 @@
                         </p>
                     </div>
                     
-                    <div class="text-center p-8 bg-gray-50/30 rounded-lg border border-gray-200/50">
-                        <div class="w-20 h-16 mx-auto mb-4 flex justify-center items-center opacity-60">
+                    <div class="text-center p-6 bg-gray-50/30 rounded-lg border border-gray-200/50">
+                        <div class="w-20 h-16 mx-auto mb-3 flex justify-center items-center opacity-60">
                             <div class="flex items-center gap-2">
                                 <span class="text-3xl">🇰🇷</span>
                                 <span class="text-2xl">🤝</span>
                                 <span class="text-3xl">🇳🇵</span>
                             </div>
                         </div>
-                        <h3 class="text-xl font-serif font-bold mb-4 text-gray-700" data-kr="한-네 문화외교" data-en="Korea-Nepal Cultural Diplomacy">한-네 문화외교</h3>
+                        <h3 class="text-xl font-serif font-bold mb-3 text-gray-700" data-kr="한-네 문화외교" data-en="Korea-Nepal Cultural Diplomacy">한-네 문화외교</h3>
                         <p class="text-gray-600 leading-relaxed text-sm"
                            data-kr="불교라는 공통 뿌리를 바탕으로 한국과 네팔의 <strong class='text-amber-700'>새로운 문화교류 모델</strong>을 실현합니다. 지역민과의 상생을 통해 공동체 발전에 기여합니다."
                            data-en="Implementing a <strong class='text-amber-700'>new cultural exchange model</strong> between Korea and Nepal based on our common Buddhist roots. Contributing to community development through mutual prosperity with local residents.">
@@ -407,7 +428,7 @@
                 <div class="grid md:grid-cols-2 gap-8">
                     <div class="scroll-reveal">
                         <div class="aspect-[4/5] rounded-lg overflow-hidden shadow-xl">
-                            <img src="resource/img/gallery1.jpeg?v=20250731" 
+                            <img src="resource/img/gallery1.jpeg" 
                                  alt="히말라야 순례길의 모습" 
                                  class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                                  onerror="this.outerHTML='<div class=\'flex items-center justify-center h-full bg-gray-200 text-gray-600 rounded-lg\'><p class=\'text-center\'><strong>이미지 표시 오류</strong><br>사진을 불러오는 데 문제가 발생했습니다.</p></div>'">
@@ -416,7 +437,7 @@
                     
                     <div class="scroll-reveal">
                         <div class="aspect-[4/5] rounded-lg overflow-hidden shadow-xl">
-                            <img src="resource/img/gallery2.jpeg?v=20250731" 
+                            <img src="resource/img/gallery2.jpeg" 
                                  alt="히말라야 베이스캠프 비전" 
                                  class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                                  onerror="this.outerHTML='<div class=\'flex items-center justify-center h-full bg-gray-200 text-gray-600 rounded-lg\'><p class=\'text-center\'><strong>이미지 표시 오류</strong><br>사진을 불러오는 데 문제가 발생했습니다.</p></div>'">
@@ -939,8 +960,48 @@
             });
         }
 
+        // --- 캐시 버스팅을 위한 이미지 로드 ---
+        function setupCacheBustedImages() {
+            // 카카오톡 인앱 브라우저 감지
+            const isKakao = /KAKAOTALK/i.test(navigator.userAgent);
+            const isWechat = /MicroMessenger/i.test(navigator.userAgent);
+            const isLine = /Line/i.test(navigator.userAgent);
+            
+            // 인앱 브라우저에서 캐시 버스팅 적용
+            if (isKakao || isWechat || isLine) {
+                const timestamp = Date.now();
+                const randomParam = Math.random().toString(36).substring(7);
+                
+                // Hero 배경 이미지 - 다중 캐시 버스팅 파라미터 사용
+                const heroElement = document.querySelector('.hero-bg');
+                if (heroElement) {
+                    // 기존 이미지 먼저 프리로드
+                    const img = new Image();
+                    img.onload = function() {
+                        heroElement.style.backgroundImage = `url('resource/img/hero_bg_low_res.jpeg?v=${timestamp}&r=${randomParam}&bust=1')`;
+                        heroElement.style.backgroundRepeat = 'no-repeat';
+                        heroElement.style.backgroundSize = 'cover';
+                        heroElement.style.backgroundPosition = 'center top';
+                    };
+                    img.src = `resource/img/hero_bg_low_res.jpeg?v=${timestamp}&r=${randomParam}&bust=1`;
+                }
+                
+                // Gallery 이미지들 - 다중 캐시 버스팅 파라미터 사용
+                const gallery1 = document.querySelector('img[src*="gallery1.jpeg"]');
+                if (gallery1) {
+                    gallery1.src = `resource/img/gallery1.jpeg?v=${timestamp}&r=${randomParam}&bust=1`;
+                }
+                
+                const gallery2 = document.querySelector('img[src*="gallery2.jpeg"]');
+                if (gallery2) {
+                    gallery2.src = `resource/img/gallery2.jpeg?v=${timestamp}&r=${randomParam}&bust=1`;
+                }
+            }
+        }
+
         // --- 페이지 로드 시 함수 실행 ---
         document.addEventListener('DOMContentLoaded', () => {
+            setupCacheBustedImages(); // 캐시 버스팅 이미지 로드
             loadDonorData(); // JSON에서 데이터 로드 (내부적으로 updateProgressBar 호출)
             setupCopyButton();
             setupLearnMoreModal();
