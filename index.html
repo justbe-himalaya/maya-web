@@ -47,16 +47,15 @@
         }
         /* 배경 이미지 스타일 */
         .hero-bg {
-            background-image: url('resource/img/hero_bg_high_res.png');
+            background-image: url('resource/img/hero_bg_low_res.jpeg');
             background-size: cover;
             background-position: center top;
             background-attachment: fixed;
         }
         
-        /* 모바일에서 작은 이미지 사용 및 fixed 배경 문제 해결 */
+        /* 모바일에서 fixed 배경 문제 해결 */
         @media (max-width: 768px) {
             .hero-bg {
-                background-image: url('resource/img/hero_bg_low_res.png');
                 background-attachment: scroll;
             }
         }
