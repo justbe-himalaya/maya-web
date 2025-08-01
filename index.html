@@ -152,6 +152,126 @@
             opacity: 1;
             filter: blur(0);
         }
+        
+        /* 고급 카드 호버 애니메이션 */
+        .card-enhanced {
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform-origin: center;
+            will-change: transform, box-shadow;
+        }
+        
+        .card-enhanced:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 
+                        0 4px 20px rgba(217, 119, 6, 0.1);
+        }
+        
+        .card-enhanced:active {
+            transform: translateY(-2px) scale(1.01);
+            transition: all 0.1s ease;
+        }
+        
+        /* 스켈레톤 로딩 스크린 */
+        .skeleton {
+            background: linear-gradient(90deg, 
+                rgba(240, 240, 240, 0.8) 25%, 
+                rgba(250, 250, 250, 0.9) 50%, 
+                rgba(240, 240, 240, 0.8) 75%);
+            background-size: 200% 100%;
+            animation: skeleton-loading 1.5s infinite;
+        }
+        
+        @keyframes skeleton-loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        
+        .skeleton-text {
+            height: 1em;
+            border-radius: 4px;
+            margin-bottom: 0.5em;
+        }
+        
+        .skeleton-circle {
+            border-radius: 50%;
+        }
+        
+        .skeleton-rounded {
+            border-radius: 8px;
+        }
+        
+        /* 모바일 터치 피드백 */
+        @media (hover: none) and (pointer: coarse) {
+            .touch-feedback {
+                position: relative;
+                overflow: hidden;
+            }
+            
+            .touch-feedback::before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 0;
+                height: 0;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.3);
+                transform: translate(-50%, -50%);
+                transition: width 0.3s ease, height 0.3s ease;
+                pointer-events: none;
+            }
+            
+            .touch-feedback:active::before {
+                width: 300px;
+                height: 300px;
+            }
+            
+            .btn-touch {
+                user-select: none;
+                -webkit-tap-highlight-color: transparent;
+            }
+            
+            .btn-touch:active {
+                transform: scale(0.98);
+                transition: transform 0.1s ease;
+            }
+        }
+        
+        /* 진행률 바 고급 애니메이션 */
+        .progress-enhanced {
+            background: linear-gradient(90deg, 
+                #3b82f6 0%, 
+                #1d4ed8 50%, 
+                #1e40af 100%);
+            background-size: 200% 100%;
+            animation: progress-shimmer 2s infinite;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .progress-enhanced::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.4), 
+                transparent);
+            animation: progress-shine 1.5s infinite;
+        }
+        
+        @keyframes progress-shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        
+        @keyframes progress-shine {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
 
         /* 최적화된 이미지 로딩 애니메이션 */
         @keyframes shimmer {
@@ -262,7 +382,7 @@
                 </div>
                 
                 <div class="grid md:grid-cols-3 gap-8 scroll-reveal">
-                    <div class="text-center p-6 bg-gray-50/30 rounded-lg border border-gray-200/50">
+                    <div class="card-enhanced touch-feedback text-center p-6 bg-gray-50/30 rounded-lg border border-gray-200/50 cursor-pointer">
                         <div class="w-16 h-16 mx-auto mb-3 flex justify-center items-center">
                             <img src="resource/img/justbe_img.png" alt="JustBe Logo" width="64" height="56" loading="eager" class="w-16 h-14" onerror="this.outerHTML='<div class=\'text-4xl\'>🏔️</div>'">
                         </div>
@@ -284,7 +404,7 @@
                         </p>
                     </div>
                     
-                    <div class="text-center p-6 bg-gray-50/30 rounded-lg border border-gray-200/50">
+                    <div class="card-enhanced touch-feedback text-center p-6 bg-gray-50/30 rounded-lg border border-gray-200/50 cursor-pointer">
                         <div class="w-16 h-16 mx-auto mb-4 rounded-lg overflow-hidden">
                             <img src="resource/img/shadow.jpeg" 
                                  alt="붓다로드"
@@ -307,7 +427,7 @@
                         </p>
                     </div>
                     
-                    <div class="text-center p-6 bg-gray-50/30 rounded-lg border border-gray-200/50">
+                    <div class="card-enhanced touch-feedback text-center p-6 bg-gray-50/30 rounded-lg border border-gray-200/50 cursor-pointer">
                         <div class="w-20 h-16 mx-auto mb-3 flex justify-center items-center">
                             <div class="flex items-center gap-2">
                                 <span class="text-3xl">🇰🇷</span>
@@ -329,7 +449,7 @@
                 <!-- 37문 37답 버튼 -->
                 <div class="text-center mt-12 scroll-reveal">
                     <button onclick="openQAModal()"
-                            class="inline-flex items-center bg-amber-600/90 hover:bg-amber-600 text-white font-medium px-9 py-5 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl backdrop-blur-sm text-lg"
+                            class="btn-touch touch-feedback inline-flex items-center bg-amber-600/90 hover:bg-amber-600 text-white font-medium px-9 py-5 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl backdrop-blur-sm text-lg"
                             data-kr="JustBe 히말라야 프로젝트: 준한스님 30문 30답"
                             data-en="JustBe Himalaya Temple: Ven. Junhan's 30 Q&A">
                         JustBe 히말라야 프로젝트: 준한스님 30문 30답
@@ -414,7 +534,7 @@
                                     data-en="Current: 324 dharma supporters (108%)">현재 324명 동참 (108%)</span>                                </div>
                                 
                                 <div class="w-full bg-gray-200 rounded-full h-4">
-                                    <div id="progress-bar" class="bg-amber-600 h-4 rounded-full transition-all duration-1000 ease-out" style="width: 100%;"></div>
+                                    <div id="progress-bar" class="progress-enhanced bg-amber-600 h-4 rounded-full transition-all duration-1000 ease-out" style="width: 100%;"></div>
                                 </div>
                             </div>
 
@@ -467,7 +587,7 @@
                                 </div>
                                 
                                 <div class="w-full bg-gray-200 rounded-full h-4">
-                                    <div id="yaksa-progress-bar" class="bg-blue-600 h-4 rounded-full transition-all duration-1000 ease-out" style="width: 0%;"></div>
+                                    <div id="yaksa-progress-bar" class="progress-enhanced bg-blue-600 h-4 rounded-full transition-all duration-1000 ease-out" style="width: 0%;"></div>
                                 </div>
                             </div>
 
@@ -486,7 +606,7 @@
                                         <li data-kr='<strong class="text-blue-700">문자 내용:</strong> 이름(법명 및 주소, 회사 이름도 가능) + "약사"'
                                             data-en='<strong class="text-blue-700">SMS Content:</strong> Name (Dharma name, address, or company name) + "Yaksa"'><strong class="text-blue-700">문자 내용:</strong> 이름(법명 및 주소, 회사 이름도 가능) + "약사"</li>
                                     </ul>
-                                    <button id="yaksa-copy-btn" class="mt-6 w-full bg-gray-800 text-white py-3 px-6 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition-colors"
+                                    <button id="yaksa-copy-btn" class="btn-touch touch-feedback mt-6 w-full bg-gray-800 text-white py-3 px-6 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500 transition-colors"
                                             data-kr="계좌번호 복사하기"
                                             data-en="Copy Account Number">
                                         계좌번호 복사하기
@@ -824,7 +944,7 @@
                                href="https://www.ihappynanum.com/Nanum/B/ERKTHL9CZX" 
                                target="_blank" 
                                rel="noopener noreferrer"
-                               class="inline-flex items-center bg-white/90 hover:bg-white text-gray-800 font-medium px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl backdrop-blur-sm"
+                               class="btn-touch touch-feedback inline-flex items-center bg-white/90 hover:bg-white text-gray-800 font-medium px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl backdrop-blur-sm"
                                data-kr="JustBe 사랑회 정기 후원하기"
                                data-en="Join Regular Dana Offering">
                                     JustBe 사랑회 정기 후원하기
@@ -1199,7 +1319,7 @@
                         <a href="https://instagram.com/justbe_himalaya" 
                            target="_blank" 
                            rel="noopener noreferrer"
-                           class="inline-flex items-center bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-medium px-4 py-2 rounded-lg transition-colors duration-300"
+                           class="btn-touch touch-feedback inline-flex items-center bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-medium px-4 py-2 rounded-lg transition-colors duration-300"
                            data-kr="@justbe_himalaya"
                            data-en="@justbe_himalaya">
                             <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
@@ -1785,7 +1905,7 @@
             });
         }
 
-        // --- 이미지 로딩 최적화 ---
+        // --- 이미지 로딩 최적화 (스켈레톤 포함) ---
         function optimizeImageLoading() {
             const images = document.querySelectorAll('img[loading="lazy"]');
             
@@ -1796,18 +1916,33 @@
                         if (entry.isIntersecting) {
                             const img = entry.target;
                             
+                            // 스켈레톤 스크린 생성
+                            const skeletonDiv = createSkeletonPlaceholder(img);
+                            
                             // Add loading indicator
                             img.classList.add('loading');
+                            if (skeletonDiv) {
+                                img.parentNode.insertBefore(skeletonDiv, img);
+                                img.style.display = 'none';
+                            }
                             
                             img.onload = () => {
                                 img.classList.remove('loading');
                                 img.classList.add('loaded');
+                                img.style.display = '';
+                                if (skeletonDiv) {
+                                    skeletonDiv.remove();
+                                }
                             };
                             
                             // Fallback for already cached images
                             if (img.complete && img.naturalHeight !== 0) {
                                 img.classList.remove('loading');
                                 img.classList.add('loaded');
+                                img.style.display = '';
+                                if (skeletonDiv) {
+                                    skeletonDiv.remove();
+                                }
                             }
                             
                             observer.unobserve(img);
@@ -1819,6 +1954,21 @@
 
                 images.forEach(img => imageObserver.observe(img));
             }
+        }
+        
+        // 스켈레톤 플레이스홀더 생성 함수
+        function createSkeletonPlaceholder(img) {
+            const rect = img.getBoundingClientRect();
+            const isRounded = img.classList.contains('rounded-lg') || img.classList.contains('rounded-full');
+            const isCircle = img.classList.contains('rounded-full') || rect.width === rect.height;
+            
+            const skeleton = document.createElement('div');
+            skeleton.className = `skeleton ${isCircle ? 'skeleton-circle' : isRounded ? 'skeleton-rounded' : ''}`;
+            skeleton.style.width = img.width ? `${img.width}px` : '100%';
+            skeleton.style.height = img.height ? `${img.height}px` : '64px';
+            skeleton.style.display = 'inline-block';
+            
+            return skeleton;
         }
 
         // --- 설정 객체 ---
