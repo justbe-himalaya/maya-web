@@ -131,7 +131,7 @@
             filter: blur(0);
         }
 
-        /* 이미지 로딩 애니메이션 */
+        /* 최적화된 이미지 로딩 애니메이션 */
         @keyframes shimmer {
             0% { background-position: -200px 0; }
             100% { background-position: calc(200px + 100%) 0; }
@@ -140,13 +140,11 @@
         .loading::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            inset: 0; /* top: 0; left: 0; right: 0; bottom: 0; 단축형 */
             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
             animation: shimmer 1.5s infinite;
             pointer-events: none;
+            will-change: background-position; /* GPU 가속 */
         }
         /* 배경 이미지 스타일 */
         .hero-bg {
@@ -154,6 +152,8 @@
             background-size: cover;
             background-position: center top;
             background-attachment: fixed;
+            background-repeat: no-repeat;
+            will-change: transform; /* GPU 가속 */
         }
         
         /* 모바일에서 fixed 배경 문제 해결 */
@@ -1498,9 +1498,27 @@
             });
         }
 
-        // --- 스크롤 애니메이션 ---
+        // --- 성능 최적화: 디바운스 함수 ---
+        function debounce(func, wait, immediate) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    timeout = null;
+                    if (!immediate) func(...args);
+                };
+                const callNow = immediate && !timeout;
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+                if (callNow) func(...args);
+            };
+        }
+
+        // --- 스크롤 애니메이션 (최적화됨) ---
         function setupScrollAnimations() {
             const scrollElements = document.querySelectorAll('.scroll-reveal');
+            
+            // 이미 보이는 요소들을 추적하여 불필요한 계산 방지
+            const visibleElements = new Set();
 
             const elementInView = (el, dividend = 1) => {
                 const elementTop = el.getBoundingClientRect().top;
@@ -1511,20 +1529,29 @@
 
             const displayScrollElement = (element) => {
                 element.classList.add('visible');
+                visibleElements.add(element);
             };
 
             const handleScrollAnimation = () => {
-                scrollElements.forEach((el) => {
-                    if (elementInView(el, 1.25)) {
-                        displayScrollElement(el);
-                    }
+                // requestAnimationFrame으로 렌더링 최적화
+                requestAnimationFrame(() => {
+                    scrollElements.forEach((el) => {
+                        // 이미 보이는 요소는 건너뛰기
+                        if (visibleElements.has(el)) return;
+                        
+                        if (elementInView(el, 1.25)) {
+                            displayScrollElement(el);
+                        }
+                    });
                 });
             };
 
             // 초기 로드 시 한 번 실행
             handleScrollAnimation();
-            // 스크롤 이벤트에 연결
-            window.addEventListener('scroll', handleScrollAnimation);
+            
+            // 디바운스된 스크롤 이벤트 (16ms ≈ 60fps)
+            const debouncedScrollHandler = debounce(handleScrollAnimation, 16);
+            window.addEventListener('scroll', debouncedScrollHandler, { passive: true });
         }
 
         // --- 구법순례 이미지 모달 함수 ---
@@ -1729,6 +1756,60 @@
             }
         }
 
+        // --- 설정 객체 ---
+        const CONFIG = {
+            DONOR_API: './data/donors.json',
+            PROGRESS_ANIMATION_DURATION: 1000,
+            SCROLL_REVEAL_OFFSET: 30,
+            DEBOUNCE_DELAY: 16, // ~60fps
+            CACHE_BUST_ENABLED: /KAKAOTALK/i.test(navigator.userAgent),
+            LAZY_LOAD_MARGIN: '50px 0px'
+        };
+
+        // --- 성능 모니터링 ---
+        function initPerformanceMonitoring() {
+            // Core Web Vitals 측정
+            if ('PerformanceObserver' in window) {
+                try {
+                    // LCP (Largest Contentful Paint) 측정
+                    const lcpObserver = new PerformanceObserver((list) => {
+                        const entries = list.getEntries();
+                        const lastEntry = entries[entries.length - 1];
+                        console.log('LCP:', lastEntry.startTime);
+                    });
+                    lcpObserver.observe({ entryTypes: ['largest-contentful-paint'] });
+
+                    // FID (First Input Delay) 측정
+                    const fidObserver = new PerformanceObserver((list) => {
+                        list.getEntries().forEach((entry) => {
+                            console.log('FID:', entry.processingStart - entry.startTime);
+                        });
+                    });
+                    fidObserver.observe({ entryTypes: ['first-input'] });
+
+                    // CLS (Cumulative Layout Shift) 측정
+                    const clsObserver = new PerformanceObserver((list) => {
+                        let clsValue = 0;
+                        list.getEntries().forEach((entry) => {
+                            if (!entry.hadRecentInput) {
+                                clsValue += entry.value;
+                            }
+                        });
+                        console.log('CLS:', clsValue);
+                    });
+                    clsObserver.observe({ entryTypes: ['layout-shift'] });
+                } catch (e) {
+                    console.log('Performance monitoring not supported');
+                }
+            }
+
+            // 페이지 로드 시간 측정
+            window.addEventListener('load', () => {
+                const loadTime = performance.now();
+                console.log('Page Load Time:', loadTime + 'ms');
+            });
+        }
+
         // --- 보안 및 입력 검증 함수 ---
         function sanitizeInput(input) {
             if (typeof input !== 'string') return '';
@@ -1779,18 +1860,27 @@
 
         // --- 페이지 로드 시 함수 실행 ---
         document.addEventListener('DOMContentLoaded', () => {
+            // 성능 모니터링 시작
+            initPerformanceMonitoring();
+            
+            // 핵심 기능 초기화
             setupCacheBustedImages(); // 캐시 버스팅 이미지 로드
             loadDonorData(); // JSON에서 데이터 로드 (내부적으로 updateProgressBar 호출)
             setupCopyButton();
             setupYaksaCopyButton();
             setupLearnMoreModal();
             setupContactModal();
-            setupScrollAnimations();
+            setupScrollAnimations(); // 최적화된 스크롤 애니메이션
             optimizeImageLoading(); // 이미지 로딩 최적화
             secureExternalLinks(); // 외부 링크 보안 강화
             
             // 언어 토글 버튼 이벤트 추가
-            document.getElementById('lang-toggle').addEventListener('click', toggleLanguage);
+            const langToggle = document.getElementById('lang-toggle');
+            if (langToggle) {
+                langToggle.addEventListener('click', toggleLanguage);
+            }
+            
+            console.log('JustBe Himalaya website initialized successfully');
         });
     </script>
 
