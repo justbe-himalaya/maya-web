@@ -6,6 +6,12 @@
     <title>JustBe 히말라야 불사 모연</title>
     <title lang="en" style="display: none;">JustBe Himalaya Buddhist Temple - Merit-Making Campaign</title>
     
+    <!-- Meta Description -->
+    <meta name="description" content="네팔 히말라야에 한국불교 첫 도량을 건립하는 JustBe 히말라야 프로젝트. 미륵보살과 약사여래 화주 동참으로 부처님의 옛 길을 복원하는 성스러운 불사에 함께해 주세요.">
+    <meta name="keywords" content="JustBe, 히말라야, 불교, 사찰, 미륵보살, 약사여래, 네팔, 포카라, 화주, 불사, 모연">
+    <meta name="author" content="JustBe Himalaya Temple">
+    <meta name="robots" content="index, follow">
+    
     <!-- Cache Control for KakaoTalk -->
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
@@ -40,6 +46,44 @@
     <meta property="twitter:title" content="JustBe 히말라야 프로젝트">
     <meta property="twitter:description" content="2600년 전, 부처님의 옛 길을 다시 걷다. 네팔 히말라야에 한국불교 첫 도량을 건립하고 붓다로드를 복원하는 여정에 함께해 주세요.">
     <meta property="twitter:image" content="https://himalaya.justbetemple.org/resource/img/thumbnail.jpeg?v=202501311500&cache=new&t=1738303200">
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "JustBe Himalaya Temple",
+      "alternateName": "JustBe 히말라야 사찰",
+      "url": "https://himalaya.justbetemple.org",
+      "logo": "https://himalaya.justbetemple.org/resource/img/justbe_img.png",
+      "image": "https://himalaya.justbetemple.org/resource/img/thumbnail.jpeg",
+      "description": "네팔 히말라야에 한국불교 첫 도량을 건립하는 JustBe 히말라야 프로젝트",
+      "foundingDate": "2025",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "Nepal",
+        "addressLocality": "Pokhara",
+        "addressRegion": "Gandaki Province"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+82-10-5708-2423",
+        "contactType": "customer service",
+        "availableLanguage": ["Korean", "English"]
+      },
+      "sameAs": [
+        "https://instagram.com/justbe_himalaya",
+        "https://instagram.com/justbe_temple",
+        "https://open.kakao.com/o/gcUJSSJh"
+      ],
+      "makesOffer": {
+        "@type": "Offer",
+        "name": "Buddhist Merit-Making Campaign",
+        "description": "미륵보살과 약사여래 화주 동참",
+        "category": "Religious Donation"
+      }
+    }
+    </script>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -121,15 +165,22 @@
 <body class="bg-slate-50 text-gray-800">
 
     <!-- Language Toggle Button -->
-    <div class="fixed top-4 right-4 z-[9999]">
-        <button id="lang-toggle" class="bg-white/95 backdrop-blur-sm text-gray-800 px-3 py-2 md:px-4 md:py-2 rounded-lg border border-gray-300 hover:bg-white hover:shadow-lg transition-all duration-300 flex items-center gap-1 md:gap-2 text-sm md:text-base shadow-lg">
+    <div class="fixed top-4 right-4 z-40">
+        <button id="lang-toggle" 
+                class="bg-white/95 backdrop-blur-sm text-gray-800 px-3 py-2 md:px-4 md:py-2 rounded-lg border border-gray-300 hover:bg-white hover:shadow-lg transition-all duration-300 flex items-center gap-1 md:gap-2 text-sm md:text-base shadow-lg"
+                aria-label="언어 전환 버튼"
+                role="button"
+                tabindex="0"
+                title="언어를 한국어/영어로 전환합니다">
             <span id="lang-flag" class="text-base md:text-lg">🇺🇸</span>
             <span id="lang-text" class="font-medium">EN</span>
         </button>
     </div>
 
     <!-- Hero Section -->
-    <header class="hero-bg h-screen text-white flex flex-col justify-start items-center relative pt-0 md:pt-2">
+    <header class="hero-bg h-screen text-white flex flex-col justify-start items-center relative pt-0 md:pt-2" 
+            role="banner" 
+            aria-label="JustBe 히말라야 프로젝트 메인 배너">
         <div class="relative z-10 text-center p-8 scroll-reveal hidden">
             <!-- 상단 로고/아이콘 -->
             <div class="mb-4">
@@ -163,12 +214,14 @@
         </div>
     </header>
 
-    <main class="w-full">
+    <main class="w-full" role="main" aria-label="메인 콘텐츠">
         <!-- Project Overview Section -->
-        <section class="py-12 md:py-20 bg-white">
+        <section class="py-12 md:py-20 bg-white" 
+                 role="region" 
+                 aria-labelledby="project-overview-title">
             <div class="max-w-6xl mx-auto px-6">
                 <div class="text-center mb-12 scroll-reveal">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-8 text-gray-900" data-kr="Project 원력 願力" data-en="Project Vision">Project 원력 <span class="text-gray-500 text-lg md:text-2xl">願力</span></h2>
+                    <h2 id="project-overview-title" class="text-3xl md:text-4xl font-bold mb-8 text-gray-900" data-kr="Project 원력 願力" data-en="Project Vision">Project 원력 <span class="text-gray-500 text-lg md:text-2xl">願力</span></h2>
                     <p class="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed" 
                        data-kr="JustBe Himalaya 프로젝트는 네팔 히말라야 포카라(Pokhara)에<br><strong class='text-amber-700'>한국불교 첫 도량</strong>과 마을 (Himalaya Korean Basecamp)을 조성하고,<br>부처님 탄생지인 룸비니에서 히말라야를 잇는 160km<br><strong class='text-amber-700'>옛 순례길을 복원</strong>하는 공익프로젝트입니다."
                        data-en="The JustBe Himalaya Project aims to establish the <strong class='text-amber-700'>first Korean Buddhist temple</strong> and village (Himalaya Korean Basecamp) in Pokhara, Nepal Himalayas,<br>and restore the 160km <strong class='text-amber-700'>ancient pilgrimage route</strong><br>connecting Lumbini (Buddha's birthplace) to the Himalayas<br>as a public benefit project.">
