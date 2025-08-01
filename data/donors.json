@@ -1,6 +1,14 @@
 {
-  "count": 324,
-  "goal": 300,
-  "lastUpdated": "2025-08-01T10:30:00Z",
-  "updatedBy": "관리자"
+  "maitreya": {
+    "count": 324,
+    "goal": 300,
+    "lastUpdated": "2025-08-01T10:30:00Z",
+    "updatedBy": "관리자"
+  },
+  "medicine_buddha": {
+    "count": 34,
+    "goal": 1250,
+    "lastUpdated": "2025-08-01T20:15:00Z",
+    "updatedBy": "관리자"
+  }
 }

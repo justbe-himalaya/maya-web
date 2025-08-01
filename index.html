@@ -1352,11 +1352,19 @@
             try {
                 const response = await fetch('./data/donors.json?' + Date.now());
                 const data = await response.json();
-                currentDonors = data.count;
-                goalDonors = data.goal;
+                
+                // 미륵보살 데이터
+                currentDonors = data.maitreya.count;
+                goalDonors = data.maitreya.goal;
+                
+                // 약사여래불 데이터
+                const yaksaDonors = data.medicine_buddha.count;
+                const yaksaGoal = data.medicine_buddha.goal;
+                const yaksaPercent = Math.round((yaksaDonors / yaksaGoal) * 100 * 10) / 10;
                 
                 // UI 업데이트
                 updateProgressBar();
+                updateYaksaProgressBar(yaksaDonors, yaksaGoal, yaksaPercent);
                 console.log('동참자 데이터 로드 완료:', data);
             } catch (error) {
                 console.warn('동참자 데이터 로드 실패, 기본값 사용:', error);
@@ -1382,6 +1390,35 @@
             observer.observe(progressBar);
 
             progressText.textContent = `현재 ${currentDonors}명 동참 (${percentage.toFixed(1)}%)`;
+        }
+        
+        function updateYaksaProgressBar(count, goal, percent) {
+            const progressBar = document.getElementById('yaksa-progress-bar');
+            const progressText = document.getElementById('yaksa-progress-text');
+            
+            if (progressBar && progressText) {
+                // 뷰포트에 들어왔을 때 애니메이션 시작
+                const observer = new IntersectionObserver((entries) => {
+                    if (entries[0].isIntersecting) {
+                        progressBar.style.width = `${percent}%`;
+                        observer.disconnect(); // 애니메이션은 한 번만 실행
+                    }
+                }, { threshold: 0.5 });
+                
+                observer.observe(progressBar);
+                
+                // 텍스트 업데이트 (다국어 지원)
+                progressText.setAttribute('data-kr', `현재 ${count}명 동참 (${percent}%)`);
+                progressText.setAttribute('data-en', `Current: ${count} dharma supporters (${percent}%)`);
+                
+                // 현재 언어에 맞게 업데이트
+                const currentLang = document.documentElement.lang;
+                if (currentLang === 'en') {
+                    progressText.textContent = progressText.getAttribute('data-en');
+                } else {
+                    progressText.textContent = progressText.getAttribute('data-kr');
+                }
+            }
         }
         
         // --- 계좌번호 복사 기능 (미륵) ---
