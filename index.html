@@ -12,6 +12,13 @@
     <meta name="author" content="JustBe Himalaya Temple">
     <meta name="robots" content="index, follow">
     
+    <!-- Security Headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.tailwindcss.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https:;">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    
     <!-- Cache Control for KakaoTalk -->
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
@@ -1722,6 +1729,54 @@
             }
         }
 
+        // --- 보안 및 입력 검증 함수 ---
+        function sanitizeInput(input) {
+            if (typeof input !== 'string') return '';
+            return input
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#x27;')
+                .replace(/\//g, '&#x2F;');
+        }
+
+        function validateInput(input, type = 'text') {
+            if (!input || typeof input !== 'string') return false;
+            
+            switch (type) {
+                case 'phone':
+                    return /^[\d\s\-\+\(\)]+$/.test(input.trim());
+                case 'email':
+                    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.trim());
+                case 'text':
+                    return input.trim().length > 0 && input.length < 1000;
+                default:
+                    return true;
+            }
+        }
+
+        // --- 안전한 외부 링크 처리 ---
+        function secureExternalLinks() {
+            const externalLinks = document.querySelectorAll('a[href^="http"]:not([href*="himalaya.justbetemple.org"])');
+            externalLinks.forEach(link => {
+                if (!link.hasAttribute('rel')) {
+                    link.setAttribute('rel', 'noopener noreferrer');
+                }
+                if (!link.hasAttribute('target')) {
+                    link.setAttribute('target', '_blank');
+                }
+            });
+        }
+
+        // --- CSP 위반 보고 ---
+        document.addEventListener('securitypolicyviolation', (event) => {
+            console.warn('CSP Violation:', {
+                blockedURI: event.blockedURI,
+                violatedDirective: event.violatedDirective,
+                originalPolicy: event.originalPolicy
+            });
+        });
+
         // --- 페이지 로드 시 함수 실행 ---
         document.addEventListener('DOMContentLoaded', () => {
             setupCacheBustedImages(); // 캐시 버스팅 이미지 로드
@@ -1732,6 +1787,7 @@
             setupContactModal();
             setupScrollAnimations();
             optimizeImageLoading(); // 이미지 로딩 최적화
+            secureExternalLinks(); // 외부 링크 보안 강화
             
             // 언어 토글 버튼 이벤트 추가
             document.getElementById('lang-toggle').addEventListener('click', toggleLanguage);
