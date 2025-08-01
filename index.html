@@ -67,6 +67,36 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* 이미지 로딩 최적화 스타일 */
+        img.loading {
+            opacity: 0.7;
+            filter: blur(1px);
+            transition: opacity 0.3s ease, filter 0.3s ease;
+        }
+
+        img.loaded {
+            opacity: 1;
+            filter: blur(0);
+        }
+
+        /* 이미지 로딩 애니메이션 */
+        @keyframes shimmer {
+            0% { background-position: -200px 0; }
+            100% { background-position: calc(200px + 100%) 0; }
+        }
+
+        .loading::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: shimmer 1.5s infinite;
+            pointer-events: none;
+        }
         /* 배경 이미지 스타일 */
         .hero-bg {
             background-image: url('resource/img/hero_bg_low_res.jpeg');
@@ -103,12 +133,12 @@
         <div class="relative z-10 text-center p-8 scroll-reveal hidden">
             <!-- 상단 로고/아이콘 -->
             <div class="mb-4">
-                <img src="resource/img/justbe_img.png" alt="JustBe Himalaya" class="h-16 md:h-20 mx-auto opacity-90" style="filter: brightness(0) invert(1) !important; -webkit-filter: brightness(0) invert(1) !important;" onerror="this.outerHTML='<div class=\'text-4xl mb-4\'>🏔️</div>'">
+                <img src="resource/img/justbe_img.png" alt="JustBe Himalaya" width="80" height="80" loading="eager" class="h-16 md:h-20 mx-auto opacity-90" style="filter: brightness(0) invert(1) !important; -webkit-filter: brightness(0) invert(1) !important;" onerror="this.outerHTML='<div class=\'text-4xl mb-4\'>🏔️</div>'"
             </div>
             
             <!-- Just Be 이미지 -->
             <div class="mb-1">
-                <img src="resource/img/justbe_text.png" alt="Just Be" class="h-18 md:h-24 mx-auto opacity-90" style="filter: brightness(0) invert(1);" onerror="this.outerHTML='<div class=\'text-5xl md:text-6xl font-light tracking-wider opacity-90 text-white\'>Just Be</div>'">
+                <img src="resource/img/justbe_text.png" alt="Just Be" width="200" height="72" loading="eager" class="h-18 md:h-24 mx-auto opacity-90" style="filter: brightness(0) invert(1);" onerror="this.outerHTML='<div class=\'text-5xl md:text-6xl font-light tracking-wider opacity-90 text-white\'>Just Be</div>'"
             </div>
             
             <!-- Himalaya (메인 제목) -->
@@ -152,7 +182,7 @@
                 <div class="grid md:grid-cols-3 gap-8 scroll-reveal">
                     <div class="text-center p-6 bg-gray-50/30 rounded-lg border border-gray-200/50">
                         <div class="w-16 h-16 mx-auto mb-3 flex justify-center items-center opacity-60">
-                            <img src="resource/img/justbe_img.png" alt="JustBe Logo" class="w-16 h-14" onerror="this.outerHTML='<div class=\'text-4xl\'>🏔️</div>'">
+                            <img src="resource/img/justbe_img.png" alt="JustBe Logo" width="64" height="56" loading="eager" class="w-16 h-14" onerror="this.outerHTML='<div class=\'text-4xl\'>🏔️</div>'">
                         </div>
                         <h3 class="text-xl font-serif font-bold mb-3 text-gray-700" data-kr="JustBe Temple 히말라야" data-en="JustBe Temple Himalaya">
                             JustBe Temple 히말라야 
@@ -177,7 +207,10 @@
                             <img src="resource/img/shadow.jpeg" 
                                  alt="붓다로드"
                                  data-kr-alt="붓다로드"
-                                 data-en-alt="Buddha Road" 
+                                 data-en-alt="Buddha Road"
+                                 width="64"
+                                 height="64"
+                                 loading="lazy"
                                  class="w-full h-full object-cover" 
                                  onerror="this.outerHTML='<div class=\'w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center text-gray-400\'><span>🛤️</span></div>'">
                         </div>
@@ -242,7 +275,10 @@
                                 <img src="resource/img/moyeon.jpeg" 
                                      alt="히말라야로 향하는 佛母 서칠교 작가님의 미륵보살님"
                                      data-kr-alt="히말라야로 향하는 佛母 서칠교 작가님의 미륵보살님"
-                                     data-en-alt="Maitreya Bodhisattva by artist Seo Chil-gyo heading to the Himalayas" 
+                                     data-en-alt="Maitreya Bodhisattva by artist Seo Chil-gyo heading to the Himalayas"
+                                     width="400"
+                                     height="300"
+                                     loading="lazy"
                                      class="w-full h-full object-cover" 
                                      onerror="this.outerHTML='<div class=\'flex items-center justify-center h-full bg-gray-200 text-gray-600 text-center p-4 rounded-lg\'><p><strong>이미지 표시 오류</strong><br>사진을 불러오는 데 기술적인 문제가 발생했습니다.</p></div>'">
                             </div>
@@ -410,7 +446,10 @@
                                     <img src="resource/img/panorama.jpeg" 
                                          alt="히말라야 파노라마"
                                          data-kr-alt="히말라야 파노라마"
-                                         data-en-alt="Himalaya Panorama" 
+                                         data-en-alt="Himalaya Panorama"
+                                         width="800"
+                                         height="233"
+                                         loading="lazy"
                                          class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500"
                                          onerror="this.outerHTML='<div class=\'flex items-center justify-center h-full bg-gray-200 text-gray-600 rounded-lg\'><p class=\'text-center\'><strong>이미지 표시 오류</strong><br>사진을 불러오는 데 문제가 발생했습니다.</p></div>'">
                                 </div>
@@ -428,7 +467,10 @@
                                     <img src="resource/img/Gallery_united.jpeg" 
                                          alt="히말라야 프로젝트 갤러리"
                                          data-kr-alt="히말라야 프로젝트 갤러리"
-                                         data-en-alt="Himalaya Project Gallery" 
+                                         data-en-alt="Himalaya Project Gallery"
+                                         width="800"
+                                         height="450"
+                                         loading="lazy"
                                          class="w-full h-full object-contain object-center hover:scale-105 transition-transform duration-500"
                                          onerror="this.outerHTML='<div class=\'flex items-center justify-center h-full bg-gray-200 text-gray-600 rounded-lg\'><p class=\'text-center\'><strong>이미지 표시 오류</strong><br>사진을 불러오는 데 문제가 발생했습니다.</p></div>'">
                                 </div>
@@ -1586,6 +1628,47 @@
             }
         }
 
+        // --- 이미지 최적화 기능 ---
+        function checkWebPSupport() {
+            return new Promise((resolve) => {
+                const webP = new Image();
+                webP.onload = webP.onerror = () => {
+                    resolve(webP.height === 2);
+                };
+                webP.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
+            });
+        }
+
+        // --- 이미지 로딩 최적화 ---
+        function optimizeImageLoading() {
+            const images = document.querySelectorAll('img[loading="lazy"]');
+            
+            // Intersection Observer for better lazy loading control
+            if ('IntersectionObserver' in window) {
+                const imageObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            
+                            // Add loading indicator
+                            img.classList.add('loading');
+                            
+                            img.onload = () => {
+                                img.classList.remove('loading');
+                                img.classList.add('loaded');
+                            };
+                            
+                            observer.unobserve(img);
+                        }
+                    });
+                }, {
+                    rootMargin: '50px 0px' // Start loading 50px before entering viewport
+                });
+
+                images.forEach(img => imageObserver.observe(img));
+            }
+        }
+
         // --- 페이지 로드 시 함수 실행 ---
         document.addEventListener('DOMContentLoaded', () => {
             setupCacheBustedImages(); // 캐시 버스팅 이미지 로드
@@ -1595,6 +1678,7 @@
             setupLearnMoreModal();
             setupContactModal();
             setupScrollAnimations();
+            optimizeImageLoading(); // 이미지 로딩 최적화
             
             // 언어 토글 버튼 이벤트 추가
             document.getElementById('lang-toggle').addEventListener('click', toggleLanguage);
@@ -1624,7 +1708,10 @@
                     <img src="resource/img/gubeob.jpeg" 
                          alt="히말라야 정초기도 구법순례"
                          data-kr-alt="히말라야 정초기도 구법순례"
-                         data-en-alt="Himalaya New Year Prayer Pilgrimage" 
+                         data-en-alt="Himalaya New Year Prayer Pilgrimage"
+                         width="800"
+                         height="600"
+                         loading="lazy"
                          class="w-full rounded-lg shadow-lg"
                          onerror="this.outerHTML='<div class=\'flex items-center justify-center h-64 bg-gray-200 text-gray-600 rounded-lg\'><p class=\'text-center\'><strong>이미지 표시 오류</strong><br>사진을 불러오는 데 문제가 발생했습니다.</p></div>'">
                 </div>
