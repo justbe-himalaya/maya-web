@@ -593,6 +593,197 @@
                                     </div>
                                 </div>
                             </div>
+                            
+                            <!-- 상세 내용 보기 버튼 -->
+                            <div class="mt-10 text-center">
+                                <button id="yaksa-details-btn" class="btn-touch touch-feedback inline-flex items-center bg-blue-100 hover:bg-blue-200 text-blue-700 font-semibold px-8 py-4 rounded-xl transition-all duration-300 border border-blue-200 hover:border-blue-300">
+                                    <span class="mr-2">📖</span>
+                                    <span data-kr="자세한 내용 보기" data-en="View Detailed Information">자세한 내용 보기</span>
+                                    <svg class="ml-2 w-5 h-5 transform transition-transform duration-300" id="yaksa-details-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            
+                            <!-- 확장 가능한 상세 내용 -->
+                            <div id="yaksa-details-content" class="mt-8 overflow-hidden transition-all duration-500 max-h-0 opacity-0">
+                                <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 border border-blue-100 shadow-lg">
+                                    <!-- 메인 헤더 -->
+                                    <div class="text-center mb-8">
+                                        <h3 class="text-2xl md:text-3xl font-serif font-bold text-blue-900 mb-4"
+                                            data-kr="🪷 히말라야 약사여래불 & 금강역사 화주모연 🪷"
+                                            data-en="🪷 Himalaya Medicine Buddha & Guardian Kings Merit Campaign 🪷">
+                                            🪷 히말라야 약사여래불 & 금강역사 화주모연 🪷
+                                        </h3>
+                                        <p class="text-blue-700 font-medium text-lg italic"
+                                           data-kr="– 불 속에서 살아난 부처님, 도량의 중심에 모십니다 –"
+                                           data-en="– Buddha who survived the fire, enshrined at the center of the temple –">
+                                            – 불 속에서 살아난 부처님, 도량의 중심에 모십니다 –
+                                        </p>
+                                    </div>
+                                    
+                                    <!-- 감사 인사 -->
+                                    <div class="bg-white/70 rounded-xl p-6 mb-8 border border-blue-200">
+                                        <p class="text-gray-700 leading-relaxed"
+                                           data-kr="🙏 먼저, 미륵보살 화주모연 원만 회향에 깊은 감사를 드립니다. 그 인연을 이어, 이번엔 약사여래불과 금강역사 두 분을 모시는 화주모연을 시작합니다."
+                                           data-en="🙏 First, we express deep gratitude for the successful completion of the Maitreya Bodhisattva merit campaign. Continuing that connection, we now begin the merit campaign to enshrine Medicine Buddha and the two Guardian Kings.">
+                                            🙏 먼저, 미륵보살 화주모연 원만 회향에 깊은 감사를 드립니다. 그 인연을 이어, 이번엔 약사여래불과 금강역사 두 분을 모시는 화주모연을 시작합니다.
+                                        </p>
+                                    </div>
+                                    
+                                    <!-- 기적의 부처님들 -->
+                                    <div class="mb-8">
+                                        <h4 class="text-xl font-serif font-bold text-blue-800 mb-4 flex items-center">
+                                            <span class="text-2xl mr-3">🔥</span>
+                                            <span data-kr="2025년 봄 서울, 화재 속에서 기적처럼 살아남은 세 분의 불보살님"
+                                                  data-en="Spring 2025 Seoul, Three Buddha-Bodhisattvas miraculously survived the fire">
+                                                2025년 봄 서울, 화재 속에서 기적처럼 살아남은 세 분의 불보살님
+                                            </span>
+                                        </h4>
+                                        <div class="grid md:grid-cols-2 gap-6">
+                                            <div class="bg-white/70 rounded-lg p-6 border border-blue-200">
+                                                <h5 class="font-bold text-blue-700 mb-3 flex items-center">
+                                                    <span class="text-xl mr-2">💊</span>
+                                                    <span data-kr="약사여래불" data-en="Medicine Buddha">약사여래불</span>
+                                                </h5>
+                                                <p class="text-gray-700 text-sm leading-relaxed"
+                                                   data-kr="병과 번뇌를 치유하시는 12대 서원의 부처님"
+                                                   data-en="Buddha of 12 great vows who heals illness and afflictions">
+                                                    병과 번뇌를 치유하시는 12대 서원의 부처님
+                                                </p>
+                                            </div>
+                                            <div class="bg-white/70 rounded-lg p-6 border border-blue-200">
+                                                <h5 class="font-bold text-blue-700 mb-3 flex items-center">
+                                                    <span class="text-xl mr-2">⚔️</span>
+                                                    <span data-kr="금강역사 좌우 협시" data-en="Left & Right Guardian Kings">금강역사 좌우 협시</span>
+                                                </h5>
+                                                <p class="text-gray-700 text-sm leading-relaxed"
+                                                   data-kr="도량과 수행을 지키는 수호존"
+                                                   data-en="Guardian deities protecting the temple and practice">
+                                                    도량과 수행을 지키는 수호존
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="mt-4 bg-blue-50 rounded-lg p-4 border-l-4 border-blue-400">
+                                            <p class="text-blue-800 text-sm italic"
+                                               data-kr="이 세 분을 히말라야 도량의 주불로 봉안하며, 새로운 전법과 수행공동체의 시작을 알립니다."
+                                               data-en="By enshrining these three as the principal Buddhas of the Himalayan temple, we announce the beginning of a new dharma propagation and practice community.">
+                                                이 세 분을 히말라야 도량의 주불로 봉안하며, 새로운 전법과 수행공동체의 시작을 알립니다.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- 화주 안내 -->
+                                    <div class="mb-8">
+                                        <h4 class="text-xl font-serif font-bold text-blue-800 mb-4 flex items-center">
+                                            <span class="text-2xl mr-3">💠</span>
+                                            <span data-kr="화주 안내" data-en="Merit-Making Guide">화주 안내</span>
+                                        </h4>
+                                        <div class="bg-white/70 rounded-lg p-6 border border-blue-200">
+                                            <ul class="space-y-3 text-gray-700">
+                                                <li class="flex items-start">
+                                                    <span class="text-blue-600 mr-2">•</span>
+                                                    <span data-kr="이번 모연은 <strong class='text-blue-700'>1250명 동참</strong>을 목표로 합니다.<br><span class='text-sm text-gray-600'>(→ 부처님의 첫 제자 1250대중을 상징)</span>"
+                                                          data-en="This campaign aims for <strong class='text-blue-700'>1250 participants</strong>.<br><span class='text-sm text-gray-600'>(→ Symbolizing Buddha's first 1250 disciples)</span>">
+                                                        이번 모연은 <strong class="text-blue-700">1250명 동참</strong>을 목표로 합니다.<br><span class="text-sm text-gray-600">(→ 부처님의 첫 제자 1250대중을 상징)</span>
+                                                    </span>
+                                                </li>
+                                                <li class="flex items-start">
+                                                    <span class="text-blue-600 mr-2">•</span>
+                                                    <span data-kr="1인 10만 원부터 참여 가능" data-en="Participation possible from 100,000 KRW per person">1인 10만 원부터 참여 가능</span>
+                                                </li>
+                                                <li class="flex items-start">
+                                                    <span class="text-blue-600 mr-2">•</span>
+                                                    <span data-kr="부처님 복장(腹藏)에 이름과 축원문 봉헌" data-en="Name and prayer text offered to Buddha's consecration">부처님 복장(腹藏)에 이름과 축원문 봉헌</span>
+                                                </li>
+                                                <li class="flex items-start">
+                                                    <span class="text-blue-600 mr-2">•</span>
+                                                    <span data-kr="히말라야 정기 기도에 함께 회향됩니다" data-en="Dedicated together in regular Himalayan prayers">히말라야 정기 기도에 함께 회향됩니다</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- 일정 요약 -->
+                                    <div class="mb-8">
+                                        <h4 class="text-xl font-serif font-bold text-blue-800 mb-4 flex items-center">
+                                            <span class="text-2xl mr-3">📅</span>
+                                            <span data-kr="일정 요약" data-en="Schedule Summary">일정 요약</span>
+                                        </h4>
+                                        <div class="space-y-4">
+                                            <div class="bg-white/70 rounded-lg p-4 border border-blue-200 flex items-center">
+                                                <div class="bg-blue-100 rounded-full p-2 mr-4">
+                                                    <span class="text-blue-600 font-bold text-sm">9/1</span>
+                                                </div>
+                                                <div>
+                                                    <p class="font-semibold text-blue-800" data-kr="홍대선원 3주년 – 약사여래불 & 금강역사 봉안" data-en="Hongdae Zen Center 3rd Anniversary – Medicine Buddha & Guardian Kings Enshrinement">홍대선원 3주년 – 약사여래불 & 금강역사 봉안</p>
+                                                </div>
+                                            </div>
+                                            <div class="bg-white/70 rounded-lg p-4 border border-blue-200 flex items-center">
+                                                <div class="bg-amber-100 rounded-full p-2 mr-4">
+                                                    <span class="text-amber-600 font-bold text-sm">9/28</span>
+                                                </div>
+                                                <div>
+                                                    <p class="font-semibold text-amber-800" data-kr="미륵보살 히말라야 점안식" data-en="Maitreya Bodhisattva Himalayan Consecration">미륵보살 히말라야 점안식</p>
+                                                </div>
+                                            </div>
+                                            <div class="bg-white/70 rounded-lg p-4 border border-blue-200 flex items-center">
+                                                <div class="bg-green-100 rounded-full p-2 mr-4">
+                                                    <span class="text-green-600 font-bold text-sm">11/4</span>
+                                                </div>
+                                                <div>
+                                                    <p class="font-semibold text-green-800" data-kr="세 분 부처님 히말라야 이운" data-en="Three Buddhas Transport to Himalayas">세 분 부처님 히말라야 이운</p>
+                                                </div>
+                                            </div>
+                                            <div class="bg-white/70 rounded-lg p-4 border border-blue-200 flex items-center">
+                                                <div class="bg-purple-100 rounded-full p-2 mr-4">
+                                                    <span class="text-purple-600 font-bold text-sm">11/7</span>
+                                                </div>
+                                                <div>
+                                                    <p class="font-semibold text-purple-800" data-kr="고불식 봉행 (히말라야 현지 참여 가능)" data-en="Buddha Ceremony (Himalayan on-site participation available)">고불식 봉행 (히말라야 현지 참여 가능)</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- 마무리 인사 -->
+                                    <div class="text-center bg-gradient-to-r from-blue-50 to-indigo-100 rounded-xl p-6 border border-blue-200">
+                                        <h4 class="text-xl font-serif font-bold text-blue-800 mb-4">
+                                            <span class="text-2xl mr-2">🌈</span>
+                                            <span data-kr="함께해 주세요" data-en="Please Join Us">함께해 주세요</span>
+                                        </h4>
+                                        <p class="text-blue-700 mb-4 leading-relaxed"
+                                           data-kr="작은 서원 하나가 큰 도량을 밝힙니다.<br>당신의 이름, 히말라야에 새겨주세요."
+                                           data-en="One small vow illuminates a great temple.<br>Please engrave your name in the Himalayas.">
+                                            작은 서원 하나가 큰 도량을 밝힙니다.<br>당신의 이름, 히말라야에 새겨주세요.
+                                        </p>
+                                        <p class="text-blue-600 font-medium">JustBe 준한 합장 🪷</p>
+                                    </div>
+                                    
+                                    <!-- 연락처 정보 -->
+                                    <div class="mt-6 bg-white/70 rounded-lg p-6 border border-blue-200">
+                                        <h5 class="font-bold text-blue-800 mb-3 flex items-center">
+                                            <span class="text-xl mr-2">📌</span>
+                                            <span data-kr="동참 및 문의" data-en="Participation & Inquiries">동참 및 문의</span>
+                                        </h5>
+                                        <ul class="space-y-2 text-sm text-gray-700">
+                                            <li class="flex items-center">
+                                                <span class="text-pink-500 mr-2">📷</span>
+                                                <span data-kr="인스타그램 @justbe.himalaya" data-en="Instagram @justbe.himalaya">인스타그램 @justbe.himalaya</span>
+                                            </li>
+                                            <li class="flex items-center">
+                                                <span class="text-yellow-500 mr-2">💬</span>
+                                                <span data-kr="카카오 오픈채팅 \"JustBe 히말라야\"" data-en="Kakao Open Chat \"JustBe Himalayas\"">카카오 오픈채팅 "JustBe 히말라야"</span>
+                                            </li>
+                                            <li class="flex items-center">
+                                                <span class="text-blue-500 mr-2">🏠</span>
+                                                <span data-kr="JustBe 홍대선원 방문" data-en="Visit JustBe Hongdae Zen Center">JustBe 홍대선원 방문</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
                         </div>
                     </div>
                 </section>
@@ -1628,6 +1819,81 @@
                 }, 2000);
             });
         }
+        
+        // --- 약사여래불 상세 내용 토글 기능 ---
+        function setupYaksaDetailsToggle() {
+            const toggleBtn = document.getElementById('yaksa-details-btn');
+            const content = document.getElementById('yaksa-details-content');
+            const arrow = document.getElementById('yaksa-details-arrow');
+
+            if (!toggleBtn || !content || !arrow) {
+                console.log('약사여래불 상세 내용 토글 요소가 없음');
+                return;
+            }
+
+            let isExpanded = false;
+
+            toggleBtn.addEventListener('click', function() {
+                isExpanded = !isExpanded;
+                
+                if (isExpanded) {
+                    // 확장
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                    content.style.opacity = '1';
+                    arrow.style.transform = 'rotate(180deg)';
+                    
+                    // 버튼 텍스트 변경
+                    const btnText = toggleBtn.querySelector('span:nth-child(2)');
+                    btnText.setAttribute('data-kr', '내용 접기');
+                    btnText.setAttribute('data-en', 'Collapse Content');
+                    
+                    // 현재 언어에 맞게 텍스트 업데이트
+                    const currentLang = document.documentElement.lang;
+                    if (currentLang === 'en') {
+                        btnText.textContent = btnText.getAttribute('data-en');
+                    } else {
+                        btnText.textContent = btnText.getAttribute('data-kr');
+                    }
+                    
+                    // 확장된 후 해당 위치로 스크롤
+                    setTimeout(() => {
+                        content.scrollIntoView({ 
+                            behavior: 'smooth', 
+                            block: 'start',
+                            inline: 'nearest'
+                        });
+                    }, 300);
+                    
+                } else {
+                    // 축소
+                    content.style.maxHeight = '0';
+                    content.style.opacity = '0';
+                    arrow.style.transform = 'rotate(0deg)';
+                    
+                    // 버튼 텍스트 원래대로
+                    const btnText = toggleBtn.querySelector('span:nth-child(2)');
+                    btnText.setAttribute('data-kr', '자세한 내용 보기');
+                    btnText.setAttribute('data-en', 'View Detailed Information');
+                    
+                    // 현재 언어에 맞게 텍스트 업데이트
+                    const currentLang = document.documentElement.lang;
+                    if (currentLang === 'en') {
+                        btnText.textContent = btnText.getAttribute('data-en');
+                    } else {
+                        btnText.textContent = btnText.getAttribute('data-kr');
+                    }
+                    
+                    // 축소된 후 버튼 위치로 스크롤
+                    setTimeout(() => {
+                        toggleBtn.scrollIntoView({ 
+                            behavior: 'smooth', 
+                            block: 'center',
+                            inline: 'nearest'
+                        });
+                    }, 300);
+                }
+            });
+        }
 
         // --- 자세히 알아보기 모달 기능 ---
         function setupLearnMoreModal() {
@@ -2105,6 +2371,7 @@
             loadDonorData(); // JSON에서 데이터 로드 (내부적으로 updateProgressBar 호출)
             setupCopyButton();
             setupYaksaCopyButton();
+            setupYaksaDetailsToggle(); // 약사여래불 상세 내용 토글
             setupLearnMoreModal();
             setupContactModal();
             setupScrollAnimations(); // 최적화된 스크롤 애니메이션
