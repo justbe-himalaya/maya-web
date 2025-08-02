@@ -666,9 +666,9 @@
                                         </div>
                                         <div class="mt-4 bg-blue-50 rounded-lg p-4 border-l-4 border-blue-400">
                                             <p class="text-blue-800 text-sm italic"
-                                               data-kr="이 세 분을 히말라야 도량의 주불로 봉안하며, 새로운 전법과 수행공동체의 시작을 알립니다."
-                                               data-en="By enshrining these three as the principal Buddhas of the Himalayan temple, we announce the beginning of a new dharma propagation and practice community.">
-                                                이 세 분을 히말라야 도량의 주불로 봉안하며, 새로운 전법과 수행공동체의 시작을 알립니다.
+                                               data-kr="이 세 분을 히말라야 도량의 주 부처님으로 모시어, JustBe 히말라야 Temple의 시작을 선언합니다."
+                                               data-en="By enshrining these three as the principal Buddhas of the Himalayan temple, we declare the beginning of JustBe Himalaya Temple.">
+                                                이 세 분을 히말라야 도량의 주 부처님으로 모시어, JustBe 히말라야 Temple의 시작을 선언합니다.
                                             </p>
                                         </div>
                                     </div>
@@ -690,15 +690,11 @@
                                                 </li>
                                                 <li class="flex items-start">
                                                     <span class="text-blue-600 mr-2">•</span>
-                                                    <span data-kr="10만원" data-en="100,000 KRW">10만원</span>
+                                                    <span data-kr="1인 10만원" data-en="100,000 KRW per person">1인 10만원</span>
                                                 </li>
                                                 <li class="flex items-start">
                                                     <span class="text-blue-600 mr-2">•</span>
                                                     <span data-kr="부처님 복장(腹藏)에 이름과 축원문 봉헌" data-en="Name and prayer text offered to Buddha's consecration">부처님 복장(腹藏)에 이름과 축원문 봉헌</span>
-                                                </li>
-                                                <li class="flex items-start">
-                                                    <span class="text-blue-600 mr-2">•</span>
-                                                    <span data-kr="히말라야 정기 기도에 함께 회향됩니다" data-en="Dedicated together in regular Himalayan prayers">히말라야 정기 기도에 함께 회향됩니다</span>
                                                 </li>
                                             </ul>
                                         </div>
@@ -708,12 +704,17 @@
                                     <div class="mb-8">
                                         <h4 class="text-xl font-serif font-bold text-blue-800 mb-4 flex items-center">
                                             <span class="text-2xl mr-3">📅</span>
-                                            <span data-kr="일정 요약 (히말라야 현지 참여 가능)" data-en="Schedule Summary (Himalayan on-site participation available)">일정 요약 (히말라야 현지 참여 가능)</span>
+                                            <span data-kr="일정 요약 (" data-en="Schedule Summary (">일정 요약 (</span>
+                                            <button onclick="document.getElementById('learn-more-modal').classList.remove('hidden'); document.body.style.overflow = 'hidden';" 
+                                                    class="text-blue-600 hover:text-blue-800 underline cursor-pointer"
+                                                    data-kr="히말라야 현지 참여 문의"
+                                                    data-en="Himalaya on-site participation inquiry">히말라야 현지 참여 문의</button>
+                                            <span data-kr=")" data-en=")">)</span>
                                         </h4>
                                         <div class="space-y-4">
                                             <div class="bg-white/70 rounded-lg p-4 border border-blue-200 flex items-center">
                                                 <div class="bg-amber-100 rounded-full p-2 mr-4">
-                                                    <span class="text-amber-600 font-bold text-sm">9/28</span>
+                                                    <span class="text-amber-600 font-bold text-sm"> 2025.9.28</span>
                                                 </div>
                                                 <div>
                                                     <p class="font-semibold text-amber-800" data-kr="미륵보살 히말라야 점안식" data-en="Maitreya Bodhisattva Himalayan Consecration">미륵보살 히말라야 점안식</p>
@@ -721,28 +722,39 @@
                                             </div>
                                             <div class="bg-white/70 rounded-lg p-4 border border-blue-200 flex items-center">
                                                 <div class="bg-purple-100 rounded-full p-2 mr-4">
-                                                    <span class="text-purple-600 font-bold text-sm">11/7</span>
+                                                    <span class="text-purple-600 font-bold text-sm"> 2025.11.7</span>
                                                 </div>
                                                 <div>
                                                     <p class="font-semibold text-purple-800" data-kr="약사여래불 점안 및 고불식 봉행" data-en="Medicine Buddha Consecration & Ceremony">약사여래불 점안 및 고불식 봉행</p>
+                                                </div>
+                                            </div>
+                                            <div class="bg-white/70 rounded-lg p-4 border border-blue-200 flex items-center justify-between cursor-pointer hover:bg-blue-50 transition-colors duration-200" onclick="openPilgrimageModal()">
+                                                <div class="flex items-center">
+                                                    <div class="bg-green-100 rounded-full p-2 mr-4">
+                                                        <span class="text-green-600 font-bold text-sm"> 2026.2.14 ~ 2.24</span>
+                                                    </div>
+                                                    <div>
+                                                        <p class="font-semibold text-green-800" data-kr="제 3회 히말라야 새해맞이 정초 구법순례" data-en="3rd Himalaya New Year Dharma Pilgrimage">제 3회 히말라야 새해맞이 정초 구법순례</p>
+                                                    </div>
+                                                </div>
+                                                <div class="flex items-center text-blue-600">
+                                                    <span class="text-xs mr-1" data-kr="자세히 보기" data-en="View Details">자세히 보기</span>
+                                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                                    </svg>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     
                                     <!-- 마무리 인사 -->
-                                    <div class="text-center bg-gradient-to-r from-blue-50 to-indigo-100 rounded-xl p-6 border border-blue-200">
+                                    <!-- <div class="text-center bg-gradient-to-r from-blue-50 to-indigo-100 rounded-xl p-6 border border-blue-200">
                                         <h4 class="text-xl font-serif font-bold text-blue-800 mb-4">
                                             <span class="text-2xl mr-2">🌈</span>
-                                            <span data-kr="함께해 주세요" data-en="Please Join Us">함께해 주세요</span>
+                                            <span data-kr="당신의 이름, 히말라야에 새겨주세요." data-en="Please engrave your name in the Himalayas.">당신의 이름, 히말라야에 새겨주세요.</span>
                                         </h4>
-                                        <p class="text-blue-700 mb-4 leading-relaxed"
-                                           data-kr="작은 서원 하나가 큰 도량을 밝힙니다.<br>당신의 이름, 히말라야에 새겨주세요."
-                                           data-en="One small vow illuminates a great temple.<br>Please engrave your name in the Himalayas.">
-                                            작은 서원 하나가 큰 도량을 밝힙니다.<br>당신의 이름, 히말라야에 새겨주세요.
-                                        </p>
                                         <p class="text-blue-600 font-medium">JustBe 준한 합장 🪷</p>
-                                    </div>
+                                    </div> -->
                                     
                                     <!-- 연락처 정보 -->
                                     <div class="mt-6 bg-white/70 rounded-lg p-6 border border-blue-200">
@@ -750,20 +762,29 @@
                                             <span class="text-xl mr-2">📌</span>
                                             <span data-kr="동참 및 문의" data-en="Participation & Inquiries">동참 및 문의</span>
                                         </h5>
-                                        <ul class="space-y-2 text-sm text-gray-700">
+                                        <ul class="space-y-3 text-sm text-gray-700">
                                             <li class="flex items-center">
-                                                <span class="text-pink-500 mr-2">📷</span>
-                                                <span data-kr="인스타그램 @justbe.himalaya" data-en="Instagram @justbe.himalaya">인스타그램 @justbe.himalaya</span>
+                                                <span class="text-blue-500 mr-3 font-semibold">📞</span>
+                                                <div>
+                                                    <span class="font-semibold" data-kr="화주 동참 문의:" data-en="Merit-Making Inquiry:">화주 동참 문의:</span>
+                                                    <a href="tel:010-5708-2423" class="text-blue-600 hover:text-blue-800 ml-2">010-5708-2423</a>
+                                                </div>
                                             </li>
                                             <li class="flex items-center">
-                                                <span class="text-yellow-500 mr-2">💬</span>
-                                                <a href="https://open.kakao.com/o/gcUJSSJh" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 underline">
-                                                    <span data-kr="카카오 오픈채팅 \"JustBe 히말라야\"" data-en="Kakao Open Chat \"JustBe Himalayas\"">카카오 오픈채팅 "JustBe 히말라야"</span>
-                                                </a>
+                                                <span class="text-yellow-500 mr-3 font-semibold">💬</span>
+                                                <div>
+                                                    <span class="font-semibold" data-kr="방문 문의:" data-en="Visit Inquiry:">방문 문의:</span>
+                                                    <a href="https://open.kakao.com/o/gcUJSSJh" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 underline ml-2">
+                                                        <span data-kr="카카오톡 오픈채팅" data-en="KakaoTalk Open Chat">카카오톡 오픈채팅</span>
+                                                    </a>
+                                                </div>
                                             </li>
                                             <li class="flex items-center">
-                                                <span class="text-blue-500 mr-2">🏠</span>
-                                                <span data-kr="JustBe 홍대선원 방문" data-en="Visit JustBe Hongdae Zen Center">JustBe 홍대선원 방문</span>
+                                                <span class="text-green-500 mr-3 font-semibold">🧘‍♂️</span>
+                                                <div>
+                                                    <span class="font-semibold" data-kr="구법 순례 문의:" data-en="Dharma Pilgrimage Inquiry:">구법 순례 문의:</span>
+                                                    <a href="tel:010-6241-6206" class="text-blue-600 hover:text-blue-800 ml-2">010-6241-6206</a>
+                                                </div>
                                             </li>
                                         </ul>
                                     </div>
@@ -831,12 +852,9 @@
                                     data-en="🪷 Maitreya Lotus Bodhisattva Merit-Making (Completed) 🪷">🪷 미륵연화보살님 화주 동참 안내 (회향완료) 🪷</h2>
                             </div>
                             <div class="bg-green-50 border border-green-200 rounded-lg p-6 mb-8">
-                                <p class="text-lg text-green-800 font-semibold mb-2"
-                                   data-kr="✅ 완료된 불사"
-                                   data-en="✅ Completed Campaign">✅ 완료된 불사</p>
-                                <p class="text-green-700"
-                                   data-kr="사부대중의 원력으로 미륵연화보살님 불사가 원만히 회향되었음을 알려드립니다.<br>감사합니다."
-                                   data-en="We are pleased to announce that the Maitreya Lotus Bodhisattva project has been successfully completed through the aspirations of the four assemblies.<br>Thank you.">사부대중의 원력으로 미륵연화보살님 불사가 원만히 회향되었음을 알려드립니다.<br>감사합니다.</p>
+                                <p class="text-lg text-green-800 font-semibold text-center"
+                                   data-kr="✅ 불사 모연이 원만히 성취되었습니다."
+                                   data-en="✅ The merit-making fundraising has been successfully accomplished.">✅ 불사 모연이 원만히 성취되었습니다.</p>
                             </div>
 
                             <!-- Progress Bar with completed styling -->
@@ -1679,6 +1697,176 @@
             </div>
         </div>
     </footer>
+    
+    <!-- 순례 안내 모달 -->
+    <div id="pilgrimage-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="sticky top-0 bg-white border-b p-4 flex justify-between items-center">
+                <h3 class="text-xl font-bold text-gray-800"
+                    data-kr="제 3회 히말라야 새해맞이 정초 구법순례"
+                    data-en="3rd Himalaya New Year Dharma Pilgrimage">제 3회 히말라야 새해맞이 정초 구법순례</h3>
+                <button id="close-pilgrimage-modal" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+            </div>
+            <div class="p-6 space-y-6 bg-gradient-to-br from-amber-50 to-orange-50">
+                
+                <!-- 편지 스타일 제목 -->
+                <div class="text-center border-2 border-amber-200 rounded-lg p-6 bg-white shadow-sm">
+                    <h4 class="text-2xl font-serif font-bold text-amber-800 mb-2">
+                        &lt; 별똥 준한스님과 함께 떠나는 순례길 &gt;
+                    </h4>
+                    <p class="text-lg text-gray-700 mb-3">인도 & 네팔</p>
+                    <p class="text-lg text-gray-700">그리고 JustBe 히말라야 선원까지~</p>
+                </div>
+
+                <!-- 메인 메시지 -->
+                <div class="bg-white p-6 rounded-lg shadow-sm border-l-4 border-amber-400">
+                    <p class="text-xl font-semibold text-amber-800 mb-4 text-center">
+                        이 생에 단 한번이라도!<br>
+                        부처님 4대성지와 히말라야 순례를<br>
+                        함께 떠나 보실래요?
+                    </p>
+                    
+                    <div class="space-y-4 text-gray-700 leading-relaxed">
+                        <p>고백하자면<br>
+                        저는 허리디스크로 군면제를 받고<br>
+                        무릎수술 3번에 장애인이 되었답니다.</p>
+                        
+                        <p>화두들고 참선하다<br>
+                        허리를 잃고<br>
+                        마음의 얻을바 없음을 얻었고</p>
+                        
+                        <p>출가하여 해인사 소림축구에 흥분해서<br>
+                        무릎을 잃고<br>
+                        몸의 무상함을 깨달았습니다.</p>
+                        
+                        <p>몸 하나씩 업장소멸 시켜가며<br>
+                        병고를 양약으로 삼을 수 있었습니다.</p>
+                        
+                        <p class="font-medium">이런 제가 순례를 떠나자고 합니다. ^^</p>
+                        
+                        <p>순례는<br>
+                        도전이자 설레임이며<br>
+                        두려움이자 환희로움 이었습니다.</p>
+                        
+                        <p class="font-medium text-amber-700">
+                        용기를 내어<br>
+                        붓다로드 순례길<br>
+                        함께 가시지요~~
+                        </p>
+                        
+                        <p class="text-right font-medium">-준한 🙏</p>
+                    </div>
+                </div>
+
+                <!-- P.S. 섹션 -->
+                <div class="bg-blue-50 p-6 rounded-lg border border-blue-200">
+                    <h5 class="font-bold text-blue-800 mb-3">P.S</h5>
+                    <div class="space-y-3 text-sm text-gray-700">
+                        <div>
+                            <p class="font-semibold mb-2">1. 베테랑 순례가이드 경력</p>
+                            <ul class="list-disc ml-4 space-y-1">
+                                <li>초등때 할머니 산악회 따라 매주 주머니 두툼</li>
+                                <li>성지순례 기획 & 인솔 100여회 (해외 10여회)</li>
+                                <li>출가전 세계일주 배낭여행 6개월 2004년</li>
+                                <li>출가후 히말라야 구법순례 18개월 2013~14년<br>- 안나푸르나에서 룸비니까지 도보 순례</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <p class="font-semibold mb-2">2.</p>
+                            <p>이 순례는 럭셔리 버전으로 기획, 가는곳곳마다 가능한 최고의 호텔, 45인승 버스 20명씩 탑승, 한국음식 요리사 동행, 하루 두시간 이상 걷지 않고 여유로운 일정으로 짰습니다.<br>
+                            고행을 원하셨던 분은 저에게 따로 연락주세요.^^</p>
+                        </div>
+                        
+                        <p class="font-medium text-blue-700 text-center">
+                            저와 함께 가시면<br>후회안하실것 같지요?
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 순례 상세 정보 -->
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <div class="text-center mb-4">
+                        <p class="text-lg">🙏 2600여년전</p>
+                        <p>부처님 걸으신 옛 길을 따라</p>
+                        <p class="font-semibold">&lt;부다가야, 영축산, 녹야원, 열반지, 룸비니&gt;</p>
+                        <p>4대성지를 지나</p>
+                        <p>→ JustBe 히말라야(포카라) 캠프</p>
+                        <p>→ 안나푸르나 설산 새해 일출</p>
+                        <p>→ 카트만두 티벳불교 3대성지 보드나트</p>
+                        <p class="mt-2">🧘‍♀️ 정초 3일 기도 · 성지순례 · 힐링캠프</p>
+                    </div>
+                </div>
+
+                <!-- 일정 -->
+                <div class="bg-green-50 p-6 rounded-lg border border-green-200">
+                    <h5 class="font-bold text-green-800 mb-3 flex items-center">
+                        <span class="mr-2">🗓</span>일정
+                    </h5>
+                    <ul class="space-y-2 text-sm text-gray-700">
+                        <li>• 2026. 2.14(토) 인천 출국 → 델리 도착</li>
+                        <li>• 2.15~16 부다가야 3일 기도 · 영축산 순례</li>
+                        <li>• 2.17~18 바라나시 → 쿠시나가라 (열반지)</li>
+                        <li>• 2.19~20 기원정사 → 룸비니 → 포카라</li>
+                        <li>• 2.21 JustBe 히말라야 캠프 & 새해일출</li>
+                        <li>• 2.22~23 카트만두 보드나트 사원</li>
+                        <li>• 2.24(화) 인천 귀국</li>
+                    </ul>
+                </div>
+
+                <!-- 참가비 및 모집 -->
+                <div class="bg-purple-50 p-6 rounded-lg border border-purple-200">
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <p class="font-bold text-purple-800 mb-2">💸 참가비: 359만 원 (1인 기준)</p>
+                            <p class="font-bold text-purple-800">👥 모집인원: 40명 (선착순 마감)</p>
+                        </div>
+                        <div class="text-sm text-gray-700">
+                            <p class="mb-2"><span class="font-semibold">📌 포함:</span> 국제선/국내선 항공, 숙박(2인1실), 전일정 한국식사, 차량, 비자수속 등, 정초기도비, 스님들경비, 앨범비용</p>
+                            <p><span class="font-semibold">🚫 불포함:</span> 1인실비용, 비즈니스 업그레이드, 개인경비</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 신청 방법 -->
+                <div class="bg-orange-50 p-6 rounded-lg border border-orange-200">
+                    <h5 class="font-bold text-orange-800 mb-3 flex items-center">
+                        <span class="mr-2">✍️</span>신청방법
+                    </h5>
+                    <div class="space-y-2 text-sm text-gray-700">
+                        <p>① 신청서 제출 (별도 양식)</p>
+                        <p>② 신청금 입금 100만원 (No 환불)<br>
+                        → 농협 301-0329-3086-41 저스트비JustBe</p>
+                        <p class="font-semibold">✅ 접수 완료 = 신청서 + 입금</p>
+                    </div>
+                </div>
+
+                <!-- 문의 -->
+                <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                    <h5 class="font-bold text-gray-800 mb-3 flex items-center">
+                        <span class="mr-2">📞</span>문의·신청
+                    </h5>
+                    <div class="space-y-2 text-sm text-gray-700">
+                        <p>👉 보리심 단장 010-6241-6206</p>
+                        <p>📩 문자 / 카톡 / 메일 가능</p>
+                        <p>✉️ silver00214@hanmail.net</p>
+                    </div>
+                </div>
+
+                <!-- 비자 준비 -->
+                <div class="bg-red-50 p-6 rounded-lg border border-red-200">
+                    <h5 class="font-bold text-red-800 mb-3 flex items-center">
+                        <span class="mr-2">📎</span>비자 준비
+                    </h5>
+                    <div class="space-y-2 text-sm text-gray-700">
+                        <p>• 여권 만료일: 2026년 8월 31일 이후</p>
+                        <p>• 인도비자용 사진 2매 (5x5cm, 귀 가려지않게)</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
     <script>
         // --- 데이터 설정 ---
@@ -1930,6 +2118,32 @@
             // ESC 키로 모달 닫기
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                    modal.classList.add('hidden');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        }
+
+        // --- 순례 모달 기능 ---
+        function openPilgrimageModal() {
+            const modal = document.getElementById('pilgrimage-modal');
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function setupPilgrimageModal() {
+            const modal = document.getElementById('pilgrimage-modal');
+            const closeBtn = document.getElementById('close-pilgrimage-modal');
+            
+            // 모달 닫기 (X 버튼)
+            closeBtn.addEventListener('click', () => {
+                modal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            });
+            
+            // 모달 닫기 (배경 클릭)
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
                     modal.classList.add('hidden');
                     document.body.style.overflow = 'auto';
                 }
@@ -2380,6 +2594,7 @@
             setupYaksaDetailsToggle(); // 약사여래불 상세 내용 토글
             setupLearnMoreModal();
             setupContactModal();
+            setupPilgrimageModal(); // 순례 모달
             setupScrollAnimations(); // 최적화된 스크롤 애니메이션
             optimizeImageLoading(); // 이미지 로딩 최적화
             secureExternalLinks(); // 외부 링크 보안 강화
