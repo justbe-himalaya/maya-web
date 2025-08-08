@@ -943,56 +943,26 @@
                                             </li>
                                         </ul>
                                     </div>
+                                    
+                                    <!-- 갤러리 이미지 -->
+                                    <div class="mt-8">
+
+                                        <div class="aspect-[16/9] rounded-lg overflow-hidden shadow-xl">
+                                            <img src="resource/img/Gallery_united.jpeg" 
+                                                 alt="히말라야 프로젝트 갤러리"
+                                                 data-kr-alt="히말라야 프로젝트 갤러리"
+                                                 data-en-alt="Himalaya Project Gallery"
+                                                 width="800"
+                                                 height="450"
+                                                 loading="lazy"
+                                                 class="w-full h-full object-contain object-center hover:scale-105 transition-transform duration-500"
+                                                 onerror="this.outerHTML='<div class=\'flex items-center justify-center h-full bg-gray-200 text-gray-600 rounded-lg\'><p class=\'text-center\'><strong>이미지 표시 오류</strong><br>사진을 불러오는 데 문제가 발생했습니다.</p></div>'">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             
                         </div>
-                    </div>
-                </section>
-
-
-                <!-- Gallery Section -->
-                <section class="py-6 md:py-12 bg-white">
-                    <div class="max-w-7xl mx-auto px-4">
-                        
-                        <div class="space-y-6">
-                            <!-- Panorama Image -->
-                            <div class="scroll-reveal w-full">
-                                <div class="aspect-[24/7] rounded-lg overflow-hidden shadow-xl">
-                                    <img src="resource/img/panorama.jpeg" 
-                                         alt="히말라야 파노라마"
-                                         data-kr-alt="히말라야 파노라마"
-                                         data-en-alt="Himalaya Panorama"
-                                         width="800"
-                                         height="233"
-                                         loading="lazy"
-                                         class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500"
-                                         onerror="this.outerHTML='<div class=\'flex items-center justify-center h-full bg-gray-200 text-gray-600 rounded-lg\'><p class=\'text-center\'><strong>이미지 표시 오류</strong><br>사진을 불러오는 데 문제가 발생했습니다.</p></div>'">
-                                </div>
-                                <!-- Panorama Caption -->
-                                <p class="text-base text-gray-600 mt-2 text-center italic font-medium"
-                                    data-kr="Annapurna(8091m), Himalaya. <br class='md:hidden'>JustBe Temple(1336m)에서 바라본 전경"
-                                    data-en="Annapurna(8091m), Himalaya. <br class='md:hidden'>View from JustBe Temple(1336m)">
-                                    Annapurna(8091m), Himalaya. <br class="md:hidden">JustBe Temple(1336m)에서 바라본 전경
-                                </p>
-                            </div>
-                            
-                            <!-- Gallery United Image -->
-                            <div class="scroll-reveal w-full">
-                                <div class="aspect-[16/9] rounded-lg overflow-hidden shadow-xl">
-                                    <img src="resource/img/Gallery_united.jpeg" 
-                                         alt="히말라야 프로젝트 갤러리"
-                                         data-kr-alt="히말라야 프로젝트 갤러리"
-                                         data-en-alt="Himalaya Project Gallery"
-                                         width="800"
-                                         height="450"
-                                         loading="lazy"
-                                         class="w-full h-full object-contain object-center hover:scale-105 transition-transform duration-500"
-                                         onerror="this.outerHTML='<div class=\'flex items-center justify-center h-full bg-gray-200 text-gray-600 rounded-lg\'><p class=\'text-center\'><strong>이미지 표시 오류</strong><br>사진을 불러오는 데 문제가 발생했습니다.</p></div>'">
-                                </div>
-                            </div>
-                        </div>
-                        
                     </div>
                 </section>
 
@@ -1044,22 +1014,10 @@
                                         이 인연공덕으로 히말라야 프로젝트에 희망의 등불이 켜지고, 화주 동참자 가족들께 제불보살님의 무한한 가피가 함께하시기를 간절히 발원합니다.
                                     </p>
                                     
-                                    <!-- 동참 이미지 -->
+                                    <!-- 동참자 보기 버튼 -->
                                     <div class="mt-6 text-center">
-                                        <div class="max-w-md mx-auto rounded-lg overflow-hidden shadow-lg">
-                                            <img src="resource/img/dongcham.jpeg" 
-                                                 alt="미륵연화보살님 화주 동참"
-                                                 data-kr-alt="미륵연화보살님 화주 동참"
-                                                 data-en-alt="Maitreya Lotus Bodhisattva Merit-Making"
-                                                 width="400"
-                                                 height="300"
-                                                 loading="lazy"
-                                                 class="w-full h-auto object-cover cursor-pointer hover:opacity-90 transition-opacity duration-300" 
-                                                 onclick="openDongchamModal()"
-                                                 onerror="this.outerHTML='<div class=\'max-w-md mx-auto bg-amber-50 border-2 border-amber-200 rounded-lg p-8 text-center\'><div class=\'text-4xl mb-2 text-amber-600\'>🪷</div><p class=\'text-amber-700 font-medium\'>미륵연화보살님 화주 동참</p></div>'">
-                                        </div>
                                         <button onclick="openDongchamModal()"
-                                                class="mt-4 bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-300 shadow-md hover:shadow-lg"
+                                                class="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-300 shadow-md hover:shadow-lg"
                                                 data-kr="동참자 보기"
                                                 data-en="View Participants">
                                             동참자 보기
@@ -1070,6 +1028,38 @@
                         </div>
                     </div>
                 </section>
+
+                                <!-- Gallery Section -->
+                <section class="py-6 md:py-12 bg-white">
+                    <div class="max-w-7xl mx-auto px-4">
+                        
+                        <div class="space-y-6">
+                            <!-- Panorama Image -->
+                            <div class="scroll-reveal w-full">
+                                <div class="aspect-[24/7] rounded-lg overflow-hidden shadow-xl">
+                                    <img src="resource/img/panorama.jpeg" 
+                                         alt="히말라야 파노라마"
+                                         data-kr-alt="히말라야 파노라마"
+                                         data-en-alt="Himalaya Panorama"
+                                         width="800"
+                                         height="233"
+                                         loading="lazy"
+                                         class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500"
+                                         onerror="this.outerHTML='<div class=\'flex items-center justify-center h-full bg-gray-200 text-gray-600 rounded-lg\'><p class=\'text-center\'><strong>이미지 표시 오류</strong><br>사진을 불러오는 데 문제가 발생했습니다.</p></div>'">
+                                </div>
+                                <!-- Panorama Caption -->
+                                <p class="text-base text-gray-600 mt-2 text-center italic font-medium"
+                                    data-kr="Annapurna(8091m), Himalaya. <br class='md:hidden'>JustBe Temple Himalaya에서 바라본 전경"
+                                    data-en="Annapurna(8091m), Himalaya. <br class='md:hidden'>View from JustBe Temple Himalaya">
+                                    <br class="md:hidden">JustBe Temple Himalaya에서 바라본 전경
+                                </p>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                </section>
+
                 
                 <!-- 히말라야 봉안 여정 (임시 숨김) -->
                 <div class="scroll-reveal hidden">
@@ -1205,10 +1195,17 @@
                 
                 <!-- 연도별 실행 일정 -->
                 <div class="scroll-reveal">
+                    <!-- 모바일용 제목 -->
+                    <div class="text-center mb-6 block md:hidden">
+                        <p class="text-xl font-semibold text-gray-800"
+                           data-kr="Milestone"
+                           data-en="Milestone">Milestone</p>
+                    </div>
+                    <!-- 데스크톱용 제목 -->
                     <div class="text-center mb-8 hidden md:block">
                         <p class="text-2xl font-semibold text-gray-800 mt-2"
-                           data-kr="1단계: 2025~2026년 기반 조성"
-                           data-en="Phase 1: Foundation Building 2025~2026">1단계: 2025~2026년 기반 조성</p>
+                           data-kr="Milestone 1: 기반 조성"
+                           data-en="Milestone 1: Foundation Building">Milestone 1: 기반 조성</p>
                     </div>
                     <div class="space-y-8">
                         <div class="bg-white p-8 rounded-lg shadow-md border border-slate-200">
@@ -1524,6 +1521,7 @@
                         </div>
                     </div>
                 </div>
+
                 
             </div>
         </div>
