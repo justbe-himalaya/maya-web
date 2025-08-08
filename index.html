@@ -33,10 +33,10 @@
             const timestamp = Date.now();
             const randomParam = Math.random().toString(36).substring(7);
             const preloadLink = document.querySelector('link[rel="preload"][as="image"]');
-            preloadLink.href = `resource/img/hero_bg_low_res.jpeg?v=${timestamp}&r=${randomParam}&bust=2`;
+            preloadLink.href = `resource/img/hero_bg_88.jpeg?v=${timestamp}&r=${randomParam}&bust=2`;
         } else {
             const preloadLink = document.querySelector('link[rel="preload"][as="image"]');
-            preloadLink.href = 'resource/img/hero_bg_low_res.jpeg';
+            preloadLink.href = 'resource/img/hero_bg_88.jpeg';
         }
     </script>
     
@@ -290,7 +290,7 @@
         }
         /* 배경 이미지 스타일 */
         .hero-bg {
-            background-image: url('resource/img/hero_bg_low_res.jpeg');
+            background-image: url('resource/img/hero_bg_88.jpeg');
             background-size: cover;
             background-position: center top;
             background-attachment: fixed;
@@ -2364,7 +2364,7 @@
                         heroElement.style.backgroundSize = 'cover';
                         heroElement.style.backgroundPosition = 'center top';
                     };
-                    img.src = `resource/img/hero_bg_low_res.jpeg?v=${timestamp}&r=${randomParam}&bust=2`;
+                    img.src = `resource/img/hero_bg_88.jpeg?v=${timestamp}&r=${randomParam}&bust=2`;
                 }
                 
                 // Gallery 이미지 - 다중 캐시 버스팅 파라미터 사용
