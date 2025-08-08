@@ -913,10 +913,16 @@
                                     
                                     <!-- 연락처 정보 -->
                                     <div class="mt-6 bg-white/70 rounded-lg p-6 border border-blue-200">
-                                        <h5 class="font-bold text-blue-800 mb-3 flex items-center">
-                                            <span class="text-xl mr-2">📌</span>
-                                            <span data-kr="동참 및 문의" data-en="Participation & Inquiries">동참 및 문의</span>
-                                        </h5>
+                                        <div class="text-center mb-4">
+                                            <h5 class="font-bold text-blue-800 text-lg mb-2 flex items-center justify-center">
+                                                <span class="text-xl mr-2">📌</span>
+                                                <span data-kr="동참" data-en="Participation">동참</span>
+                                            </h5>
+                                            <h5 class="font-bold text-blue-800 text-lg flex items-center justify-center">
+                                                <span class="text-xl mr-2">📋</span>
+                                                <span data-kr="문의" data-en="Inquiries">문의</span>
+                                            </h5>
+                                        </div>
                                         <ul class="space-y-3 text-sm text-gray-700">
                                             <li class="flex items-center">
                                                 <span class="text-blue-500 mr-3 font-semibold">📞</span>
@@ -946,17 +952,16 @@
                                     
                                     <!-- 갤러리 이미지 -->
                                     <div class="mt-8">
-
-                                        <div class="aspect-[16/9] rounded-lg overflow-hidden shadow-xl">
+                                        <div class="w-full max-w-6xl mx-auto rounded-xl overflow-hidden shadow-2xl">
                                             <img src="resource/img/Gallery_united.jpeg" 
                                                  alt="히말라야 프로젝트 갤러리"
                                                  data-kr-alt="히말라야 프로젝트 갤러리"
                                                  data-en-alt="Himalaya Project Gallery"
-                                                 width="800"
-                                                 height="450"
+                                                 width="1200"
+                                                 height="800"
                                                  loading="lazy"
-                                                 class="w-full h-full object-contain object-center hover:scale-105 transition-transform duration-500"
-                                                 onerror="this.outerHTML='<div class=\'flex items-center justify-center h-full bg-gray-200 text-gray-600 rounded-lg\'><p class=\'text-center\'><strong>이미지 표시 오류</strong><br>사진을 불러오는 데 문제가 발생했습니다.</p></div>'">
+                                                 class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500"
+                                                 onerror="this.outerHTML='<div class=\'flex items-center justify-center h-96 bg-gray-200 text-gray-600 rounded-xl\'><p class=\'text-center\'><strong>이미지 표시 오류</strong><br>사진을 불러오는 데 문제가 발생했습니다.</p></div>'">
                                         </div>
                                     </div>
                                 </div>
