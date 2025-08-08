@@ -558,45 +558,51 @@
                             </p>
                             <div class="space-y-3 mb-6">
                                 <div class="flex items-center justify-center">
-                                    <div class="bg-amber-100 px-4 py-3 rounded-2xl border border-amber-300 text-center">
-                                        <div class="mb-2">
-                                            <span class="font-bold text-amber-700">25.09.28</span>
-                                            <span class="text-amber-800 ml-2">미륵보살 점안 법회</span>
+                                    <div class="bg-amber-100 px-4 py-3 rounded-2xl border border-amber-300">
+                                        <div class="flex flex-col md:flex-row md:items-center md:justify-between text-center md:text-left">
+                                            <div class="mb-2 md:mb-0">
+                                                <span class="font-bold text-amber-700">25.09.28</span>
+                                                <span class="text-amber-800 ml-2">미륵보살 점안 법회</span>
+                                            </div>
+                                            <button onclick="document.getElementById('learn-more-modal').classList.remove('hidden'); document.body.style.overflow = 'hidden';" 
+                                                    class="bg-amber-600 hover:bg-amber-700 text-white px-3 py-1 rounded-lg text-xs font-medium transition-colors duration-300 md:ml-4 flex-shrink-0 self-center"
+                                                    data-kr="참가하기"
+                                                    data-en="Join">
+                                                참가하기
+                                            </button>
                                         </div>
-                                        <button onclick="document.getElementById('learn-more-modal').classList.remove('hidden'); document.body.style.overflow = 'hidden';" 
-                                                class="bg-amber-600 hover:bg-amber-700 text-white px-3 py-1 rounded-lg text-xs font-medium transition-colors duration-300"
-                                                data-kr="참가하기"
-                                                data-en="Join">
-                                            참가하기
-                                        </button>
                                     </div>
                                 </div>
                                 <div class="flex items-center justify-center">
-                                    <div class="bg-blue-100 px-4 py-3 rounded-2xl border border-blue-300 text-center">
-                                        <div class="mb-2">
-                                            <span class="font-bold text-blue-700">25.11.07</span>
-                                            <span class="text-blue-800 ml-2">약사여래불 고불식</span>
+                                    <div class="bg-blue-100 px-4 py-3 rounded-2xl border border-blue-300">
+                                        <div class="flex flex-col md:flex-row md:items-center md:justify-between text-center md:text-left">
+                                            <div class="mb-2 md:mb-0">
+                                                <span class="font-bold text-blue-700">25.11.07</span>
+                                                <span class="text-blue-800 ml-2">약사여래불 고불식</span>
+                                            </div>
+                                            <button onclick="document.getElementById('learn-more-modal').classList.remove('hidden'); document.body.style.overflow = 'hidden';" 
+                                                    class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-lg text-xs font-medium transition-colors duration-300 md:ml-4 flex-shrink-0 self-center"
+                                                    data-kr="참가하기"
+                                                    data-en="Join">
+                                                참가하기
+                                            </button>
                                         </div>
-                                        <button onclick="document.getElementById('learn-more-modal').classList.remove('hidden'); document.body.style.overflow = 'hidden';" 
-                                                class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-lg text-xs font-medium transition-colors duration-300"
-                                                data-kr="참가하기"
-                                                data-en="Join">
-                                            참가하기
-                                        </button>
                                     </div>
                                 </div>
                                 <div class="flex items-center justify-center">
-                                    <div class="bg-green-100 px-4 py-3 rounded-2xl border border-green-300 text-center">
-                                        <div class="mb-2">
-                                            <span class="font-bold text-green-700">26.02.14~24</span>
-                                            <span class="text-green-800 ml-2">제3회 히말라야 새해맞이 정초 구법순례</span>
+                                    <div class="bg-green-100 px-4 py-3 rounded-2xl border border-green-300">
+                                        <div class="flex flex-col md:flex-row md:items-center md:justify-between text-center md:text-left">
+                                            <div class="mb-2 md:mb-0">
+                                                <span class="font-bold text-green-700">26.02.14~24</span>
+                                                <span class="text-green-800 ml-2">제3회 히말라야 새해맞이 정초 구법순례</span>
+                                            </div>
+                                            <button onclick="openPilgrimageModal()" 
+                                                    class="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded-lg text-xs font-medium transition-colors duration-300 md:ml-4 flex-shrink-0 self-center"
+                                                    data-kr="참가하기"
+                                                    data-en="Join">
+                                                참가하기
+                                            </button>
                                         </div>
-                                        <button onclick="openPilgrimageModal()" 
-                                                class="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded-lg text-xs font-medium transition-colors duration-300"
-                                                data-kr="참가하기"
-                                                data-en="Join">
-                                            참가하기
-                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -999,25 +1005,62 @@
                                 </div>
                             </div>
 
-                            <div class="max-w-2xl mx-auto">
-                                <div class="bg-white/70 p-6 rounded-lg shadow-sm border border-gray-200">
-                                    <h3 class="text-xl font-serif font-bold mb-4 text-gray-700 text-center"
-                                        data-kr="인연 공덕"
-                                        data-en="Merit & Blessings">인연 공덕</h3>
-                                     <div class="flex items-center mb-4">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-amber-500 mr-3 opacity-75" viewBox="0 0 20 20" fill="currentColor">
-                                          <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
-                                          <path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd" />
+                            <div class="grid md:grid-cols-2 gap-8 text-left max-w-6xl mx-auto">
+                                <div class="bg-white/80 backdrop-blur-sm p-8 rounded-xl shadow-lg border border-amber-100">
+                                    <h3 class="text-2xl font-serif font-bold mb-6 text-gray-800 flex items-center">
+                                        <span class="text-2xl mr-3">💳</span>
+                                        <span data-kr="동참 방법" data-en="How to Participate">동참 방법</span>
+                                    </h3>
+                                    <ul class="space-y-4 text-gray-700">
+                                        <li class="flex flex-col" data-kr="<div class='mb-1'><strong class='text-amber-700'>💰 금액:</strong></div><div class='ml-6'>1인 10만원</div>"
+                                            data-en="<div class='mb-1'><strong class='text-amber-700'>💰 Amount:</strong></div><div class='ml-6'>100,000 KRW per person</div>">
+                                            <div class="mb-1"><strong class="text-amber-700">💰 금액:</strong></div>
+                                            <div class="ml-6">1인 10만원</div>
+                                        </li>
+                                        <li class="flex flex-col" data-kr="<div class='mb-1'><strong class='text-amber-700'>🏦 계좌:</strong></div><div class='ml-6'>농협 301-0319-5339-51 (홍대선원)</div>"
+                                            data-en="<div class='mb-1'><strong class='text-amber-700'>🏦 Account:</strong></div><div class='ml-6'>Nonghyup 301-0319-5339-51 (Hongdae Zen Center)</div>">
+                                            <div class="mb-1"><strong class="text-amber-700">🏦 계좌:</strong></div>
+                                            <div class="ml-6">농협 301-0319-5339-51 (홍대선원)</div>
+                                        </li>
+                                        <li class="flex flex-col" data-kr="<div class='mb-1'><strong class='text-amber-700'>📱 문자 접수:</strong></div><div class='ml-6'><a href='sms:010-5708-2423' class='hover:text-amber-800 underline'>010-5708-2423</a></div>"
+                                            data-en="<div class='mb-1'><strong class='text-amber-700'>📱 SMS Registration:</strong></div><div class='ml-6'><a href='sms:010-5708-2423' class='hover:text-amber-800 underline'>010-5708-2423</a></div>">
+                                            <div class="mb-1"><strong class="text-amber-700">📱 문자 접수:</strong></div>
+                                            <div class="ml-6"><a href="sms:010-5708-2423" class="hover:text-amber-800 underline">010-5708-2423</a></div>
+                                        </li>
+                                        <li class="flex flex-col" data-kr='<div class="mb-1"><strong class="text-amber-700">✍️ 문자 내용:</strong></div><div class="ml-6">이름(법명 및 주소, 회사 이름도 가능) + "미륵"</div>'
+                                            data-en='<div class="mb-1"><strong class="text-amber-700">✍️ SMS Content:</strong></div><div class="ml-6">Name (Dharma name, address, or company name) + "Mireuk"</div>'>
+                                            <div class="mb-1"><strong class="text-amber-700">✍️ 문자 내용:</strong></div>
+                                            <div class="ml-6">이름(법명 및 주소, 회사 이름도 가능) + "미륵"</div>
+                                        </li>
+                                    </ul>
+                                    <button id="mireuk-copy-btn" class="btn-touch touch-feedback mt-8 w-full bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white py-4 px-6 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                                            data-kr="📋 계좌번호 복사하기"
+                                            data-en="📋 Copy Account Number">
+                                        📋 계좌번호 복사하기
+                                    </button>
+                                    <p id="mireuk-copy-message" class="text-center text-green-600 mt-3 h-4 font-medium"></p>
+                                </div>
+
+                                <div class="bg-white/80 backdrop-blur-sm p-8 rounded-xl shadow-lg border border-amber-100">
+                                    <h3 class="text-2xl font-serif font-bold mb-6 text-gray-800 flex items-center">
+                                        <span class="text-2xl mr-3">🙏</span>
+                                        <span data-kr="인연 공덕" data-en="Merit & Blessings">인연 공덕</span>
+                                    </h3>
+                                     <div class="flex items-start mb-6">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-amber-600 mr-4 mt-1 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                                          <path fill-rule="evenodd" d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
                                         </svg>
-                                        <p class="text-gray-600 text-sm"
+                                        <p class="text-gray-700 leading-relaxed"
                                            data-kr="동참자의 이름과 법명 또는 회사 이름을 붓글씨로 적어 미륵보살님 복장점안 의식 때 축원과 함께 봉안합니다."
                                            data-en="We will write the names, dharma names, or company names of dharma supporters in calligraphy and enshrine them with prayers during the Maitreya Bodhisattva consecration ceremony.">동참자의 이름과 법명 또는 회사 이름을 붓글씨로 적어 미륵보살님 복장점안 의식 때 축원과 함께 봉안합니다.</p>
                                     </div>
-                                    <p class="text-gray-600 leading-relaxed mt-4 text-center text-sm italic"
-                                       data-kr="이 인연공덕으로 히말라야 프로젝트에 희망의 등불이 켜지고, 화주 동참자 가족들께 제불보살님의 무한한 가피가 함께하시기를 간절히 발원합니다."
-                                       data-en="Through this karmic merit, may the lamp of hope be lit for the Himalaya Temple, and may the infinite blessings of all Buddhas and Bodhisattvas be with the families of all dharma supporters.">
-                                        이 인연공덕으로 히말라야 프로젝트에 희망의 등불이 켜지고, 화주 동참자 가족들께 제불보살님의 무한한 가피가 함께하시기를 간절히 발원합니다.
-                                    </p>
+                                    <div class="bg-amber-50 p-4 rounded-lg border-l-4 border-amber-400">
+                                        <p class="text-gray-700 leading-relaxed italic"
+                                           data-kr="이 인연공덕으로 히말라야 프로젝트에 희망의 등불이 켜지고, 화주 동참자 가족들께 제불보살님의 무한한 가피가 함께하시기를 간절히 발원합니다."
+                                           data-en="Through this karmic merit, may the lamp of hope be lit for the Himalaya Temple, and may the infinite blessings of all Buddhas and Bodhisattvas be with the families of all dharma supporters.">
+                                            이 인연공덕으로 히말라야 프로젝트에 희망의 등불이 켜지고, 화주 동참자 가족들께 제불보살님의 무한한 가피가 함께하시기를 간절히 발원합니다.
+                                        </p>
+                                    </div>
                                     
                                     <!-- 동참자 보기 버튼 -->
                                     <div class="mt-6 text-center">
@@ -1984,6 +2027,39 @@
             });
         }
         
+        // --- 계좌번호 복사 기능 (미륵) ---
+        function setupMireukCopyButton() {
+            const copyBtn = document.getElementById('mireuk-copy-btn');
+            const copyMessage = document.getElementById('mireuk-copy-message');
+
+            // 요소가 존재하지 않으면 함수 종료
+            if (!copyBtn || !copyMessage) {
+                console.log('미륵 복사 버튼이 페이지에 없음');
+                return;
+            }
+
+            copyBtn.addEventListener('click', () => {
+                // 임시 textarea를 만들어 복사 실행
+                const tempTextArea = document.createElement('textarea');
+                tempTextArea.value = accountNumber;
+                document.body.appendChild(tempTextArea);
+                tempTextArea.select();
+                try {
+                    document.execCommand('copy');
+                    copyMessage.textContent = currentLanguage === 'ko' ? '계좌번호가 복사되었습니다.' : 'Account number copied to clipboard.';
+                } catch (err) {
+                    copyMessage.textContent = '복사에 실패했습니다.';
+                    console.error('Fallback: Oops, unable to copy', err);
+                }
+                document.body.removeChild(tempTextArea);
+
+                // 2초 후에 메시지 사라짐
+                setTimeout(() => {
+                    copyMessage.textContent = '';
+                }, 2000);
+            });
+        }
+        
         // --- 약사여래불 상세 내용 토글 기능 ---
         function setupYaksaDetailsToggle() {
             const toggleBtn = document.getElementById('yaksa-details-btn');
@@ -2574,6 +2650,7 @@
             loadDonorData(); // JSON에서 데이터 로드 (내부적으로 updateProgressBar 호출)
             setupCopyButton();
             setupYaksaCopyButton();
+            setupMireukCopyButton(); // 미륵 계좌번호 복사 버튼
             setupYaksaDetailsToggle(); // 약사여래불 상세 내용 토글
             setupLearnMoreModal();
             setupContactModal();
