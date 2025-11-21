@@ -2004,54 +2004,426 @@
 
     <!-- 원정대 모달 -->
     <div id="expedition-modal"
-        class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4 hidden">
-        <div class="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-            <div class="sticky top-0 bg-white border-b p-4 flex justify-between items-center">
-                <h3 class="text-xl font-bold text-gray-800" data-kr="제1차 JustBe 히말라야 원정대"
-                    data-en="1st JustBe Himalaya Expedition">제1차 JustBe 히말라야 원정대</h3>
-                <button id="close-expedition-modal" class="text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+        class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4 hidden backdrop-blur-sm transition-opacity duration-300">
+        <div class="bg-white rounded-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
+            <!-- Header -->
+            <div
+                class="sticky top-0 bg-white/95 backdrop-blur border-b p-4 md:p-6 flex justify-between items-center z-10">
+                <div>
+                    <h3 class="text-2xl md:text-3xl font-bold text-gray-900 flex items-center gap-2">
+                        <span class="text-2xl">🪷</span> 제1차 JustBe 히말라야 원정대
+                    </h3>
+                    <p class="text-gray-500 text-sm mt-1">히말라야를 향한 첫 발걸음, 당신의 여정을 선택하세요</p>
+                </div>
+                <button id="close-expedition-modal"
+                    class="text-gray-400 hover:text-gray-600 text-3xl transition-colors w-10 h-10 flex items-center justify-center rounded-full hover:bg-gray-100">&times;</button>
             </div>
-            <div class="p-6 space-y-6">
-                <!-- Teams -->
-                <section>
-                    <h4 class="text-lg font-semibold text-gray-800 mb-2">팀 구성</h4>
-                    <ul class="list-disc ml-6 space-y-1">
-                        <li>템플 스테이 팀</li>
-                        <li>트레킹 팀</li>
-                        <li>힐링 리트릿 팀</li>
-                        <li>젠 타이치 팀</li>
-                    </ul>
+
+            <div class="p-6 md:p-8 space-y-10">
+                <!-- Intro -->
+                <section class="text-center max-w-3xl mx-auto space-y-4">
+                    <h4 class="text-xl md:text-2xl font-bold text-gray-800 leading-relaxed">
+                        드디어 여러분과 함께 첫 발을 내딛습니다.
+                    </h4>
+                    <p class="text-gray-600 leading-relaxed">
+                        이번 원정대는 트레킹, 힐링, 템플스테이, 선태극권 네 가지 테마로 진행되며,<br class="hidden md:block">
+                        프로그램별 최적의 경험을 위해 각 팀은 <strong>8명 소수 정예</strong>로 운영됩니다.<br>
+                        <span class="text-sm text-gray-500 mt-2 block">(1회차는 파일럿 프로그램이며, 향후 우기를 제외하고 매달 진행 예정입니다)</span>
+                    </p>
                 </section>
-                <!-- Application -->
-                <section>
-                    <h4 class="text-lg font-semibold text-gray-800 mb-2">신청 안내</h4>
-                    <p class="text-gray-700">참가비 359만원(1인 기준)이며, 아래 계좌로 입금 후 <strong>참가하기</strong> 버튼을 눌러
-                        신청해 주세요.</p>
-                    <p class="font-bold">계좌: <span class="text-blue-600">301-0319-5339-51</span> (홍대선원)</p>
-                    <p class="text-sm text-gray-600">입금 확인 후 개별 연락드립니다.</p>
+
+                <!-- Teams Grid -->
+                <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Team 1: Temple Stay -->
+                    <div
+                        class="group bg-amber-50 rounded-2xl p-6 border border-amber-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="bg-amber-100 text-amber-700 px-3 py-1 rounded-lg text-sm font-bold">제1팀</div>
+                            <span class="text-2xl">🙏</span>
+                        </div>
+                        <h5 class="text-xl font-bold text-gray-900 mb-2">JustBe 템플스테이</h5>
+                        <p class="text-amber-800 font-medium mb-4 text-sm">1,400m 히말라야 도량에서 힐링 & 수행</p>
+
+                        <div class="space-y-3 text-sm text-gray-700 bg-white/60 p-4 rounded-xl">
+                            <div class="flex gap-2"><span class="w-5">📆</span><span><strong>일정:</strong> 25.12.7 –
+                                    12.31 (7/14/21일 선택)</span></div>
+                            <div class="flex gap-2"><span class="w-5">👤</span><span><strong>가이드:</strong> 법여스님</span>
+                            </div>
+                            <div class="flex gap-2"><span class="w-5">👥</span><span><strong>모집:</strong> 8명 (45세
+                                    미만)</span></div>
+                            <div class="flex gap-2"><span class="w-5">💰</span><span><strong>참가비:</strong> 7일 50만 / 14일
+                                    100만 / 21일 150만<br><span class="text-xs text-gray-500 ml-5">(2인실·식사 포함 / 항공
+                                        별도)</span></span></div>
+                        </div>
+
+                        <div class="mt-4 pt-4 border-t border-amber-200/50">
+                            <p class="text-sm text-gray-600 leading-relaxed">
+                                <span class="font-bold text-amber-700">Mission:</span> 법여스님과 함께 히말라야의 기운을 느끼며 몸과 마음을 쉬는
+                                힐링스테이
+                            </p>
+                            <p class="text-xs text-gray-500 mt-2 bg-amber-100/50 p-2 rounded">⚠️ 자율형 운영 (아침 예불 & 운력 중심)
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Team 2: Trekking -->
+                    <div
+                        class="group bg-slate-50 rounded-2xl p-6 border border-slate-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="bg-slate-200 text-slate-700 px-3 py-1 rounded-lg text-sm font-bold">제2팀</div>
+                            <span class="text-2xl">🏔️</span>
+                        </div>
+                        <h5 class="text-xl font-bold text-gray-900 mb-2">히말라야 트레킹 원정대</h5>
+                        <p class="text-slate-700 font-medium mb-4 text-sm">Mardi Himal Trek 4,200m (난이도 중)</p>
+
+                        <div class="space-y-3 text-sm text-gray-700 bg-white/60 p-4 rounded-xl">
+                            <div class="flex gap-2"><span class="w-5">📆</span><span><strong>일정:</strong> 26.1.5 – 1.13
+                                    (8박 10일)</span></div>
+                            <div class="flex gap-2"><span class="w-5">🧭</span><span><strong>코스:</strong> 카트만두 – 포카라 –
+                                    High Camp</span></div>
+                            <div class="flex gap-2"><span class="w-5">👤</span><span><strong>가이드:</strong> 윤지웅
+                                    (금타)</span></div>
+                            <div class="flex gap-2"><span class="w-5">👥</span><span><strong>모집:</strong> 8명
+                                    (18세~39세)</span></div>
+                            <div class="flex gap-2"><span class="w-5">💰</span><span><strong>참가비:</strong>
+                                    200만원<br><span class="text-xs text-gray-500 ml-5">(항공·숙박·비자·가이드 등 포함)</span></span>
+                            </div>
+                        </div>
+
+                        <div class="mt-4 pt-4 border-t border-slate-200/50">
+                            <p class="text-sm text-gray-600 leading-relaxed">
+                                <span class="font-bold text-slate-700">Highlight:</span> 보드나트 순례, 히말라야 명상 트레킹, 도량 참배
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Team 3: Healing -->
+                    <div
+                        class="group bg-emerald-50 rounded-2xl p-6 border border-emerald-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-lg text-sm font-bold">제3팀
+                            </div>
+                            <span class="text-2xl">🌿</span>
+                        </div>
+                        <h5 class="text-xl font-bold text-gray-900 mb-2">히말라야 힐링 리트릿</h5>
+                        <p class="text-emerald-800 font-medium mb-4 text-sm">Pokhara Healing Stay 1,200m (난이도 하)</p>
+
+                        <div class="space-y-3 text-sm text-gray-700 bg-white/60 p-4 rounded-xl">
+                            <div class="flex gap-2"><span class="w-5">📆</span><span><strong>일정:</strong> 26.1.6 – 1.11
+                                    (4박 6일)</span></div>
+                            <div class="flex gap-2"><span class="w-5">👤</span><span><strong>가이드:</strong> 준한스님</span>
+                            </div>
+                            <div class="flex gap-2"><span class="w-5">👥</span><span><strong>모집:</strong> 8명
+                                    (40세~80세)</span></div>
+                            <div class="flex gap-2"><span class="w-5">💰</span><span><strong>참가비:</strong> 300만원 (싱글룸
+                                    +20만)</span></div>
+                        </div>
+
+                        <div class="mt-4 pt-4 border-t border-emerald-200/50">
+                            <p class="text-sm text-gray-600 leading-relaxed">
+                                <span class="font-bold text-emerald-700">Highlight:</span> 최고급 명상 리조트, 대한항공 직항, 티벳 3대
+                                성지, 빤자세 트레킹(선택)
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Team 4: Zen Taichi -->
+                    <div
+                        class="group bg-indigo-50 rounded-2xl p-6 border border-indigo-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-lg text-sm font-bold">제4팀</div>
+                            <span class="text-2xl">🧘</span>
+                        </div>
+                        <h5 class="text-xl font-bold text-gray-900 mb-2">선태극권 집중 수행팀</h5>
+                        <p class="text-indigo-800 font-medium mb-4 text-sm">Zen Taichi Retreat 1,200m (난이도 중)</p>
+
+                        <div class="space-y-3 text-sm text-gray-700 bg-white/60 p-4 rounded-xl">
+                            <div class="flex gap-2"><span class="w-5">📆</span><span><strong>일정:</strong> 26.1.6 – 1.30
+                                    (기간 선택)</span></div>
+                            <div class="flex gap-2"><span class="w-5">👤</span><span><strong>가이드:</strong> 법증스님</span>
+                            </div>
+                            <div class="flex gap-2"><span class="w-5">👥</span><span><strong>모집:</strong> 8명
+                                    (20세~80세)</span></div>
+                            <div class="flex gap-2"><span class="w-5">💰</span><span><strong>참가비:</strong> 10만원 / 일
+                                    (다인실)</span></div>
+                        </div>
+
+                        <div class="mt-4 pt-4 border-t border-indigo-200/50">
+                            <p class="text-sm text-gray-600 leading-relaxed">
+                                <span class="font-bold text-indigo-700">Highlight:</span> 좌선명상, 태극권, 108배, 걷기 명상, 스트레칭
+                            </p>
+                        </div>
+                    </div>
                 </section>
-                <!-- Refund -->
-                <section>
-                    <h4 class="text-lg font-semibold text-gray-800 mb-2">환불 정책</h4>
-                    <p class="text-gray-700">입금 후 30일 이내 전액 환불 가능합니다. 30일 이후에는 환불이 불가합니다.</p>
+
+                <!-- Application & Info -->
+                <section class="bg-gray-50 rounded-2xl p-6 md:p-8 border border-gray-200">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- How to Apply -->
+                        <div>
+                            <h4 class="text-lg font-bold text-gray-900 mb-4 flex items-center">
+                                <span
+                                    class="bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs mr-2">1</span>
+                                신청 방법
+                            </h4>
+                            <div class="space-y-4 text-sm text-gray-700">
+                                <div class="bg-white p-4 rounded-xl border border-gray-200">
+                                    <p class="font-bold text-blue-600 mb-1">Step 1. 예약금 입금</p>
+                                    <p class="mb-2">12/15까지 예약금 <strong>150만원</strong> 입금</p>
+                                    <div class="bg-gray-50 p-2 rounded text-xs font-mono text-gray-600 select-all">
+                                        농협 301-0319-5339-51 (홍대선원)
+                                    </div>
+                                </div>
+                                <div class="bg-white p-4 rounded-xl border border-gray-200">
+                                    <p class="font-bold text-blue-600 mb-1">Step 2. 정보 전달</p>
+                                    <p>입금 후 <strong>성함/연락처</strong>를 문자로 전송</p>
+                                    <p class="text-xs text-gray-500 mt-1">📞 010-3501-0078 (9시-18시)</p>
+                                </div>
+                                <p class="text-xs text-red-500 mt-2">※ 12/25까지 잔액 입금 완료 필요</p>
+                            </div>
+                        </div>
+
+                        <!-- Policy & Caution -->
+                        <div class="space-y-6">
+                            <div>
+                                <h4 class="text-lg font-bold text-gray-900 mb-4 flex items-center">
+                                    <span
+                                        class="bg-red-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs mr-2">!</span>
+                                    환불 규정
+                                </h4>
+                                <ul
+                                    class="space-y-2 text-sm text-gray-600 bg-white p-4 rounded-xl border border-gray-200">
+                                    <li class="flex gap-2">
+                                        <span class="text-red-500">•</span>
+                                        <span>출발 1~6일전: <span class="text-red-500">환불 불가</span></span>
+                                    </li>
+                                    <li class="flex gap-2">
+                                        <span class="text-red-500">•</span>
+                                        <span>출발 7일 전까지: 예약금 제외 후 환불</span>
+                                    </li>
+                                    <li class="text-xs text-gray-400 mt-2 pt-2 border-t">
+                                        예약금은 항공 및 프로그램 준비에 즉시 사용되므로 환불이 불가합니다.
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <h4 class="text-lg font-bold text-gray-900 mb-2 text-sm">주의 사항</h4>
+                                <p class="text-xs text-gray-500 leading-relaxed">
+                                    기본 여행자보험은 제공되나, 트레킹 및 현지 활동 중 발생하는 사고나 개인 부주의로 인한 사고에 대해서는 JustBe의 책임이 아님을 안내드리며, 필요
+                                    시 추가 보험 가입을 권장드립니다.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </section>
-                <!-- Safety -->
-                <section>
-                    <h4 class="text-lg font-semibold text-gray-800 mb-2">안전 안내</h4>
-                    <p class="text-gray-700">여행자 보험 가입을 권장합니다. 현지 상황에 따라 일정이 변동될 수 있습니다.</p>
-                </section>
-                <!-- FAQ -->
-                <section>
-                    <h4 class="text-lg font-semibold text-gray-800 mb-2">FAQ</h4>
-                    <div class="space-y-4">
-                        <details class="border-b pb-2">
-                            <summary class="cursor-pointer font-medium">숙소는 어디인가요?</summary>
-                            <p class="mt-1 text-gray-600">포카라 현지 호텔 및 리조트를 이용합니다.</p>
+
+                <!-- FAQ Section -->
+                <section class="bg-white rounded-2xl p-6 md:p-8 border border-gray-200">
+                    <h4
+                        class="text-xl md:text-2xl font-bold text-gray-900 text-center mb-8 flex items-center justify-center gap-2">
+                        <span class="text-2xl">🪷</span> 제1차 JustBe 히말라야 원정대 FAQ
+                    </h4>
+
+                    <div class="space-y-3">
+                        <!-- Q1 -->
+                        <details
+                            class="group bg-gray-50 rounded-xl border border-gray-100 overflow-hidden open:bg-white open:ring-1 open:ring-amber-200 transition-all duration-300">
+                            <summary
+                                class="flex justify-between items-center p-4 cursor-pointer hover:bg-gray-100 transition-colors list-none">
+                                <span class="font-bold text-gray-800 flex items-center gap-3">
+                                    <span
+                                        class="bg-amber-100 text-amber-700 w-6 h-6 rounded-full flex items-center justify-center text-xs flex-shrink-0">Q1</span>
+                                    현지는 안전한가요?
+                                </span>
+                                <span
+                                    class="text-gray-400 transition-transform duration-300 group-open:rotate-180">▼</span>
+                            </summary>
+                            <div class="px-4 pb-4 pt-0 text-gray-600 text-sm leading-relaxed ml-9">
+                                방문지(포카라)는 관광지로 안전하지만, 개인 소지품 관리와 안전 수칙 준수에 항상 유의하여 주시기 바랍니다.
+                            </div>
                         </details>
-                        <details class="border-b pb-2">
-                            <summary class="cursor-pointer font-medium">필수 준비물은?</summary>
-                            <p class="mt-1 text-gray-600">등산화, 방수 자켓, 개인 위생용품을 준비해 주세요.</p>
+
+                        <!-- Q2 -->
+                        <details
+                            class="group bg-gray-50 rounded-xl border border-gray-100 overflow-hidden open:bg-white open:ring-1 open:ring-amber-200 transition-all duration-300">
+                            <summary
+                                class="flex justify-between items-center p-4 cursor-pointer hover:bg-gray-100 transition-colors list-none">
+                                <span class="font-bold text-gray-800 flex items-center gap-3">
+                                    <span
+                                        class="bg-amber-100 text-amber-700 w-6 h-6 rounded-full flex items-center justify-center text-xs flex-shrink-0">Q2</span>
+                                    비자는 어떻게 하나요?
+                                </span>
+                                <span
+                                    class="text-gray-400 transition-transform duration-300 group-open:rotate-180">▼</span>
+                            </summary>
+                            <div class="px-4 pb-4 pt-0 text-gray-600 text-sm leading-relaxed ml-9">
+                                출국 전 온라인으로 신청하며, 네팔 도착 후 수령합니다. 비자 신청은 JustBe에서 총괄적으로 진행하오니 걱정안하셔도 됩니다.<br>
+                                <span class="text-red-500 font-medium mt-1 block text-xs">⚠️ 여권 유효기간이 출국 당일 기준, 최소 6개월
+                                    이상인지 다시 한번 확인해 주세요!</span>
+                            </div>
                         </details>
+
+                        <!-- Q3 -->
+                        <details
+                            class="group bg-gray-50 rounded-xl border border-gray-100 overflow-hidden open:bg-white open:ring-1 open:ring-amber-200 transition-all duration-300">
+                            <summary
+                                class="flex justify-between items-center p-4 cursor-pointer hover:bg-gray-100 transition-colors list-none">
+                                <span class="font-bold text-gray-800 flex items-center gap-3">
+                                    <span
+                                        class="bg-amber-100 text-amber-700 w-6 h-6 rounded-full flex items-center justify-center text-xs flex-shrink-0">Q3</span>
+                                    돈은 얼마나 어떤 화폐로 가져가는 것이 좋을까요?
+                                </span>
+                                <span
+                                    class="text-gray-400 transition-transform duration-300 group-open:rotate-180">▼</span>
+                            </summary>
+                            <div class="px-4 pb-4 pt-0 text-gray-600 text-sm leading-relaxed ml-9">
+                                원화 또는 미국 달러 모두 네팔 현지에서 환전 가능합니다. 일주일 기준으로 약 20만 원 정도면 충분합니다.
+                            </div>
+                        </details>
+
+                        <!-- Q4 -->
+                        <details
+                            class="group bg-gray-50 rounded-xl border border-gray-100 overflow-hidden open:bg-white open:ring-1 open:ring-amber-200 transition-all duration-300">
+                            <summary
+                                class="flex justify-between items-center p-4 cursor-pointer hover:bg-gray-100 transition-colors list-none">
+                                <span class="font-bold text-gray-800 flex items-center gap-3">
+                                    <span
+                                        class="bg-amber-100 text-amber-700 w-6 h-6 rounded-full flex items-center justify-center text-xs flex-shrink-0">Q4</span>
+                                    준비물은 어떻게 되나요?
+                                </span>
+                                <span
+                                    class="text-gray-400 transition-transform duration-300 group-open:rotate-180">▼</span>
+                            </summary>
+                            <div class="px-4 pb-4 pt-0 text-gray-600 text-sm leading-relaxed ml-9">
+                                의류, 신발, 슬리퍼, 세면도구, 보호용품, 상비약, 전자기기(220V), 환전 화폐 등을 준비하면 됩니다. 팀이 확정되면 보다 구체적인 안내를 드릴
+                                예정입니다.
+                            </div>
+                        </details>
+
+                        <!-- Q5 -->
+                        <details
+                            class="group bg-gray-50 rounded-xl border border-gray-100 overflow-hidden open:bg-white open:ring-1 open:ring-amber-200 transition-all duration-300">
+                            <summary
+                                class="flex justify-between items-center p-4 cursor-pointer hover:bg-gray-100 transition-colors list-none">
+                                <span class="font-bold text-gray-800 flex items-center gap-3">
+                                    <span
+                                        class="bg-amber-100 text-amber-700 w-6 h-6 rounded-full flex items-center justify-center text-xs flex-shrink-0">Q5</span>
+                                    날씨는 어떤가요?
+                                </span>
+                                <span
+                                    class="text-gray-400 transition-transform duration-300 group-open:rotate-180">▼</span>
+                            </summary>
+                            <div class="px-4 pb-4 pt-0 text-gray-600 text-sm leading-relaxed ml-9">
+                                포카라 지역은 일교차가 크고 아침·저녁으로 쌀쌀합니다. 낮에는 약 15~20도, 밤에는 약 2~5도로 내려갈 수 있으며, 트레킹 시에는 이보다 더 추울 수
+                                있습니다.<br>
+                                <span class="text-gray-500 mt-1 block">※ 개인 필요에 따라 바람막이, 모자, 장갑 등 방한 및 방풍 물품 등을
+                                    준비하세요.</span>
+                            </div>
+                        </details>
+
+                        <!-- Q6 -->
+                        <details
+                            class="group bg-gray-50 rounded-xl border border-gray-100 overflow-hidden open:bg-white open:ring-1 open:ring-amber-200 transition-all duration-300">
+                            <summary
+                                class="flex justify-between items-center p-4 cursor-pointer hover:bg-gray-100 transition-colors list-none">
+                                <span class="font-bold text-gray-800 flex items-center gap-3">
+                                    <span
+                                        class="bg-amber-100 text-amber-700 w-6 h-6 rounded-full flex items-center justify-center text-xs flex-shrink-0">Q6</span>
+                                    식사는 어떻게 제공되나요?
+                                </span>
+                                <span
+                                    class="text-gray-400 transition-transform duration-300 group-open:rotate-180">▼</span>
+                            </summary>
+                            <div class="px-4 pb-4 pt-0 text-gray-600 text-sm leading-relaxed ml-9">
+                                아침과 점심은 참가비에 포함되어 있으며, 주로 채식 위주로 제공됩니다. 저녁은 사비로 호텔, 식당 등에서 자유롭게 드시면 됩니다.
+                            </div>
+                        </details>
+
+                        <!-- Q7 -->
+                        <details
+                            class="group bg-gray-50 rounded-xl border border-gray-100 overflow-hidden open:bg-white open:ring-1 open:ring-amber-200 transition-all duration-300">
+                            <summary
+                                class="flex justify-between items-center p-4 cursor-pointer hover:bg-gray-100 transition-colors list-none">
+                                <span class="font-bold text-gray-800 flex items-center gap-3">
+                                    <span
+                                        class="bg-amber-100 text-amber-700 w-6 h-6 rounded-full flex items-center justify-center text-xs flex-shrink-0">Q7</span>
+                                    통신 및 인터넷 사용은 가능한가요?
+                                </span>
+                                <span
+                                    class="text-gray-400 transition-transform duration-300 group-open:rotate-180">▼</span>
+                            </summary>
+                            <div class="px-4 pb-4 pt-0 text-gray-600 text-sm leading-relaxed ml-9">
+                                숙박시설에서는 Wi-Fi 사용이 가능하지만, 필요한 경우 개인적으로 로밍 및 현지 SIM 카드를 준비해주세요.
+                            </div>
+                        </details>
+
+                        <!-- Q8 -->
+                        <details
+                            class="group bg-gray-50 rounded-xl border border-gray-100 overflow-hidden open:bg-white open:ring-1 open:ring-amber-200 transition-all duration-300">
+                            <summary
+                                class="flex justify-between items-center p-4 cursor-pointer hover:bg-gray-100 transition-colors list-none">
+                                <span class="font-bold text-gray-800 flex items-center gap-3">
+                                    <span
+                                        class="bg-amber-100 text-amber-700 w-6 h-6 rounded-full flex items-center justify-center text-xs flex-shrink-0">Q8</span>
+                                    카트만두에서 포카라까지 어떻게 가나요?
+                                </span>
+                                <span
+                                    class="text-gray-400 transition-transform duration-300 group-open:rotate-180">▼</span>
+                            </summary>
+                            <div class="px-4 pb-4 pt-0 text-gray-600 text-sm leading-relaxed ml-9">
+                                <ul class="list-disc pl-4 space-y-1">
+                                    <li><strong>트레킹팀:</strong> 버스(카트만두→포카라), 국내선 비행기(포카라→카트만두)</li>
+                                    <li><strong>힐링팀:</strong> 국내선 왕복</li>
+                                    <li><strong>템플스테이팀:</strong> 개별적으로 직접 이동</li>
+                                    <li><strong>선태극권팀:</strong> 포카라 공항까지는 직접</li>
+                                </ul>
+                            </div>
+                        </details>
+
+                        <!-- Q9 -->
+                        <details
+                            class="group bg-gray-50 rounded-xl border border-gray-100 overflow-hidden open:bg-white open:ring-1 open:ring-amber-200 transition-all duration-300">
+                            <summary
+                                class="flex justify-between items-center p-4 cursor-pointer hover:bg-gray-100 transition-colors list-none">
+                                <span class="font-bold text-gray-800 flex items-center gap-3">
+                                    <span
+                                        class="bg-amber-100 text-amber-700 w-6 h-6 rounded-full flex items-center justify-center text-xs flex-shrink-0">Q9</span>
+                                    숙소에서 포카라 시내까지 이동이 가능한가요?
+                                </span>
+                                <span
+                                    class="text-gray-400 transition-transform duration-300 group-open:rotate-180">▼</span>
+                            </summary>
+                            <div class="px-4 pb-4 pt-0 text-gray-600 text-sm leading-relaxed ml-9">
+                                네, 차량으로 20~30분 소요됩니다. 필요하다면 지프 또는 택시 예약을 도와드립니다.
+                            </div>
+                        </details>
+
+                        <!-- Q10 -->
+                        <details
+                            class="group bg-gray-50 rounded-xl border border-gray-100 overflow-hidden open:bg-white open:ring-1 open:ring-amber-200 transition-all duration-300">
+                            <summary
+                                class="flex justify-between items-center p-4 cursor-pointer hover:bg-gray-100 transition-colors list-none">
+                                <span class="font-bold text-gray-800 flex items-center gap-3">
+                                    <span
+                                        class="bg-amber-100 text-amber-700 w-6 h-6 rounded-full flex items-center justify-center text-xs flex-shrink-0">Q10</span>
+                                    고산병 위험이 있나요?
+                                </span>
+                                <span
+                                    class="text-gray-400 transition-transform duration-300 group-open:rotate-180">▼</span>
+                            </summary>
+                            <div class="px-4 pb-4 pt-0 text-gray-600 text-sm leading-relaxed ml-9">
+                                숙소는 해발 약 1,400m, 트레킹 구간은 최대 4,000m까지 올라갑니다. 개인에 따라 고산병이 나타날 수 있으므로, 심장이 약한 분은 사전에 의사와
+                                상의하시기 바랍니다. 트레킹 중 고산병 증상이 나타나면 즉시 하산 조치합니다.
+                            </div>
+                        </details>
+                    </div>
+
+                    <div class="mt-8 p-4 bg-amber-50 rounded-xl border border-amber-100 text-center">
+                        <p class="text-sm text-amber-800 font-medium">
+                            ⚠️ 보다 자세한 사항은 출발 전 공식 안내 자료를 확인해주세요.<br>
+                            <span class="text-xs text-amber-600 mt-1 block">(※ 추가 문의: 카카오톡 혹은 010-3501-0078)</span>
+                        </p>
                     </div>
                 </section>
             </div>
