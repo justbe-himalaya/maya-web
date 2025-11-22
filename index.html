@@ -17,11 +17,12 @@
 
     <!-- Security Headers -->
     <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.tailwindcss.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https:;">
+        content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.tailwindcss.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https:; frame-src https://www.youtube.com https://www.youtube-nocookie.com;">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="X-XSS-Protection" content="1; mode=block">
-    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Referrer-Policy" content="no-referrer-when-downgrade">
+    <meta name="referrer" content="no-referrer-when-downgrade">
 
     <!-- Cache Control for KakaoTalk -->
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -805,10 +806,10 @@
                                     <div class="mt-6">
                                         <div class="relative w-full" style="padding-bottom: 56.25%;">
                                             <iframe class="absolute top-0 left-0 w-full h-full rounded-lg shadow-2xl"
-                                                src="https://www.youtube-nocookie.com/embed/rayvtZKHHYM"
+                                                src="https://www.youtube.com/embed/rayvtZKHHYM?si=UeWzLNWiM3b9xTq8"
                                                 title="YouTube video player" frameborder="0"
                                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                                allowfullscreen>
+                                                referrerpolicy="no-referrer-when-downgrade" allowfullscreen>
                                             </iframe>
                                         </div>
                                     </div>
@@ -888,6 +889,22 @@
                                 부처님 고향에 세워지는 JustBe 도량,<br>한국의 약사여래 부처님과 미륵보살님을 원만히 모셨고<br>이제 도량 창건 불사로 이어나가려
                                 합니다.<br>발심하시어 함께 해 주시기를 간절히 청합니다.
                             </p>
+
+                            <!-- Progress Bar -->
+                            <div class="mb-10 max-w-3xl mx-auto px-4">
+                                <div class="flex justify-between items-end mb-2">
+                                    <span class="text-sm font-medium text-gray-500" data-kr="목표: 3,000명"
+                                        data-en="Goal: 3,000 people">목표: 3,000명</span>
+                                    <span class="text-lg font-bold text-blue-600" data-kr="현재 133명 동참 (4.4%)"
+                                        data-en="Current: 133 participants (4.4%)">현재 133명 동참 (4.4%)</span>
+                                </div>
+                                <div class="w-full bg-blue-100 rounded-full h-4 overflow-hidden shadow-inner">
+                                    <div class="bg-gradient-to-r from-blue-500 to-blue-600 h-4 rounded-full transition-all duration-1000 ease-out relative"
+                                        style="width: 4.4%">
+                                        <div class="absolute inset-0 bg-white/30 animate-[shimmer_2s_infinite]"></div>
+                                    </div>
+                                </div>
+                            </div>
 
                             <div class="mb-12 text-center">
                                 <a href="https://www.google.com/maps/d/edit?mid=1x_ykXFgtzCgyzLZte1n2xURV26KylQU&usp=sharing"
@@ -1236,10 +1253,11 @@
                                 모시고 고불식을 성황리에 봉행하였습니다.
                             </p>
                             <div class="mt-4 aspect-w-16 aspect-h-9">
-                                <iframe src="https://www.youtube.com/embed/rayvtZKHHYM?si=U2G6kztI3Fjg1qqA"
+                                <iframe src="https://www.youtube.com/embed/rayvtZKHHYM?si=UeWzLNWiM3b9xTq8"
                                     title="YouTube video player" frameborder="0"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                    allowfullscreen class="w-full h-64 rounded-lg shadow-md"></iframe>
+                                    referrerpolicy="no-referrer-when-downgrade" allowfullscreen
+                                    class="w-full h-64 rounded-lg shadow-md"></iframe>
                             </div>
                         </div>
                     </div>
