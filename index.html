@@ -912,13 +912,15 @@
                             <!-- Progress Bar -->
                             <div class="mb-10 max-w-3xl mx-auto px-4">
                                 <div class="flex justify-between items-end mb-2">
-                                    <span class="text-sm font-medium text-gray-500" data-kr="목표: 3,000명"
-                                        data-en="Goal: 3,000 people">목표: 3,000명</span>
-                                    <span class="text-lg font-bold text-blue-600" data-kr="현재 133명 동참 (4.4%)"
-                                        data-en="Current: 133 participants (4.4%)">현재 133명 동참 (4.4%)</span>
+                                    <span id="one-pyeong-goal" class="text-sm font-medium text-gray-500"
+                                        data-kr="목표: 3,000명" data-en="Goal: 3,000 people">목표: 3,000명</span>
+                                    <span id="one-pyeong-stats" class="text-lg font-bold text-blue-600"
+                                        data-kr="현재 133명 동참 (4.4%)" data-en="Current: 133 participants (4.4%)">현재 133명
+                                        동참 (4.4%)</span>
                                 </div>
                                 <div class="w-full bg-blue-100 rounded-full h-4 overflow-hidden shadow-inner">
-                                    <div class="bg-gradient-to-r from-blue-500 to-blue-600 h-4 rounded-full transition-all duration-1000 ease-out relative"
+                                    <div id="one-pyeong-progress-bar"
+                                        class="bg-gradient-to-r from-blue-500 to-blue-600 h-4 rounded-full transition-all duration-1000 ease-out relative"
                                         style="width: 4.4%">
                                         <div class="absolute inset-0 bg-white/30 animate-[shimmer_2s_infinite]"></div>
                                     </div>
@@ -2675,6 +2677,14 @@
                 const yaksaGoal = data.medicine_buddha.goal;
                 const yaksaPercent = Math.round((yaksaDonors / yaksaGoal) * 100 * 10) / 10;
 
+                // 1평 불사 데이터
+                if (data.one_pyeong) {
+                    const onePyeongCount = data.one_pyeong.count;
+                    const onePyeongGoal = data.one_pyeong.goal;
+                    const onePyeongPercent = Math.round((onePyeongCount / onePyeongGoal) * 100 * 10) / 10;
+                    updateOnePyeongProgressBar(onePyeongCount, onePyeongGoal, onePyeongPercent);
+                }
+
                 // UI 업데이트
                 updateProgressBar();
                 updateYaksaProgressBar(yaksaDonors, yaksaGoal, yaksaPercent);
@@ -2730,6 +2740,41 @@
                     progressText.textContent = progressText.getAttribute('data-en');
                 } else {
                     progressText.textContent = progressText.getAttribute('data-kr');
+                }
+            }
+        }
+
+        function updateOnePyeongProgressBar(count, goal, percent) {
+            const progressBar = document.getElementById('one-pyeong-progress-bar');
+            const progressStats = document.getElementById('one-pyeong-stats');
+            const progressGoal = document.getElementById('one-pyeong-goal');
+
+            if (progressBar && progressStats && progressGoal) {
+                // 뷰포트에 들어왔을 때 애니메이션 시작
+                const observer = new IntersectionObserver((entries) => {
+                    if (entries[0].isIntersecting) {
+                        progressBar.style.width = `${percent}%`;
+                        observer.disconnect();
+                    }
+                }, { threshold: 0.5 });
+
+                observer.observe(progressBar);
+
+                // 텍스트 업데이트 (다국어 지원)
+                progressStats.setAttribute('data-kr', `현재 ${count}명 동참 (${percent}%)`);
+                progressStats.setAttribute('data-en', `Current: ${count} participants (${percent}%)`);
+
+                progressGoal.setAttribute('data-kr', `목표: ${goal.toLocaleString()}명`);
+                progressGoal.setAttribute('data-en', `Goal: ${goal.toLocaleString()} people`);
+
+                // 현재 언어에 맞게 업데이트
+                const currentLang = document.documentElement.lang;
+                if (currentLang === 'en') {
+                    progressStats.textContent = progressStats.getAttribute('data-en');
+                    progressGoal.textContent = progressGoal.getAttribute('data-en');
+                } else {
+                    progressStats.textContent = progressStats.getAttribute('data-kr');
+                    progressGoal.textContent = progressGoal.getAttribute('data-kr');
                 }
             }
         }

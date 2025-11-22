@@ -6,9 +6,15 @@
     "updatedBy": "관리자"
   },
   "medicine_buddha": {
-    "count":751,
+    "count": 751,
     "goal": 1250,
     "lastUpdated": "2025-08-05T10:00:00Z",
+    "updatedBy": "관리자"
+  },
+  "one_pyeong": {
+    "count": 133,
+    "goal": 3000,
+    "lastUpdated": "2025-11-22T00:00:00Z",
     "updatedBy": "관리자"
   }
 }
