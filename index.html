@@ -129,20 +129,54 @@
         href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500&display=swap"
         rel="stylesheet">
     <style>
+        :root {
+            /* Design System Colors */
+            --color-primary: #1e3a8a;
+            /* Deep Himalaya Blue */
+            --color-secondary: #b45309;
+            /* Buddhist Amber */
+            --color-accent: #d97706;
+            /* Gold */
+            --color-text-main: #1f2937;
+            --color-text-light: #6b7280;
+            --color-bg-light: #f8fafc;
+            --color-white: #ffffff;
+        }
+
         /* 커스텀 폰트 적용 */
         body {
             font-family: 'Noto Sans KR', sans-serif;
             word-break: keep-all;
             overflow-wrap: break-word;
+            color: var(--color-text-main);
+            background-color: var(--color-bg-light);
         }
 
         h1,
         h2,
         h3,
+        h4,
+        h5,
+        h6,
         .font-serif {
             font-family: 'Noto Serif KR', serif;
             word-break: keep-all;
             overflow-wrap: break-word;
+        }
+
+        /* Glassmorphism Utilities */
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .glass-dark {
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         /* 스크롤 애니메이션을 위한 기본 스타일 */
@@ -331,11 +365,43 @@
         .hero-bg {
             background-image: url('resource/img/hero_bg_88.jpeg');
             background-size: cover;
-            background-position: center top;
+            background-position: center;
             background-attachment: fixed;
             background-repeat: no-repeat;
             will-change: transform;
-            /* GPU 가속 */
+            position: relative;
+        }
+
+        .hero-overlay {
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0.6) 100%);
+            position: absolute;
+            inset: 0;
+        }
+
+        /* Text Reveal Animation */
+        .reveal-text {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: reveal 1s cubic-bezier(0.5, 0, 0, 1) forwards;
+        }
+
+        .reveal-delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .reveal-delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .reveal-delay-3 {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes reveal {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* 모바일 반응형 최적화 */
@@ -441,146 +507,194 @@
 
 <body class="bg-slate-50 text-gray-800">
 
-    <!-- Language Toggle Button -->
-    <div class="fixed top-4 right-4 z-40">
-        <button id="lang-toggle"
-            class="bg-white/95 backdrop-blur-sm text-gray-800 px-3 py-2 md:px-4 md:py-2 rounded-lg border border-gray-300 hover:bg-white hover:shadow-lg transition-all duration-300 flex items-center gap-1 md:gap-2 text-sm md:text-base shadow-lg"
-            aria-label="언어 전환 버튼" role="button" tabindex="0" title="언어를 한국어/영어로 전환합니다">
-            <span id="lang-flag" class="text-base md:text-lg">🇺🇸</span>
-            <span id="lang-text" class="font-medium">EN</span>
-        </button>
-    </div>
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full z-50 transition-all duration-300" id="main-nav">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-2 group">
+                <img src="resource/img/justbe_img.png" alt="JustBe Logo"
+                    class="h-10 w-auto brightness-0 invert opacity-90 group-hover:opacity-100 transition-opacity">
+                <span
+                    class="text-white font-serif text-lg tracking-wider opacity-90 group-hover:opacity-100 transition-opacity">JustBe
+                    Himalaya</span>
+            </a>
+
+            <div class="flex items-center gap-6">
+                <!-- Language Toggle -->
+                <button id="lang-toggle"
+                    class="glass text-white px-4 py-2 rounded-full hover:bg-white/20 transition-all duration-300 flex items-center gap-2 text-sm backdrop-blur-md"
+                    aria-label="언어 전환 버튼">
+                    <span id="lang-flag">🇺🇸</span>
+                    <span id="lang-text" class="font-medium">EN</span>
+                </button>
+            </div>
+        </div>
+    </nav>
 
     <!-- Hero Section -->
-    <header class="hero-bg h-screen text-white flex flex-col justify-start items-center relative pt-0 md:pt-2"
+    <header class="hero-bg h-screen text-white flex flex-col justify-center items-center relative overflow-hidden"
         role="banner" aria-label="JustBe 히말라야 프로젝트 메인 배너">
-        <div class="relative z-10 text-center p-8 scroll-reveal hidden">
-            <!-- 상단 로고/아이콘 -->
-            <div class="mb-4">
-                <img src="resource/img/justbe_img.png" alt="JustBe Himalaya" width="80" height="80" loading="eager"
-                    class="h-16 md:h-20 mx-auto opacity-90" style="filter: brightness(0) invert(1);"
-                    onerror="this.outerHTML='<div class=\'text-4xl mb-4\'>🏔️</div>'" </div>
 
-                <!-- Just Be 이미지 -->
-                <div class="mb-1">
-                    <img src="resource/img/justbe_text.png" alt="Just Be" width="200" height="72" loading="eager"
-                        class="h-18 md:h-24 mx-auto opacity-90" style="filter: brightness(0) invert(1);"
-                        onerror="this.outerHTML='<div class=\'text-5xl md:text-6xl font-light tracking-wider opacity-90 text-white\'>Just Be</div>'"
-                        </div>
+        <div class="hero-overlay"></div>
 
-                    <!-- Himalaya (메인 제목) -->
-                    <h1 class="text-6xl md:text-8xl font-bold mb-4 leading-tight tracking-tight">
-                        Himalaya
-                    </h1>
+        <div class="relative z-10 text-center p-8 max-w-5xl mx-auto">
+            <!-- Main Title Group -->
+            <!-- Main Title Group (Hidden as per user request) -->
+            <div class="mb-8 hidden">
+                <div class="reveal-text reveal-delay-1 mb-2">
+                    <span class="text-lg md:text-xl font-light tracking-[0.2em] uppercase text-amber-400">Spiritual
+                        Journey</span>
+                </div>
 
-                    <!-- project (작은 영문) -->
-                    <div class="text-4xl md:text-5xl font-light tracking-wider mb-8 opacity-90">
-                        project
-                    </div>
+                <h1
+                    class="reveal-text reveal-delay-2 text-5xl md:text-7xl lg:text-8xl font-bold mb-2 leading-tight tracking-tight font-serif">
+                    Himalaya <br>
+                    <span class="font-light italic opacity-90">Project</span>
+                </h1>
 
-                    <!-- 한글 부제목 -->
-                    <p class="text-2xl md:text-3xl font-light leading-relaxed opacity-95">
-                        우리 마음의 고향으로 돌아가는 순례
+                <div class="reveal-text reveal-delay-3 mt-6">
+                    <p class="text-xl md:text-2xl font-light leading-relaxed opacity-90 max-w-2xl mx-auto">
+                        우리 마음의 고향으로 돌아가는 순례<br>
+                        <span class="text-base md:text-lg opacity-70 mt-2 block font-serif">The Pilgrimage Back to the
+                            Home of Our Hearts</span>
                     </p>
                 </div>
-                <div class="absolute bottom-10 z-10 animate-bounce">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                    </svg>
-                </div>
+            </div>
+
+            <!-- CTA Buttons (Hidden as per user request) -->
+            <div
+                class="reveal-text reveal-delay-3 mt-12 flex flex-col md:flex-row gap-4 justify-center items-center hidden">
+                <button onclick="document.getElementById('project-overview-title').scrollIntoView({behavior: 'smooth'})"
+                    class="glass text-white px-8 py-4 rounded-full hover:bg-white hover:text-blue-900 transition-all duration-300 font-medium tracking-wide text-lg group">
+                    프로젝트 둘러보기
+                    <span class="inline-block ml-2 group-hover:translate-x-1 transition-transform">→</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 z-10 animate-bounce cursor-pointer"
+            onclick="document.getElementById('project-overview-title').scrollIntoView({behavior: 'smooth'})">
+            <div class="flex flex-col items-center gap-2 opacity-70 hover:opacity-100 transition-opacity">
+                <span class="text-xs tracking-widest uppercase">Scroll</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7-7-7" />
+                </svg>
+            </div>
+        </div>
     </header>
 
     <main class="w-full" role="main" aria-label="메인 콘텐츠">
         <!-- Project Overview Section -->
-        <section class="py-6 md:py-20 bg-white" role="region" aria-labelledby="project-overview-title">
-            <div class="max-w-6xl mx-auto px-6">
-                <div class="text-center mb-6 md:mb-12 scroll-reveal">
-                    <h2 id="project-overview-title" class="text-3xl md:text-4xl font-bold mb-8 text-gray-900"
+        <section class="py-20 md:py-32 bg-white relative" role="region" aria-labelledby="project-overview-title">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-16 md:mb-24 scroll-reveal">
+                    <span class="text-amber-600 font-medium tracking-widest uppercase text-sm mb-4 block">Vision &
+                        Mission</span>
+                    <h2 id="project-overview-title" class="text-4xl md:text-5xl font-bold mb-8 text-gray-900 font-serif"
                         data-kr="Project 원력 願力" data-en="Project Vision">Project 원력 <span
-                            class="text-gray-500 text-lg md:text-2xl">願力</span></h2>
-                    <p class="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed"
-                        data-kr="JustBe Himalaya 프로젝트는<span class='md:inline block'> 네팔 히말라야 포카라(pokhara)에</span><span class='md:inline block'> <strong class='text-amber-700'>한국 불교 첫 도량</strong>과</span><span class='md:inline block'> 마을(Himalaya Korean Basecamp)을 조성하고,</span><br class='block md:hidden'><span class='md:inline block'> 부처님 탄생지인 룸비니에서</span><span class='md:inline block'> 히말라야를 잇는 160km 옛 순례길을</span><span class='md:inline block'> 복원하는 공익 프로젝트입니다.</span>"
-                        data-en="The JustBe Himalaya Project aims to establish the <strong class='text-amber-700'>first Korean Buddhist temple</strong> and village (Himalaya Korean Basecamp) in Pokhara, Nepal Himalayas,<br>and restore the 160km <strong class='text-amber-700'>ancient pilgrimage route</strong><br>connecting Lumbini (Buddha's birthplace) to the Himalayas<br>as a public benefit project.">
-                        JustBe Himalaya 프로젝트는<span class="md:inline block"> 네팔 히말라야 포카라(pokhara)에</span><span
-                            class="md:inline block"> <strong class="text-amber-700">한국 불교 첫 도량</strong>과</span><span
-                            class="md:inline block"> 마을(Himalaya Korean Basecamp)을 조성하고,</span><br
-                            class="block md:hidden"><span class="md:inline block"> 부처님 탄생지인 룸비니에서</span><span
-                            class="md:inline block"> 히말라야를 잇는 160km 옛 순례길을</span><span class="md:inline block"> 복원하는 공익
-                            프로젝트입니다.</span>
+                            class="text-amber-600 text-2xl md:text-3xl ml-2 font-serif">願力</span></h2>
+                    <p class="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-light"
+                        data-kr="히말라야의 품에서 <strong class='text-blue-900 font-medium'>한국 불교의 새로운 역사</strong>를 씁니다."
+                        data-en="Writing a <strong class='text-blue-900 font-medium'>new history of Korean Buddhism</strong> in the embrace of the Himalayas.">
+                        히말라야의 품에서 <strong class="text-blue-900 font-medium">한국 불교의 새로운 역사</strong>를 씁니다.
                     </p>
                 </div>
 
-                <div class="grid md:grid-cols-3 gap-4 md:gap-8">
-                    <div class="text-center p-4 md:p-6 bg-gray-50/30 rounded-lg border border-gray-200/50">
-                        <div class="w-16 h-16 mx-auto mb-3 flex justify-center items-center">
-                            <img src="resource/img/justbe_img.png" alt="JustBe Logo" width="64" height="56"
-                                loading="eager" class="w-16 h-14"
-                                onerror="this.outerHTML='<div class=\'text-4xl\'>🏔️</div>'">
-                        </div>
-                        <h3 class="text-xl font-serif font-bold mb-3 text-gray-700" data-kr="JustBe Temple 히말라야"
-                            data-en="JustBe Temple Himalaya">
-                            JustBe Temple 히말라야
-                            <br>
-                            <a href="https://maps.app.goo.gl/8FDLrUbKZ4yqar5D8" target="_blank"
-                                rel="noopener noreferrer"
-                                class="text-blue-600 hover:text-blue-800 text-sm ml-2 underline" data-kr="지도 보기"
-                                data-en="View on Map">
-                                지도 보기
-                            </a>
-                        </h3>
-                        <p class="text-gray-600 leading-relaxed text-sm"
-                            data-kr="포카라 품디콧 언덕(1400m)에 <strong class='text-amber-700'>한국불교 첫 도량</strong>을 건립합니다. 치유와 교육이 어우러진 수행 공동체를 조성합니다."
-                            data-en="Establishing <strong class='text-amber-700'>the first Korean Buddhist temple</strong> on Pumdikot Hill (1400m) in Pokhara. Creating a practice community that harmonizes healing and education.">
-                            포카라 품디콧 언덕(1400m)에 <strong class="text-amber-700">한국불교 첫 도량</strong>을 건립합니다.
-                            치유와 교육이 어우러진 수행 공동체를 조성합니다.
-                        </p>
-                    </div>
-
-                    <div class="text-center p-4 md:p-6 bg-gray-50/30 rounded-lg border border-gray-200/50">
-                        <div class="w-16 h-16 mx-auto mb-4 rounded-lg overflow-hidden">
-                            <img src="resource/img/shadow.jpeg" alt="붓다로드" data-kr-alt="붓다로드" data-en-alt="Buddha Road"
-                                width="64" height="64" loading="lazy" class="w-full h-full object-cover"
-                                onerror="this.outerHTML='<div class=\'w-16 h-16 bg-gray-200 rounded-lg flex items-center justify-center text-gray-400\'><span>🛤️</span></div>'">
-                        </div>
-                        <h3 class="text-xl font-serif font-bold mb-3 text-gray-700" data-kr="붓다로드"
-                            data-en="Buddha Road">붓다로드</h3>
-                        <p class="text-gray-600 leading-relaxed text-sm"
-                            data-kr="부처님 탄생지 룸비니와 히말라야를 연결하는 <strong class='text-amber-700'>160km 불교 순례길</strong>을 복원합니다. 소중한 인연을 만나고 진리를 구하는 여정을 함께하는 길을 복원합니다."
-                            data-en="Restoring the <strong class='text-amber-700'>160km Buddhist pilgrimage route</strong> connecting Lumbini (Buddha's birthplace) and the Himalayas. Restoring this sacred path where people can meet precious connections and seek truth together.">
-                            부처님 탄생지 룸비니와 히말라야를 연결하는
-                            <strong class="text-amber-700">160km 불교 순례길</strong>을 복원합니다.
-                            소중한 인연을 만나고 진리를 구하는 여정을 함께하는 길을 복원합니다.
-                        </p>
-                    </div>
-
+                <div class="grid md:grid-cols-3 gap-8 md:gap-12">
+                    <!-- Card 1: Temple -->
                     <div
-                        class="text-center p-4 md:p-6 bg-gray-50/30 rounded-lg border border-gray-200/50 md:block hidden">
-                        <div class="w-20 h-16 mx-auto mb-3 flex justify-center items-center">
-                            <div class="flex items-center gap-2">
-                                <span class="text-3xl">🇰🇷</span>
-                                <span class="text-2xl">🤝</span>
-                                <span class="text-3xl">🇳🇵</span>
-                            </div>
+                        class="group relative p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden">
+                        <div
+                            class="absolute top-0 right-0 w-32 h-32 bg-blue-100 rounded-bl-full -mr-8 -mt-8 opacity-50 group-hover:scale-150 transition-transform duration-700 ease-out">
                         </div>
-                        <h3 class="text-xl font-serif font-bold mb-3 text-gray-700" data-kr="한-네 문화외교"
-                            data-en="Korea-Nepal Cultural Diplomacy">한-네 문화외교</h3>
-                        <p class="text-gray-600 leading-relaxed text-sm"
-                            data-kr="불교를 바탕으로 한국과 네팔의 <strong class='text-amber-700'>새로운 문화교류 모델</strong>을 실현합니다. 지역민과 상생하며 공동체 발전에 기여합니다."
-                            data-en="Implementing a <strong class='text-amber-700'>new cultural exchange model</strong> between Korea and Nepal based on Buddhism. Contributing to community development through mutual prosperity with locals.">
-                            불교를 바탕으로 한국과 네팔의
-                            <strong class="text-amber-700">새로운 문화교류 모델</strong>을 실현합니다.
-                            지역민과 상생하며 공동체 발전에 기여합니다.
-                        </p>
+
+                        <div class="relative z-10">
+                            <div
+                                class="w-16 h-16 mb-6 rounded-2xl bg-white shadow-lg flex items-center justify-center text-3xl group-hover:scale-110 transition-transform duration-300">
+                                🏔️
+                            </div>
+                            <h3 class="text-2xl font-serif font-bold mb-4 text-gray-900 group-hover:text-blue-900 transition-colors"
+                                data-kr="JustBe Temple 히말라야" data-en="JustBe Temple Himalaya">
+                                JustBe Temple 히말라야
+                            </h3>
+                            <p class="text-gray-600 leading-relaxed mb-6"
+                                data-kr="포카라 품디콧 언덕(1400m)에 한국불교 첫 도량을 건립하여 치유와 교육이 어우러진 수행 공동체를 조성합니다."
+                                data-en="Establishing the first Korean Buddhist temple on Pumdikot Hill (1400m) in Pokhara to create a practice community harmonizing healing and education.">
+                                포카라 품디콧 언덕(1400m)에 한국불교 첫 도량을 건립하여 치유와 교육이 어우러진 수행 공동체를 조성합니다.
+                            </p>
+                            <a href="https://maps.app.goo.gl/8FDLrUbKZ4yqar5D8" target="_blank"
+                                class="inline-flex items-center text-blue-600 font-medium hover:text-blue-800 transition-colors group/link">
+                                <span data-kr="지도 보기" data-en="View on Map">지도 보기</span>
+                                <svg class="w-4 h-4 ml-2 group-hover/link:translate-x-1 transition-transform"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Buddha Road -->
+                    <div
+                        class="group relative p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden">
+                        <div
+                            class="absolute top-0 right-0 w-32 h-32 bg-amber-100 rounded-bl-full -mr-8 -mt-8 opacity-50 group-hover:scale-150 transition-transform duration-700 ease-out">
+                        </div>
+
+                        <div class="relative z-10">
+                            <div
+                                class="w-16 h-16 mb-6 rounded-2xl bg-white shadow-lg flex items-center justify-center text-3xl group-hover:scale-110 transition-transform duration-300">
+                                🛤️
+                            </div>
+                            <h3 class="text-2xl font-serif font-bold mb-4 text-gray-900 group-hover:text-amber-800 transition-colors"
+                                data-kr="붓다로드 복원" data-en="Buddha Road Restoration">
+                                붓다로드 복원
+                            </h3>
+                            <p class="text-gray-600 leading-relaxed mb-6"
+                                data-kr="부처님 탄생지 룸비니와 히말라야를 연결하는 160km 옛 순례길을 복원하여 진리를 구하는 여정을 함께합니다."
+                                data-en="Restoring the 160km ancient pilgrimage route connecting Lumbini and the Himalayas to join the journey of seeking truth.">
+                                부처님 탄생지 룸비니와 히말라야를 연결하는 160km 옛 순례길을 복원하여 진리를 구하는 여정을 함께합니다.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Diplomacy -->
+                    <div
+                        class="group relative p-8 rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden">
+                        <div
+                            class="absolute top-0 right-0 w-32 h-32 bg-green-100 rounded-bl-full -mr-8 -mt-8 opacity-50 group-hover:scale-150 transition-transform duration-700 ease-out">
+                        </div>
+
+                        <div class="relative z-10">
+                            <div
+                                class="w-16 h-16 mb-6 rounded-2xl bg-white shadow-lg flex items-center justify-center text-3xl group-hover:scale-110 transition-transform duration-300">
+                                🤝
+                            </div>
+                            <h3 class="text-2xl font-serif font-bold mb-4 text-gray-900 group-hover:text-green-800 transition-colors"
+                                data-kr="한-네 문화외교" data-en="Korea-Nepal Diplomacy">
+                                한-네 문화외교
+                            </h3>
+                            <p class="text-gray-600 leading-relaxed mb-6"
+                                data-kr="불교를 바탕으로 한국과 네팔의 새로운 문화교류 모델을 실현하고 지역민과 상생하며 공동체 발전에 기여합니다."
+                                data-en="Realizing a new cultural exchange model between Korea and Nepal based on Buddhism and contributing to community development.">
+                                불교를 바탕으로 한국과 네팔의 새로운 문화교류 모델을 실현하고 지역민과 상생하며 공동체 발전에 기여합니다.
+                            </p>
+                        </div>
                     </div>
                 </div>
 
-                <!-- 37문 37답 버튼 -->
-                <div class="text-center mt-6 md:mt-12 scroll-reveal">
+                <!-- Q&A Button -->
+                <div class="text-center mt-16 md:mt-24 scroll-reveal">
                     <button onclick="openQAModal()"
-                        class="btn-touch touch-feedback inline-flex items-center bg-amber-600/90 hover:bg-amber-600 text-white font-medium px-9 py-5 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl backdrop-blur-sm text-lg"
-                        data-kr="JustBe 히말라야 프로젝트: 준한스님 30문 30답" data-en="JustBe Himalaya Temple: Ven. Junhan's 30 Q&A">
-                        JustBe 히말라야 프로젝트: 준한스님 30문 30답
+                        class="group relative inline-flex items-center justify-center px-8 py-4 font-medium text-white transition-all duration-200 bg-gray-900 font-serif rounded-full hover:bg-gray-800 hover:shadow-xl hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
+                        data-kr="준한스님 30문 30답 보기" data-en="View Ven. Junhan's 30 Q&A">
+                        <span class="mr-2">준한스님 30문 30답 보기</span>
+                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
                     </button>
                 </div>
             </div>
@@ -602,26 +716,9 @@
                         </div>
                         <div class="text-center space-y-4 text-gray-700 leading-relaxed">
                             <p class="text-lg font-medium text-gray-700 mb-4">
-                                화주 불사에 인연 맺어주신 모든 분들께,
+                                불사에 인연 맺어주신 모든 분들께,
                             </p>
                             <div class="space-y-3 mb-6">
-
-                                <div class="flex items-center justify-center">
-                                    <div class="bg-green-100 px-4 py-3 rounded-2xl border border-green-300">
-                                        <div
-                                            class="flex flex-col md:flex-row md:items-center md:justify-between text-center md:text-left">
-                                            <div class="mb-2 md:mb-0">
-                                                <span class="font-bold text-green-700">26.02.14~24</span>
-                                                <span class="text-green-800 ml-2">제3회 히말라야 새해맞이 정초 구법순례</span>
-                                            </div>
-                                            <button onclick="openPilgrimageModal()"
-                                                class="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded-lg text-xs font-medium transition-colors duration-300 md:ml-4 flex-shrink-0 self-center"
-                                                data-kr="참가하기" data-en="Join">
-                                                참가하기
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
 
                                 <div class="flex items-center justify-center">
                                     <div class="bg-blue-100 px-4 py-3 rounded-2xl border border-blue-300">
@@ -633,6 +730,23 @@
                                             </div>
                                             <button onclick="openExpeditionModal()"
                                                 class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-lg text-xs font-medium transition-colors duration-300 md:ml-4 flex-shrink-0 self-center"
+                                                data-kr="참가하기" data-en="Join">
+                                                참가하기
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center justify-center">
+                                    <div class="bg-green-100 px-4 py-3 rounded-2xl border border-green-300">
+                                        <div
+                                            class="flex flex-col md:flex-row md:items-center md:justify-between text-center md:text-left">
+                                            <div class="mb-2 md:mb-0">
+                                                <span class="font-bold text-green-700">26.02.14~24</span>
+                                                <span class="text-green-800 ml-2">제3회 히말라야 새해맞이 정초 구법순례</span>
+                                            </div>
+                                            <button onclick="openPilgrimageModal()"
+                                                class="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded-lg text-xs font-medium transition-colors duration-300 md:ml-4 flex-shrink-0 self-center"
                                                 data-kr="참가하기" data-en="Join">
                                                 참가하기
                                             </button>
@@ -743,275 +857,306 @@
 
                 <!-- Medicine Buddha Donation Section - ACTIVE CAMPAIGN -->
                 <section id="yaksa-donation"
-                    class="py-8 md:py-24 bg-gradient-to-br from-blue-50 via-white to-blue-50 relative overflow-hidden">
+                    class="py-20 md:py-32 bg-gradient-to-br from-blue-50 via-white to-blue-50 relative overflow-hidden">
                     <!-- Enhanced background pattern -->
                     <div class="absolute inset-0 opacity-5">
                         <div class="absolute inset-0"
                             style="background-image: radial-gradient(circle at 25% 25%, #3b82f6 1px, transparent 1px); background-size: 30px 30px;">
                         </div>
                     </div>
-                    <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+
+                    <div class="max-w-5xl mx-auto px-6 text-center relative z-10">
                         <div class="scroll-reveal">
                             <!-- Enhanced header with glow effect -->
-                            <div class="relative mb-8">
-                                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 relative flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4"
+                            <div class="relative mb-12">
+                                <span
+                                    class="inline-block py-1 px-3 rounded-full bg-blue-100 text-blue-800 text-sm font-medium mb-4">Active
+                                    Campaign</span>
+                                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 relative flex flex-col md:flex-row items-center justify-center gap-4 font-serif"
                                     data-kr="약사여래불 화주 모연" data-en="Medicine Buddha Merit-Making Fundraising">
-                                    <div class="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4">
-                                        <img src="resource/img/yeoksa_right.png" alt="금강역사 오른쪽" width="50" height="50"
-                                            class="opacity-80 hidden md:block" onerror="this.style.display='none'">
-                                        <div class="flex flex-col md:flex-row items-center gap-2 md:gap-2">
+                                    <div class="flex flex-col md:flex-row items-center justify-center gap-4">
+                                        <img src="resource/img/yeoksa_right.png" alt="금강역사 오른쪽" width="60" height="60"
+                                            class="opacity-80 hidden md:block drop-shadow-lg"
+                                            onerror="this.style.display='none'">
+                                        <div class="flex flex-col md:flex-row items-center gap-3">
                                             <span>약사여래</span>
-                                            <img src="resource/img/yaksabul.png" alt="약사여래불" width="80" height="80"
-                                                class="md:w-[115px] md:h-[115px]" onerror="this.outerHTML='불'">
+                                            <div class="relative">
+                                                <div
+                                                    class="absolute inset-0 bg-blue-400 blur-2xl opacity-20 rounded-full">
+                                                </div>
+                                                <img src="resource/img/yaksabul.png" alt="약사여래불" width="100"
+                                                    height="100"
+                                                    class="md:w-[130px] md:h-[130px] relative z-10 drop-shadow-2xl hover:scale-105 transition-transform duration-500"
+                                                    onerror="this.outerHTML='불'">
+                                            </div>
                                             <span>화주 모연</span>
                                         </div>
-                                        <img src="resource/img/yeoksa_left.png" alt="금강역사 왼쪽" width="60" height="60"
-                                            class="opacity-80 hidden md:block" onerror="this.style.display='none'">
+                                        <img src="resource/img/yeoksa_left.png" alt="금강역사 왼쪽" width="70" height="70"
+                                            class="opacity-80 hidden md:block drop-shadow-lg"
+                                            onerror="this.style.display='none'">
                                     </div>
                                 </h2>
-                                <div
-                                    class="absolute -inset-2 bg-gradient-to-r from-blue-400/20 via-transparent to-blue-400/20 blur-xl -z-10">
-                                </div>
                             </div>
-                            <p class="text-xl text-blue-700 mb-8 leading-relaxed"
+
+                            <p class="text-xl md:text-2xl text-blue-800 mb-12 leading-relaxed font-light max-w-3xl mx-auto"
                                 data-kr="모든 중생의 치유와 건강을 위한 약사여래 불사에 함께해 주세요."
                                 data-en="Please join us in the Medicine Buddha sacred construction for the healing and health of all beings.">
-                                모든 중생의 치유와 건강을 위한 약사여래 불사에 함께해 주세요.</p>
+                                모든 중생의 치유와 건강을 위한 약사여래 불사에 함께해 주세요.
+                            </p>
 
-                            <!-- Progress Bar -->
-                            <div class="mb-10">
-                                <div class="flex justify-between items-center mb-3 text-gray-700">
-                                    <span class="font-semibold text-lg" data-kr="모연목표: 1250명"
-                                        data-en="Target: 1250 hearts">모연 목표: 1250명</span>
-
-                                    <span id="yaksa-progress-text" class="font-semibold text-lg"
-                                        data-kr="현재 34명 동참 (2.7%)" data-en="Current: 34 dharma supporters (2.7%)">현재 34명
-                                        동참 (2.7%)</span>
-                                </div>
-
-                                <div class="w-full bg-gray-200 rounded-full h-6 shadow-inner">
-                                    <div id="yaksa-progress-bar"
-                                        class="progress-enhanced bg-gradient-to-r from-blue-500 to-blue-600 h-6 rounded-full transition-all duration-1000 ease-out shadow-lg"
-                                        style="width: 0%;"></div>
-                                </div>
-                            </div>
-
-                            <div class="grid md:grid-cols-2 gap-8 text-left">
+                            <!-- Glassmorphism Card for Progress -->
+                            <div
+                                class="glass rounded-3xl p-8 md:p-12 shadow-xl border border-white/50 mb-16 relative overflow-hidden group">
                                 <div
-                                    class="bg-white/80 backdrop-blur-sm p-8 rounded-xl shadow-lg border border-blue-100">
-                                    <h3 class="text-2xl font-serif font-bold mb-6 text-gray-800 flex items-center">
-                                        <span class="text-2xl mr-3">💳</span>
-                                        <span data-kr="동참 방법" data-en="How to Participate">동참 방법</span>
-                                    </h3>
-                                    <ul class="space-y-4 text-gray-700">
-                                        <li class="flex flex-col"
-                                            data-kr="<div class='mb-1'><strong class='text-blue-700'>💰 금액:</strong></div><div class='ml-6'>1인 10만원</div>"
-                                            data-en="<div class='mb-1'><strong class='text-blue-700'>💰 Amount:</strong></div><div class='ml-6'>100,000 KRW per person</div>">
-                                            <div class="mb-1"><strong class="text-blue-700">💰 금액:</strong></div>
-                                            <div class="ml-6">1인 10만원</div>
-                                        </li>
-                                        <li class="flex flex-col"
-                                            data-kr="<div class='mb-1'><strong class='text-blue-700'>🏦 계좌:</strong></div><div class='ml-6'>농협 301-0319-5339-51 (홍대선원)</div>"
-                                            data-en="<div class='mb-1'><strong class='text-blue-700'>🏦 Account:</strong></div><div class='ml-6'>Nonghyup 301-0319-5339-51 (Hongdae Zen Center)</div>">
-                                            <div class="mb-1"><strong class="text-blue-700">🏦 계좌:</strong></div>
-                                            <div class="ml-6">농협 301-0319-5339-51 (홍대선원)</div>
-                                        </li>
-                                        <li class="flex flex-col"
-                                            data-kr="<div class='mb-1'><strong class='text-blue-700'>📱 문자 접수:</strong></div><div class='ml-6'><a href='sms:010-5708-2423' class='hover:text-blue-800 underline'>010-5708-2423</a></div>"
-                                            data-en="<div class='mb-1'><strong class='text-blue-700'>📱 SMS Registration:</strong></div><div class='ml-6'><a href='sms:010-5708-2423' class='hover:text-blue-800 underline'>010-5708-2423</a></div>">
-                                            <div class="mb-1"><strong class="text-blue-700">📱 문자 접수:</strong></div>
-                                            <div class="ml-6"><a href="sms:010-5708-2423"
-                                                    class="hover:text-blue-800 underline">010-5708-2423</a></div>
-                                        </li>
-                                        <li class="flex flex-col"
-                                            data-kr='<div class="mb-1"><strong class="text-blue-700">✍️ 문자 내용:</strong></div><div class="ml-6">이름(법명 및 주소, 회사 이름도 가능) + "약사"</div>'
-                                            data-en='<div class="mb-1"><strong class="text-blue-700">✍️ SMS Content:</strong></div><div class="ml-6">Name (Dharma name, address, or company name) + "Yaksa"</div>'>
-                                            <div class="mb-1"><strong class="text-blue-700">✍️ 문자 내용:</strong></div>
-                                            <div class="ml-6">이름(법명 및 주소, 회사 이름도 가능) + "약사"</div>
-                                        </li>
-                                    </ul>
-                                    <button id="yaksa-copy-btn"
-                                        class="btn-touch touch-feedback mt-8 w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white py-4 px-6 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-                                        data-kr="📋 계좌번호 복사하기" data-en="📋 Copy Account Number">
-                                        📋 계좌번호 복사하기
-                                    </button>
-                                    <p id="yaksa-copy-message" class="text-center text-green-600 mt-3 h-4 font-medium">
+                                    class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-400 via-blue-600 to-blue-400">
+                                </div>
+
+                                <!-- Progress Bar -->
+                                <div class="mb-10 relative">
+                                    <div class="flex justify-between items-end mb-4 text-gray-700">
+                                        <div class="text-left">
+                                            <span class="block text-sm text-gray-500 mb-1">Target Goal</span>
+                                            <span class="font-bold text-2xl md:text-3xl font-serif text-gray-900"
+                                                data-kr="1,250명" data-en="1,250 people">1,250명</span>
+                                        </div>
+                                        <div class="text-right">
+                                            <span class="block text-sm text-blue-600 font-medium mb-1">Current
+                                                Status</span>
+                                            <span id="yaksa-progress-text"
+                                                class="font-bold text-3xl md:text-4xl text-blue-700"
+                                                data-kr="34명 (2.7%)" data-en="34 people (2.7%)">34명 <span
+                                                    class="text-lg text-blue-500">(2.7%)</span></span>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        class="w-full bg-gray-100 rounded-full h-8 shadow-inner overflow-hidden relative">
+                                        <div id="yaksa-progress-bar"
+                                            class="progress-enhanced bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 h-full rounded-full transition-all duration-1000 ease-out shadow-lg relative"
+                                            style="width: 2.7%;">
+                                            <div
+                                                class="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 bg-white rounded-full mr-2 animate-pulse">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="text-sm text-gray-500 mt-3 text-right italic">
+                                        * 실시간 업데이트 됩니다 / Updated in real-time
                                     </p>
                                 </div>
 
-                                <div
-                                    class="bg-white/80 backdrop-blur-sm p-8 rounded-xl shadow-lg border border-blue-100">
-                                    <h3 class="text-2xl font-serif font-bold mb-6 text-gray-800 flex items-center">
-                                        <span class="text-2xl mr-3">🙏</span>
-                                        <span data-kr="인연 공덕" data-en="Merit & Blessings">인연 공덕</span>
-                                    </h3>
-                                    <div class="flex items-start mb-6">
-                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                            class="h-12 w-12 text-blue-600 mr-4 mt-1 flex-shrink-0" viewBox="0 0 20 20"
-                                            fill="currentColor">
-                                            <path fill-rule="evenodd"
-                                                d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                                clip-rule="evenodd" />
-                                        </svg>
-                                        <p class="text-gray-700 leading-relaxed"
-                                            data-kr="동참자의 이름과 법명 또는 회사 이름을 붓글씨로 적어 약사여래불 복장점안 의식 때 축원과 함께 봉안합니다."
-                                            data-en="We will write the names, dharma names, or company names of dharma supporters in calligraphy and enshrine them with prayers during the Medicine Buddha consecration ceremony.">
-                                            동참자의 이름과 법명 또는 회사 이름을 붓글씨로 적어 약사여래불 복장점안 의식 때 축원과 함께 봉안합니다.</p>
+                                <div class="grid md:grid-cols-2 gap-8 text-left">
+                                    <div
+                                        class="bg-blue-50/50 rounded-2xl p-6 border border-blue-100 hover:bg-blue-50 transition-colors">
+                                        <h3 class="font-bold text-lg text-blue-900 mb-4 flex items-center gap-2">
+                                            <span class="bg-blue-200 text-blue-700 rounded-lg p-1">🏦</span>
+                                            <span data-kr="동참 계좌" data-en="Donation Account">동참 계좌</span>
+                                        </h3>
+                                        <div
+                                            class="flex items-center justify-between bg-white p-4 rounded-xl border border-blue-200 shadow-sm group/copy">
+                                            <span class="font-mono text-lg text-gray-800 tracking-wide">농협
+                                                351-1309-4309-63</span>
+                                            <button onclick="copyToClipboard('351-1309-4309-63')"
+                                                class="text-blue-600 hover:text-blue-800 text-sm font-medium px-3 py-1.5 rounded-lg hover:bg-blue-50 transition-all flex items-center gap-1"
+                                                data-kr="복사" data-en="Copy">
+                                                <span>복사</span>
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor"
+                                                    viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                                                    </path>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                        <p class="text-sm text-gray-500 mt-2 ml-1">예금주: 저스트비(JustBe)</p>
                                     </div>
-                                    <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400">
-                                        <p class="text-gray-700 leading-relaxed italic"
-                                            data-kr="이 인연공덕으로 모든 중생이 몸과 마음의 질병에서 벗어나고, 화주 동참자와 가족들께 약사여래불의 치유 가피가 함께하시기를 간절히 발원합니다."
-                                            data-en="Through this karmic merit, may all beings be freed from physical and mental ailments, and may the healing blessings of Medicine Buddha be with all dharma supporters and their families.">
-                                            이 인연공덕으로 모든 중생이 몸과 마음의 질병에서 벗어나고, 화주 동참자와 가족들께 약사여래불의 치유 가피가 함께하시기를 간절히
-                                            발원합니다.
+
+                                    <div
+                                        class="bg-amber-50/50 rounded-2xl p-6 border border-amber-100 hover:bg-amber-50 transition-colors">
+                                        <h3 class="font-bold text-lg text-amber-900 mb-4 flex items-center gap-2">
+                                            <span class="bg-amber-200 text-amber-700 rounded-lg p-1">🙏</span>
+                                            <span data-kr="동참금" data-en="Donation Amount">동참금</span>
+                                        </h3>
+                                        <p class="text-gray-700 mb-2 flex items-center gap-2">
+                                            <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                                            <span data-kr="1인 1화주: 10만원 (분납 가능)"
+                                                data-en="1 Person: 100,000 KRW (Installments OK)">1인 1화주: <strong
+                                                    class="text-xl text-gray-900">10만원</strong> (분납 가능)</span>
+                                        </p>
+                                        <p class="text-sm text-gray-500 leading-relaxed ml-4">
+                                            * 가족, 지인과 함께 동참하실 수 있습니다.<br>
+                                            * You can participate with family and friends.
                                         </p>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </section>
 
-                            <!-- 상세 내용 보기 버튼 -->
-                            <div class="mt-10 text-center">
-                                <button id="yaksa-details-btn"
-                                    class="btn-touch touch-feedback inline-flex items-center bg-blue-100 hover:bg-blue-200 text-blue-700 font-semibold px-8 py-4 rounded-xl transition-all duration-300 border border-blue-200 hover:border-blue-300">
-                                    <span class="mr-2">📖</span>
-                                    <span data-kr="자세한 내용 보기" data-en="View Detailed Information">자세한 내용 보기</span>
-                                    <svg class="ml-2 w-5 h-5 transform transition-transform duration-300"
-                                        id="yaksa-details-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 9l-7 7-7-7"></path>
-                                    </svg>
-                                </button>
+                <div class="bg-white/80 backdrop-blur-sm p-8 rounded-xl shadow-lg border border-blue-100">
+                    <h3 class="text-2xl font-serif font-bold mb-6 text-gray-800 flex items-center">
+                        <span class="text-2xl mr-3">🙏</span>
+                        <span data-kr="인연 공덕" data-en="Merit & Blessings">인연 공덕</span>
+                    </h3>
+                    <div class="flex items-start mb-6">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-blue-600 mr-4 mt-1 flex-shrink-0"
+                            viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        <p class="text-gray-700 leading-relaxed"
+                            data-kr="동참자의 이름과 법명 또는 회사 이름을 붓글씨로 적어 약사여래불 복장점안 의식 때 축원과 함께 봉안합니다."
+                            data-en="We will write the names, dharma names, or company names of dharma supporters in calligraphy and enshrine them with prayers during the Medicine Buddha consecration ceremony.">
+                            동참자의 이름과 법명 또는 회사 이름을 붓글씨로 적어 약사여래불 복장점안 의식 때 축원과 함께 봉안합니다.</p>
+                    </div>
+                    <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400">
+                        <p class="text-gray-700 leading-relaxed italic"
+                            data-kr="이 인연공덕으로 모든 중생이 몸과 마음의 질병에서 벗어나고, 화주 동참자와 가족들께 약사여래불의 치유 가피가 함께하시기를 간절히 발원합니다."
+                            data-en="Through this karmic merit, may all beings be freed from physical and mental ailments, and may the healing blessings of Medicine Buddha be with all dharma supporters and their families.">
+                            이 인연공덕으로 모든 중생이 몸과 마음의 질병에서 벗어나고, 화주 동참자와 가족들께 약사여래불의 치유 가피가 함께하시기를 간절히
+                            발원합니다.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 상세 내용 보기 버튼 -->
+            <div class="mt-10 text-center">
+                <button id="yaksa-details-btn"
+                    class="btn-touch touch-feedback inline-flex items-center bg-blue-100 hover:bg-blue-200 text-blue-700 font-semibold px-8 py-4 rounded-xl transition-all duration-300 border border-blue-200 hover:border-blue-300">
+                    <span class="mr-2">📖</span>
+                    <span data-kr="자세한 내용 보기" data-en="View Detailed Information">자세한 내용 보기</span>
+                    <svg class="ml-2 w-5 h-5 transform transition-transform duration-300" id="yaksa-details-arrow"
+                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- 확장 가능한 상세 내용 -->
+            <div id="yaksa-details-content" class="mt-8 overflow-hidden transition-all duration-500 max-h-0 opacity-0">
+                <div
+                    class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 border border-blue-100 shadow-lg">
+                    <!-- 메인 헤더 -->
+                    <div class="text-center mb-8">
+                        <h3 class="text-2xl md:text-3xl font-serif font-bold text-blue-900 mb-4"
+                            data-kr="🪷 히말라야 약사여래불 & 금강역사 화주모연 🪷"
+                            data-en="🪷 Himalaya Medicine Buddha & Guardian Kings Merit Campaign 🪷">
+                            🪷 히말라야 약사여래불 & 금강역사 화주모연 🪷
+                        </h3>
+                        <p class="text-blue-700 font-medium text-lg italic" data-kr="– 불 속에서 살아난 부처님, 도량의 중심에 모십니다 –"
+                            data-en="– Buddha who survived the fire, enshrined at the center of the temple –">
+                            – 불 속에서 살아난 부처님, 도량의 중심에 모십니다 –
+                        </p>
+                    </div>
+
+                    <!-- 세 분의 불보살님 이미지 -->
+                    <div class="mb-8 text-center">
+                        <div class="w-full max-w-4xl mx-auto rounded-lg overflow-hidden shadow-lg">
+                            <img src="resource/img/3bul.jpeg" alt="약사여래불과 금강역사 두 분" data-kr-alt="약사여래불과 금강역사 두 분"
+                                data-en-alt="Medicine Buddha and two Guardian Kings" width="800" height="400"
+                                loading="lazy" class="w-full h-auto object-cover"
+                                onerror="this.outerHTML='<div class=\'w-full max-w-4xl mx-auto bg-blue-50 border-2 border-blue-200 rounded-lg p-8 text-center\'><div class=\'text-4xl mb-4 text-blue-600\'>🙏</div><p class=\'text-blue-700 font-medium\'>약사여래불과 금강역사 두 분</p></div>'">
+                        </div>
+                    </div>
+
+
+                    <!-- 기적의 부처님들 -->
+                    <div class="mb-8">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="bg-white/70 rounded-lg p-6 border border-blue-200">
+                                <h5 class="font-bold text-blue-700 mb-3" data-kr="약사여래불" data-en="Medicine Buddha">약사여래불
+                                </h5>
+                                <p class="text-gray-700 text-sm leading-relaxed" data-kr="병과 번뇌를 치유하시는 12대 서원의 부처님"
+                                    data-en="Buddha of 12 great vows who heals illness and afflictions">
+                                    병과 번뇌를 치유하시는 12대 서원의 부처님
+                                </p>
                             </div>
+                            <div class="bg-white/70 rounded-lg p-6 border border-blue-200">
+                                <h5 class="font-bold text-blue-700 mb-3" data-kr="금강역사 좌우 협시"
+                                    data-en="Left & Right Guardian Kings">금강역사 좌우 협시</h5>
+                                <p class="text-gray-700 text-sm leading-relaxed" data-kr="도량과 수행을 지키는 수호존"
+                                    data-en="Guardian deities protecting the temple and practice">
+                                    도량과 수행을 지키는 수호존
+                                </p>
+                            </div>
+                        </div>
+                        <div class="mt-4 bg-blue-50 rounded-lg p-4 border-l-4 border-blue-400">
+                            <p class="text-blue-800 text-sm italic"
+                                data-kr="이 세 분을 히말라야 도량의 주 부처님으로 모시어, JustBe 히말라야 Temple의 시작을 선언합니다."
+                                data-en="By enshrining these three as the principal Buddhas of the Himalayan temple, we declare the beginning of JustBe Himalaya Temple.">
+                                이 세 분을 히말라야 도량의 주 부처님으로 모시어, JustBe 히말라야 Temple의 시작을 선언합니다.
+                            </p>
+                        </div>
+                    </div>
 
-                            <!-- 확장 가능한 상세 내용 -->
-                            <div id="yaksa-details-content"
-                                class="mt-8 overflow-hidden transition-all duration-500 max-h-0 opacity-0">
-                                <div
-                                    class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8 border border-blue-100 shadow-lg">
-                                    <!-- 메인 헤더 -->
-                                    <div class="text-center mb-8">
-                                        <h3 class="text-2xl md:text-3xl font-serif font-bold text-blue-900 mb-4"
-                                            data-kr="🪷 히말라야 약사여래불 & 금강역사 화주모연 🪷"
-                                            data-en="🪷 Himalaya Medicine Buddha & Guardian Kings Merit Campaign 🪷">
-                                            🪷 히말라야 약사여래불 & 금강역사 화주모연 🪷
-                                        </h3>
-                                        <p class="text-blue-700 font-medium text-lg italic"
-                                            data-kr="– 불 속에서 살아난 부처님, 도량의 중심에 모십니다 –"
-                                            data-en="– Buddha who survived the fire, enshrined at the center of the temple –">
-                                            – 불 속에서 살아난 부처님, 도량의 중심에 모십니다 –
-                                        </p>
-                                    </div>
+                    <!-- 화주 안내 -->
+                    <div class="mb-8">
+                        <h4 class="text-xl font-serif font-bold text-blue-800 mb-4 flex items-center">
+                            <span class="text-2xl mr-3">💠</span>
+                            <span data-kr="화주 안내" data-en="Merit-Making Guide">화주 안내</span>
+                        </h4>
+                        <div class="bg-white/70 rounded-lg p-6 border border-blue-200">
+                            <ul class="space-y-3 text-gray-700">
+                                <li class="flex items-start">
+                                    <span class="text-blue-600 mr-2">•</span>
+                                    <span
+                                        data-kr="이번 모연은 <strong class='text-blue-700'>1250명 동참</strong>을 목표로 합니다.<br><span class='text-sm text-gray-600'>(→ 부처님의 첫 제자 1250대중을 상징)</span>"
+                                        data-en="This campaign aims for <strong class='text-blue-700'>1250 participants</strong>.<br><span class='text-sm text-gray-600'>(→ Symbolizing Buddha's first 1250 disciples)</span>">
+                                        이번 모연은 <strong class="text-blue-700">1250명 동참</strong>을 목표로
+                                        합니다.<br><span class="text-sm text-gray-600">(→ 부처님의 첫 제자 1250대중을
+                                            상징)</span>
+                                    </span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-blue-600 mr-2">•</span>
+                                    <span data-kr="1인 10만원" data-en="100,000 KRW per person">1인
+                                        10만원</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-blue-600 mr-2">•</span>
+                                    <span data-kr="부처님 복장(腹藏)에 이름과 축원문 봉헌"
+                                        data-en="Name and prayer text offered to Buddha's consecration">부처님
+                                        복장(腹藏)에 이름과 축원문 봉헌</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
 
-                                    <!-- 세 분의 불보살님 이미지 -->
-                                    <div class="mb-8 text-center">
-                                        <div class="w-full max-w-4xl mx-auto rounded-lg overflow-hidden shadow-lg">
-                                            <img src="resource/img/3bul.jpeg" alt="약사여래불과 금강역사 두 분"
-                                                data-kr-alt="약사여래불과 금강역사 두 분"
-                                                data-en-alt="Medicine Buddha and two Guardian Kings" width="800"
-                                                height="400" loading="lazy" class="w-full h-auto object-cover"
-                                                onerror="this.outerHTML='<div class=\'w-full max-w-4xl mx-auto bg-blue-50 border-2 border-blue-200 rounded-lg p-8 text-center\'><div class=\'text-4xl mb-4 text-blue-600\'>🙏</div><p class=\'text-blue-700 font-medium\'>약사여래불과 금강역사 두 분</p></div>'">
-                                        </div>
-                                    </div>
+                    <!-- 일정 요약 -->
+                    <div class="mb-8">
+                        <h4 class="text-xl font-serif font-bold text-blue-800 mb-4 flex items-center">
+                            <span class="text-2xl mr-3">📅</span>
+                            <span data-kr="일정 요약" data-en="Schedule Summary">일정 요약</span>
+                        </h4>
+                        <div class="space-y-4">
+                            <div class="bg-white/70 rounded-lg p-4 border border-blue-300 flex items-center">
+                                <div class="bg-blue-100 rounded-full p-2 mr-4">
+                                    <span class="text-blue-700 font-bold text-sm">25.11.07</span>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-blue-800" data-kr="약사여래불 점안 및 고불식 봉행"
+                                        data-en="Medicine Buddha Consecration & Ceremony">약사여래불 점안 및 고불식
+                                        봉행</p>
+                                </div>
+                            </div>
+                            <div class="bg-white/70 rounded-lg p-4 border border-green-300 flex items-center">
+                                <div class="bg-green-100 rounded-full p-2 mr-4">
+                                    <span class="text-green-700 font-bold text-sm">26.02.14</span>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-green-800" data-kr="히말라야 새해맞이 정초 구법순례"
+                                        data-en="Himalaya New Year Dharma Pilgrimage">히말라야 새해맞이 정초 구법순례
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-
-                                    <!-- 기적의 부처님들 -->
-                                    <div class="mb-8">
-                                        <div class="grid md:grid-cols-2 gap-6">
-                                            <div class="bg-white/70 rounded-lg p-6 border border-blue-200">
-                                                <h5 class="font-bold text-blue-700 mb-3" data-kr="약사여래불"
-                                                    data-en="Medicine Buddha">약사여래불</h5>
-                                                <p class="text-gray-700 text-sm leading-relaxed"
-                                                    data-kr="병과 번뇌를 치유하시는 12대 서원의 부처님"
-                                                    data-en="Buddha of 12 great vows who heals illness and afflictions">
-                                                    병과 번뇌를 치유하시는 12대 서원의 부처님
-                                                </p>
-                                            </div>
-                                            <div class="bg-white/70 rounded-lg p-6 border border-blue-200">
-                                                <h5 class="font-bold text-blue-700 mb-3" data-kr="금강역사 좌우 협시"
-                                                    data-en="Left & Right Guardian Kings">금강역사 좌우 협시</h5>
-                                                <p class="text-gray-700 text-sm leading-relaxed"
-                                                    data-kr="도량과 수행을 지키는 수호존"
-                                                    data-en="Guardian deities protecting the temple and practice">
-                                                    도량과 수행을 지키는 수호존
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="mt-4 bg-blue-50 rounded-lg p-4 border-l-4 border-blue-400">
-                                            <p class="text-blue-800 text-sm italic"
-                                                data-kr="이 세 분을 히말라야 도량의 주 부처님으로 모시어, JustBe 히말라야 Temple의 시작을 선언합니다."
-                                                data-en="By enshrining these three as the principal Buddhas of the Himalayan temple, we declare the beginning of JustBe Himalaya Temple.">
-                                                이 세 분을 히말라야 도량의 주 부처님으로 모시어, JustBe 히말라야 Temple의 시작을 선언합니다.
-                                            </p>
-                                        </div>
-                                    </div>
-
-                                    <!-- 화주 안내 -->
-                                    <div class="mb-8">
-                                        <h4 class="text-xl font-serif font-bold text-blue-800 mb-4 flex items-center">
-                                            <span class="text-2xl mr-3">💠</span>
-                                            <span data-kr="화주 안내" data-en="Merit-Making Guide">화주 안내</span>
-                                        </h4>
-                                        <div class="bg-white/70 rounded-lg p-6 border border-blue-200">
-                                            <ul class="space-y-3 text-gray-700">
-                                                <li class="flex items-start">
-                                                    <span class="text-blue-600 mr-2">•</span>
-                                                    <span
-                                                        data-kr="이번 모연은 <strong class='text-blue-700'>1250명 동참</strong>을 목표로 합니다.<br><span class='text-sm text-gray-600'>(→ 부처님의 첫 제자 1250대중을 상징)</span>"
-                                                        data-en="This campaign aims for <strong class='text-blue-700'>1250 participants</strong>.<br><span class='text-sm text-gray-600'>(→ Symbolizing Buddha's first 1250 disciples)</span>">
-                                                        이번 모연은 <strong class="text-blue-700">1250명 동참</strong>을 목표로
-                                                        합니다.<br><span class="text-sm text-gray-600">(→ 부처님의 첫 제자 1250대중을
-                                                            상징)</span>
-                                                    </span>
-                                                </li>
-                                                <li class="flex items-start">
-                                                    <span class="text-blue-600 mr-2">•</span>
-                                                    <span data-kr="1인 10만원" data-en="100,000 KRW per person">1인
-                                                        10만원</span>
-                                                </li>
-                                                <li class="flex items-start">
-                                                    <span class="text-blue-600 mr-2">•</span>
-                                                    <span data-kr="부처님 복장(腹藏)에 이름과 축원문 봉헌"
-                                                        data-en="Name and prayer text offered to Buddha's consecration">부처님
-                                                        복장(腹藏)에 이름과 축원문 봉헌</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                    <!-- 일정 요약 -->
-                                    <div class="mb-8">
-                                        <h4 class="text-xl font-serif font-bold text-blue-800 mb-4 flex items-center">
-                                            <span class="text-2xl mr-3">📅</span>
-                                            <span data-kr="일정 요약" data-en="Schedule Summary">일정 요약</span>
-                                        </h4>
-                                        <div class="space-y-4">
-                                            <div
-                                                class="bg-white/70 rounded-lg p-4 border border-blue-300 flex items-center">
-                                                <div class="bg-blue-100 rounded-full p-2 mr-4">
-                                                    <span class="text-blue-700 font-bold text-sm">25.11.07</span>
-                                                </div>
-                                                <div>
-                                                    <p class="font-semibold text-blue-800" data-kr="약사여래불 점안 및 고불식 봉행"
-                                                        data-en="Medicine Buddha Consecration & Ceremony">약사여래불 점안 및 고불식
-                                                        봉행</p>
-                                                </div>
-                                            </div>
-                                            <div
-                                                class="bg-white/70 rounded-lg p-4 border border-green-300 flex items-center">
-                                                <div class="bg-green-100 rounded-full p-2 mr-4">
-                                                    <span class="text-green-700 font-bold text-sm">26.02.14</span>
-                                                </div>
-                                                <div>
-                                                    <p class="font-semibold text-green-800" data-kr="히말라야 새해맞이 정초 구법순례"
-                                                        data-en="Himalaya New Year Dharma Pilgrimage">히말라야 새해맞이 정초 구법순례
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- 마무리 인사 -->
-                                    <!-- <div class="text-center bg-gradient-to-r from-blue-50 to-indigo-100 rounded-xl p-6 border border-blue-200">
+                    <!-- 마무리 인사 -->
+                    <!-- <div class="text-center bg-gradient-to-r from-blue-50 to-indigo-100 rounded-xl p-6 border border-blue-200">
                                         <h4 class="text-xl font-serif font-bold text-blue-800 mb-4">
                                             <span class="text-2xl mr-2">🌈</span>
                                             <span data-kr="당신의 이름, 히말라야에 새겨주세요." data-en="Please engrave your name in the Himalayas.">당신의 이름, 히말라야에 새겨주세요.</span>
@@ -1019,295 +1164,286 @@
                                         <p class="text-blue-600 font-medium">JustBe 준한 합장 🪷</p>
                                     </div> -->
 
-                                    <!-- 연락처 정보 -->
-                                    <div class="mt-6 bg-white/70 rounded-lg p-6 border border-blue-200">
-                                        <div class="text-center mb-4">
-                                            <h5
-                                                class="font-bold text-blue-800 text-lg mb-2 flex items-center justify-center">
-                                                <span class="text-xl mr-2">📌</span>
-                                                <span data-kr="동참" data-en="Participation">동참</span>
-                                            </h5>
-                                            <h5
-                                                class="font-bold text-blue-800 text-lg flex items-center justify-center">
-                                                <span class="text-xl mr-2">📋</span>
-                                                <span data-kr="문의" data-en="Inquiries">문의</span>
-                                            </h5>
-                                        </div>
-                                        <ul class="space-y-3 text-sm text-gray-700">
-                                            <li class="flex items-center">
-                                                <span class="text-blue-500 mr-3 font-semibold">📞</span>
-                                                <div>
-                                                    <span class="font-semibold" data-kr="화주 동참 문의:"
-                                                        data-en="Merit-Making Inquiry:">화주 동참 문의:</span>
-                                                    <a href="tel:010-5708-2423"
-                                                        class="text-blue-600 hover:text-blue-800 ml-2">010-5708-2423</a>
-                                                </div>
-                                            </li>
-                                            <li class="flex items-center">
-                                                <span class="text-yellow-500 mr-3 font-semibold">💬</span>
-                                                <div>
-                                                    <span class="font-semibold" data-kr="방문 문의:"
-                                                        data-en="Visit Inquiry:">방문 문의:</span>
-                                                    <a href="https://open.kakao.com/o/gcUJSSJh" target="_blank"
-                                                        rel="noopener noreferrer"
-                                                        class="text-blue-600 hover:text-blue-800 underline ml-2">
-                                                        <span data-kr="카카오톡 오픈채팅" data-en="KakaoTalk Open Chat">카카오톡
-                                                            오픈채팅</span>
-                                                    </a>
-                                                </div>
-                                            </li>
-                                            <li class="flex items-center">
-                                                <span class="text-green-500 mr-3 font-semibold">🧘‍♂️</span>
-                                                <div>
-                                                    <span class="font-semibold" data-kr="구법 순례 문의:"
-                                                        data-en="Dharma Pilgrimage Inquiry:">구법 순례 문의:</span>
-                                                    <a href="tel:010-6241-6206"
-                                                        class="text-blue-600 hover:text-blue-800 ml-2">010-6241-6206</a>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                    <!-- 갤러리 이미지 -->
-                                    <div class="mt-8">
-                                        <div class="w-full max-w-6xl mx-auto rounded-xl overflow-hidden shadow-2xl">
-                                            <img src="resource/img/Gallery_united.jpeg" alt="히말라야 프로젝트 갤러리"
-                                                data-kr-alt="히말라야 프로젝트 갤러리" data-en-alt="Himalaya Project Gallery"
-                                                width="1200" height="800" loading="lazy"
-                                                class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500"
-                                                onerror="this.outerHTML='<div class=\'flex items-center justify-center h-96 bg-gray-200 text-gray-600 rounded-xl\'><p class=\'text-center\'><strong>이미지 표시 오류</strong><br>사진을 불러오는 데 문제가 발생했습니다.</p></div>'">
-                                        </div>
-                                    </div>
+                    <!-- 연락처 정보 -->
+                    <div class="mt-6 bg-white/70 rounded-lg p-6 border border-blue-200">
+                        <div class="text-center mb-4">
+                            <h5 class="font-bold text-blue-800 text-lg mb-2 flex items-center justify-center">
+                                <span class="text-xl mr-2">📌</span>
+                                <span data-kr="동참" data-en="Participation">동참</span>
+                            </h5>
+                            <h5 class="font-bold text-blue-800 text-lg flex items-center justify-center">
+                                <span class="text-xl mr-2">📋</span>
+                                <span data-kr="문의" data-en="Inquiries">문의</span>
+                            </h5>
+                        </div>
+                        <ul class="space-y-3 text-sm text-gray-700">
+                            <li class="flex items-center">
+                                <span class="text-blue-500 mr-3 font-semibold">📞</span>
+                                <div>
+                                    <span class="font-semibold" data-kr="화주 동참 문의:" data-en="Merit-Making Inquiry:">화주
+                                        동참 문의:</span>
+                                    <a href="tel:010-5708-2423"
+                                        class="text-blue-600 hover:text-blue-800 ml-2">010-5708-2423</a>
                                 </div>
-                            </div>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-yellow-500 mr-3 font-semibold">💬</span>
+                                <div>
+                                    <span class="font-semibold" data-kr="방문 문의:" data-en="Visit Inquiry:">방문
+                                        문의:</span>
+                                    <a href="https://open.kakao.com/o/gcUJSSJh" target="_blank"
+                                        rel="noopener noreferrer"
+                                        class="text-blue-600 hover:text-blue-800 underline ml-2">
+                                        <span data-kr="카카오톡 오픈채팅" data-en="KakaoTalk Open Chat">카카오톡
+                                            오픈채팅</span>
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="text-green-500 mr-3 font-semibold">🧘‍♂️</span>
+                                <div>
+                                    <span class="font-semibold" data-kr="구법 순례 문의:"
+                                        data-en="Dharma Pilgrimage Inquiry:">구법 순례 문의:</span>
+                                    <a href="tel:010-6241-6206"
+                                        class="text-blue-600 hover:text-blue-800 ml-2">010-6241-6206</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
 
+                    <!-- 갤러리 이미지 -->
+                    <div class="mt-8">
+                        <div class="w-full max-w-6xl mx-auto rounded-xl overflow-hidden shadow-2xl">
+                            <img src="resource/img/Gallery_united.jpeg" alt="히말라야 프로젝트 갤러리" data-kr-alt="히말라야 프로젝트 갤러리"
+                                data-en-alt="Himalaya Project Gallery" width="1200" height="800" loading="lazy"
+                                class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500"
+                                onerror="this.outerHTML='<div class=\'flex items-center justify-center h-96 bg-gray-200 text-gray-600 rounded-xl\'><p class=\'text-center\'><strong>이미지 표시 오류</strong><br>사진을 불러오는 데 문제가 발생했습니다.</p></div>'">
                         </div>
                     </div>
-                </section>
+                </div>
+            </div>
 
-                <!-- Maitreya Donation Section - COMPLETED CAMPAIGN -->
-                <section id="donation"
-                    class="py-6 md:py-16 bg-gradient-to-br from-amber-50/50 via-white to-gray-50 relative">
-                    <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
-                        <div class="scroll-reveal">
-                            <!-- Completed campaign header with subtle styling -->
-                            <div class="relative mb-6">
-                                <h2 class="text-2xl md:text-3xl font-serif font-bold text-gray-700 relative opacity-90"
-                                    data-kr="🪷 미륵연화보살님 화주 모연 🪷"
-                                    data-en="🪷 Maitreya Lotus Bodhisattva Merit-Making 🪷"><span
-                                        class="inline-block">🪷&nbsp;미륵연화보살님&nbsp;</span><span
-                                        class="inline-block">화주&nbsp;모연&nbsp;🪷</span></h2>
-                            </div>
+            </div>
+            </div>
+        </section>
 
-                            <!-- Progress Bar with completed styling -->
-                            <div class="mb-8 opacity-75">
-                                <div class="flex justify-between items-center mb-2 text-gray-600 text-sm">
-                                    <span class="font-medium" data-kr="모연목표: 300명" data-en="Target: 300 hearts">모연 목표:
-                                        300명</span>
+        <!-- Maitreya Donation Section - COMPLETED CAMPAIGN -->
+        <section id="donation" class="py-6 md:py-16 bg-gradient-to-br from-amber-50/50 via-white to-gray-50 relative">
+            <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+                <div class="scroll-reveal">
+                    <!-- Completed campaign header with subtle styling -->
+                    <div class="relative mb-6">
+                        <h2 class="text-2xl md:text-3xl font-serif font-bold text-gray-700 relative opacity-90"
+                            data-kr="🪷 미륵연화보살님 화주 모연 🪷" data-en="🪷 Maitreya Lotus Bodhisattva Merit-Making 🪷"><span
+                                class="inline-block">🪷&nbsp;미륵연화보살님&nbsp;</span><span
+                                class="inline-block">화주&nbsp;모연&nbsp;🪷</span></h2>
+                    </div>
 
-                                    <span id="progress-text" class="font-medium" data-kr="현재 324명 동참 (108%)"
-                                        data-en="Current: 324 dharma supporters (108%)">현재 324명 동참 (108%)</span>
-                                </div>
+                    <!-- Progress Bar with completed styling -->
+                    <div class="mb-8 opacity-75">
+                        <div class="flex justify-between items-center mb-2 text-gray-600 text-sm">
+                            <span class="font-medium" data-kr="모연목표: 300명" data-en="Target: 300 hearts">모연 목표:
+                                300명</span>
 
-                                <div class="w-full bg-gray-200 rounded-full h-3">
-                                    <div id="progress-bar"
-                                        class="bg-gradient-to-r from-amber-500 to-amber-600 h-3 rounded-full transition-all duration-1000 ease-out opacity-80"
-                                        style="width: 100%;"></div>
-                                </div>
-                            </div>
+                            <span id="progress-text" class="font-medium" data-kr="현재 324명 동참 (108%)"
+                                data-en="Current: 324 dharma supporters (108%)">현재 324명 동참 (108%)</span>
+                        </div>
 
-                            <div class="grid md:grid-cols-2 gap-8 text-left max-w-6xl mx-auto">
-                                <div
-                                    class="bg-white/80 backdrop-blur-sm p-8 rounded-xl shadow-lg border border-amber-100">
-                                    <h3 class="text-2xl font-serif font-bold mb-6 text-gray-800 flex items-center">
-                                        <span class="text-2xl mr-3">💳</span>
-                                        <span data-kr="동참 방법" data-en="How to Participate">동참 방법</span>
-                                    </h3>
-                                    <ul class="space-y-4 text-gray-700">
-                                        <li class="flex flex-col"
-                                            data-kr="<div class='mb-1'><strong class='text-amber-700'>💰 금액:</strong></div><div class='ml-6'>1인 10만원</div>"
-                                            data-en="<div class='mb-1'><strong class='text-amber-700'>💰 Amount:</strong></div><div class='ml-6'>100,000 KRW per person</div>">
-                                            <div class="mb-1"><strong class="text-amber-700">💰 금액:</strong></div>
-                                            <div class="ml-6">1인 10만원</div>
-                                        </li>
-                                        <li class="flex flex-col"
-                                            data-kr="<div class='mb-1'><strong class='text-amber-700'>🏦 계좌:</strong></div><div class='ml-6'>농협 301-0319-5339-51 (홍대선원)</div>"
-                                            data-en="<div class='mb-1'><strong class='text-amber-700'>🏦 Account:</strong></div><div class='ml-6'>Nonghyup 301-0319-5339-51 (Hongdae Zen Center)</div>">
-                                            <div class="mb-1"><strong class="text-amber-700">🏦 계좌:</strong></div>
-                                            <div class="ml-6">농협 301-0319-5339-51 (홍대선원)</div>
-                                        </li>
-                                        <li class="flex flex-col"
-                                            data-kr="<div class='mb-1'><strong class='text-amber-700'>📱 문자 접수:</strong></div><div class='ml-6'><a href='sms:010-5708-2423' class='hover:text-amber-800 underline'>010-5708-2423</a></div>"
-                                            data-en="<div class='mb-1'><strong class='text-amber-700'>📱 SMS Registration:</strong></div><div class='ml-6'><a href='sms:010-5708-2423' class='hover:text-amber-800 underline'>010-5708-2423</a></div>">
-                                            <div class="mb-1"><strong class="text-amber-700">📱 문자 접수:</strong></div>
-                                            <div class="ml-6"><a href="sms:010-5708-2423"
-                                                    class="hover:text-amber-800 underline">010-5708-2423</a></div>
-                                        </li>
-                                        <li class="flex flex-col"
-                                            data-kr='<div class="mb-1"><strong class="text-amber-700">✍️ 문자 내용:</strong></div><div class="ml-6">이름(법명 및 주소, 회사 이름도 가능) + "미륵"</div>'
-                                            data-en='<div class="mb-1"><strong class="text-amber-700">✍️ SMS Content:</strong></div><div class="ml-6">Name (Dharma name, address, or company name) + "Mireuk"</div>'>
-                                            <div class="mb-1"><strong class="text-amber-700">✍️ 문자 내용:</strong></div>
-                                            <div class="ml-6">이름(법명 및 주소, 회사 이름도 가능) + "미륵"</div>
-                                        </li>
-                                    </ul>
-                                    <button id="mireuk-copy-btn"
-                                        class="btn-touch touch-feedback mt-8 w-full bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white py-4 px-6 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-                                        data-kr="📋 계좌번호 복사하기" data-en="📋 Copy Account Number">
-                                        📋 계좌번호 복사하기
-                                    </button>
-                                    <p id="mireuk-copy-message" class="text-center text-green-600 mt-3 h-4 font-medium">
-                                    </p>
-                                </div>
-
-                                <div
-                                    class="bg-white/80 backdrop-blur-sm p-8 rounded-xl shadow-lg border border-amber-100">
-                                    <h3 class="text-2xl font-serif font-bold mb-6 text-gray-800 flex items-center">
-                                        <span class="text-2xl mr-3">🙏</span>
-                                        <span data-kr="인연 공덕" data-en="Merit & Blessings">인연 공덕</span>
-                                    </h3>
-                                    <div class="flex items-start mb-6">
-                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                            class="h-12 w-12 text-amber-600 mr-4 mt-1 flex-shrink-0" viewBox="0 0 20 20"
-                                            fill="currentColor">
-                                            <path fill-rule="evenodd"
-                                                d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                                clip-rule="evenodd" />
-                                        </svg>
-                                        <p class="text-gray-700 leading-relaxed"
-                                            data-kr="동참자의 이름과 법명 또는 회사 이름을 붓글씨로 적어 미륵보살님 복장점안 의식 때 축원과 함께 봉안합니다."
-                                            data-en="We will write the names, dharma names, or company names of dharma supporters in calligraphy and enshrine them with prayers during the Maitreya Bodhisattva consecration ceremony.">
-                                            동참자의 이름과 법명 또는 회사 이름을 붓글씨로 적어 미륵보살님 복장점안 의식 때 축원과 함께 봉안합니다.</p>
-                                    </div>
-                                    <div class="bg-amber-50 p-4 rounded-lg border-l-4 border-amber-400">
-                                        <p class="text-gray-700 leading-relaxed italic"
-                                            data-kr="이 인연공덕으로 히말라야 프로젝트에 희망의 등불이 켜지고, 화주 동참자 가족들께 제불보살님의 무한한 가피가 함께하시기를 간절히 발원합니다."
-                                            data-en="Through this karmic merit, may the lamp of hope be lit for the Himalaya Temple, and may the infinite blessings of all Buddhas and Bodhisattvas be with the families of all dharma supporters.">
-                                            이 인연공덕으로 히말라야 프로젝트에 희망의 등불이 켜지고, 화주 동참자 가족들께 제불보살님의 무한한 가피가 함께하시기를 간절히
-                                            발원합니다.
-                                        </p>
-                                    </div>
-
-                                    <!-- 동참자 보기 버튼 -->
-                                    <div class="mt-6 text-center">
-                                        <button onclick="openDongchamModal()"
-                                            class="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-300 shadow-md hover:shadow-lg"
-                                            data-kr="동참자 보기" data-en="View Participants">
-                                            동참자 보기
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="w-full bg-gray-200 rounded-full h-3">
+                            <div id="progress-bar"
+                                class="bg-gradient-to-r from-amber-500 to-amber-600 h-3 rounded-full transition-all duration-1000 ease-out opacity-80"
+                                style="width: 100%;"></div>
                         </div>
                     </div>
-                </section>
 
-                <!-- Gallery Section -->
-                <section class="py-6 md:py-12 bg-white">
-                    <div class="max-w-7xl mx-auto px-4">
+                    <div class="grid md:grid-cols-2 gap-8 text-left max-w-6xl mx-auto">
+                        <div class="bg-white/80 backdrop-blur-sm p-8 rounded-xl shadow-lg border border-amber-100">
+                            <h3 class="text-2xl font-serif font-bold mb-6 text-gray-800 flex items-center">
+                                <span class="text-2xl mr-3">💳</span>
+                                <span data-kr="동참 방법" data-en="How to Participate">동참 방법</span>
+                            </h3>
+                            <ul class="space-y-4 text-gray-700">
+                                <li class="flex flex-col"
+                                    data-kr="<div class='mb-1'><strong class='text-amber-700'>💰 금액:</strong></div><div class='ml-6'>1인 10만원</div>"
+                                    data-en="<div class='mb-1'><strong class='text-amber-700'>💰 Amount:</strong></div><div class='ml-6'>100,000 KRW per person</div>">
+                                    <div class="mb-1"><strong class="text-amber-700">💰 금액:</strong></div>
+                                    <div class="ml-6">1인 10만원</div>
+                                </li>
+                                <li class="flex flex-col"
+                                    data-kr="<div class='mb-1'><strong class='text-amber-700'>🏦 계좌:</strong></div><div class='ml-6'>농협 301-0319-5339-51 (홍대선원)</div>"
+                                    data-en="<div class='mb-1'><strong class='text-amber-700'>🏦 Account:</strong></div><div class='ml-6'>Nonghyup 301-0319-5339-51 (Hongdae Zen Center)</div>">
+                                    <div class="mb-1"><strong class="text-amber-700">🏦 계좌:</strong></div>
+                                    <div class="ml-6">농협 301-0319-5339-51 (홍대선원)</div>
+                                </li>
+                                <li class="flex flex-col"
+                                    data-kr="<div class='mb-1'><strong class='text-amber-700'>📱 문자 접수:</strong></div><div class='ml-6'><a href='sms:010-5708-2423' class='hover:text-amber-800 underline'>010-5708-2423</a></div>"
+                                    data-en="<div class='mb-1'><strong class='text-amber-700'>📱 SMS Registration:</strong></div><div class='ml-6'><a href='sms:010-5708-2423' class='hover:text-amber-800 underline'>010-5708-2423</a></div>">
+                                    <div class="mb-1"><strong class="text-amber-700">📱 문자 접수:</strong></div>
+                                    <div class="ml-6"><a href="sms:010-5708-2423"
+                                            class="hover:text-amber-800 underline">010-5708-2423</a></div>
+                                </li>
+                                <li class="flex flex-col"
+                                    data-kr='<div class="mb-1"><strong class="text-amber-700">✍️ 문자 내용:</strong></div><div class="ml-6">이름(법명 및 주소, 회사 이름도 가능) + "미륵"</div>'
+                                    data-en='<div class="mb-1"><strong class="text-amber-700">✍️ SMS Content:</strong></div><div class="ml-6">Name (Dharma name, address, or company name) + "Mireuk"</div>'>
+                                    <div class="mb-1"><strong class="text-amber-700">✍️ 문자 내용:</strong></div>
+                                    <div class="ml-6">이름(법명 및 주소, 회사 이름도 가능) + "미륵"</div>
+                                </li>
+                            </ul>
+                            <button id="mireuk-copy-btn"
+                                class="btn-touch touch-feedback mt-8 w-full bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white py-4 px-6 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                                data-kr="📋 계좌번호 복사하기" data-en="📋 Copy Account Number">
+                                📋 계좌번호 복사하기
+                            </button>
+                            <p id="mireuk-copy-message" class="text-center text-green-600 mt-3 h-4 font-medium">
+                            </p>
+                        </div>
 
-                        <div class="space-y-6">
-                            <!-- Panorama Image -->
-                            <div class="scroll-reveal w-full">
-                                <div class="aspect-[24/7] rounded-lg overflow-hidden shadow-xl">
-                                    <img src="resource/img/panorama.jpeg" alt="히말라야 파노라마" data-kr-alt="히말라야 파노라마"
-                                        data-en-alt="Himalaya Panorama" width="800" height="233" loading="lazy"
-                                        class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500"
-                                        onerror="this.outerHTML='<div class=\'flex items-center justify-center h-full bg-gray-200 text-gray-600 rounded-lg\'><p class=\'text-center\'><strong>이미지 표시 오류</strong><br>사진을 불러오는 데 문제가 발생했습니다.</p></div>'">
-                                </div>
-                                <!-- Panorama Caption -->
-                                <p class="text-base text-gray-600 mt-2 text-center italic font-medium"
-                                    data-kr="Annapurna(8091m), Himalaya. <br class='md:hidden'>JustBe Temple Himalaya에서 바라본 전경"
-                                    data-en="Annapurna(8091m), Himalaya. <br class='md:hidden'>View from JustBe Temple Himalaya">
-                                    <br class="md:hidden">JustBe Temple Himalaya에서 바라본 전경
+                        <div class="bg-white/80 backdrop-blur-sm p-8 rounded-xl shadow-lg border border-amber-100">
+                            <h3 class="text-2xl font-serif font-bold mb-6 text-gray-800 flex items-center">
+                                <span class="text-2xl mr-3">🙏</span>
+                                <span data-kr="인연 공덕" data-en="Merit & Blessings">인연 공덕</span>
+                            </h3>
+                            <div class="flex items-start mb-6">
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="h-12 w-12 text-amber-600 mr-4 mt-1 flex-shrink-0" viewBox="0 0 20 20"
+                                    fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M3 3a1 1 0 000 2v8a2 2 0 002 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L10 15.414l2.293 2.293a1 1 0 001.414-1.414L12.414 15H15a2 2 0 002-2V5a1 1 0 100-2H3zm11.707 4.707a1 1 0 00-1.414-1.414L10 9.586 8.707 8.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                                <p class="text-gray-700 leading-relaxed"
+                                    data-kr="동참자의 이름과 법명 또는 회사 이름을 붓글씨로 적어 미륵보살님 복장점안 의식 때 축원과 함께 봉안합니다."
+                                    data-en="We will write the names, dharma names, or company names of dharma supporters in calligraphy and enshrine them with prayers during the Maitreya Bodhisattva consecration ceremony.">
+                                    동참자의 이름과 법명 또는 회사 이름을 붓글씨로 적어 미륵보살님 복장점안 의식 때 축원과 함께 봉안합니다.</p>
+                            </div>
+                            <div class="bg-amber-50 p-4 rounded-lg border-l-4 border-amber-400">
+                                <p class="text-gray-700 leading-relaxed italic"
+                                    data-kr="이 인연공덕으로 히말라야 프로젝트에 희망의 등불이 켜지고, 화주 동참자 가족들께 제불보살님의 무한한 가피가 함께하시기를 간절히 발원합니다."
+                                    data-en="Through this karmic merit, may the lamp of hope be lit for the Himalaya Temple, and may the infinite blessings of all Buddhas and Bodhisattvas be with the families of all dharma supporters.">
+                                    이 인연공덕으로 히말라야 프로젝트에 희망의 등불이 켜지고, 화주 동참자 가족들께 제불보살님의 무한한 가피가 함께하시기를 간절히
+                                    발원합니다.
                                 </p>
                             </div>
 
-                        </div>
-
-                    </div>
-                </section>
-
-
-                <!-- 히말라야 봉안 여정 (임시 숨김) -->
-                <div class="scroll-reveal hidden">
-                    <div class="bg-white rounded-lg p-8 border border-slate-200 shadow-md mb-8">
-                        <div class="flex items-center mb-6">
-                            <div class="text-2xl mr-4">🏔️</div>
-                            <h3 class="text-2xl font-serif font-bold text-gray-800" data-kr="히말라야로 모시는 여정"
-                                data-en="Journey to the Himalayas">히말라야로 모시는 여정</h3>
-                        </div>
-
-                        <div class="space-y-6">
-                            <div class="bg-slate-50 rounded-lg p-6 border border-slate-200">
-                                <div class="flex items-center mb-4">
-                                    <div class="text-xl mr-3">🕯️</div>
-                                    <h4 class="text-xl font-serif font-bold text-gray-800"
-                                        data-kr="2025년 9월 28일 - 미륵연화 보살님 점안"
-                                        data-en="September 28, 2025 - Maitreya Lotus Bodhisattva Consecration">2025년 9월
-                                        28일 - 미륵연화 보살님 점안</h4>
-                                </div>
-                                <div class="space-y-3 text-gray-600 leading-relaxed">
-                                    <p data-kr="미륵보살님 화주가 원만히 성취 후, 히말라야 도량에서의 첫 점안 의식을 여법히 봉행하며, 21일간 동참해주신 모든 분들의 축원을 올려드립니다."
-                                        data-en="After the successful completion of Maitreya Bodhisattva merit-making, we will enshrine the statue at the JustBe Temple sacred site on Pumdikot Hill in Pokhara, Himalayas, and conduct the first consecration ceremony in the Himalayan temple according to Buddhist tradition, offering prayers for all dharma supporters for 21 days.">
-                                        미륵보살님 화주가 원만히 성취 후, 히말라야 도량에서의 첫 점안 의식을 여법히 봉행하며, 21일간 동참해주신 모든 분들의 축원을 올려드립니다.
-                                    </p>
-                                </div>
-                            </div>
-
-
-                            <div class="bg-slate-50 rounded-lg p-6 border border-slate-200">
-                                <div class="flex items-center mb-4">
-                                    <div class="text-xl mr-3">🪷</div>
-                                    <h4 class="text-xl font-serif font-bold text-gray-800"
-                                        data-kr="2025년 9월 1일부터 - 약사여래 부처님 화주 모연"
-                                        data-en="From September 1, 2025 - Medicine Buddha Dana Campaign">2025년 9월 1일부터 -
-                                        약사여래 부처님 화주 모연</h4>
-                                </div>
-                                <div class="space-y-3 text-gray-600 leading-relaxed">
-                                    <p data-kr="홍대선원 개원 3주년의 뜻깊은 날을 맞이하여 히말라야에 <strong class='text-amber-700'>약사여래 부처님과 금강역사 두 분</strong>을 모시기 위한 화주 불사를 시작합니다."
-                                        data-en="On the meaningful occasion of the 3rd anniversary of Hongdae Zen Center's opening, we begin the merit-making campaign to enshrine the <strong class='text-amber-700'>Medicine Buddha and two Guardian Kings</strong> in the Himalayas.">
-                                        홍대선원 개원 3주년의 뜻깊은 날을 맞이하여 히말라야에 <strong class="text-amber-700">약사여래 부처님과 금강역사 두
-                                            분</strong>을
-                                        모시기 위한 화주 불사를 시작합니다.
-                                    </p>
-                                    <div class="text-center mt-4">
-                                        <button id="contact-btn"
-                                            class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-300 shadow-md hover:shadow-lg"
-                                            data-kr="문의하기" data-en="Contact">
-                                            문의하기
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="bg-slate-50 rounded-lg p-6 border border-slate-200">
-                                <div class="flex items-center mb-4">
-                                    <div class="text-xl mr-3">🙏</div>
-                                    <h4 class="text-xl font-serif font-bold text-gray-800"
-                                        data-kr="2025년 11월 7일 - 약사여래 부처님 고불식"
-                                        data-en="November 7, 2025 - Medicine Buddha & Guardian Kings Consecration and Buddha Ceremony">
-                                        2025년 11월 7일 - 약사여래 부처님 고불식</h4>
-                                </div>
-                                <div class="space-y-3 text-gray-600 leading-relaxed">
-                                    <p data-kr="JustBe 히말라야 법당에 <strong class='text-amber-700'>약사여래 부처님과 미륵연화 보살님, 금강역사 두 분</strong>을 모시고 고불식을 성황리에 봉행하였습니다."
-                                        data-en="We successfully enshrined the <strong class='text-amber-700'>Medicine Buddha, Maitreya Bodhisattva, and two Guardian Kings</strong> in the JustBe Himalaya temple and held a consecration ceremony.">
-                                        JustBe 히말라야 법당에 <strong class="text-amber-700">약사여래 부처님</strong>과 미륵연화 보살님, 금강역사
-                                        두 분을
-                                        모시고 고불식을 성황리에 봉행하였습니다.
-                                    </p>
-                                    <div class="mt-4 aspect-w-16 aspect-h-9">
-                                        <iframe src="https://www.youtube.com/embed/rayvtZKHHYM?si=U2G6kztI3Fjg1qqA"
-                                            title="YouTube video player" frameborder="0"
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                            allowfullscreen class="w-full h-64 rounded-lg shadow-md"></iframe>
-                                    </div>
-                                </div>
+                            <!-- 동참자 보기 버튼 -->
+                            <div class="mt-6 text-center">
+                                <button onclick="openDongchamModal()"
+                                    class="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-300 shadow-md hover:shadow-lg"
+                                    data-kr="동참자 보기" data-en="View Participants">
+                                    동참자 보기
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="py-6 md:py-12 bg-white">
+            <div class="max-w-7xl mx-auto px-4">
+
+                <div class="space-y-6">
+                    <!-- Panorama Image -->
+                    <div class="scroll-reveal w-full">
+                        <div class="aspect-[24/7] rounded-lg overflow-hidden shadow-xl">
+                            <img src="resource/img/panorama.jpeg" alt="히말라야 파노라마" data-kr-alt="히말라야 파노라마"
+                                data-en-alt="Himalaya Panorama" width="800" height="233" loading="lazy"
+                                class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500"
+                                onerror="this.outerHTML='<div class=\'flex items-center justify-center h-full bg-gray-200 text-gray-600 rounded-lg\'><p class=\'text-center\'><strong>이미지 표시 오류</strong><br>사진을 불러오는 데 문제가 발생했습니다.</p></div>'">
+                        </div>
+                        <!-- Panorama Caption -->
+                        <p class="text-base text-gray-600 mt-2 text-center italic font-medium"
+                            data-kr="Annapurna(8091m), Himalaya. <br class='md:hidden'>JustBe Temple Himalaya에서 바라본 전경"
+                            data-en="Annapurna(8091m), Himalaya. <br class='md:hidden'>View from JustBe Temple Himalaya">
+                            <br class="md:hidden">JustBe Temple Himalaya에서 바라본 전경
+                        </p>
+                    </div>
+
+                </div>
 
             </div>
+        </section>
+
+
+        <!-- 히말라야 봉안 여정 (임시 숨김) -->
+        <div class="scroll-reveal hidden">
+            <div class="bg-white rounded-lg p-8 border border-slate-200 shadow-md mb-8">
+                <div class="flex items-center mb-6">
+                    <div class="text-2xl mr-4">🏔️</div>
+                    <h3 class="text-2xl font-serif font-bold text-gray-800" data-kr="히말라야로 모시는 여정"
+                        data-en="Journey to the Himalayas">히말라야로 모시는 여정</h3>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="bg-slate-50 rounded-lg p-6 border border-slate-200">
+                        <div class="flex items-center mb-4">
+                            <div class="text-xl mr-3">🕯️</div>
+                            <h4 class="text-xl font-serif font-bold text-gray-800" data-kr="2025년 9월 28일 - 미륵연화 보살님 점안"
+                                data-en="September 28, 2025 - Maitreya Lotus Bodhisattva Consecration">2025년 9월
+                                28일 - 미륵연화 보살님 점안</h4>
+                        </div>
+                        <div class="space-y-3 text-gray-600 leading-relaxed">
+                            <p data-kr="미륵보살님 화주가 원만히 성취 후, 히말라야 도량에서의 첫 점안 의식을 여법히 봉행하며, 21일간 동참해주신 모든 분들의 축원을 올려드립니다."
+                                data-en="After the successful completion of Maitreya Bodhisattva merit-making, we will enshrine the statue at the JustBe Temple sacred site on Pumdikot Hill in Pokhara, Himalayas, and conduct the first consecration ceremony in the Himalayan temple according to Buddhist tradition, offering prayers for all dharma supporters for 21 days.">
+                                미륵보살님 화주가 원만히 성취 후, 히말라야 도량에서의 첫 점안 의식을 여법히 봉행하며, 21일간 동참해주신 모든 분들의 축원을 올려드립니다.
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <div class="bg-slate-50 rounded-lg p-6 border border-slate-200">
+                        <div class="flex items-center mb-4">
+                            <div class="text-xl mr-3">🪷</div>
+                            <h4 class="text-xl font-serif font-bold text-gray-800"
+                                data-kr="2025년 9월 1일부터 - 약사여래 부처님 화주 모연"
+                                data-en="From September 1, 2025 - Medicine Buddha Dana Campaign">2025년 9월 1일부터 -
+                                약사여래 부처님 화주 모연</h4>
+                        </div>
+                        <div class="space-y-3 text-gray-600 leading-relaxed">
+                            <p data-kr="홍대선원 개원 3주년의 뜻깊은 날을 맞이하여 히말라야에 <strong class='text-amber-700'>약사여래 부처님과 금강역사 두 분</strong>을 모시기 위한 화주 불사를 시작합니다."
+                                data-en="On the meaningful occasion of the 3rd anniversary of Hongdae Zen Center's opening, we begin the merit-making campaign to enshrine the <strong class='text-amber-700'>Medicine Buddha and two Guardian Kings</strong> in the Himalayas.">
+                                홍대선원 개원 3주년의 뜻깊은 날을 맞이하여 히말라야에 <strong class="text-amber-700">약사여래 부처님과 금강역사 두
+                                    분</strong>을
+                                모시기 위한 화주 불사를 시작합니다.
+                            </p>
+                            <div class="text-center mt-4">
+                                <button id="contact-btn"
+                                    class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-300 shadow-md hover:shadow-lg"
+                                    data-kr="문의하기" data-en="Contact">
+                                    문의하기
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-50 rounded-lg p-6 border border-slate-200">
+                        <div class="flex items-center mb-4">
+                            <div class="text-xl mr-3">🙏</div>
+                            <h4 class="text-xl font-serif font-bold text-gray-800" data-kr="2025년 11월 7일 - 약사여래 부처님 고불식"
+                                data-en="November 7, 2025 - Medicine Buddha & Guardian Kings Consecration and Buddha Ceremony">
+                                2025년 11월 7일 - 약사여래 부처님 고불식</h4>
+                        </div>
+                        <div class="space-y-3 text-gray-600 leading-relaxed">
+                            <p data-kr="JustBe 히말라야 법당에 <strong class='text-amber-700'>약사여래 부처님과 미륵연화 보살님, 금강역사 두 분</strong>을 모시고 고불식을 성황리에 봉행하였습니다."
+                                data-en="We successfully enshrined the <strong class='text-amber-700'>Medicine Buddha, Maitreya Bodhisattva, and two Guardian Kings</strong> in the JustBe Himalaya temple and held a consecration ceremony.">
+                                JustBe 히말라야 법당에 <strong class="text-amber-700">약사여래 부처님</strong>과 미륵연화 보살님, 금강역사
+                                두 분을
+                                모시고 고불식을 성황리에 봉행하였습니다.
+                            </p>
+                            <div class="mt-4 aspect-w-16 aspect-h-9">
+                                <iframe src="https://www.youtube.com/embed/rayvtZKHHYM?si=U2G6kztI3Fjg1qqA"
+                                    title="YouTube video player" frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    allowfullscreen class="w-full h-64 rounded-lg shadow-md"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </div>
         </section>
 
 
