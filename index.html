@@ -374,6 +374,20 @@
             }
         }
 
+        @keyframes lantern-flicker {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.85;
+                transform: scale(0.98);
+            }
+        }
+
         /* 배경 이미지 스타일 */
         .hero-bg {
             background-image: url('resource/img/hero_bg_88.jpeg');
@@ -2851,21 +2865,28 @@
 
                         if (isFilled !== wasFilled || (isFilled && pulseIndices.has(i) && !cells[i].classList.contains('animate-pulse'))) {
                             if (isFilled) {
-                                // Filled State - Blue with subtle glow
-                                cells[i].className = 'w-full h-full bg-blue-500 shadow-[0_0_2px_rgba(59,130,246,0.6)] rounded-[1px] transition-colors duration-700';
+                                // Filled State - Lantern Effect (Blue with Glow)
+                                cells[i].className = 'w-full h-full bg-blue-500 shadow-[0_0_4px_rgba(59,130,246,0.8)] rounded-[1px] transition-all duration-1000';
                                 cells[i].setAttribute('data-filled', 'true');
 
-                                // Add pulse to the most recently added cells
+                                // Add random flicker animation
+                                cells[i].style.animation = `lantern-flicker ${2 + Math.random()}s infinite alternate ${Math.random() * 2}s`;
+
+                                // Add pulse to the most recently added cells (stronger highlight)
                                 if (pulseIndices.has(i)) {
                                     cells[i].classList.add('animate-pulse');
+                                    cells[i].style.zIndex = '10'; // Bring to front
                                 } else {
                                     cells[i].classList.remove('animate-pulse');
+                                    cells[i].style.zIndex = 'auto';
                                 }
                             } else {
                                 // Empty State
                                 cells[i].className = 'w-full h-full bg-white rounded-[1px] opacity-60 transition-colors duration-700';
                                 cells[i].setAttribute('data-filled', 'false');
                                 cells[i].classList.remove('animate-pulse');
+                                cells[i].style.animation = ''; // Clear animation
+                                cells[i].style.zIndex = 'auto';
                             }
                         }
                     }
