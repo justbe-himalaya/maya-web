@@ -782,11 +782,11 @@
                     <!-- Progress Bar -->
                     <div class="mb-8 max-w-3xl mx-auto px-4">
                         <div class="flex justify-between items-end mb-2">
-                            <span id="one-pyeong-goal" class="text-sm font-medium text-gray-500" data-kr="1차 목표: 3,000명"
-                                data-en="Goal: 3,000 people">1차 목표: 3,000명</span>
+                            <span id="one-pyeong-goal" class="text-sm font-medium text-gray-500" data-kr="1차 목표: 3,000평"
+                                data-en="Goal: 3,000 pyeong">1차 목표: 3,000평</span>
                             <span id="one-pyeong-stats" class="text-lg font-bold text-blue-600"
-                                data-kr="현재 133명 동참 (4.4%)" data-en="Current: 133 participants (4.4%)">현재 133명
-                                동참 (4.4%)</span>
+                                data-kr="현재 246평 동참 (8.2%)" data-en="Current: 246 pyeong (8.2%)">현재 246평
+                                동참 (8.2%)</span>
                         </div>
                         <div class="w-full max-w-5xl mx-auto bg-slate-100 rounded-xl p-1 shadow-inner">
                             <div id="one-pyeong-grid-container"
@@ -2773,11 +2773,11 @@
             const progressGoal = document.getElementById('one-pyeong-goal');
 
             if (progressStats && progressGoal) {
-                progressStats.setAttribute('data-kr', `현재 ${count.toLocaleString()}명 동참 (${percent}%)`);
-                progressStats.setAttribute('data-en', `Current: ${count.toLocaleString()} participants (${percent}%)`);
+                progressStats.setAttribute('data-kr', `현재 ${count.toLocaleString()}평 동참 (${percent}%)`);
+                progressStats.setAttribute('data-en', `Current: ${count.toLocaleString()} pyeong (${percent}%)`);
 
-                progressGoal.setAttribute('data-kr', `1차 목표: ${goal.toLocaleString()}명`);
-                progressGoal.setAttribute('data-en', `Goal: ${goal.toLocaleString()} people`);
+                progressGoal.setAttribute('data-kr', `1차 목표: ${goal.toLocaleString()}평`);
+                progressGoal.setAttribute('data-en', `Goal: ${goal.toLocaleString()} pyeong`);
 
                 const currentLang = document.documentElement.lang;
                 if (currentLang === 'en') {
