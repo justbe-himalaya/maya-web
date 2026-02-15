@@ -933,58 +933,43 @@
                             </p>
                             <div class="space-y-3 mb-8">
 
+                                <!-- 마감된 프로그램 (숨김)
+                                2026.2 제2차 JustBe 히말라야 원정대 - 마감
+                                26.02.14~24 제3회 히말라야 새해맞이 정초 구법순례 - 마감
+                                2026.3 제3차 JustBe 히말라야 원정대 - 마감
+                                -->
+
                                 <div class="flex items-center justify-center">
-                                    <div class="bg-purple-100 px-4 py-3 rounded-2xl border border-purple-300">
+                                    <div class="bg-emerald-100 px-4 py-3 rounded-2xl border border-emerald-300">
                                         <div
                                             class="flex flex-col md:flex-row md:items-center md:justify-between text-center md:text-left">
                                             <div class="mb-2 md:mb-0">
-                                                <span class="font-bold text-purple-700">2026. 2</span>
-                                                <span class="text-purple-800 ml-2" data-kr="제2차 JustBe 히말라야 원정대"
-                                                    data-en="2nd JustBe Himalaya Expedition Team">제2차 JustBe 히말라야
-                                                    원정대</span>
+                                                <span class="font-bold text-emerald-700">2026. 4</span>
+                                                <span class="text-emerald-800 ml-2" data-kr="JustBe 히말라야 템플스테이"
+                                                    data-en="JustBe Himalaya Temple Stay">JustBe 히말라야 템플스테이</span>
                                             </div>
-                                            <button disabled
-                                                class="bg-gray-400 cursor-not-allowed text-white px-3 py-1 rounded-lg text-xs font-medium transition-colors duration-300 md:ml-4 flex-shrink-0 self-center"
-                                                data-kr="마감" data-en="Closed">
-                                                마감
+                                            <button onclick="openAprilTempleStayModal()"
+                                                class="bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-1 rounded-lg text-xs font-medium transition-colors duration-300 md:ml-4 flex-shrink-0 self-center"
+                                                data-kr="참가하기" data-en="Join">
+                                                참가하기
                                             </button>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="flex items-center justify-center">
-                                    <div class="bg-green-100 px-4 py-3 rounded-2xl border border-green-300">
+                                    <div class="bg-amber-100 px-4 py-3 rounded-2xl border border-amber-300">
                                         <div
                                             class="flex flex-col md:flex-row md:items-center md:justify-between text-center md:text-left">
                                             <div class="mb-2 md:mb-0">
-                                                <span class="font-bold text-green-700">26.02.14~24</span>
-                                                <span class="text-green-800 ml-2" data-kr="제3회 히말라야 새해맞이 정초 구법순례"
-                                                    data-en="3rd Himalaya New Year Dharma Pilgrimage">제3회 히말라야 새해맞이 정초
-                                                    구법순례</span>
+                                                <span class="font-bold text-amber-700">2026. 5. 1</span>
+                                                <span class="text-amber-800 ml-2" data-kr="네팔 부처님 오신 날 기념 특별 순례"
+                                                    data-en="Special Pilgrimage for Buddha's Birthday in Nepal">네팔 부처님 오신 날 기념 특별 순례</span>
                                             </div>
-                                            <button disabled
-                                                class="bg-gray-400 cursor-not-allowed text-white px-3 py-1 rounded-lg text-xs font-medium transition-colors duration-300 md:ml-4 flex-shrink-0 self-center"
-                                                data-kr="마감" data-en="Closed">
-                                                마감
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="flex items-center justify-center">
-                                    <div class="bg-gray-100 px-4 py-3 rounded-2xl border border-gray-300">
-                                        <div
-                                            class="flex flex-col md:flex-row md:items-center md:justify-between text-center md:text-left">
-                                            <div class="mb-2 md:mb-0">
-                                                <span class="font-bold text-gray-500">2026. 3</span>
-                                                <span class="text-gray-600 ml-2" data-kr="제3차 JustBe 히말라야 원정대"
-                                                    data-en="3rd JustBe Himalaya Expedition Team">제3차 JustBe 히말라야
-                                                    원정대</span>
-                                            </div>
-                                            <button disabled
-                                                class="bg-gray-400 cursor-not-allowed text-white px-3 py-1 rounded-lg text-xs font-medium transition-colors duration-300 md:ml-4 flex-shrink-0 self-center"
-                                                data-kr="마감" data-en="Closed">
-                                                마감
+                                            <button onclick="openSpecialPilgrimageModal()"
+                                                class="bg-amber-600 hover:bg-amber-700 text-white px-3 py-1 rounded-lg text-xs font-medium transition-colors duration-300 md:ml-4 flex-shrink-0 self-center"
+                                                data-kr="참가하기" data-en="Join">
+                                                참가하기
                                             </button>
                                         </div>
                                     </div>
@@ -2986,6 +2971,528 @@
         </div>
     </div>
 
+    <!-- 네팔 부처님 오신날 특별 순례 모달 -->
+    <div id="special-pilgrimage-modal"
+        class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4 hidden backdrop-blur-sm transition-opacity duration-300">
+        <div class="bg-white rounded-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
+            <!-- Header -->
+            <div
+                class="sticky top-0 bg-white/95 backdrop-blur border-b p-4 md:p-10 flex justify-between items-center z-10">
+                <div class="flex items-center gap-3">
+                    <span class="text-3xl">🪷</span>
+                    <div>
+                        <h3 class="text-xl md:text-2xl font-bold text-gray-900" data-kr="네팔 부처님 오신 날 기념 특별 순례"
+                            data-en="Special Pilgrimage for Buddha's Birthday in Nepal">네팔 부처님 오신 날 기념 특별 순례</h3>
+                    </div>
+                </div>
+                <button id="close-special-pilgrimage-modal"
+                    class="group p-2 hover:bg-gray-100 rounded-full transition-colors duration-200">
+                    <svg class="w-6 h-6 text-gray-500 group-hover:text-gray-700" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="p-10 md:p-10 space-y-10">
+                <!-- Intro -->
+                <section class="text-center max-w-3xl mx-auto space-y-4">
+                    <div class="inline-block p-3 rounded-full bg-amber-50 mb-2">
+                        <span class="text-3xl">🪷</span>
+                    </div>
+                    <h4 class="text-xl md:text-2xl font-serif font-bold text-gray-800 leading-relaxed"
+                        data-kr="5월 1일, 네팔에서 맞이하는 또 다른 부처님 오신 날"
+                        data-en="May 1st, Another Buddha's Birthday Celebrated in Nepal">
+                        5월 1일, 네팔에서 맞이하는 또 다른 부처님 오신 날
+                    </h4>
+                    <p class="text-gray-600 leading-relaxed">
+                        <span data-kr="네팔 포카라와 카트만두를 잇는 특별 순례 프로그램입니다. 트레킹과 힐링, 두 가지 코스로 구성됩니다."
+                            data-en="A special pilgrimage program connecting Pokhara and Kathmandu, Nepal. Choose between Trekking and Healing courses.">
+                            네팔 포카라와 카트만두를 잇는 특별 순례 프로그램입니다.<br class="hidden md:block">
+                            <strong>트레킹</strong>과 <strong>힐링</strong>, 두 가지 코스로 구성됩니다.
+                        </span>
+                    </p>
+                </section>
+
+                <!-- Courses Grid -->
+                <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- A코스 - 트레킹 -->
+                    <div
+                        class="group bg-slate-50 rounded-2xl p-10 border border-slate-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                        <div class="flex items-center justify-between mb-8">
+                            <div class="bg-white p-3 rounded-xl shadow-sm">
+                                <span class="text-2xl">🏔️</span>
+                            </div>
+                            <span
+                                class="bg-slate-200 text-slate-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">A코스</span>
+                        </div>
+                        <h5 class="text-xl font-bold text-gray-900 mb-2" data-kr="JustBe 히말라야 트레킹" data-en="JustBe Himalaya Trekking">
+                            JustBe 히말라야 트레킹</h5>
+                        <p class="text-sm text-slate-600 mb-8 font-medium" data-kr="푼힐(Poon Hill, 3,210m) 2박 3일 트레킹 포함"
+                            data-en="Including 2-night 3-day Poon Hill (3,210m) Trekking">푼힐(Poon Hill, 3,210m) 2박 3일 트레킹 포함</p>
+
+                        <ul class="space-y-3 text-sm text-gray-600 mb-8">
+                            <li class="flex items-start gap-3">
+                                <span class="text-slate-400 mt-0.5">📅</span>
+                                <span><strong class="text-gray-900">일정:</strong> 2026.04.25.(토) ~ 05.03.(일) (7박 9일)</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-slate-400 mt-0.5">👥</span>
+                                <span><strong class="text-gray-900">인원:</strong> 선착순 12명</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-slate-400 mt-0.5">✈️</span>
+                                <span><strong class="text-gray-900">항공:</strong> 대한항공 직항 (KE 695/696)</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-slate-400 mt-0.5">📍</span>
+                                <span><strong class="text-gray-900">숙박:</strong> 아뇩다라 호텔(카트만두), 라니반 리조트(포카라), 롯지(트레킹)</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-slate-400 mt-0.5">✨</span>
+                                <span><strong class="text-gray-900">주요일정:</strong> 세첸 사원, 부다나트 스투파, 페와호수 카약, 푼힐 트레킹, 네부날 특별 법회</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-slate-400 mt-0.5">🧳</span>
+                                <span><strong class="text-gray-900">참가비:</strong> 330만 원</span>
+                            </li>
+                        </ul>
+
+                        <!-- 상세일정 토글 -->
+                        <div class="mb-6">
+                            <button onclick="document.getElementById('courseA-schedule').classList.toggle('hidden')"
+                                class="w-full py-2.5 px-4 bg-slate-100 border border-slate-200 text-slate-700 font-medium rounded-xl text-sm text-center hover:bg-slate-200 transition-colors flex items-center justify-center gap-2">
+                                <span>📋</span>
+                                <span data-kr="상세일정 보기" data-en="View Schedule">상세일정 보기</span>
+                            </button>
+                            <div id="courseA-schedule" class="hidden mt-4">
+                                <div class="bg-white rounded-xl border border-slate-200 overflow-hidden">
+                                    <table class="w-full text-xs">
+                                        <thead>
+                                            <tr class="bg-slate-100">
+                                                <th class="py-2 px-3 text-left font-bold text-slate-700 w-20">일자</th>
+                                                <th class="py-2 px-3 text-left font-bold text-slate-700">일정</th>
+                                                <th class="py-2 px-3 text-left font-bold text-slate-700 w-16">숙박</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="divide-y divide-slate-50">
+                                            <tr>
+                                                <td class="py-2 px-3 font-medium text-slate-600 whitespace-nowrap">1일차<br>4/25(토)</td>
+                                                <td class="py-2 px-3 text-gray-600">인천 출발 (13:00) → 카트만두 도착 (17:45) → 보우더 이동, 저녁공양 후 호텔 휴식</td>
+                                                <td class="py-2 px-3 text-gray-500">아뇩다라 호텔</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="py-2 px-3 font-medium text-slate-600 whitespace-nowrap">2일차<br>4/26(일)</td>
+                                                <td class="py-2 px-3 text-gray-600">세첸 사원 참배 → 부다나트 스투파 탑돌이 → 포카라 이동 (국내선) → 라니반 리조트 체크인</td>
+                                                <td class="py-2 px-3 text-gray-500">라니반 리조트</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="py-2 px-3 font-medium text-slate-600 whitespace-nowrap">3일차<br>4/27(월)</td>
+                                                <td class="py-2 px-3 text-gray-600">JustBe 선원 아침예불/일출명상 (선택) → 페와호수 카약 체험 → 트레킹 준비 및 자유시간</td>
+                                                <td class="py-2 px-3 text-gray-500">라니반 리조트</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="py-2 px-3 font-medium text-slate-600 whitespace-nowrap">4일차<br>4/28(화)</td>
+                                                <td class="py-2 px-3 text-gray-600">울레리 이동 (차량 4시간) → 트레킹 시작 → 반탄티 → 난게탄티(2,450m) → 고레파니(2,860m) 도착</td>
+                                                <td class="py-2 px-3 text-gray-500">고레파니 롯지</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="py-2 px-3 font-medium text-slate-600 whitespace-nowrap">5일차<br>4/29(수)</td>
+                                                <td class="py-2 px-3 text-gray-600">푼힐(3,210m) 히말라야 일출 감상 → 타다파니(2,630m) 트레킹</td>
+                                                <td class="py-2 px-3 text-gray-500">타다파니 롯지</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="py-2 px-3 font-medium text-slate-600 whitespace-nowrap">6일차<br>4/30(목)</td>
+                                                <td class="py-2 px-3 text-gray-600">간드룩(1,940m) 하산 → 구룽족 전통마을 탐방 → 포카라 복귀 → 자유시간 (마사지 추천)</td>
+                                                <td class="py-2 px-3 text-gray-500">라니반 리조트</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="py-2 px-3 font-medium text-slate-600 whitespace-nowrap">7일차<br>5/1(금)</td>
+                                                <td class="py-2 px-3 text-gray-600">JustBe Himalaya 선원 참배/아침예불 (선택) → <strong>네팔 부처님 오신날 기념 특별 법회</strong> → 자유시간 (마운틴 플라이트/패러글라이딩/마사지) → 라니반 리조트 저녁 만찬</td>
+                                                <td class="py-2 px-3 text-gray-500">라니반 리조트</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="py-2 px-3 font-medium text-slate-600 whitespace-nowrap">8일차<br>5/2(토)</td>
+                                                <td class="py-2 px-3 text-gray-600">카트만두 이동 (국내선) → 팀별 개별 일정 (박타푸르/파탄/타멜) → 공항 라운지 미팅 → 카트만두 출발 (19:20)</td>
+                                                <td class="py-2 px-3 text-gray-500">기내</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="py-2 px-3 font-medium text-slate-600 whitespace-nowrap">9일차<br>5/3(일)</td>
+                                                <td class="py-2 px-3 text-gray-600">인천공항 도착 (04:40) 및 해산</td>
+                                                <td class="py-2 px-3 text-gray-500">-</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <p class="text-xs text-gray-400 p-3 border-t border-slate-100">⚠️ 상기 일정은 현지 사정에 의해 변동될 수 있습니다.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 문의하기 -->
+                        <a href="tel:010-0000-0000"
+                            class="block w-full py-3 px-6 bg-slate-700 hover:bg-slate-800 text-white font-semibold rounded-xl text-center transition-colors duration-300 text-sm">
+                            <span data-kr="문의하기" data-en="Contact Us">문의하기</span>
+                        </a>
+                    </div>
+
+                    <!-- B코스 - 힐링 -->
+                    <div
+                        class="group bg-amber-50 rounded-2xl p-10 border border-amber-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                        <div class="flex items-center justify-between mb-8">
+                            <div class="bg-white p-3 rounded-xl shadow-sm">
+                                <span class="text-2xl">🧘</span>
+                            </div>
+                            <span
+                                class="bg-amber-200 text-amber-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">B코스</span>
+                        </div>
+                        <h5 class="text-xl font-bold text-gray-900 mb-2" data-kr="JustBe 히말라야 힐링" data-en="JustBe Himalaya Healing">
+                            JustBe 히말라야 힐링</h5>
+                        <p class="text-sm text-amber-700 mb-8 font-medium" data-kr="오스트레일리안 캠프(2,060m) 트레킹 (선택)"
+                            data-en="Australian Camp (2,060m) Trekking (Optional)">오스트레일리안 캠프(2,060m) 트레킹 (선택)</p>
+
+                        <ul class="space-y-3 text-sm text-gray-600 mb-8">
+                            <li class="flex items-start gap-3">
+                                <span class="text-amber-400 mt-0.5">📅</span>
+                                <span><strong class="text-gray-900">일정:</strong> 2026.04.28.(화) ~ 05.03.(일) (4박 6일)</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-amber-400 mt-0.5">👥</span>
+                                <span><strong class="text-gray-900">인원:</strong> 선착순 12명</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-amber-400 mt-0.5">✈️</span>
+                                <span><strong class="text-gray-900">항공:</strong> 대한항공 직항 (KE 695/696)</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-amber-400 mt-0.5">📍</span>
+                                <span><strong class="text-gray-900">숙박:</strong> 아뇩다라 호텔(카트만두), 라니반 리조트(포카라)</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-amber-400 mt-0.5">✨</span>
+                                <span><strong class="text-gray-900">주요일정:</strong> 세첸 사원, 부다나트 스투파, 페와호수 카약, 호주캠프 트레킹(선택), 네부날 특별 법회</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-amber-400 mt-0.5">🧳</span>
+                                <span><strong class="text-gray-900">참가비:</strong> 300만 원</span>
+                            </li>
+                        </ul>
+
+                        <!-- 상세일정 토글 -->
+                        <div class="mb-6">
+                            <button onclick="document.getElementById('courseB-schedule').classList.toggle('hidden')"
+                                class="w-full py-2.5 px-4 bg-amber-100 border border-amber-200 text-amber-700 font-medium rounded-xl text-sm text-center hover:bg-amber-200 transition-colors flex items-center justify-center gap-2">
+                                <span>📋</span>
+                                <span data-kr="상세일정 보기" data-en="View Schedule">상세일정 보기</span>
+                            </button>
+                            <div id="courseB-schedule" class="hidden mt-4">
+                                <div class="bg-white rounded-xl border border-amber-200 overflow-hidden">
+                                    <table class="w-full text-xs">
+                                        <thead>
+                                            <tr class="bg-amber-50">
+                                                <th class="py-2 px-3 text-left font-bold text-amber-700 w-20">일자</th>
+                                                <th class="py-2 px-3 text-left font-bold text-amber-700">일정</th>
+                                                <th class="py-2 px-3 text-left font-bold text-amber-700 w-16">숙박</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="divide-y divide-amber-50">
+                                            <tr>
+                                                <td class="py-2 px-3 font-medium text-amber-600 whitespace-nowrap">1일차<br>4/28(화)</td>
+                                                <td class="py-2 px-3 text-gray-600">인천 출발 (13:00) → 카트만두 도착 (17:45) → 보우더 이동, 저녁공양 후 호텔 휴식</td>
+                                                <td class="py-2 px-3 text-gray-500">아뇩다라 호텔</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="py-2 px-3 font-medium text-amber-600 whitespace-nowrap">2일차<br>4/29(수)</td>
+                                                <td class="py-2 px-3 text-gray-600">세첸 사원 참배 → 부다나트 스투파 탑돌이 → 포카라 이동 (국내선) → 라니반 리조트 체크인</td>
+                                                <td class="py-2 px-3 text-gray-500">라니반 리조트</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="py-2 px-3 font-medium text-amber-600 whitespace-nowrap">3일차<br>4/30(목)</td>
+                                                <td class="py-2 px-3 text-gray-600">JustBe 선원 아침예불/일출명상 (선택) → 페와호수 카약 체험 → 선택 프로그램: [옵션1] 호주캠프(2,060m) 트레킹 / [옵션2] 마운틴 플라이트·패러글라이딩·마사지·쇼핑</td>
+                                                <td class="py-2 px-3 text-gray-500">라니반 리조트</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="py-2 px-3 font-medium text-amber-600 whitespace-nowrap">4일차<br>5/1(금)</td>
+                                                <td class="py-2 px-3 text-gray-600">JustBe Himalaya 선원 참배/아침예불 (선택) → <strong>네팔 부처님 오신날 기념 특별 법회</strong> → 자유시간 (마운틴 플라이트/패러글라이딩/마사지) → 라니반 리조트 저녁 만찬</td>
+                                                <td class="py-2 px-3 text-gray-500">라니반 리조트</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="py-2 px-3 font-medium text-amber-600 whitespace-nowrap">5일차<br>5/2(토)</td>
+                                                <td class="py-2 px-3 text-gray-600">카트만두 이동 (국내선) → 팀별 개별 일정 (박타푸르/파탄/타멜) → 공항 라운지 미팅 → 카트만두 출발 (19:20)</td>
+                                                <td class="py-2 px-3 text-gray-500">기내</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="py-2 px-3 font-medium text-amber-600 whitespace-nowrap">6일차<br>5/3(일)</td>
+                                                <td class="py-2 px-3 text-gray-600">인천공항 도착 (04:40) 및 해산</td>
+                                                <td class="py-2 px-3 text-gray-500">-</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <p class="text-xs text-gray-400 p-3 border-t border-amber-100">⚠️ 상기 일정은 현지 사정에 의해 변동될 수 있습니다.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 문의하기 -->
+                        <a href="tel:010-0000-0000"
+                            class="block w-full py-3 px-6 bg-amber-600 hover:bg-amber-700 text-white font-semibold rounded-xl text-center transition-colors duration-300 text-sm">
+                            <span data-kr="문의하기" data-en="Contact Us">문의하기</span>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- 선택 프로그램 안내 -->
+                <section class="bg-gray-50 rounded-2xl p-6 md:p-8 border border-gray-100">
+                    <h5 class="font-bold text-gray-800 mb-4 flex items-center gap-2">
+                        <span>🎯</span>
+                        <span data-kr="선택 프로그램 (별도 비용)" data-en="Optional Programs (Additional Cost)">선택 프로그램 (별도 비용)</span>
+                    </h5>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-gray-600">
+                        <div class="flex items-center gap-2">
+                            <span>🛩️</span>
+                            <span>히말라야 마운틴 플라이트 ($150~)</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span>🪂</span>
+                            <span>패러글라이딩 ($60~)</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span>💆</span>
+                            <span>마사지 ($30~)</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span>🛍️</span>
+                            <span>포카라 레이크사이드 산책/쇼핑</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 안내사항 -->
+                <section class="bg-amber-50 rounded-2xl p-6 md:p-8 border border-amber-100">
+                    <h5 class="font-bold text-amber-800 mb-3 flex items-center gap-2">
+                        <span>📌</span>
+                        <span data-kr="안내사항" data-en="Information">안내사항</span>
+                    </h5>
+                    <div class="text-sm text-amber-700 space-y-2">
+                        <p>• 대한항공 직항 (인천 ↔ 카트만두)</p>
+                        <p>• 숙박, 교통, 식사, 가이드 포함</p>
+                        <p>• 상기 일정은 현지 사정에 의해 변동될 수 있습니다.</p>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4월 템플스테이 모달 -->
+    <div id="april-templestay-modal"
+        class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4 hidden backdrop-blur-sm transition-opacity duration-300">
+        <div class="bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
+            <!-- Header -->
+            <div
+                class="sticky top-0 bg-white/95 backdrop-blur border-b p-4 md:p-10 flex justify-between items-center z-10">
+                <div class="flex items-center gap-3">
+                    <span class="text-3xl">🪷</span>
+                    <div>
+                        <h3 class="text-xl md:text-2xl font-bold text-gray-900" data-kr="4월 JustBe 히말라야 템플스테이"
+                            data-en="April JustBe Himalaya Temple Stay">4월 JustBe 히말라야 템플스테이</h3>
+                        <p class="text-sm text-gray-500 font-medium" data-kr="2026.04.01 ~ 2026.04.30"
+                            data-en="2026.04.01 ~ 2026.04.30">2026.04.01 ~ 2026.04.30</p>
+                    </div>
+                </div>
+                <button id="close-april-templestay-modal"
+                    class="group p-2 hover:bg-gray-100 rounded-full transition-colors duration-200">
+                    <svg class="w-6 h-6 text-gray-500 group-hover:text-gray-700" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="p-10 md:p-10 space-y-10">
+                <!-- Intro -->
+                <section class="text-center max-w-3xl mx-auto space-y-4">
+                    <div class="inline-block p-3 rounded-full bg-emerald-50 mb-2">
+                        <span class="text-3xl">🧘</span>
+                    </div>
+                    <h4 class="text-xl md:text-2xl font-serif font-bold text-gray-800 leading-relaxed"
+                        data-kr="1,400m 히말라야 도량에서 힐링 & 휴식"
+                        data-en="Healing & Rest at a 1,400m Himalaya Temple">
+                        1,400m 히말라야 도량에서 힐링 &amp; 휴식
+                    </h4>
+                    <p class="text-gray-600 leading-relaxed">
+                        <span data-kr="일정 내 원하는 기간만 자유롭게 선택하여 참가할 수 있습니다."
+                            data-en="You can freely choose your preferred dates within the schedule.">
+                            일정 내 원하는 기간만 자유롭게 선택하여 참가할 수 있습니다.
+                        </span>
+                        <br>
+                        <span class="text-xs mt-1 block text-gray-500"
+                            data-kr="※ 최소 3일 전 신청"
+                            data-en="※ Please apply at least 3 days in advance">
+                            ※ 최소 3일 전 신청
+                        </span>
+                    </p>
+                </section>
+
+                <!-- 기본 정보 -->
+                <section class="bg-emerald-50 rounded-2xl p-10 border border-emerald-100">
+                    <ul class="space-y-3 text-sm text-gray-600">
+                        <li class="flex items-start gap-3">
+                            <span class="text-emerald-400 mt-0.5">👤</span>
+                            <span><strong class="text-gray-900">지도법사:</strong> JustBe 준한 &amp; 승원 스님</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-emerald-400 mt-0.5">📅</span>
+                            <span><strong class="text-gray-900">일정:</strong> 2026.04.01.(수) ~ 04.30.(목) 중 자유롭게 선택</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-emerald-400 mt-0.5">⏳</span>
+                            <span><strong class="text-gray-900">모집마감:</strong> 2026.03.15.(일)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-emerald-400 mt-0.5">👥</span>
+                            <span><strong class="text-gray-900">인원:</strong> 5명 (만 18세 이상)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-emerald-400 mt-0.5">✈️</span>
+                            <span><strong class="text-gray-900">픽업:</strong> 포카라 국제공항 (개별 도착, 참가 확정 후 픽업 장소 안내)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-emerald-400 mt-0.5">📍</span>
+                            <span><strong class="text-gray-900">숙박:</strong> JustBe Himalaya (JustBe Base Camp)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-emerald-400 mt-0.5">✨</span>
+                            <span><strong class="text-gray-900">주요일정:</strong> 예불, 좌선, 포행, 걷기 명상, 운력, 차담</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-emerald-400 mt-0.5">🧳</span>
+                            <span><strong class="text-gray-900">참가비:</strong> 1일 6만 원 (1인실 이용 시 8만 원)<br>
+                                <span class="text-xs text-emerald-600">※ 숙박(2인실), 1일 2식+간식, 포카라 공항 픽업 포함 / 항공권 별도</span></span>
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- 일과표 토글 -->
+                <section>
+                    <button onclick="document.getElementById('april-ts-schedule').classList.toggle('hidden')"
+                        class="w-full py-2.5 px-4 bg-emerald-100 border border-emerald-200 text-emerald-700 font-medium rounded-xl text-sm text-center hover:bg-emerald-200 transition-colors flex items-center justify-center gap-2">
+                        <span>📋</span>
+                        <span data-kr="일과표 보기" data-en="View Daily Schedule">일과표 보기</span>
+                    </button>
+                    <div id="april-ts-schedule" class="hidden mt-4">
+                        <div class="bg-white rounded-xl border border-emerald-200 overflow-hidden">
+                            <table class="w-full text-xs">
+                                <thead>
+                                    <tr class="bg-emerald-50">
+                                        <th class="py-2 px-3 text-left font-bold text-emerald-700 w-28">시간</th>
+                                        <th class="py-2 px-3 text-left font-bold text-emerald-700">세부 내용</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-emerald-50">
+                                    <tr><td class="py-2 px-3 font-medium text-emerald-600 whitespace-nowrap">아침</td><td class="py-2 px-3 text-gray-600">아침 예불 및 30분 좌선</td></tr>
+                                    <tr><td class="py-2 px-3 font-medium text-emerald-600 whitespace-nowrap"></td><td class="py-2 px-3 text-gray-600">아침 식사</td></tr>
+                                    <tr><td class="py-2 px-3 font-medium text-emerald-600 whitespace-nowrap"></td><td class="py-2 px-3 text-gray-600">포행 및 걷기 명상</td></tr>
+                                    <tr><td class="py-2 px-3 font-medium text-emerald-600 whitespace-nowrap"></td><td class="py-2 px-3 text-gray-600">운력</td></tr>
+                                    <tr><td class="py-2 px-3 font-medium text-emerald-600 whitespace-nowrap"></td><td class="py-2 px-3 text-gray-600">자유 시간</td></tr>
+                                    <tr><td class="py-2 px-3 font-medium text-emerald-600 whitespace-nowrap">점심</td><td class="py-2 px-3 text-gray-600">간식</td></tr>
+                                    <tr><td class="py-2 px-3 font-medium text-emerald-600 whitespace-nowrap"></td><td class="py-2 px-3 text-gray-600">포행 및 개인 정비</td></tr>
+                                    <tr><td class="py-2 px-3 font-medium text-emerald-600 whitespace-nowrap"></td><td class="py-2 px-3 text-gray-600">자유 시간</td></tr>
+                                    <tr><td class="py-2 px-3 font-medium text-emerald-600 whitespace-nowrap"></td><td class="py-2 px-3 text-gray-600">자율 정진</td></tr>
+                                    <tr><td class="py-2 px-3 font-medium text-emerald-600 whitespace-nowrap">저녁</td><td class="py-2 px-3 text-gray-600">저녁 식사</td></tr>
+                                    <tr><td class="py-2 px-3 font-medium text-emerald-600 whitespace-nowrap"></td><td class="py-2 px-3 text-gray-600">차담</td></tr>
+                                    <tr><td class="py-2 px-3 font-medium text-emerald-600 whitespace-nowrap"></td><td class="py-2 px-3 text-gray-600">자유시간 및 취침</td></tr>
+                                </tbody>
+                            </table>
+                            <div class="text-xs text-gray-500 p-3 border-t border-emerald-100 space-y-1">
+                                <p>⏺️ 정해진 일과 대신 포카라 시내나 호숫가에서 자유롭게 개인 시간을 보낼 수 있습니다.</p>
+                                <p>➡️ 추천활동: 카약, 마사지, 쇼핑, 외식, 1박 2일 트레킹 등</p>
+                                <p>➡️ 지원옵션: 가이드 안내 및 택시 이용 (비용 별도)</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- FAQ 토글 -->
+                <section>
+                    <button onclick="document.getElementById('april-ts-faq').classList.toggle('hidden')"
+                        class="w-full py-2.5 px-4 bg-emerald-100 border border-emerald-200 text-emerald-700 font-medium rounded-xl text-sm text-center hover:bg-emerald-200 transition-colors flex items-center justify-center gap-2">
+                        <span>❓</span>
+                        <span data-kr="자주 묻는 질문" data-en="FAQ">자주 묻는 질문</span>
+                    </button>
+                    <div id="april-ts-faq" class="hidden mt-4">
+                        <div class="bg-white rounded-xl border border-emerald-200 overflow-hidden divide-y divide-emerald-50">
+                            <div class="p-4">
+                                <p class="font-bold text-emerald-700 text-sm mb-1">현지는 안전한가요?</p>
+                                <p class="text-xs text-gray-600">방문지(포카라)는 관광지로 안전하지만, 개인 소지품 관리와 안전 수칙 준수에 항상 유의해 주세요.</p>
+                            </div>
+                            <div class="p-4">
+                                <p class="font-bold text-emerald-700 text-sm mb-1">비자는 어떻게 하나요?</p>
+                                <p class="text-xs text-gray-600">출국 전 JustBe에서 총괄 진행(온라인 신청) 및 네팔 도착 후 수령. ⚠️ 여권 유효기간이 출국 당일 기준, 최소 6개월 이상인지 확인해 주세요!</p>
+                            </div>
+                            <div class="p-4">
+                                <p class="font-bold text-emerald-700 text-sm mb-1">숙소에서 포카라 시내까지 이동이 가능한가요?</p>
+                                <p class="text-xs text-gray-600">차량으로 20~30분 소요되며, 필요하다면 지프 또는 택시 예약 지원 (편도 2~3만 원)</p>
+                            </div>
+                            <div class="p-4">
+                                <p class="font-bold text-emerald-700 text-sm mb-1">날씨는 어떤가요?</p>
+                                <p class="text-xs text-gray-600">포카라 지역은 낮에는 약 26~30도, 밤에는 약 13~16도로 일교차가 큰 편입니다.</p>
+                            </div>
+                            <div class="p-4">
+                                <p class="font-bold text-emerald-700 text-sm mb-1">준비물은 어떻게 되나요?</p>
+                                <p class="text-xs text-gray-600">
+                                    의류: 반팔, 얇은 긴팔, 바람막이, 패딩 및 방한 용품<br>
+                                    신발: 운동화 또는 트레킹화, 편한 샌들<br>
+                                    보호용품: 선글라스, 모자, 자외선 차단제, 모기 퇴치제<br>
+                                    세면도구: 칫솔, 치약, 비누, 물티슈, 드라이샴푸 등<br>
+                                    약품: 지사제, 소화제, 감기약, 타이레놀, 개인 상비약<br>
+                                    전자기기: 220V 사용 가능 / 환전: 원화 및 달러 (현지 환전 가능)
+                                </p>
+                            </div>
+                            <div class="p-4">
+                                <p class="font-bold text-emerald-700 text-sm mb-1">통신 및 인터넷 사용은 가능한가요?</p>
+                                <p class="text-xs text-gray-600">숙소에서는 와이파이 사용이 가능합니다.</p>
+                            </div>
+                            <div class="p-4">
+                                <p class="font-bold text-emerald-700 text-sm mb-1">돈은 어떤 화폐로 가져가는 것이 좋을까요?</p>
+                                <p class="text-xs text-gray-600">원화 또는 달러 모두 네팔 현지에서 환전 가능합니다.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 신청 방법 -->
+                <section class="bg-emerald-50 rounded-2xl p-6 md:p-8 border border-emerald-100">
+                    <h5 class="font-bold text-emerald-800 mb-4 flex items-center gap-2">
+                        <span>📱</span>
+                        <span data-kr="신청 방법" data-en="How to Apply">신청 방법</span>
+                    </h5>
+                    <div class="text-sm text-emerald-700 space-y-2">
+                        <p>1️⃣ 카카오톡 또는 문자로 다음 정보를 전달해 주세요.<br>
+                            <span class="text-xs text-emerald-600 ml-6">[성함, 연락처, 인원, 기간, 대행 여행사 연결 필요 여부]</span></p>
+                        <p>2️⃣ 예약 가능 여부와 함께 계좌번호를 안내해 드립니다.</p>
+                        <p>3️⃣ 안내받으신 계좌번호로 참가비를 입금해 주세요.</p>
+                        <p class="mt-3 font-bold">📱 신청 및 문의: 010-3501-0078 (JustBe 홍대선원)</p>
+                    </div>
+                </section>
+
+                <!-- 환불 규정 & 주의사항 -->
+                <section class="bg-gray-50 rounded-2xl p-6 md:p-8 border border-gray-100">
+                    <h5 class="font-bold text-gray-800 mb-3 flex items-center gap-2">
+                        <span>📌</span>
+                        <span data-kr="환불 규정 및 주의사항" data-en="Refund Policy & Notice">환불 규정 및 주의사항</span>
+                    </h5>
+                    <div class="text-sm text-gray-600 space-y-2">
+                        <p>• 출발 1~9일 전 취소: 환불 불가</p>
+                        <p>• 출발 10일부터 취소: 50% 제외 후 환불</p>
+                        <p class="text-xs text-gray-500">⚠️ 총 참가비의 50%는 프로그램 준비에 즉시 사용되므로 환불 불가합니다.</p>
+                        <p class="mt-3 text-xs text-gray-500">📌 현지 활동 중 발생하는 사고나 개인 부주의로 인한 사고에 대해서는 JustBe의 책임이 아님을 안내드리며, 필요시 적절한 여행자 보험 가입을 권장드립니다.</p>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
     <script>
         // --- 데이터 설정 ---
         const accountNumber = '301-0319-5339-51';
@@ -3516,6 +4023,76 @@
             });
         }
 
+        function openSpecialPilgrimageModal() {
+            const modal = document.getElementById('special-pilgrimage-modal');
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function setupSpecialPilgrimageModal() {
+            const modal = document.getElementById('special-pilgrimage-modal');
+            const closeBtn = document.getElementById('close-special-pilgrimage-modal');
+
+            if (!modal || !closeBtn) {
+                console.log('Special pilgrimage modal elements not found');
+                return;
+            }
+
+            closeBtn.addEventListener('click', () => {
+                modal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            });
+
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.add('hidden');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                    modal.classList.add('hidden');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        }
+
+        function openAprilTempleStayModal() {
+            const modal = document.getElementById('april-templestay-modal');
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function setupAprilTempleStayModal() {
+            const modal = document.getElementById('april-templestay-modal');
+            const closeBtn = document.getElementById('close-april-templestay-modal');
+
+            if (!modal || !closeBtn) {
+                console.log('April temple stay modal elements not found');
+                return;
+            }
+
+            closeBtn.addEventListener('click', () => {
+                modal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            });
+
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.add('hidden');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                    modal.classList.add('hidden');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        }
+
 
         function setupPilgrimageModal() {
             const modal = document.getElementById('pilgrimage-modal');
@@ -4024,6 +4601,8 @@
             setupExpeditionModal(); // 원정대 모달
             setupExpeditionModal2(); // 2차 원정대 모달
             setupExpeditionModal3(); // 3차 원정대 모달
+            setupSpecialPilgrimageModal(); // 네팔 부처님 오신날 특별 순례 모달
+            setupAprilTempleStayModal(); // 4월 템플스테이 모달
             setupScrollAnimations(); // 최적화된 스크롤 애니메이션
             optimizeImageLoading(); // 이미지 로딩 최적화
             secureExternalLinks(); // 외부 링크 보안 강화
