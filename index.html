@@ -2,7 +2,7 @@
 <html lang="ko">
 
 <head>
-    <!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=G-93N7ZMWK4P"></script> <script>   window.dataLayer = window.dataLayer || [];   function gtag(){dataLayer.push(arguments);}   gtag('js', new Date());    gtag('config', 'G-93N7ZMWK4P'); </script>
+    <!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=G-93N7ZMWK4P"></script> <script>   window.dataLayer = window.dataLayer || [];   function gtag(){dataLayer.push(arguments);}   gtag('js', new Date());    gtag('config', 'G-93N7ZMWK4P');   gtag('config', 'G-0S6EQZEERT'); </script>
     <meta charset="UTF-8">
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, shrink-to-fit=no">
@@ -861,7 +861,7 @@
                                     data-en="(Name / 'Hanpyeong' required)">
                                     (입금 시<br class="md:hidden"> 이름 / '한평' 기재)
                                 </p>
-                                <button onclick="copyToClipboard('301-0373-8315-51')"
+                                <button onclick="copyToClipboard('301-0373-8315-51'); gtag('event', 'account_copy', {'event_category': 'donation', 'event_label': 'hanpyeong_account', 'value': 800, 'currency': 'USD', 'transport_type': 'beacon'});"
                                     class="bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-lg font-medium transition-colors text-sm"
                                     data-kr="계좌번호 복사" data-en="Copy Account">
                                     계좌번호 복사
@@ -875,6 +875,7 @@
                                     매월 자동 납부
                                 </p>
                                 <a href="https://my.bankcms.co.kr/i83pFB" target="_blank"
+                                    onclick="gtag('event', 'cms_signup_click', {'event_category': 'donation', 'event_label': 'hanpyeong_bulsa', 'value': 800, 'currency': 'USD', 'transport_type': 'beacon'});"
                                     class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors text-sm"
                                     data-kr="신청하기 →" data-en="Apply →">
                                     신청하기 →
@@ -905,6 +906,7 @@
                                 <span class="text-blue-500 mr-2 font-semibold">📞</span>
                                 <span class="font-semibold mr-2" data-kr="동참문의:" data-en="Inquiry:">동참문의:</span>
                                 <a href="tel:010-5708-2423"
+                                    onclick="gtag('event', 'phone_click', {'event_category': 'inquiry', 'event_label': 'hongdae_seonwon', 'value': 370, 'currency': 'USD', 'transport_type': 'beacon'});"
                                     class="text-blue-600 hover:text-blue-800 font-bold">010-5708-2423</a>
                             </div>
                         </div>
@@ -1554,6 +1556,7 @@
                         <div>
                             <p class="font-semibold text-yellow-700 mb-2">카카오톡 오픈채팅</p>
                             <a href="https://open.kakao.com/o/gcUJSSJh" target="_blank" rel="noopener noreferrer"
+                                onclick="gtag('event', 'kakao_chat_click', {'event_category': 'inquiry', 'event_label': 'himalaya_program', 'value': 100, 'currency': 'USD', 'transport_type': 'beacon'});"
                                 class="text-blue-600 underline hover:text-blue-800 break-all">
                                 https://open.kakao.com/o/gcUJSSJh
                             </a>
@@ -1725,6 +1728,7 @@
                         data-en="📞 <a href='tel:010-5708-2423' class='text-blue-600 hover:text-blue-800'>010-5708-2423</a>">
                         📞 <a href="tel:010-5708-2423" class="text-blue-600 hover:text-blue-800">010-5708-2423</a></h4>
                     <a href="tel:010-5708-2423"
+                        onclick="gtag('event', 'phone_click', {'event_category': 'inquiry', 'event_label': 'hongdae_seonwon', 'value': 370, 'currency': 'USD', 'transport_type': 'beacon'});"
                         class="inline-block bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-300"
                         data-kr="전화 걸기" data-en="Call Now">
                         전화 걸기
@@ -3208,6 +3212,7 @@
                         </a>
                         <!-- 문의하기 -->
                         <a href="tel:010-3501-0078"
+                            onclick="gtag('event', 'phone_click', {'event_category': 'inquiry', 'event_label': 'wonjeongdae', 'value': 370, 'currency': 'USD', 'transport_type': 'beacon'});"
                             class="block w-full py-3 px-6 bg-slate-700 hover:bg-slate-800 text-white font-semibold rounded-xl text-center transition-colors duration-300 text-sm">
                             <span data-kr="문의하기" data-en="Contact Us">문의하기</span>
                         </a>
@@ -3389,6 +3394,7 @@
                         </a>
                         <!-- 문의하기 -->
                         <a href="tel:010-3501-0078"
+                            onclick="gtag('event', 'phone_click', {'event_category': 'inquiry', 'event_label': 'wonjeongdae', 'value': 370, 'currency': 'USD', 'transport_type': 'beacon'});"
                             class="block w-full py-3 px-6 bg-amber-600 hover:bg-amber-700 text-white font-semibold rounded-xl text-center transition-colors duration-300 text-sm">
                             <span data-kr="문의하기" data-en="Contact Us">문의하기</span>
                         </a>
