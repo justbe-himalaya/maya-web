@@ -385,17 +385,119 @@
             }
         }
 
+        /* #4: 비대칭 호흡 — 천천히 어두워졌다가 빠르게 살아남 (촛불 같은) */
         @keyframes lantern-flicker {
-
-            0%,
-            100% {
+            0% {
                 opacity: 1;
                 transform: scale(1);
             }
 
-            50% {
-                opacity: 0.85;
-                transform: scale(0.98);
+            60% {
+                opacity: 0.55;
+                transform: scale(0.92);
+                animation-timing-function: ease-in;
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* #2: 점등 진입 효과 — 등불 하나씩 켜지는 듯 */
+        @keyframes lantern-ignite {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+
+            60% {
+                opacity: 1;
+                transform: scale(1.15);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .lantern-on {
+            animation:
+                lantern-ignite 0.8s ease-out backwards,
+                lantern-flicker 5.8s ease-in-out infinite 0.8s;
+        }
+
+        /* #5: Just-Activated Glow — 새 등불이 더 큰 글로우로 등장 */
+        @keyframes lantern-just-lit {
+            0% {
+                opacity: 0;
+                transform: scale(1.8);
+            }
+
+            30% {
+                opacity: 1;
+                transform: scale(1.4);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .lantern-on.just-lit {
+            animation:
+                lantern-just-lit 1.2s ease-out backwards,
+                lantern-flicker 5.8s ease-in-out infinite 1.2s;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            @keyframes lantern-flicker {
+
+                0%,
+                100% {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+
+                50% {
+                    opacity: 0.9;
+                    transform: scale(0.98);
+                }
+            }
+
+            @keyframes lantern-ignite {
+                from {
+                    opacity: 0;
+                }
+
+                to {
+                    opacity: 1;
+                }
+            }
+
+            @keyframes lantern-just-lit {
+                from {
+                    opacity: 0;
+                }
+
+                to {
+                    opacity: 1;
+                }
+            }
+
+            .lantern-on {
+                animation:
+                    lantern-ignite 0.5s ease-out backwards,
+                    lantern-flicker 8.3s ease-in-out infinite 0.5s;
+            }
+
+            .lantern-on.just-lit {
+                animation:
+                    lantern-just-lit 0.5s ease-out backwards,
+                    lantern-flicker 8.3s ease-in-out infinite 0.5s;
             }
         }
 
@@ -677,8 +779,8 @@
                     </div>
 
                     <!-- Card 2: Buddha Road -->
-                    <div
-                        class="group relative p-5 md:p-10 rounded-2xl md:rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden">
+                    <div onclick="openBuddhaRoadModal()"
+                        class="group relative p-5 md:p-10 rounded-2xl md:rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden cursor-pointer">
                         <div
                             class="hidden md:block absolute top-0 right-0 w-32 h-32 bg-amber-100 rounded-bl-full -mr-8 -mt-8 opacity-50 group-hover:scale-150 transition-transform duration-700 ease-out">
                         </div>
@@ -692,11 +794,15 @@
                                 data-kr="붓다로드 복원" data-en="Buddha Road Restoration">
                                 붓다로드 복원
                             </h3>
-                            <p class="text-sm md:text-base text-gray-600 leading-relaxed mb-3 md:mb-8"
+                            <p class="text-sm md:text-base text-gray-600 leading-relaxed mb-3 md:mb-4"
                                 data-kr="부처님 탄생지 룸비니와 히말라야를 연결하는 160km 옛 순례길을 복원하여 진리를 구하는 여정을 함께합니다."
                                 data-en="Restoring the 160km ancient pilgrimage route connecting Lumbini and the Himalayas to join the journey of seeking truth.">
                                 부처님 탄생지 룸비니와 히말라야를 연결하는 160km 옛 순례길을 복원하여 진리를 구하는 여정을 함께합니다.
                             </p>
+                            <span class="inline-flex items-center gap-1 text-sm font-medium text-amber-700 group-hover:translate-x-1 transition-transform"
+                                data-kr="🗺️ 지도로 보기 →" data-en="🗺️ View on Map →">
+                                🗺️ 지도로 보기 →
+                            </span>
                         </div>
                     </div>
 
@@ -2976,6 +3082,151 @@
         </div>
     </div>
 
+    <!-- 붓다로드 모달 -->
+    <div id="buddha-road-modal"
+        class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4 hidden backdrop-blur-sm transition-opacity duration-300">
+        <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
+            <!-- Header -->
+            <div class="sticky top-0 bg-white/95 backdrop-blur border-b p-4 md:p-8 flex justify-between items-center z-10">
+                <div class="flex items-center gap-3">
+                    <span class="text-3xl">🛤️</span>
+                    <div>
+                        <h3 class="text-base md:text-2xl font-bold text-gray-900"
+                            data-kr="붓다로드 (Buddha Road)" data-en="Buddha Road">붓다로드 (Buddha Road)</h3>
+                        <p class="text-xs md:text-sm text-gray-500 font-medium"
+                            data-kr="포카라 → 판차세 → 룸비니 160km 옛 순례길 복원"
+                            data-en="Restoring the 160km ancient pilgrimage route: Pokhara → Panchase → Lumbini">
+                            포카라 → 판차세 → 룸비니 160km 옛 순례길 복원</p>
+                    </div>
+                </div>
+                <button id="close-buddha-road-modal"
+                    class="group p-2 hover:bg-gray-100 rounded-full transition-colors duration-200">
+                    <svg class="w-6 h-6 text-gray-500 group-hover:text-gray-700" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="p-5 md:p-10 space-y-6 md:space-y-8">
+                <!-- Intro -->
+                <section class="text-center max-w-2xl mx-auto space-y-3">
+                    <h4 class="text-lg md:text-2xl font-serif font-bold text-gray-800 leading-relaxed"
+                        data-kr="히말라야에서 부처님 탄생의 땅까지,&lt;br&gt;옛 순례길을 다시 잇다"
+                        data-en="From the Himalayas to the Buddha's birthplace,&lt;br&gt;reconnecting the ancient pilgrimage route">
+                        히말라야에서 부처님 탄생의 땅까지,<br>
+                        옛 순례길을 다시 잇다
+                    </h4>
+                    <p class="text-sm md:text-base text-gray-600 leading-relaxed">
+                        히말라야 포카라에서 부처님 탄생지 룸비니까지,<br class="hidden md:block">
+                        <strong class="text-amber-700">160km</strong>의 옛 순례길을 다시 걸을 수 있도록 복원합니다.
+                    </p>
+                </section>
+
+                <!-- Map -->
+                <section
+                    class="bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 rounded-3xl p-4 md:p-8 border border-amber-100">
+                    <svg viewBox="0 0 400 500" class="w-full max-w-md mx-auto" xmlns="http://www.w3.org/2000/svg">
+                        <!-- 화살표 마커 정의 -->
+                        <defs>
+                            <marker id="buddhaRoadArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                <path d="M 0 0 L 10 5 L 0 10 z" fill="#d97706" />
+                            </marker>
+                        </defs>
+
+                        <!-- 네팔 윤곽 (단순화) -->
+                        <path d="M 60 230 Q 100 200, 160 195 T 280 210 Q 340 215, 370 250 Q 360 310, 320 360 Q 270 400, 200 410 Q 140 405, 90 380 Q 55 350, 50 290 Z"
+                            fill="white" stroke="#cbd5e1" stroke-width="2" />
+
+                        <!-- 안나푸르나 산맥 표시 (점선) -->
+                        <path d="M 110 215 L 150 185 L 200 165 L 250 180 L 295 210"
+                            fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="3 3" />
+                        <text x="200" y="155" text-anchor="middle" font-size="11" font-weight="600" fill="#64748b">
+                            ⛰️ 안나푸르나 8,091m</text>
+
+                        <!-- 붓다로드 경로 (포카라 → 판차세 → 룸비니) -->
+                        <path d="M 195 235 Q 158 250, 155 275 Q 165 320, 200 370"
+                            fill="none" stroke="#d97706" stroke-width="3.5" stroke-dasharray="7 5"
+                            stroke-linecap="round" marker-end="url(#buddhaRoadArrow)" />
+
+                        <!-- 카트만두 (참고용) -->
+                        <circle cx="295" cy="270" r="5" fill="#94a3b8" />
+                        <text x="305" y="275" font-size="11" fill="#64748b">카트만두</text>
+
+                        <!-- 포카라 -->
+                        <circle cx="195" cy="235" r="16" fill="#d97706" opacity="0.2" />
+                        <circle cx="195" cy="235" r="9" fill="#d97706" />
+                        <text x="215" y="232" font-size="13" font-weight="700" fill="#92400e">포카라</text>
+                        <text x="215" y="248" font-size="10" fill="#78716c">JustBe 베이스캠프 · 1,400m</text>
+
+                        <!-- 판차세 -->
+                        <circle cx="155" cy="275" r="7" fill="#475569" />
+                        <text x="145" y="278" text-anchor="end" font-size="13" font-weight="700" fill="#334155">판차세</text>
+                        <text x="145" y="293" text-anchor="end" font-size="10" fill="#64748b">해발 2,200m</text>
+
+                        <!-- 룸비니 -->
+                        <circle cx="200" cy="370" r="16" fill="#059669" opacity="0.2" />
+                        <circle cx="200" cy="370" r="9" fill="#059669" />
+                        <text x="220" y="367" font-size="13" font-weight="700" fill="#065f46">룸비니</text>
+                        <text x="220" y="383" font-size="10" fill="#78716c">부처님 탄생지 · 해발 100m</text>
+
+                        <!-- 160km 배지 -->
+                        <rect x="60" y="295" width="80" height="26" rx="13" fill="#d97706" />
+                        <text x="100" y="313" text-anchor="middle" font-size="12" font-weight="700" fill="white">↕ 160 km</text>
+
+                        <!-- 네팔 라벨 -->
+                        <text x="80" y="265" font-size="14" font-weight="700" fill="#cbd5e1">네팔</text>
+                    </svg>
+                </section>
+
+                <!-- 경유지 카드 -->
+                <section class="space-y-3">
+                    <h5 class="font-bold text-gray-800 text-sm md:text-base flex items-center gap-2">
+                        <span>📍</span><span>주요 경유지</span>
+                    </h5>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                        <div class="bg-amber-50 rounded-2xl p-4 border border-amber-100">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+                                <h6 class="font-bold text-amber-800 text-sm">포카라</h6>
+                                <span class="text-xs text-amber-600 ml-auto font-medium">해발 1,400m</span>
+                            </div>
+                            <p class="text-xs text-gray-600 leading-relaxed">안나푸르나 8,091m를 바라보는 JustBe Himalaya 베이스캠프. 순례의 <strong>출발점</strong>.</p>
+                        </div>
+                        <div class="bg-slate-50 rounded-2xl p-4 border border-slate-100">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="w-2.5 h-2.5 rounded-full bg-slate-500"></span>
+                                <h6 class="font-bold text-slate-800 text-sm">판차세</h6>
+                                <span class="text-xs text-slate-600 ml-auto font-medium">해발 2,200m</span>
+                            </div>
+                            <p class="text-xs text-gray-600 leading-relaxed">히말라야 산악 지대에서 평원으로 내려가는 중간 길목. 자신과 마주하는 <strong>전환점</strong>.</p>
+                        </div>
+                        <div class="bg-emerald-50 rounded-2xl p-4 border border-emerald-100">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                                <h6 class="font-bold text-emerald-800 text-sm">룸비니</h6>
+                                <span class="text-xs text-emerald-600 ml-auto font-medium">해발 100m</span>
+                            </div>
+                            <p class="text-xs text-gray-600 leading-relaxed">부처님이 태어나신 평원의 성지. 룸비니 대성석가사가 위치한 순례의 <strong>도착점</strong>.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 의미 -->
+                <section class="bg-gray-50 rounded-2xl p-5 md:p-6 border border-gray-100">
+                    <h5 class="font-bold text-gray-800 mb-2 text-sm flex items-center gap-2">
+                        <span>🪷</span><span>이 길의 의미</span>
+                    </h5>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        히말라야의 베이스캠프에서 부처님이 태어나신 룸비니까지, 부처님께로 향하는 마음으로 걷는 순례의 길입니다.<br class="hidden md:block">
+                        길 위에서 만나는 풍경과 사람, 그 안에서 자기 자신과 마주하는 시간 — 붓다로드는 단순한 트레킹 코스가 아니라 <strong class="text-amber-700">'순례'</strong>입니다.
+                    </p>
+                </section>
+            </div>
+        </div>
+    </div>
+
     <!-- 네팔 부처님 오신날 특별 순례 모달 -->
     <div id="special-pilgrimage-modal"
         class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4 hidden backdrop-blur-sm transition-opacity duration-300">
@@ -3762,6 +4013,9 @@
                     progressText.innerHTML = progressText.getAttribute('data-kr');
                 }
             }
+
+            // #5: 다음 업데이트에서 "새 등불"을 판별하기 위해 현재 카운트 저장
+            window.prevOnePyeongCount = count;
         }
 
 
@@ -3815,21 +4069,45 @@
                 const cells = gridContainer.children;
                 console.log('Active indices count:', activeIndices.size);
 
+                // #5: 새로 활성화된 셀(이전 업데이트 이후 추가된 동참자)을 추적
+                const prevCount = window.prevOnePyeongCount;
+                const newlyAddedIndices = new Set();
+                if (prevCount !== undefined && count > prevCount) {
+                    for (let pos = prevCount; pos < count; pos++) {
+                        newlyAddedIndices.add(window.onePyeongShuffledIndices[pos]);
+                    }
+                }
+
                 requestAnimationFrame(() => {
                     for (let i = 0; i < cells.length; i++) {
                         if (activeIndices.has(i)) {
                             // Filled State - Lantern Effect (Amber/Gold)
                             // Use inline style for background color to ensure it applies
-                            if (!cells[i].classList.contains('bg-amber-400')) {
-                                cells[i].className = 'w-full h-full bg-amber-400 shadow-[0_0_4px_rgba(251,191,36,0.8)] rounded-[1px] transition-all duration-1000';
-                                cells[i].style.backgroundColor = '#fbbf24'; // Force amber-400
-                                cells[i].style.animation = `lantern-flicker ${2 + Math.random()}s infinite alternate ${Math.random() * 2}s`;
+                            if (!cells[i].classList.contains('lantern-on')) {
+                                // #1: 위치 기반 wave delay (왼쪽 위 → 오른쪽 아래로 물결처럼)
+                                const col = i % 79;
+                                const row = Math.floor(i / 79);
+                                const positionDelay = (col + row) * 0.015; // 0~1.75s 사이
+
+                                const isJustLit = newlyAddedIndices.has(i);
+                                const baseClass = 'w-full h-full shadow-[0_0_4px_rgba(251,191,36,0.8)] rounded-[1px] transition-all duration-1000 lantern-on';
+                                cells[i].className = isJustLit ? `${baseClass} just-lit` : baseClass;
+                                cells[i].style.backgroundColor = '#fbbf24'; // amber-400 단색
+
+                                if (isJustLit) {
+                                    // #5: 새 등불은 wave delay 없이 즉시 강조 (just-lit 1.2s + flicker)
+                                    cells[i].style.animationDelay = '0s, 1.2s';
+                                } else {
+                                    // 옵션 B: ignite는 wave (스태거), flicker는 모두 같은 시각에 시작 (sync)
+                                    // 마지막 cell의 ignite 종료 시각(=max positionDelay + 0.8s) ≈ 2.55s 에 일제히 flicker 시작
+                                    cells[i].style.animationDelay = `${positionDelay}s, 2.55s`;
+                                }
                             }
                         } else {
                             // Empty State
                             cells[i].className = 'w-full h-full bg-slate-700/50 rounded-[1px] transition-colors duration-700';
                             cells[i].style.backgroundColor = ''; // Remove inline style
-                            cells[i].style.animation = '';
+                            cells[i].style.animationDelay = '';
                         }
                     }
                 });
@@ -4182,6 +4460,41 @@
             });
 
             // ESC 키로 닫기
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                    modal.classList.add('hidden');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        }
+
+        function openBuddhaRoadModal() {
+            const modal = document.getElementById('buddha-road-modal');
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function setupBuddhaRoadModal() {
+            const modal = document.getElementById('buddha-road-modal');
+            const closeBtn = document.getElementById('close-buddha-road-modal');
+
+            if (!modal || !closeBtn) {
+                console.log('Buddha Road modal elements not found');
+                return;
+            }
+
+            closeBtn.addEventListener('click', () => {
+                modal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            });
+
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.add('hidden');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
                     modal.classList.add('hidden');
@@ -4768,6 +5081,7 @@
             setupExpeditionModal(); // 원정대 모달
             setupExpeditionModal2(); // 2차 원정대 모달
             setupExpeditionModal3(); // 3차 원정대 모달
+            setupBuddhaRoadModal(); // 붓다로드 모달
             setupSpecialPilgrimageModal(); // 네팔 부처님 오신날 특별 순례 모달
             setupAprilTempleStayModal(); // 4월 템플스테이 모달
             setupScrollAnimations(); // 최적화된 스크롤 애니메이션
