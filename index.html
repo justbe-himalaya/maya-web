@@ -1071,6 +1071,44 @@
                                     </div>
                                 </div>
 
+                                <div class="flex items-center justify-center">
+                                    <div class="bg-amber-100 px-4 py-3 rounded-2xl border border-amber-300">
+                                        <div
+                                            class="flex flex-col md:flex-row md:items-center md:justify-between text-center md:text-left">
+                                            <div class="mb-2 md:mb-0">
+                                                <span class="font-bold text-amber-700">2026. 9. 22~10. 5</span>
+                                                <span class="text-amber-800 ml-2"
+                                                    data-kr="JustBe 한가위 세계 성지순례"
+                                                    data-en="JustBe Chuseok World Pilgrimage">JustBe 한가위 세계 성지순례</span>
+                                            </div>
+                                            <button onclick="openChuseokPilgrimageModal()"
+                                                class="bg-amber-600 hover:bg-amber-700 text-white px-3 py-1 rounded-lg text-xs font-medium transition-colors duration-300 md:ml-4 flex-shrink-0 self-center"
+                                                data-kr="참가하기" data-en="Join">
+                                                참가하기
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center justify-center">
+                                    <div class="bg-rose-100 px-4 py-3 rounded-2xl border border-rose-300">
+                                        <div
+                                            class="flex flex-col md:flex-row md:items-center md:justify-between text-center md:text-left">
+                                            <div class="mb-2 md:mb-0">
+                                                <span class="font-bold text-rose-700">2026. 11. 3~11</span>
+                                                <span class="text-rose-800 ml-2"
+                                                    data-kr="JustBe 히말라야 개원법회 특별순례"
+                                                    data-en="JustBe Himalaya Opening Ceremony Pilgrimage">JustBe 히말라야 개원법회 특별순례</span>
+                                            </div>
+                                            <button onclick="openOpeningCeremonyModal()"
+                                                class="bg-rose-600 hover:bg-rose-700 text-white px-3 py-1 rounded-lg text-xs font-medium transition-colors duration-300 md:ml-4 flex-shrink-0 self-center"
+                                                data-kr="참가하기" data-en="Join">
+                                                참가하기
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                             <p class="text-lg font-medium text-amber-700" data-kr="JustBe 히말라야로 초대합니다."
                                 data-en="We invite you to JustBe Himalaya.">
@@ -3682,6 +3720,563 @@
         </div>
     </div>
 
+    <!-- 한가위 세계 성지순례 모달 -->
+    <div id="chuseok-pilgrimage-modal"
+        class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4 hidden backdrop-blur-sm transition-opacity duration-300">
+        <div class="bg-white rounded-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
+            <!-- Header -->
+            <div class="sticky top-0 bg-white/95 backdrop-blur border-b p-4 md:p-8 flex justify-between items-center z-10">
+                <div class="flex items-center gap-3">
+                    <span class="text-3xl">🌕</span>
+                    <div>
+                        <h3 class="text-base md:text-2xl font-bold text-gray-900"
+                            data-kr="2026년 JustBe 한가위 세계 성지순례"
+                            data-en="2026 JustBe Chuseok World Pilgrimage">2026년 JustBe 한가위 세계 성지순례</h3>
+                        <p class="text-xs md:text-sm text-gray-500 font-medium"
+                            data-kr="히말라야에서 맞이하는 추석, 그리고 유럽 성지까지"
+                            data-en="Chuseok in the Himalayas & European Sacred Sites">
+                            히말라야에서 맞이하는 추석, 그리고 유럽 성지까지</p>
+                    </div>
+                </div>
+                <button id="close-chuseok-pilgrimage-modal"
+                    class="group p-2 hover:bg-gray-100 rounded-full transition-colors duration-200">
+                    <svg class="w-6 h-6 text-gray-500 group-hover:text-gray-700" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="p-4 md:p-10 space-y-6 md:space-y-10">
+                <!-- Intro -->
+                <section class="text-center max-w-3xl mx-auto space-y-4">
+                    <div class="inline-block p-3 rounded-full bg-amber-50 mb-2">
+                        <span class="text-3xl">🌕</span>
+                    </div>
+                    <h4 class="text-lg md:text-2xl font-serif font-bold text-gray-800 leading-relaxed">
+                        인생 버킷리스트,<br>
+                        준한스님과 함께 떠나는 히말라야 & 유럽 성지순례
+                    </h4>
+                    <p class="text-sm md:text-base text-gray-600 leading-relaxed">
+                        서울 – 추석 in 히말라야 – 독일(현각선사 정혜사 개원법회) – 서울<br class="hidden md:block">
+                        한가위 보름달 아래, 도반들과 함께하는 특별한 순례.
+                    </p>
+                    <div class="inline-block bg-amber-50 border border-amber-200 rounded-full px-4 py-2 text-xs md:text-sm text-amber-800">
+                        🪷 <strong>한평불사 창건주 & 약사여래·미륵연화보살상 화주 제자 우선 초대</strong><br class="hidden md:block">
+                        <span class="text-xs text-amber-700">한평불사 창건주는 참가비용 <strong>10% 할인</strong></span>
+                    </div>
+                </section>
+
+                <!-- Courses Grid -->
+                <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- A조 - 히말라야만 -->
+                    <div
+                        class="group bg-amber-50 rounded-2xl p-5 md:p-10 border border-amber-100 hover:shadow-lg transition-all duration-300 md:hover:-translate-y-1">
+                        <div class="flex items-center justify-between mb-4 md:mb-8">
+                            <div class="bg-white p-3 rounded-xl shadow-sm">
+                                <span class="text-2xl">🏔️</span>
+                            </div>
+                            <span
+                                class="bg-amber-200 text-amber-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">A조</span>
+                        </div>
+                        <h5 class="text-xl font-bold text-gray-900 mb-2">히말라야 일정</h5>
+                        <p class="text-sm text-amber-700 mb-4 md:mb-8 font-medium">추석을 히말라야에서 · 대한항공 직항</p>
+
+                        <ul class="space-y-3 text-sm text-gray-600 mb-6 md:mb-8">
+                            <li class="flex items-start gap-3">
+                                <span class="text-amber-400 mt-0.5">📅</span>
+                                <span><strong class="text-gray-900">일정:</strong> 2026.09.22.(화) ~ 09.29.(화) (6박 8일)</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-amber-400 mt-0.5">👥</span>
+                                <span><strong class="text-gray-900">인원:</strong> 선착순 20명</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-amber-400 mt-0.5">✈️</span>
+                                <span><strong class="text-gray-900">항공:</strong> 대한항공 직항 (서울 ↔ 카트만두 ↔ 포카라)</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-amber-400 mt-0.5">🪷</span>
+                                <span><strong class="text-gray-900">인솔:</strong> JustBe 준한스님</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-amber-400 mt-0.5">✨</span>
+                                <span><strong class="text-gray-900">주요일정:</strong> 카트만두 보드나트, JustBe 히말라야 선원, 한가위 전야제, 빤짜세 순례길 1구간, 오스트레일리안 캠프</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-amber-400 mt-0.5">🧳</span>
+                                <span><strong class="text-gray-900">동참금:</strong> 430만 원 <span class="text-amber-700 font-semibold">(창건주 10% 할인 → 390만 원)</span><br>
+                                    <span class="text-xs text-amber-600">※ 싱글룸 사용 시 50만 원 추가</span></span>
+                            </li>
+                        </ul>
+
+                        <!-- 상세일정 토글 -->
+                        <div class="mb-6">
+                            <button onclick="document.getElementById('chuseok-A-schedule').classList.toggle('hidden')"
+                                class="w-full py-2.5 px-4 bg-amber-100 border border-amber-200 text-amber-700 font-medium rounded-xl text-sm text-center hover:bg-amber-200 transition-colors flex items-center justify-center gap-2">
+                                <span>📋</span><span>상세일정 보기</span>
+                            </button>
+                            <div id="chuseok-A-schedule" class="hidden mt-4">
+                                <div class="overflow-x-auto rounded-xl border border-amber-200">
+                                    <div class="bg-white overflow-hidden" style="min-width:480px">
+                                        <table class="w-full text-xs">
+                                            <thead>
+                                                <tr class="bg-amber-50">
+                                                    <th class="py-2 px-2 text-left font-bold text-amber-700 w-16">일자</th>
+                                                    <th class="py-2 px-2 text-left font-bold text-amber-700">일정</th>
+                                                    <th class="py-2 px-2 text-left font-bold text-amber-700 w-20">숙박</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="divide-y divide-amber-50">
+                                                <tr>
+                                                    <td class="py-2 px-2 font-medium text-amber-600 whitespace-nowrap">1일차<br>9/22(화)</td>
+                                                    <td class="py-2 px-2 text-gray-600">인천 → 카트만두 도착</td>
+                                                    <td class="py-2 px-2 text-gray-500">아뇩다라</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="py-2 px-2 font-medium text-amber-600 whitespace-nowrap">2일차<br>9/23(수)</td>
+                                                    <td class="py-2 px-2 text-gray-600">카트만두 → 포카라 이동</td>
+                                                    <td class="py-2 px-2 text-gray-500">라니반</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="py-2 px-2 font-medium text-amber-600 whitespace-nowrap">3일차<br>9/24(목)</td>
+                                                    <td class="py-2 px-2 text-gray-600">포카라 · <strong>한가위 전야제</strong></td>
+                                                    <td class="py-2 px-2 text-gray-500">라니반</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="py-2 px-2 font-medium text-amber-600 whitespace-nowrap">4일차<br>9/25(금)</td>
+                                                    <td class="py-2 px-2 text-gray-600"><strong>빤짜세 순례길 1구간 원정</strong></td>
+                                                    <td class="py-2 px-2 text-gray-500">빤짜세 롯지</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="py-2 px-2 font-medium text-amber-600 whitespace-nowrap">5일차<br>9/26(토)</td>
+                                                    <td class="py-2 px-2 text-gray-600">오스트레일리안 캠프</td>
+                                                    <td class="py-2 px-2 text-gray-500">캠프 롯지</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="py-2 px-2 font-medium text-amber-600 whitespace-nowrap">6일차<br>9/27(일)</td>
+                                                    <td class="py-2 px-2 text-gray-600">포카라 복귀</td>
+                                                    <td class="py-2 px-2 text-gray-500">템플트리</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="py-2 px-2 font-medium text-amber-600 whitespace-nowrap">7일차<br>9/28(월)</td>
+                                                    <td class="py-2 px-2 text-gray-600">포카라 → 카트만두 → 저녁 비행기 출국</td>
+                                                    <td class="py-2 px-2 text-gray-500">기내</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="py-2 px-2 font-medium text-amber-600 whitespace-nowrap">8일차<br>9/29(화)</td>
+                                                    <td class="py-2 px-2 text-gray-600">인천공항 새벽 5시 도착</td>
+                                                    <td class="py-2 px-2 text-gray-500">-</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <p class="text-xs text-gray-400 mt-2">⚠️ 상기 일정은 현지 사정에 의해 변동될 수 있습니다.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- B조 - 히말라야 + 유럽 -->
+                    <div
+                        class="group bg-rose-50 rounded-2xl p-5 md:p-10 border border-rose-100 hover:shadow-lg transition-all duration-300 md:hover:-translate-y-1">
+                        <div class="flex items-center justify-between mb-4 md:mb-8">
+                            <div class="bg-white p-3 rounded-xl shadow-sm">
+                                <span class="text-2xl">🌍</span>
+                            </div>
+                            <span
+                                class="bg-rose-200 text-rose-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">B조</span>
+                        </div>
+                        <h5 class="text-xl font-bold text-gray-900 mb-2">히말라야 + 유럽 전 일정</h5>
+                        <p class="text-sm text-rose-700 mb-4 md:mb-8 font-medium">독일 정혜사 개원식 & 현각선사 친견 포함</p>
+
+                        <ul class="space-y-3 text-sm text-gray-600 mb-6 md:mb-8">
+                            <li class="flex items-start gap-3">
+                                <span class="text-rose-400 mt-0.5">📅</span>
+                                <span><strong class="text-gray-900">일정:</strong> 2026.09.22.(화) ~ 10.05.(월) (13박 14일)</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-rose-400 mt-0.5">👥</span>
+                                <span><strong class="text-gray-900">인원:</strong> 선착순 20명</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-rose-400 mt-0.5">✈️</span>
+                                <span><strong class="text-gray-900">항공:</strong> 서울 ↔ 카트만두 ↔ 포카라 ↔ 뮌헨/레겐스부르크 (대한항공 · 붓다에어 · 카타르에어 · 루프트한자)</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-rose-400 mt-0.5">🪷</span>
+                                <span><strong class="text-gray-900">인솔:</strong> JustBe 준한스님</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-rose-400 mt-0.5">✨</span>
+                                <span><strong class="text-gray-900">주요일정:</strong> A조 전 일정 + 독일 정혜사 개원법회, 현각선사 친견, 유럽 불교 네트워크 방문, 독일 여행</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-rose-400 mt-0.5">🧳</span>
+                                <span><strong class="text-gray-900">동참금:</strong> 880만 원 <span class="text-rose-700 font-semibold">(창건주 10% 할인 → 800만 원)</span><br>
+                                    <span class="text-xs text-rose-600">※ 항공료 약 400~450만 원 · 2인 1실 · 싱글룸 100만 원 추가</span></span>
+                            </li>
+                        </ul>
+
+                        <div class="bg-white rounded-xl border border-rose-100 p-4 text-xs text-gray-600 space-y-1">
+                            <p class="font-bold text-rose-700 mb-1">✅ 동참금 포함</p>
+                            <p>국제·국내선 항공료 (약 400만) · 비자 · 숙식(4성급 리조트) · 트레킹 · 교통비 등</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 핵심 구성 -->
+                <section class="bg-gray-50 rounded-2xl p-5 md:p-8 border border-gray-100">
+                    <h5 class="font-bold text-gray-800 mb-4 flex items-center gap-2">
+                        <span>✨</span><span>핵심 구성</span>
+                    </h5>
+                    <ul class="text-sm text-gray-700 space-y-2">
+                        <li>🪷 JustBe 히말라야 선원 참배</li>
+                        <li>🕉️ 티벳 3대성지 — 카트만두 보드나트 스투파 참배</li>
+                        <li>🥾 싯다르타 순례길 1구간 함께 걷기 (포카라 → 빤짜세, 약 6~8시간, 1,000m → 2,100m) <span class="text-gray-500">— 옵션</span></li>
+                        <li>🌕 JustBe Himalaya Retreat 추석 한가위 축제</li>
+                        <li>🇩🇪 <strong>독일 레겐스부르크 정혜사 개원식 동참 및 독일 여행</strong> <span class="text-gray-500">— B조 전용</span></li>
+                        <li>🧘 <strong>현각선사 친견 및 유럽 불교 네트워크 방문</strong> <span class="text-gray-500">— B조 전용</span></li>
+                    </ul>
+                </section>
+
+                <!-- 신청 자격 -->
+                <section class="bg-amber-50 rounded-2xl p-5 md:p-6 border border-amber-100">
+                    <h5 class="font-bold text-amber-800 mb-2 text-sm flex items-center gap-2">
+                        <span>📌</span><span>모집 대상</span>
+                    </h5>
+                    <p class="text-sm text-amber-700">만 18세 ~ 만 75세 / 하루 2시간 걷기 가능한 분</p>
+                    <p class="text-xs text-amber-600 mt-1">모집 인원: 각 조 최대 20명</p>
+                </section>
+
+                <!-- 신청 방법 -->
+                <section class="bg-emerald-50 rounded-2xl p-5 md:p-6 border border-emerald-100">
+                    <h5 class="font-bold text-emerald-800 mb-3 text-sm">신청 방법</h5>
+                    <div class="text-sm text-emerald-700 space-y-2">
+                        <p><strong>모집 기간:</strong> 2026년 7월 10일부터 선착순 모집</p>
+                        <p class="mt-3 font-bold">📱 문의: 010-3501-0078 (JustBe 홍대선원)</p>
+                        <p class="text-xs text-emerald-600">카카오톡 · 전화 · 홈페이지로 문의 주세요</p>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- 히말라야 개원법회 특별순례 모달 -->
+    <div id="opening-ceremony-modal"
+        class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4 hidden backdrop-blur-sm transition-opacity duration-300">
+        <div class="bg-white rounded-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
+            <!-- Header -->
+            <div class="sticky top-0 bg-white/95 backdrop-blur border-b p-4 md:p-8 flex justify-between items-center z-10">
+                <div class="flex items-center gap-3">
+                    <span class="text-3xl">🪷</span>
+                    <div>
+                        <h3 class="text-base md:text-2xl font-bold text-gray-900"
+                            data-kr="2026년 JustBe 히말라야 개원법회 특별순례"
+                            data-en="2026 JustBe Himalaya Opening Ceremony Pilgrimage">2026년 JustBe 히말라야 개원법회 특별순례</h3>
+                        <p class="text-xs md:text-sm text-gray-500 font-medium"
+                            data-kr="2026년 11월 5일, 히말라야 선원 대망의 개원법회"
+                            data-en="November 5, 2026 — Grand Opening of the Himalaya Temple">
+                            2026년 11월 5일, 히말라야 선원 대망의 개원법회</p>
+                    </div>
+                </div>
+                <button id="close-opening-ceremony-modal"
+                    class="group p-2 hover:bg-gray-100 rounded-full transition-colors duration-200">
+                    <svg class="w-6 h-6 text-gray-500 group-hover:text-gray-700" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="p-4 md:p-10 space-y-6 md:space-y-10">
+                <!-- Intro -->
+                <section class="text-center max-w-3xl mx-auto space-y-4">
+                    <div class="inline-block p-3 rounded-full bg-rose-50 mb-2">
+                        <span class="text-3xl">🪷</span>
+                    </div>
+                    <h4 class="text-lg md:text-2xl font-serif font-bold text-gray-800 leading-relaxed">
+                        히말라야 선원 개원식 동참<br>
+                        여러분을 초대합니다
+                    </h4>
+                    <p class="text-sm md:text-base text-gray-600 leading-relaxed">
+                        2025년 11월 7일 약사여래 고불식에 이어,<br class="hidden md:block">
+                        <strong class="text-rose-700">2026년 11월 5일</strong> 히말라야 선원 대망의 개원법회에 여러분을 초대합니다.
+                    </p>
+                    <div class="inline-block bg-rose-50 border border-rose-200 rounded-full px-4 py-2 text-xs md:text-sm text-rose-800">
+                        🪷 <strong>한평불사 창건주 & 약사여래·미륵연화보살상 화주 제자 우선 초대</strong><br class="hidden md:block">
+                        <span class="text-xs text-rose-700">한평불사 창건주는 참가비용 <strong>10% 할인</strong></span>
+                    </div>
+                </section>
+
+                <!-- Courses Grid -->
+                <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- A조 - 힐링 -->
+                    <div
+                        class="group bg-slate-50 rounded-2xl p-5 md:p-10 border border-slate-100 hover:shadow-lg transition-all duration-300 md:hover:-translate-y-1">
+                        <div class="flex items-center justify-between mb-4 md:mb-8">
+                            <div class="bg-white p-3 rounded-xl shadow-sm">
+                                <span class="text-2xl">🧘</span>
+                            </div>
+                            <span
+                                class="bg-slate-200 text-slate-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">A조</span>
+                        </div>
+                        <h5 class="text-xl font-bold text-gray-900 mb-2">힐링 코스</h5>
+                        <p class="text-sm text-slate-600 mb-4 md:mb-8 font-medium">편안한 힐링 · 쉬운 트레킹 · 대한항공 직항</p>
+
+                        <ul class="space-y-3 text-sm text-gray-600 mb-6 md:mb-8">
+                            <li class="flex items-start gap-3">
+                                <span class="text-slate-400 mt-0.5">📅</span>
+                                <span><strong class="text-gray-900">일정:</strong> 2026.11.03.(화) ~ 11.10.(화) (6박 8일)</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-slate-400 mt-0.5">👥</span>
+                                <span><strong class="text-gray-900">인원:</strong> 선착순 15명</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-slate-400 mt-0.5">✈️</span>
+                                <span><strong class="text-gray-900">항공:</strong> 대한항공 직항 (서울 ↔ 카트만두 ↔ 포카라 ↔ 룸비니)</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-slate-400 mt-0.5">🪷</span>
+                                <span><strong class="text-gray-900">인솔:</strong> JustBe 준한스님</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-slate-400 mt-0.5">✨</span>
+                                <span><strong class="text-gray-900">주요일정:</strong> 개원법회 참석, 빤짜세 순례길 1구간, 룸비니 참배</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-slate-400 mt-0.5">🧳</span>
+                                <span><strong class="text-gray-900">동참금:</strong> 410만 원 <span class="text-slate-700 font-semibold">(창건주 10% 할인 → 369만 원)</span><br>
+                                    <span class="text-xs text-slate-600">※ 2인 1실 · 싱글룸 50만 원 추가</span></span>
+                            </li>
+                        </ul>
+
+                        <!-- 상세일정 토글 -->
+                        <div class="mb-6">
+                            <button onclick="document.getElementById('opening-A-schedule').classList.toggle('hidden')"
+                                class="w-full py-2.5 px-4 bg-slate-100 border border-slate-200 text-slate-700 font-medium rounded-xl text-sm text-center hover:bg-slate-200 transition-colors flex items-center justify-center gap-2">
+                                <span>📋</span><span>상세일정 보기</span>
+                            </button>
+                            <div id="opening-A-schedule" class="hidden mt-4">
+                                <div class="overflow-x-auto rounded-xl border border-slate-200">
+                                    <div class="bg-white overflow-hidden" style="min-width:480px">
+                                        <table class="w-full text-xs">
+                                            <thead>
+                                                <tr class="bg-slate-100">
+                                                    <th class="py-2 px-2 text-left font-bold text-slate-700 w-16">일자</th>
+                                                    <th class="py-2 px-2 text-left font-bold text-slate-700">일정</th>
+                                                    <th class="py-2 px-2 text-left font-bold text-slate-700 w-20">숙박</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="divide-y divide-slate-50">
+                                                <tr>
+                                                    <td class="py-2 px-2 font-medium text-slate-600 whitespace-nowrap">1일차<br>11/3(화)</td>
+                                                    <td class="py-2 px-2 text-gray-600">인천 → 카트만두 도착</td>
+                                                    <td class="py-2 px-2 text-gray-500">아뇩다라</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="py-2 px-2 font-medium text-slate-600 whitespace-nowrap">2일차<br>11/4(수)</td>
+                                                    <td class="py-2 px-2 text-gray-600">카트만두 → 포카라 이동</td>
+                                                    <td class="py-2 px-2 text-gray-500">라니반</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="py-2 px-2 font-medium text-slate-600 whitespace-nowrap">3일차<br>11/5(목)</td>
+                                                    <td class="py-2 px-2 text-gray-600"><strong>★ 히말라야 선원 개원법회</strong></td>
+                                                    <td class="py-2 px-2 text-gray-500">라니반</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="py-2 px-2 font-medium text-slate-600 whitespace-nowrap">4일차<br>11/6(금)</td>
+                                                    <td class="py-2 px-2 text-gray-600">빤짜세 순례길 1구간 원정</td>
+                                                    <td class="py-2 px-2 text-gray-500">빤짜세 롯지</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="py-2 px-2 font-medium text-slate-600 whitespace-nowrap">5일차<br>11/7(토)</td>
+                                                    <td class="py-2 px-2 text-gray-600">포카라 복귀</td>
+                                                    <td class="py-2 px-2 text-gray-500">템플트리</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="py-2 px-2 font-medium text-slate-600 whitespace-nowrap">6일차<br>11/8(일)</td>
+                                                    <td class="py-2 px-2 text-gray-600">룸비니 참배</td>
+                                                    <td class="py-2 px-2 text-gray-500">타이거리조트</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="py-2 px-2 font-medium text-slate-600 whitespace-nowrap">7일차<br>11/9(월)</td>
+                                                    <td class="py-2 px-2 text-gray-600">점심 후 카트만두 → 저녁 7시 귀국 비행기</td>
+                                                    <td class="py-2 px-2 text-gray-500">기내</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="py-2 px-2 font-medium text-slate-600 whitespace-nowrap">8일차<br>11/10(화)</td>
+                                                    <td class="py-2 px-2 text-gray-600">인천공항 새벽 5시 도착</td>
+                                                    <td class="py-2 px-2 text-gray-500">-</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <p class="text-xs text-gray-400 mt-2">⚠️ 상기 일정은 현지 사정에 의해 변동될 수 있습니다.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- B조 - 트레킹 -->
+                    <div
+                        class="group bg-emerald-50 rounded-2xl p-5 md:p-10 border border-emerald-100 hover:shadow-lg transition-all duration-300 md:hover:-translate-y-1">
+                        <div class="flex items-center justify-between mb-4 md:mb-8">
+                            <div class="bg-white p-3 rounded-xl shadow-sm">
+                                <span class="text-2xl">🏔️</span>
+                            </div>
+                            <span
+                                class="bg-emerald-200 text-emerald-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">B조</span>
+                        </div>
+                        <h5 class="text-xl font-bold text-gray-900 mb-2">트레킹 코스</h5>
+                        <p class="text-sm text-emerald-700 mb-4 md:mb-8 font-medium">3박 4일 트레킹 · 마르디히말 4,200m · 타이항공 경유</p>
+
+                        <ul class="space-y-3 text-sm text-gray-600 mb-6 md:mb-8">
+                            <li class="flex items-start gap-3">
+                                <span class="text-emerald-400 mt-0.5">📅</span>
+                                <span><strong class="text-gray-900">일정:</strong> 2026.11.03.(화) ~ 11.11.(수) (7박 9일)</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-emerald-400 mt-0.5">👥</span>
+                                <span><strong class="text-gray-900">인원:</strong> 선착순 15명</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-emerald-400 mt-0.5">✈️</span>
+                                <span><strong class="text-gray-900">항공:</strong> 타이항공 경유 (서울 ↔ 방콕 ↔ 카트만두 ↔ 포카라)</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-emerald-400 mt-0.5">🪷</span>
+                                <span><strong class="text-gray-900">인솔:</strong> 진허 정승인</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-emerald-400 mt-0.5">✨</span>
+                                <span><strong class="text-gray-900">주요일정:</strong> 개원법회, 3박 4일 마르디히말 트레킹(4,200m, 난이도 중)</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-emerald-400 mt-0.5">🧳</span>
+                                <span><strong class="text-gray-900">동참금:</strong> 410만 원 <span class="text-emerald-700 font-semibold">(창건주 10% 할인 → 369만 원)</span><br>
+                                    <span class="text-xs text-emerald-600">※ 2인 1실 · 싱글룸 50만 원 추가</span></span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-emerald-400 mt-0.5">💪</span>
+                                <span><strong class="text-gray-900">체력:</strong> 만 65세 이하 · 하루 5~7시간 산행 가능 (4,200m 고산)</span>
+                            </li>
+                        </ul>
+
+                        <!-- 상세일정 토글 -->
+                        <div class="mb-6">
+                            <button onclick="document.getElementById('opening-B-schedule').classList.toggle('hidden')"
+                                class="w-full py-2.5 px-4 bg-emerald-100 border border-emerald-200 text-emerald-700 font-medium rounded-xl text-sm text-center hover:bg-emerald-200 transition-colors flex items-center justify-center gap-2">
+                                <span>📋</span><span>상세일정 보기</span>
+                            </button>
+                            <div id="opening-B-schedule" class="hidden mt-4">
+                                <div class="overflow-x-auto rounded-xl border border-emerald-200">
+                                    <div class="bg-white overflow-hidden" style="min-width:480px">
+                                        <table class="w-full text-xs">
+                                            <thead>
+                                                <tr class="bg-emerald-50">
+                                                    <th class="py-2 px-2 text-left font-bold text-emerald-700 w-16">일자</th>
+                                                    <th class="py-2 px-2 text-left font-bold text-emerald-700">일정</th>
+                                                    <th class="py-2 px-2 text-left font-bold text-emerald-700 w-20">숙박</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="divide-y divide-emerald-50">
+                                                <tr>
+                                                    <td class="py-2 px-2 font-medium text-emerald-600 whitespace-nowrap">1일차<br>11/3(화)</td>
+                                                    <td class="py-2 px-2 text-gray-600">인천 → 방콕 → 카트만두</td>
+                                                    <td class="py-2 px-2 text-gray-500">카트만두</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="py-2 px-2 font-medium text-emerald-600 whitespace-nowrap">2일차<br>11/4(수)</td>
+                                                    <td class="py-2 px-2 text-gray-600">포카라 이동</td>
+                                                    <td class="py-2 px-2 text-gray-500">솔티</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="py-2 px-2 font-medium text-emerald-600 whitespace-nowrap">3일차<br>11/5(목)</td>
+                                                    <td class="py-2 px-2 text-gray-600"><strong>★ 히말라야 선원 개원법회</strong></td>
+                                                    <td class="py-2 px-2 text-gray-500">솔티</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="py-2 px-2 font-medium text-emerald-600 whitespace-nowrap">4~6일차<br>11/6~8</td>
+                                                    <td class="py-2 px-2 text-gray-600"><strong>마르디히말 3박 4일 트레킹 (~4,200m)</strong></td>
+                                                    <td class="py-2 px-2 text-gray-500">산악 롯지</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="py-2 px-2 font-medium text-emerald-600 whitespace-nowrap">7일차<br>11/9(일)</td>
+                                                    <td class="py-2 px-2 text-gray-600">포카라 복귀</td>
+                                                    <td class="py-2 px-2 text-gray-500">솔티</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="py-2 px-2 font-medium text-emerald-600 whitespace-nowrap">8일차<br>11/10(월)</td>
+                                                    <td class="py-2 px-2 text-gray-600">카트만두 이동 → 방콕 → 인천</td>
+                                                    <td class="py-2 px-2 text-gray-500">기내</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="py-2 px-2 font-medium text-emerald-600 whitespace-nowrap">9일차<br>11/11(화)</td>
+                                                    <td class="py-2 px-2 text-gray-600">인천공항 오후 3시 도착</td>
+                                                    <td class="py-2 px-2 text-gray-500">-</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <p class="text-xs text-gray-400 mt-2">⚠️ 상기 일정은 현지 사정에 의해 변동될 수 있습니다.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 참가비 포함 안내 -->
+                <section class="bg-gray-50 rounded-2xl p-5 md:p-6 border border-gray-100">
+                    <h5 class="font-bold text-gray-800 mb-2 text-sm flex items-center gap-2">
+                        <span>💰</span><span>동참금 포함 사항</span>
+                    </h5>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        국제·국내선 항공료 · 비자 · 숙식(4성급 리조트) · 트레킹(가이드 + 포터 + 롯지) · 교통비 등
+                    </p>
+                </section>
+
+                <!-- 핵심 구성 -->
+                <section class="bg-gray-50 rounded-2xl p-5 md:p-8 border border-gray-100">
+                    <h5 class="font-bold text-gray-800 mb-4 flex items-center gap-2">
+                        <span>✨</span><span>핵심 구성</span>
+                    </h5>
+                    <ul class="text-sm text-gray-700 space-y-2">
+                        <li>🪷 <strong>JustBe 히말라야 선원 개원법회</strong> (2026.11.5)</li>
+                        <li>🕉️ 티벳 3대성지 — 카트만두 보드나트 스투파 성지순례</li>
+                        <li>🥾 1박 2일 트레킹 — 순례길 제1구간 (포카라 → 빤짜세, 2,500m) <span class="text-gray-500">— 힐링팀 옵션</span></li>
+                        <li>🏔️ <strong>3박 4일 트레킹 — 마르디히말 4,200m (난이도 중)</strong> <span class="text-gray-500">— B조 전용</span></li>
+                    </ul>
+                </section>
+
+                <!-- 모집 대상 -->
+                <section class="bg-rose-50 rounded-2xl p-5 md:p-6 border border-rose-100">
+                    <h5 class="font-bold text-rose-800 mb-2 text-sm flex items-center gap-2">
+                        <span>📌</span><span>모집 대상</span>
+                    </h5>
+                    <ul class="text-sm text-rose-700 space-y-1">
+                        <li>• <strong>A조(힐링)</strong>: 만 18~75세</li>
+                        <li>• <strong>B조(트레킹)</strong>: 만 65세 이하, 하루 5~7시간 산행 가능한 분 (4,200m 고산 트레킹)</li>
+                    </ul>
+                    <p class="text-xs text-rose-600 mt-2">모집 인원: 각 조 최대 15명</p>
+                </section>
+
+                <!-- 신청 방법 -->
+                <section class="bg-emerald-50 rounded-2xl p-5 md:p-6 border border-emerald-100">
+                    <h5 class="font-bold text-emerald-800 mb-3 text-sm">신청 방법</h5>
+                    <div class="text-sm text-emerald-700 space-y-2">
+                        <p><strong>모집 기간:</strong> 2026년 7월 10일부터 선착순 모집</p>
+                        <p class="mt-3 font-bold">📱 문의: 010-3501-0078 (JustBe 홍대선원)</p>
+                        <p class="text-xs text-emerald-600">카카오톡 · 전화 · 홈페이지로 문의 주세요</p>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
     <!-- 히말라야 템플스테이 모달 (상시 운영) -->
     <div id="april-templestay-modal"
         class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4 hidden backdrop-blur-sm transition-opacity duration-300">
@@ -4521,6 +5116,76 @@
             });
         }
 
+        function openChuseokPilgrimageModal() {
+            const modal = document.getElementById('chuseok-pilgrimage-modal');
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function setupChuseokPilgrimageModal() {
+            const modal = document.getElementById('chuseok-pilgrimage-modal');
+            const closeBtn = document.getElementById('close-chuseok-pilgrimage-modal');
+
+            if (!modal || !closeBtn) {
+                console.log('Chuseok pilgrimage modal elements not found');
+                return;
+            }
+
+            closeBtn.addEventListener('click', () => {
+                modal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            });
+
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.add('hidden');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                    modal.classList.add('hidden');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        }
+
+        function openOpeningCeremonyModal() {
+            const modal = document.getElementById('opening-ceremony-modal');
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function setupOpeningCeremonyModal() {
+            const modal = document.getElementById('opening-ceremony-modal');
+            const closeBtn = document.getElementById('close-opening-ceremony-modal');
+
+            if (!modal || !closeBtn) {
+                console.log('Opening ceremony modal elements not found');
+                return;
+            }
+
+            closeBtn.addEventListener('click', () => {
+                modal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            });
+
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.add('hidden');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                    modal.classList.add('hidden');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        }
+
         function openAprilTempleStayModal() {
             const modal = document.getElementById('april-templestay-modal');
             modal.classList.remove('hidden');
@@ -5067,6 +5732,8 @@
             setupBuddhaRoadModal(); // 붓다로드 모달
             setupSpecialPilgrimageModal(); // 네팔 부처님 오신날 특별 순례 모달
             setupAprilTempleStayModal(); // 4월 템플스테이 모달
+            setupChuseokPilgrimageModal(); // 한가위 세계 성지순례 모달
+            setupOpeningCeremonyModal(); // 히말라야 개원법회 특별순례 모달
             setupScrollAnimations(); // 최적화된 스크롤 애니메이션
             optimizeImageLoading(); // 이미지 로딩 최적화
             secureExternalLinks(); // 외부 링크 보안 강화
