@@ -725,16 +725,109 @@
     </header>
 
     <main class="w-full" role="main" aria-label="메인 콘텐츠">
+        <!-- 초대장 -->
+        <section class="py-5 md:py-12 bg-slate-100">
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <div class="scroll-reveal">
+                    <div
+                        class="bg-gradient-to-br from-amber-50 to-orange-50 rounded-lg p-10 border-2 border-amber-200 shadow-lg max-w-2xl mx-auto">
+                        <div class="flex items-center justify-center mb-8">
+                            <div class="text-xl mr-3">🌸</div>
+                            <h4 class="text-xl font-serif font-bold text-amber-800" data-kr="초대장" data-en="Invitation">
+                                초대장</h4>
+                            <div class="text-xl ml-3">🌸</div>
+                        </div>
+                        <div class="text-center space-y-4 text-gray-700 leading-relaxed">
+                            <p class="text-lg font-medium text-gray-700 mb-4" data-kr="불사에 인연 맺어주신 모든 분들께,"
+                                data-en="To all those who have formed a connection with this dharma work,">
+                                불사에 인연 맺어주신 모든 분들께,
+                            </p>
+                            <div class="space-y-3 mb-8">
+
+                                <!-- 마감된 프로그램 (숨김)
+                                2026.2 제2차 JustBe 히말라야 원정대 - 마감
+                                26.02.14~24 제3회 히말라야 새해맞이 정초 구법순례 - 마감
+                                2026.3 제3차 JustBe 히말라야 원정대 - 마감
+                                -->
+
+                                <div class="flex items-center justify-center">
+                                    <div class="bg-emerald-100 px-4 py-3 rounded-2xl border border-emerald-300">
+                                        <div
+                                            class="flex flex-col md:flex-row md:items-center md:justify-between text-center md:text-left">
+                                            <div class="mb-2 md:mb-0">
+                                                <span class="font-bold text-emerald-700">상시</span>
+                                                <span class="text-emerald-800 ml-2" data-kr="JustBe 히말라야 템플스테이"
+                                                    data-en="JustBe Himalaya Temple Stay">JustBe 히말라야 템플스테이</span>
+                                            </div>
+                                            <button onclick="openAprilTempleStayModal()"
+                                                class="bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-1 rounded-lg text-xs font-medium transition-colors duration-300 md:ml-4 flex-shrink-0 self-center"
+                                                data-kr="참가하기" data-en="Join">
+                                                참가하기
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center justify-center">
+                                    <div class="bg-amber-100 px-4 py-3 rounded-2xl border border-amber-300">
+                                        <div
+                                            class="flex flex-col md:flex-row md:items-center md:justify-between text-center md:text-left">
+                                            <div class="mb-2 md:mb-0">
+                                                <span class="font-bold text-amber-700">2026. 9. 22~10. 5</span>
+                                                <span class="text-amber-800 ml-2"
+                                                    data-kr="JustBe 한가위 세계 성지순례"
+                                                    data-en="JustBe Chuseok World Pilgrimage">JustBe 한가위 세계 성지순례</span>
+                                            </div>
+                                            <button onclick="openChuseokPilgrimageModal()"
+                                                class="bg-amber-600 hover:bg-amber-700 text-white px-3 py-1 rounded-lg text-xs font-medium transition-colors duration-300 md:ml-4 flex-shrink-0 self-center"
+                                                data-kr="참가하기" data-en="Join">
+                                                참가하기
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center justify-center">
+                                    <div class="bg-rose-100 px-4 py-3 rounded-2xl border border-rose-300">
+                                        <div
+                                            class="flex flex-col md:flex-row md:items-center md:justify-between text-center md:text-left">
+                                            <div class="mb-2 md:mb-0">
+                                                <span class="font-bold text-rose-700">2026. 11. 3~11</span>
+                                                <span class="text-rose-800 ml-2"
+                                                    data-kr="JustBe 히말라야 개원법회 특별순례"
+                                                    data-en="JustBe Himalaya Opening Ceremony Pilgrimage">JustBe 히말라야 개원법회 특별순례</span>
+                                            </div>
+                                            <button onclick="openOpeningCeremonyModal()"
+                                                class="bg-rose-600 hover:bg-rose-700 text-white px-3 py-1 rounded-lg text-xs font-medium transition-colors duration-300 md:ml-4 flex-shrink-0 self-center"
+                                                data-kr="참가하기" data-en="Join">
+                                                참가하기
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <p class="text-lg font-medium text-amber-700" data-kr="JustBe 히말라야로 초대합니다."
+                                data-en="We invite you to JustBe Himalaya.">
+                                JustBe 히말라야로 초대합니다.
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Project Overview Section -->
-        <section class="py-12 md:py-20 bg-white relative min-h-[85vh] md:min-h-screen flex flex-col justify-center"
+        <section class="py-8 md:py-14 bg-white relative"
             role="region" aria-labelledby="project-overview-title">
             <div class="max-w-7xl mx-auto px-6 w-full">
-                <div class="text-center mb-8 md:mb-8 scroll-reveal">
-                    <span class="text-amber-600 font-medium tracking-widest uppercase text-sm mb-3 md:mb-4 block">Vision
+                <div class="text-center mb-6 md:mb-6 scroll-reveal">
+                    <span class="text-amber-600 font-medium tracking-widest uppercase text-sm mb-2 md:mb-3 block">Vision
                         &
                         Mission</span>
                     <h2 id="project-overview-title"
-                        class="text-3xl md:text-4xl font-bold mb-3 md:mb-8 text-gray-900 font-serif"
+                        class="text-3xl md:text-4xl font-bold mb-3 md:mb-4 text-gray-900 font-serif"
                         data-kr="Project 원력 願力" data-en="Project Vision">Project 원력 <span
                             class="text-amber-600 text-2xl md:text-2xl ml-2 font-serif">願力</span></h2>
                     <p class="text-base md:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-light"
@@ -744,17 +837,17 @@
                     </p>
                 </div>
 
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-6">
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
                     <!-- Card 1: Temple -->
                     <div
-                        class="group relative p-5 md:p-10 rounded-2xl md:rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden">
+                        class="group relative p-5 md:p-7 rounded-2xl md:rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden">
                         <div
                             class="hidden md:block absolute top-0 right-0 w-32 h-32 bg-blue-100 rounded-bl-full -mr-8 -mt-8 opacity-50 group-hover:scale-150 transition-transform duration-700 ease-out">
                         </div>
 
                         <div class="relative z-10">
                             <div
-                                class="w-12 h-12 md:w-16 md:h-16 mb-3 md:mb-8 rounded-xl md:rounded-2xl bg-white shadow-lg flex items-center justify-center text-2xl md:text-3xl group-hover:scale-110 transition-transform duration-300">
+                                class="w-12 h-12 md:w-14 md:h-14 mb-3 md:mb-5 rounded-xl md:rounded-2xl bg-white shadow-lg flex items-center justify-center text-2xl md:text-3xl group-hover:scale-110 transition-transform duration-300">
                                 🏔️
                             </div>
                             <h3 class="text-xl md:text-2xl font-bold mb-2 md:mb-4 text-gray-900 group-hover:text-blue-900 transition-colors"
@@ -780,14 +873,14 @@
 
                     <!-- Card 2: Buddha Road -->
                     <div onclick="openBuddhaRoadModal()"
-                        class="group relative p-5 md:p-10 rounded-2xl md:rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden cursor-pointer">
+                        class="group relative p-5 md:p-7 rounded-2xl md:rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden cursor-pointer">
                         <div
                             class="hidden md:block absolute top-0 right-0 w-32 h-32 bg-amber-100 rounded-bl-full -mr-8 -mt-8 opacity-50 group-hover:scale-150 transition-transform duration-700 ease-out">
                         </div>
 
                         <div class="relative z-10">
                             <div
-                                class="w-12 h-12 md:w-16 md:h-16 mb-3 md:mb-8 rounded-xl md:rounded-2xl bg-white shadow-lg flex items-center justify-center text-2xl md:text-3xl group-hover:scale-110 transition-transform duration-300">
+                                class="w-12 h-12 md:w-14 md:h-14 mb-3 md:mb-5 rounded-xl md:rounded-2xl bg-white shadow-lg flex items-center justify-center text-2xl md:text-3xl group-hover:scale-110 transition-transform duration-300">
                                 🛤️
                             </div>
                             <h3 class="text-xl md:text-2xl font-bold mb-2 md:mb-4 text-gray-900 group-hover:text-amber-800 transition-colors"
@@ -813,14 +906,14 @@
 
                     <!-- Card 3: Diplomacy -->
                     <div
-                        class="hidden lg:block group relative p-5 md:p-10 rounded-2xl md:rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden">
+                        class="hidden lg:block group relative p-5 md:p-7 rounded-2xl md:rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden">
                         <div
                             class="hidden md:block absolute top-0 right-0 w-32 h-32 bg-green-100 rounded-bl-full -mr-8 -mt-8 opacity-50 group-hover:scale-150 transition-transform duration-700 ease-out">
                         </div>
 
                         <div class="relative z-10">
                             <div
-                                class="w-12 h-12 md:w-16 md:h-16 mb-3 md:mb-8 rounded-xl md:rounded-2xl bg-white shadow-lg flex items-center justify-center text-2xl md:text-3xl group-hover:scale-110 transition-transform duration-300">
+                                class="w-12 h-12 md:w-14 md:h-14 mb-3 md:mb-5 rounded-xl md:rounded-2xl bg-white shadow-lg flex items-center justify-center text-2xl md:text-3xl group-hover:scale-110 transition-transform duration-300">
                                 🤝
                             </div>
                             <h3 class="text-xl md:text-2xl font-bold mb-2 md:mb-4 text-gray-900 group-hover:text-green-800 transition-colors"
@@ -837,7 +930,7 @@
                 </div>
 
                 <!-- Q&A Button -->
-                <div class="text-center mt-10 md:mt-16 scroll-reveal">
+                <div class="text-center mt-8 md:mt-10 scroll-reveal">
                     <button onclick="openQAModal()"
                         class="group relative inline-flex items-center justify-center px-6 py-3 md:px-8 md:py-4 font-medium text-white transition-all duration-200 bg-gray-900 font-serif rounded-full hover:bg-gray-800 hover:shadow-xl hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900 text-base md:text-base"
                         data-kr="준한스님 30문 30답 보기" data-en="View Ven. Junhan's 30 Q&A">
@@ -1025,99 +1118,6 @@
                 </div>
 
             </div>
-            </div>
-        </section>
-
-        <!-- 초대장 -->
-        <section class="py-5 md:py-12 bg-slate-100">
-            <div class="max-w-4xl mx-auto px-6 text-center">
-                <div class="scroll-reveal">
-                    <div
-                        class="bg-gradient-to-br from-amber-50 to-orange-50 rounded-lg p-10 border-2 border-amber-200 shadow-lg max-w-2xl mx-auto">
-                        <div class="flex items-center justify-center mb-8">
-                            <div class="text-xl mr-3">🌸</div>
-                            <h4 class="text-xl font-serif font-bold text-amber-800" data-kr="초대장" data-en="Invitation">
-                                초대장</h4>
-                            <div class="text-xl ml-3">🌸</div>
-                        </div>
-                        <div class="text-center space-y-4 text-gray-700 leading-relaxed">
-                            <p class="text-lg font-medium text-gray-700 mb-4" data-kr="불사에 인연 맺어주신 모든 분들께,"
-                                data-en="To all those who have formed a connection with this dharma work,">
-                                불사에 인연 맺어주신 모든 분들께,
-                            </p>
-                            <div class="space-y-3 mb-8">
-
-                                <!-- 마감된 프로그램 (숨김)
-                                2026.2 제2차 JustBe 히말라야 원정대 - 마감
-                                26.02.14~24 제3회 히말라야 새해맞이 정초 구법순례 - 마감
-                                2026.3 제3차 JustBe 히말라야 원정대 - 마감
-                                -->
-
-                                <div class="flex items-center justify-center">
-                                    <div class="bg-emerald-100 px-4 py-3 rounded-2xl border border-emerald-300">
-                                        <div
-                                            class="flex flex-col md:flex-row md:items-center md:justify-between text-center md:text-left">
-                                            <div class="mb-2 md:mb-0">
-                                                <span class="font-bold text-emerald-700">상시</span>
-                                                <span class="text-emerald-800 ml-2" data-kr="JustBe 히말라야 템플스테이"
-                                                    data-en="JustBe Himalaya Temple Stay">JustBe 히말라야 템플스테이</span>
-                                            </div>
-                                            <button onclick="openAprilTempleStayModal()"
-                                                class="bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-1 rounded-lg text-xs font-medium transition-colors duration-300 md:ml-4 flex-shrink-0 self-center"
-                                                data-kr="참가하기" data-en="Join">
-                                                참가하기
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="flex items-center justify-center">
-                                    <div class="bg-amber-100 px-4 py-3 rounded-2xl border border-amber-300">
-                                        <div
-                                            class="flex flex-col md:flex-row md:items-center md:justify-between text-center md:text-left">
-                                            <div class="mb-2 md:mb-0">
-                                                <span class="font-bold text-amber-700">2026. 9. 22~10. 5</span>
-                                                <span class="text-amber-800 ml-2"
-                                                    data-kr="JustBe 한가위 세계 성지순례"
-                                                    data-en="JustBe Chuseok World Pilgrimage">JustBe 한가위 세계 성지순례</span>
-                                            </div>
-                                            <button onclick="openChuseokPilgrimageModal()"
-                                                class="bg-amber-600 hover:bg-amber-700 text-white px-3 py-1 rounded-lg text-xs font-medium transition-colors duration-300 md:ml-4 flex-shrink-0 self-center"
-                                                data-kr="참가하기" data-en="Join">
-                                                참가하기
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="flex items-center justify-center">
-                                    <div class="bg-rose-100 px-4 py-3 rounded-2xl border border-rose-300">
-                                        <div
-                                            class="flex flex-col md:flex-row md:items-center md:justify-between text-center md:text-left">
-                                            <div class="mb-2 md:mb-0">
-                                                <span class="font-bold text-rose-700">2026. 11. 3~11</span>
-                                                <span class="text-rose-800 ml-2"
-                                                    data-kr="JustBe 히말라야 개원법회 특별순례"
-                                                    data-en="JustBe Himalaya Opening Ceremony Pilgrimage">JustBe 히말라야 개원법회 특별순례</span>
-                                            </div>
-                                            <button onclick="openOpeningCeremonyModal()"
-                                                class="bg-rose-600 hover:bg-rose-700 text-white px-3 py-1 rounded-lg text-xs font-medium transition-colors duration-300 md:ml-4 flex-shrink-0 self-center"
-                                                data-kr="참가하기" data-en="Join">
-                                                참가하기
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <p class="text-lg font-medium text-amber-700" data-kr="JustBe 히말라야로 초대합니다."
-                                data-en="We invite you to JustBe Himalaya.">
-                                JustBe 히말라야로 초대합니다.
-                            </p>
-
-                        </div>
-                    </div>
-                </div>
             </div>
         </section>
 
@@ -1534,15 +1534,6 @@
                             여러분의 동참으로 2600년 전 부처님의 길이 다시 열립니다
                         </p>
 
-                        <!-- Support JustBe 버튼 -->
-                        <div class="mt-6 md:mt-8 text-center">
-                            <a id="support-justbe-btn" href="https://www.ihappynanum.com/Nanum/B/ERKTHL9CZX"
-                                target="_blank" rel="noopener noreferrer"
-                                class="btn-touch touch-feedback inline-flex items-center bg-white/90 hover:bg-white text-gray-800 font-medium px-8 py-4 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl backdrop-blur-sm"
-                                data-kr="JustBe 사랑회 정기 후원하기" data-en="Join Regular Dana Offering">
-                                JustBe 사랑회 정기 후원하기
-                            </a>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -1894,10 +1885,10 @@
         <div class="max-w-6xl mx-auto px-6 text-center text-gray-400">
             <p>© 2025 JustBe Himalaya Temple. All rights reserved.</p>
             <p class="mt-2 mb-8"
-                data-kr="문의: <a href='tel:010-5708-2423' class='text-blue-600 hover:text-blue-800'>010-5708-2423</a> | 계좌: 농협 301-0319-5339-51 (홍대선원)"
-                data-en="Contact: <a href='tel:010-5708-2423' class='text-blue-600 hover:text-blue-800'>010-5708-2423</a> | Account: Nonghyup 301-0319-5339-51 (Hongdae Zen Center)">
+                data-kr="문의: <a href='tel:010-5708-2423' class='text-blue-600 hover:text-blue-800'>010-5708-2423</a> | 계좌: 농협 301-0373-8315-51 (홍대선원)"
+                data-en="Contact: <a href='tel:010-5708-2423' class='text-blue-600 hover:text-blue-800'>010-5708-2423</a> | Account: Nonghyup 301-0373-8315-51 (Hongdae Zen Center)">
                 문의: <a href="tel:010-5708-2423" class="text-blue-600 hover:text-blue-800">010-5708-2423</a> | 계좌: 농협
-                301-0319-5339-51 (홍대선원)</p>
+                301-0373-8315-51 (홍대선원)</p>
 
             <!-- 소셜 미디어 링크 -->
             <div class="flex justify-center space-x-6">
