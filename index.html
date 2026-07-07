@@ -386,25 +386,7 @@
         }
 
         /* #4: 비대칭 호흡 — 천천히 어두워졌다가 빠르게 살아남 (촛불 같은) */
-        @keyframes lantern-flicker {
-            0% {
-                opacity: 1;
-                transform: scale(1);
-            }
-
-            60% {
-                opacity: 0.55;
-                transform: scale(0.92);
-                animation-timing-function: ease-in;
-            }
-
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        /* #2: 점등 진입 효과 — 등불 하나씩 켜지는 듯 */
+        /* #2: 점등 진입 효과 — 등불 하나씩 켜지는 듯 (1회성, 종료 후 비용 없음) */
         @keyframes lantern-ignite {
             0% {
                 opacity: 0;
@@ -423,50 +405,10 @@
         }
 
         .lantern-on {
-            animation:
-                lantern-ignite 0.8s ease-out backwards,
-                lantern-flicker 5.8s ease-in-out infinite 0.8s;
-        }
-
-        /* #5: Just-Activated Glow — 새 등불이 더 큰 글로우로 등장 */
-        @keyframes lantern-just-lit {
-            0% {
-                opacity: 0;
-                transform: scale(1.8);
-            }
-
-            30% {
-                opacity: 1;
-                transform: scale(1.4);
-            }
-
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        .lantern-on.just-lit {
-            animation:
-                lantern-just-lit 1.2s ease-out backwards,
-                lantern-flicker 5.8s ease-in-out infinite 1.2s;
+            animation: lantern-ignite 0.8s ease-out backwards;
         }
 
         @media (prefers-reduced-motion: reduce) {
-
-            @keyframes lantern-flicker {
-
-                0%,
-                100% {
-                    opacity: 1;
-                    transform: scale(1);
-                }
-
-                50% {
-                    opacity: 0.9;
-                    transform: scale(0.98);
-                }
-            }
 
             @keyframes lantern-ignite {
                 from {
@@ -478,26 +420,8 @@
                 }
             }
 
-            @keyframes lantern-just-lit {
-                from {
-                    opacity: 0;
-                }
-
-                to {
-                    opacity: 1;
-                }
-            }
-
             .lantern-on {
-                animation:
-                    lantern-ignite 0.5s ease-out backwards,
-                    lantern-flicker 8.3s ease-in-out infinite 0.5s;
-            }
-
-            .lantern-on.just-lit {
-                animation:
-                    lantern-just-lit 0.5s ease-out backwards,
-                    lantern-flicker 8.3s ease-in-out infinite 0.5s;
+                animation: lantern-ignite 0.5s ease-out backwards;
             }
         }
 
@@ -641,6 +565,24 @@
             background-image: url('resource/img/shadow.jpeg');
             background-size: cover;
             background-position: center;
+        }
+
+        /* 한평 불사 불국사 탑 도트 (bulguk.png에서 추출한 도트 아트) */
+        .pagoda-cell-dim {
+            background-color: rgba(71, 85, 105, 0.3); /* 미점등 금빛 셀: 어스름한 실루엣 */
+            border-radius: 30%;
+            transition: background-color 0.7s ease-out, box-shadow 0.7s ease-out;
+        }
+
+        .pagoda-cell-deco {
+            border-radius: 30%;
+            opacity: 0.5; /* 상시 장식 점: 원본의 회색 면 채움 (은은하게) */
+        }
+
+        .pagoda-cell-lit {
+            border-radius: 30%;
+            /* 이중 글로우: 안쪽 선명한 발광 + 바깥 은은한 번짐 (정적이라 성능 부담 없음) */
+            box-shadow: 0 0 4px rgba(251, 191, 36, 0.95), 0 0 9px rgba(245, 158, 11, 0.5);
         }
     </style>
 </head>
@@ -871,7 +813,7 @@
                         </div>
                     </div>
 
-                    <!-- Card 2: Buddha Road -->
+                    <!-- Card 2: Buddha Way -->
                     <div onclick="openBuddhaRoadModal()"
                         class="group relative p-5 md:p-7 rounded-2xl md:rounded-3xl bg-slate-50 border border-slate-100 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden cursor-pointer">
                         <div
@@ -884,13 +826,13 @@
                                 🛤️
                             </div>
                             <h3 class="text-xl md:text-2xl font-bold mb-2 md:mb-4 text-gray-900 group-hover:text-amber-800 transition-colors"
-                                data-kr="붓다로드 복원" data-en="Buddha Road Restoration">
-                                붓다로드 복원
+                                data-kr="붓다웨이 복원" data-en="Buddha Way Restoration">
+                                붓다웨이 복원
                             </h3>
                             <p class="text-sm md:text-base text-gray-600 leading-relaxed mb-3 md:mb-4"
-                                data-kr="부처님 탄생지 룸비니와 히말라야를 연결하는 160km 옛 순례길을 복원하여 진리를 구하는 여정을 함께합니다."
-                                data-en="Restoring the 160km ancient pilgrimage route connecting Lumbini and the Himalayas to join the journey of seeking truth.">
-                                부처님 탄생지 룸비니와 히말라야를 연결하는 160km 옛 순례길을 복원하여 진리를 구하는 여정을 함께합니다.
+                                data-kr="부처님 탄생지 룸비니와 히말라야를 연결하는 160km 순례길을 복원하여 진리를 구하는 여정을 함께합니다."
+                                data-en="Restoring the 160km pilgrimage route connecting Lumbini and the Himalayas to join the journey of seeking truth.">
+                                부처님 탄생지 룸비니와 히말라야를 연결하는 160km 순례길을 복원하여 진리를 구하는 여정을 함께합니다.
                             </p>
                             <span
                                 class="inline-flex items-center text-amber-700 font-medium hover:text-amber-900 transition-colors group/link text-sm md:text-base">
@@ -964,9 +906,10 @@
                         <span
                             class="inline-block py-1 px-3 rounded-full bg-blue-100 text-blue-800 text-sm font-medium mb-4">Active
                             Campaign</span>
-                        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 relative flex flex-col md:flex-row items-center justify-center gap-6 font-serif"
-                            data-kr="한평 불사 창건주 모연" data-en="Han-pyeong Temple Founders Invitation">
-                            한평 불사 창건주 모연
+                        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 text-center font-serif leading-tight"
+                            data-kr="한평 불사 <span class='whitespace-nowrap inline-block relative -top-[6px] md:-top-[8px] tabular-nums'>3,000</span> 창건주 모연"
+                            data-en="Han-pyeong <span class='whitespace-nowrap inline-block relative -top-[6px] md:-top-[8px] tabular-nums'>3,000</span> Founders Invitation">
+                            한평 불사 <span class="whitespace-nowrap inline-block relative -top-[6px] md:-top-[8px] tabular-nums">3,000</span> 창건주 모연
                         </h2>
                         <p class="text-xl text-blue-600 mt-4 font-medium" data-kr="1평 복전 불사 (福田 佛事)"
                             data-en="1 Pyeong Merit-Making (Field of Merit Dharma Work)">
@@ -977,13 +920,12 @@
                     </div>
 
                     <p class="text-xl md:text-2xl text-gray-700 mb-8 leading-relaxed font-light max-w-3xl mx-auto"
-                        data-kr="부처님 고향에 세워지는 JustBe 도량,<br>한국의 약사여래 부처님과 미륵보살님을 원만히 모셨고<br>이제 도량 창건 불사로 이어나가려 합니다.<br>발심하시어 함께 해 주시기를 간절히 청합니다."
-                        data-en="JustBe Temple being built in the Buddha's hometown,<br>We have successfully enshrined the Medicine Buddha and Maitreya Bodhisattva of Korea,<br>and now we wish to continue with the temple founding dharma work.<br>We earnestly ask you to join us with a devout heart.">
-                        부처님 고향에 세워지는 JustBe 도량,<br>한국의 약사여래 부처님과 미륵보살님을 원만히 모셨고<br>이제 도량 창건 불사로 이어나가려
-                        합니다.<br>발심하시어 함께 해 주시기를 간절히 청합니다.
+                        data-kr="부처님 고향 히말라야에 세워지는 JustBe 도량,<br>도량 창건 불사를 모연합니다."
+                        data-en="JustBe Temple rising in the Himalayas, the Buddha's homeland —<br>we invite you to the temple founding dharma work.">
+                        부처님 고향 히말라야에 세워지는 JustBe 도량,<br>도량 창건 불사를 모연합니다.
                     </p>
 
-                    <div class="mb-8 text-center">
+                    <div class="mb-6 text-center">
                         <a href="https://www.google.com/maps/d/edit?mid=1x_ykXFgtzCgyzLZte1n2xURV26KylQU&usp=sharing"
                             target="_blank"
                             class="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors">
@@ -994,19 +936,48 @@
                         </a>
                     </div>
 
+                    <!-- 한평 복전 불사 설명 -->
+                    <div class="mb-8 max-w-3xl mx-auto text-left bg-white/70 backdrop-blur-sm border border-blue-100 rounded-2xl p-6 md:p-8 shadow-sm">
+                        <h3 class="text-lg md:text-xl font-serif font-bold text-blue-900 mb-3 flex items-center"
+                            data-kr="한평 복전 불사란?" data-en="What is Han-pyeong Merit-Making?">
+                            <span class="mr-2">🌱</span>한평 복전 불사란?
+                        </h3>
+                        <p class="text-base md:text-lg text-gray-700 leading-relaxed mb-4"
+                            data-kr="한 평의 땅 위에 <strong class='text-blue-900 font-semibold'>자기의 이름으로 부처님 가르침이 다시 피어나는 자리</strong>를 짓는 모금 캠페인입니다."
+                            data-en="A campaign to build, in your own name, <strong class='text-blue-900 font-semibold'>a place where the Buddha's teachings bloom again</strong> on one pyeong (3.3㎡) of land.">
+                            한 평의 땅 위에 <strong class="text-blue-900 font-semibold">자기의 이름으로 부처님 가르침이 다시 피어나는 자리</strong>를 짓는 모금 캠페인입니다.
+                        </p>
+                        <div class="border-t border-blue-100 pt-4">
+                            <p class="text-base md:text-lg text-gray-800 leading-relaxed"
+                                data-kr="<strong class='text-amber-700'>목표:</strong> 3,000평 매입 → <strong class='text-blue-900'>히말라야 코리안 수행 마을</strong> 조성"
+                                data-en="<strong class='text-amber-700'>Goal:</strong> Acquire 3,000 pyeong → Establish the <strong class='text-blue-900'>Himalaya Korean Practice Village</strong>">
+                                <strong class="text-amber-700">목표:</strong> 3,000평 매입 → <strong class="text-blue-900">히말라야 코리안 수행 마을</strong> 조성
+                            </p>
+                        </div>
+                        <div class="mt-5 pt-4 border-t border-blue-100 flex items-start gap-3 text-sm md:text-base text-gray-700 leading-relaxed">
+                            <span class="text-lg" aria-hidden="true">🛡️</span>
+                            <p data-kr="본 모연의 <strong class='text-slate-900 font-semibold'>모금·집행·회향</strong>은 모두 <strong class='text-blue-900 font-semibold'>대한불교조계종 홍대선원</strong>이 책임지고 진행합니다. 정기 회계 보고와 진행 상황을 투명하게 공개합니다."
+                               data-en="All fundraising, execution, and dedication of this campaign are conducted under the full responsibility of <strong class='text-blue-900 font-semibold'>Hongdae Zen Center (Jogye Order)</strong>, with transparent, periodic reporting.">
+                                본 모연의 <strong class="text-slate-900 font-semibold">모금·집행·회향</strong>은 모두 <strong class="text-blue-900 font-semibold">대한불교조계종 홍대선원</strong>이 책임지고 진행하며, 정기 회계 보고와 진행 상황을 투명하게 공개합니다.
+                            </p>
+                        </div>
+                    </div>
+
                     <!-- Progress Bar -->
                     <div class="mb-8 max-w-3xl mx-auto px-4">
-                        <div class="flex justify-between items-end mb-2">
-                            <span id="one-pyeong-goal" class="text-sm font-medium text-gray-500" data-kr="1차 목표: 3,000평"
-                                data-en="Goal: 3,000 pyeong">1차 목표: 3,000평</span>
-                            <span id="one-pyeong-stats" class="text-lg font-bold text-blue-600"
-                                data-kr="현재 246평 동참 (8.2%)" data-en="Current: 246 pyeong (8.2%)">현재 246평
-                                동참 (8.2%)</span>
+                        <div class="text-center mb-4">
+                            <p id="one-pyeong-stats"
+                                class="inline-flex items-baseline gap-1.5 md:gap-2 font-serif text-gray-600 text-base md:text-lg"
+                                data-kr="현재 <span class='font-serif font-bold text-3xl md:text-4xl bg-gradient-to-br from-amber-500 to-amber-700 bg-clip-text text-transparent tracking-tight tabular-nums'>246</span> / 3,000평 동참 <span class='text-amber-600 font-semibold'>(8.2%)</span>"
+                                data-en="<span class='font-serif font-bold text-3xl md:text-4xl bg-gradient-to-br from-amber-500 to-amber-700 bg-clip-text text-transparent tracking-tight tabular-nums'>246</span> / 3,000 pyeong <span class='text-amber-600 font-semibold'>(8.2%)</span>">
+                                현재 <span class="font-serif font-bold text-3xl md:text-4xl bg-gradient-to-br from-amber-500 to-amber-700 bg-clip-text text-transparent tracking-tight tabular-nums">246</span> / 3,000평 동참 <span class="text-amber-600 font-semibold">(8.2%)</span>
+                            </p>
+                            <span id="one-pyeong-goal" class="hidden" data-kr="" data-en=""></span>
                         </div>
-                        <div class="w-full max-w-5xl mx-auto bg-slate-100 rounded-xl p-1 shadow-inner">
+                        <div class="w-full max-w-md mx-auto bg-slate-100 rounded-2xl p-3 shadow-inner">
                             <div id="one-pyeong-grid-container"
-                                class="w-full bg-slate-800 rounded-lg relative overflow-hidden"
-                                style="display: grid; grid-template-columns: repeat(79, 1fr); gap: 1px; aspect-ratio: 79/38; -webkit-mask-image: url('resource/img/one_pyeong_mask.png'); mask-image: url('resource/img/one_pyeong_mask.png'); -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: center; mask-position: center;">
+                                class="w-full rounded-lg relative overflow-hidden"
+                                style="display: grid; grid-template-columns: repeat(80, 1fr); grid-template-rows: repeat(111, 1fr); gap: 1px; aspect-ratio: 80/111; padding: 8px; background-color: #0b1120;">
                                 <!-- Grid cells will be generated by JS -->
                             </div>
                         </div>
@@ -1014,16 +985,42 @@
                         <!-- 독려 메시지 -->
                         <div class="text-center mt-4 px-4">
                             <p class="text-amber-700 font-medium text-sm md:text-base"
-                                data-kr="한 평 불사에 동참하실 때마다, 지도 위에 부처님 등불이 하나씩 켜집니다."
-                                data-en="With each participation in the One Pyeong merit-making, a Buddha's lantern lights up on the map.">
-                                한 평 불사에 동참하실 때마다,<br class="md:hidden"> 지도 위에 부처님 등불이 하나씩 켜집니다.
+                                data-kr="한 평이 채워질 때마다, 탑 위에 부처님 등불이 하나씩 켜집니다."
+                                data-en="Each pyeong lit lights another Buddha's lantern on the pagoda.">
+                                한 평이 채워질 때마다,<br class="md:hidden"> 탑 위에 부처님 등불이 하나씩 켜집니다.
                             </p>
                         </div>
                     </div>
 
 
 
-                    <!-- 1평 복전 불사란? -->
+                    <!-- 동참 혜택 -->
+                    <div
+                        class="bg-amber-50/80 backdrop-blur-sm p-5 md:p-6 rounded-xl shadow-lg border border-amber-100 mb-4 text-left max-w-4xl mx-auto">
+                        <h3 class="text-2xl font-serif font-bold mb-5 text-amber-900 flex items-center">
+                            <span class="text-2xl mr-3">🎁</span>
+                            <span data-kr="동참 혜택" data-en="Benefits">동참 혜택</span>
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            <div class="flex items-start gap-2 text-sm md:text-base text-gray-700">
+                                <span class="text-amber-500 mt-0.5">★</span>
+                                <span data-kr="모든 동참자는 도량 내 창건주 명부 및 복전 탑에 봉안"
+                                    data-en="All participants enshrined in the Temple Founders List and Merit Pagoda">모든 동참자는 도량 내 창건주 명부 및 복전 탑에 봉안</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-sm md:text-base text-gray-700">
+                                <span class="text-amber-500 mt-0.5">★</span>
+                                <span data-kr="히말라야 도량의 템플스테이 및 원정대 등에 우선 초대"
+                                    data-en="Priority invitation to Temple Stay and Expedition at the Himalayan Temple">히말라야 도량의 템플스테이 및 원정대 등에 우선 초대</span>
+                            </div>
+                            <div class="flex items-start gap-2 text-sm md:text-base text-gray-700">
+                                <span class="text-amber-500 mt-0.5">★</span>
+                                <span data-kr="JustBe 히말라야에서 운영하는 순례 프로그램 <strong class='text-amber-700'>10% 할인</strong>"
+                                    data-en="<strong class='text-amber-700'>10% discount</strong> on pilgrimage programs operated by JustBe Himalaya">JustBe 히말라야에서 운영하는 순례 프로그램 <strong class="text-amber-700">10% 할인</strong></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 동참 안내 -->
                     <div
                         class="bg-amber-50/80 backdrop-blur-sm p-5 md:p-6 rounded-xl shadow-lg border border-amber-100 mb-4 text-left max-w-4xl mx-auto">
                         <h3 class="text-2xl font-serif font-bold mb-5 text-amber-900 flex items-center">
@@ -1084,23 +1081,6 @@
                                     data-kr="신청하기 →" data-en="Apply →">
                                     신청하기 →
                                 </a>
-                            </div>
-                        </div>
-
-                        <!-- 동참 혜택 -->
-                        <div class="bg-white/60 rounded-xl p-4 border border-amber-200 mb-4">
-                            <p class="font-bold text-amber-800 mb-3" data-kr="동참 혜택" data-en="Benefits">동참 혜택</p>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                <div class="flex items-start gap-2 text-sm text-gray-700">
-                                    <span class="text-amber-500 mt-0.5">★</span>
-                                    <span data-kr="모든 동참자는 도량 내 창건주 명부 및 복전 탑에 봉안"
-                                        data-en="All participants enshrined in the Temple Founders List and Merit Pagoda">모든 동참자는 도량 내 창건주 명부 및 복전 탑에 봉안</span>
-                                </div>
-                                <div class="flex items-start gap-2 text-sm text-gray-700">
-                                    <span class="text-amber-500 mt-0.5">★</span>
-                                    <span data-kr="히말라야 도량의 템플스테이 및 원정대 등에 우선 초대"
-                                        data-en="Priority invitation to Temple Stay and Expedition at the Himalayan Temple">히말라야 도량의 템플스테이 및 원정대 등에 우선 초대</span>
-                                </div>
                             </div>
                         </div>
 
@@ -1456,8 +1436,8 @@
                         <table class="w-full bg-white border border-slate-300 rounded-lg shadow-md">
                             <tbody class="divide-y divide-slate-200">
                                 <tr class="hover:bg-slate-50">
-                                    <td class="px-6 py-4 font-semibold text-amber-700" data-kr="붓다로드"
-                                        data-en="Buddha Road">붓다로드</td>
+                                    <td class="px-6 py-4 font-semibold text-amber-700" data-kr="붓다웨이"
+                                        data-en="Buddha Way">붓다웨이</td>
                                     <td class="px-6 py-4 text-gray-600"
                                         data-kr="룸비니~포카라 160km 태자 싯다르타 순례길 복원<br>지자체/사찰/공익단체 협업 모델"
                                         data-en="Restoring the 160km Prince Siddhartha pilgrimage route from Lumbini to Pokhara<br>Collaborative model with local governments, temples, and NGOs">
@@ -1503,9 +1483,9 @@
                 <div class="text-center mt-6 md:mt-8">
                     <div class="bg-amber-50 border border-amber-200 rounded-lg p-10">
                         <p class="text-amber-800 font-serif font-medium text-lg"
-                            data-kr='"인연으로 다시 걷는 부처님의 옛 순례길"<br>이 길 위에서 만날 소중한 도반을 기다립니다.'
-                            data-en='"Walking Buddha&apos;s ancient pilgrimage path again through karmic connections"<br>We await the precious dharma friends we will meet on this path.'>
-                            "인연으로 다시 걷는 부처님의 옛 순례길"<br>
+                            data-kr='"인연으로 다시 걷는 부처님의 순례길"<br>이 길 위에서 만날 소중한 도반을 기다립니다.'
+                            data-en='"Walking Buddha&apos;s pilgrimage path again through karmic connections"<br>We await the precious dharma friends we will meet on this path.'>
+                            "인연으로 다시 걷는 부처님의 순례길"<br>
                             이 길 위에서 만날 소중한 도반을 기다립니다.
                         </p>
                         <p class="text-amber-700 font-serif font-bold mt-4" data-kr="JustBe 준한 합장"
@@ -1883,12 +1863,22 @@
 
     <footer class="bg-gray-800 text-white py-8">
         <div class="max-w-6xl mx-auto px-6 text-center text-gray-400">
-            <p>© 2025 JustBe Himalaya Temple. All rights reserved.</p>
-            <p class="mt-2 mb-8"
-                data-kr="문의: <a href='tel:010-5708-2423' class='text-blue-600 hover:text-blue-800'>010-5708-2423</a> | 계좌: 농협 301-0373-8315-51 (홍대선원)"
-                data-en="Contact: <a href='tel:010-5708-2423' class='text-blue-600 hover:text-blue-800'>010-5708-2423</a> | Account: Nonghyup 301-0373-8315-51 (Hongdae Zen Center)">
-                문의: <a href="tel:010-5708-2423" class="text-blue-600 hover:text-blue-800">010-5708-2423</a> | 계좌: 농협
-                301-0373-8315-51 (홍대선원)</p>
+            <p>© 2025 JustBe Himalaya. All rights reserved.</p>
+            <p class="mt-3 text-sm md:text-base text-gray-300"
+                data-kr="주관 · 책임 · 회향<br><strong class='text-white'>대한불교조계종 홍대선원</strong>"
+                data-en="Organized &amp; Guaranteed by<br><strong class='text-white'>Hongdae Zen Center (Jogye Order)</strong>">
+                주관 · 책임 · 회향<br><strong class="text-white">대한불교조계종 홍대선원</strong>
+            </p>
+            <p class="mt-1 text-sm md:text-base"
+                data-kr="계좌: 농협 <span class='text-white font-mono'>301-0373-8315-51</span> (예금주: 대한불교조계종 홍대선원)"
+                data-en="Account: Nonghyup <span class='text-white font-mono'>301-0373-8315-51</span> (Account holder: Hongdae Zen Center, Jogye Order)">
+                계좌: 농협 <span class="text-white font-mono">301-0373-8315-51</span> (예금주: 대한불교조계종 홍대선원)
+            </p>
+            <p class="mt-1 mb-8 text-sm md:text-base"
+                data-kr="문의: <a href='tel:010-5708-2423' class='text-blue-400 hover:text-blue-300'>010-5708-2423</a>"
+                data-en="Contact: <a href='tel:010-5708-2423' class='text-blue-400 hover:text-blue-300'>010-5708-2423</a>">
+                문의: <a href="tel:010-5708-2423" class="text-blue-400 hover:text-blue-300">010-5708-2423</a>
+            </p>
 
             <!-- 소셜 미디어 링크 -->
             <div class="flex justify-center space-x-6">
@@ -1995,10 +1985,10 @@
                             도전이자 설레임이며<br>
                             두려움이자 환희로움 이었습니다.</p>
 
-                        <p class="font-medium text-amber-700" data-kr="용기를 내어<br>붓다로드 순례길<br>함께 가시지요~~"
-                            data-en="Take courage<br>and let's walk the Buddha Road pilgrimage<br>together~~">
+                        <p class="font-medium text-amber-700" data-kr="용기를 내어<br>붓다웨이 순례길<br>함께 가시지요~~"
+                            data-en="Take courage<br>and let's walk the Buddha Way pilgrimage<br>together~~">
                             용기를 내어<br>
-                            붓다로드 순례길<br>
+                            붓다웨이 순례길<br>
                             함께 가시지요~~
                         </p>
 
@@ -3099,7 +3089,7 @@
         </div>
     </div>
 
-    <!-- 붓다로드 모달 -->
+    <!-- 붓다웨이 모달 -->
     <div id="buddha-road-modal"
         class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4 hidden backdrop-blur-sm transition-opacity duration-300">
         <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
@@ -3109,11 +3099,11 @@
                     <span class="text-3xl">🛤️</span>
                     <div>
                         <h3 class="text-base md:text-2xl font-bold text-gray-900"
-                            data-kr="붓다로드 (Buddha Road)" data-en="Buddha Road">붓다로드 (Buddha Road)</h3>
+                            data-kr="붓다웨이 (Buddha Way)" data-en="Buddha Way">붓다웨이 (Buddha Way)</h3>
                         <p class="text-xs md:text-sm text-gray-500 font-medium"
-                            data-kr="포카라 → 판차세 → 룸비니 160km 옛 순례길 복원"
-                            data-en="Restoring the 160km ancient pilgrimage route: Pokhara → Panchase → Lumbini">
-                            포카라 → 판차세 → 룸비니 160km 옛 순례길 복원</p>
+                            data-kr="포카라 → 판차세 → 룸비니 160km 순례길 복원"
+                            data-en="Restoring the 160km pilgrimage route: Pokhara → Panchase → Lumbini">
+                            포카라 → 판차세 → 룸비니 160km 순례길 복원</p>
                     </div>
                 </div>
                 <button id="close-buddha-road-modal"
@@ -3130,14 +3120,14 @@
                 <!-- Intro -->
                 <section class="text-center max-w-2xl mx-auto space-y-3">
                     <h4 class="text-lg md:text-2xl font-serif font-bold text-gray-800 leading-relaxed"
-                        data-kr="히말라야에서 부처님 탄생의 땅까지,&lt;br&gt;옛 순례길을 다시 잇다"
-                        data-en="From the Himalayas to the Buddha's birthplace,&lt;br&gt;reconnecting the ancient pilgrimage route">
+                        data-kr="히말라야에서 부처님 탄생의 땅까지,&lt;br&gt;순례길을 다시 잇다"
+                        data-en="From the Himalayas to the Buddha's birthplace,&lt;br&gt;reconnecting the pilgrimage route">
                         히말라야에서 부처님 탄생의 땅까지,<br>
-                        옛 순례길을 다시 잇다
+                        순례길을 다시 잇다
                     </h4>
                     <p class="text-sm md:text-base text-gray-600 leading-relaxed">
                         히말라야 포카라에서 부처님 탄생지 룸비니까지,<br class="hidden md:block">
-                        <strong class="text-amber-700">160km</strong>의 옛 순례길을 다시 걸을 수 있도록 복원합니다.
+                        <strong class="text-amber-700">160km</strong>의 순례길을 다시 걸을 수 있도록 복원합니다.
                     </p>
                 </section>
 
@@ -3162,7 +3152,7 @@
                         <text x="200" y="155" text-anchor="middle" font-size="11" font-weight="600" fill="#64748b">
                             ⛰️ 안나푸르나 8,091m</text>
 
-                        <!-- 붓다로드 경로 (포카라 → 판차세 → 룸비니) -->
+                        <!-- 붓다웨이 경로 (포카라 → 판차세 → 룸비니) -->
                         <path d="M 195 235 Q 158 250, 155 275 Q 165 320, 200 370"
                             fill="none" stroke="#d97706" stroke-width="3.5" stroke-dasharray="7 5"
                             stroke-linecap="round" marker-end="url(#buddhaRoadArrow)" />
@@ -3237,7 +3227,7 @@
                     </h5>
                     <p class="text-sm text-gray-600 leading-relaxed">
                         히말라야의 베이스캠프에서 부처님이 태어나신 룸비니까지, 부처님께로 향하는 마음으로 걷는 순례의 길입니다.<br class="hidden md:block">
-                        길 위에서 만나는 풍경과 사람, 그 안에서 자기 자신과 마주하는 시간 — 붓다로드는 단순한 트레킹 코스가 아니라 <strong class="text-amber-700">'순례'</strong>입니다.
+                        길 위에서 만나는 풍경과 사람, 그 안에서 자기 자신과 마주하는 시간 — 붓다웨이는 단순한 트레킹 코스가 아니라 <strong class="text-amber-700">'순례'</strong>입니다.
                     </p>
                 </section>
             </div>
@@ -4586,131 +4576,223 @@
                     progressText.innerHTML = progressText.getAttribute('data-kr');
                 }
             }
-
-            // #5: 다음 업데이트에서 "새 등불"을 판별하기 위해 현재 카운트 저장
-            window.prevOnePyeongCount = count;
         }
 
 
-        // --- 한평 불사 그리드 초기화 ---
+        // --- 한평 불사: 불국사 도트 아트 (resource/img/bulguk.png에서 오프라인 추출) ---
+        // 숫자(0-5) = 점등 가능한 금빛 셀, 정확히 3,000개 (1칸 = 1평)
+        // 영문(a-c) = 상시 표시되는 회색/장식 점 (탑 실루엣 유지용, 카운트 제외)
+        // '.' = 빈 칸 (DOM 생성 안 함)
+        const BULGUK_COLS = 80;
+        const BULGUK_ROWS = 111;
+        const BULGUK_GOLD = ['#a48c5e', '#b49660', '#c6a05d', '#daae5d', '#edc05f', '#f7d367'];
+        const BULGUK_DECO = ['#424549', '#726351', '#d8af59'];
+        const BULGUK_GRID = [
+            '.......................................55.......................................',
+            '.......................................55.......................................',
+            '.......................................55.......................................',
+            '......................................5454......................................',
+            '......................................5555......................................',
+            '......................................3342......................................',
+            '......................................5555......................................',
+            '......................................444c......................................',
+            '......................................5555......................................',
+            '......................................5445......................................',
+            '......................................5555......................................',
+            '......................................4444......................................',
+            '......................................3443......................................',
+            '.....................................a5555......................................',
+            '......................................4444......................................',
+            '...................................5555555555...................................',
+            '...................................5455555555...................................',
+            '....................................44344434....................................',
+            '..................................a3431101331a..................................',
+            '..............................baa1441baaab01452acc..............................',
+            '......................55ca..b023441baaaaaaaab1353312..ac4c......................',
+            '......................c5555555443baaaaaaaaaaabb2445555555.......................',
+            '.......................45554431bbaaaaaaaaaaaabaab13544555.......................',
+            '.......................5554000bbbbbbbbbbbbbbbbbbbb0015454.......................',
+            '........................44554100100100000000010000145525........................',
+            '.........................423555555555555555555555555225.........................',
+            '..........................c2b0012111210000001112212a2c..........................',
+            '............................ac2430b5a011200c3cbb42ca............................',
+            '.............................a32232202222121332024..............................',
+            '..............................5442243323233344234c..............................',
+            '..............................554b254bbbbbb355045c..............................',
+            '..............................554025412aa22354145c..............................',
+            '..............................555b35413aa42255045c..............................',
+            '............................aa545025422aa322540455..............................',
+            '............................45544a05301aa21243a34c55............................',
+            '............................555455555555555555555555............................',
+            '............................554444454555444545454545............................',
+            '..........................ab432232243233332333133335.ac.........................',
+            '.........................b3432aaaaaaaaaaaaaaaaaaaa1333b.........c...............',
+            '...............552b...b34432bbaaaaaaaaaaaaaaaaaaaaaa234533...b355...............',
+            '...............255555532baaaabaaaaaaaaaaaaaaaaaaaaaaaab134555553c...............',
+            '................552221bbbbbaabbabba0bbbbbbaabbaaaaaaaabbbbb23355................',
+            '................c5555433444444444444444454444444444444444445555.................',
+            '.................c3a545554555554555545555555554555555555554503c.................',
+            '...................aab211000000000000000000001000000000123b0....................',
+            '.....................a144332232232330222222233232232223433......................',
+            '.......................b3213abbbb33a11bbb000a43bbbba4134aa......................',
+            '.........................431233231143433333431132332135b........................',
+            '.........................c432333c334cccccccc433cc3c235c.........................',
+            '..........................551332144bbbbbbbbba541232155..........................',
+            '..........................551332245012bbbbb10551332255..........................',
+            '..........................55133215503caaaac20550322255..........................',
+            '..........................55234325513caaabc30551443255..........................',
+            '..........................55245325503caaabc30551442255..........................',
+            '.......................cca55134315503caaab330550332255ccc.......................',
+            '.......................555431122034b22abaa12b430221144454.......................',
+            '.......................5555555555555555555555555555555555.......................',
+            '.......................5444544545445445554444545455544554.......................',
+            '......................a3333333323333333333333333333343344a......................',
+            '....................acc33baaaaaaaaaabaaaaaaaaaaaaaaaaab33cbc....................',
+            '..........5c......cc5431aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab2345cba.....c5..........',
+            '..........533bb.b34431aaaaaaaaaaaaabaaaaaaaaaaaaaaaaaaaaab0343bb.ba455..........',
+            '..........255555432bababaaaaaaaaaaabaaaaaaaaaaaaaaaaaababbaab234555553..........',
+            '...........553110bbbb0a0b0bbb1b000000b00000b0000b0abbb0b0b0b0b0012345...........',
+            '...........5455554545445554455544545455555455544455555554545544455555...........',
+            '............42455554554554455554554545545545554444554444454555444335............',
+            '.............aa54321000000000000000000000000000000000000b00022345aa.............',
+            '................543333233322233333333333333334333332333322334445................',
+            '.................baa4333cbbbbb3234243333333343242ca0ba133414a0c.................',
+            '..................ba5301a211010b21454444444455021011113b10350...................',
+            '....................b423333333323340aaaaabba052333343343234b....................',
+            '......................44bb1000bc43aaaaabaaaaaa34aa1010bb34......................',
+            '......................540222221154abbbabaaaaaa450122222045......................',
+            '......................541322223355aba0baaaba0a45b322222b55......................',
+            '......................54432223a355a0aba..aba0a45aa31123b55......................',
+            '......................54533334a255a2a0...a0a2a45ac43334155......................',
+            '......................54444434a355a3a0...abc2a55ab44433255......................',
+            '......................54444444a355a3a0...a0a3a45a244434345......................',
+            '......................545434440254a4a0...a0a4245a244434245......................',
+            '......................535444440254b4a0.a.a0c4345a244434145......................',
+            '......................545444440554a4a0a.a.1c4345a144434145......................',
+            '......................53543334a354a4abaaaa1a4345a244424b45......................',
+            '......................43522333ac54b3abaaaaba3b45ac33324b45......................',
+            '......................32511212ac53a2aaaaaaba2b44aa21113b34......................',
+            '....................5433433333333243434443432423443232332335.......c............',
+            '...........5b.......3211011111125111111111111105111110111123.......55...........',
+            '..........555555444332222222223555232222232223555222222222233445555555..........',
+            '..........25343cc32000b0b00001245522121221111155500bbbbb00b003cc224452..........',
+            '..........544455555555555555543444355555555544455355555555555555555444..........',
+            '..........543445444454444544442555254555555443455245445454454544554445..........',
+            '...........23321000000000000002555122222222212555b0000110000000011342...........',
+            '............34bbaaaaaaabbbabaa5555122212222221455aaaaabbaab0bbb0bb44............',
+            '.....4......54b000000000b200ab55550232232222105555000020000000011155......b.....',
+            '....555.....45b000000000454aab55542322333223323555b0b45300b000000155.....555....',
+            '....545.....45b000baaaaac4caaa5552b2222222211b2555aba44cbabbb0bb0155.....544....',
+            '...c555b..b344b10bbbbbbb555aab55513443334444342555aba555bbabbbbbb1443b..c555....',
+            '....444a022033b0ab0babaa444aac5451b33333c3332b1545aaa334aababaabb033023ac444....',
+            '....55534555555555555543244aa5555144444444334405555aa34245555555555455552555....',
+            '....55423443234444334432245ab5555a22223222222205555aa34224443344443244430555....',
+            '....554baba333abbc33aaaa344aa5545c44554445544405444aa343aaaa43aaaa343aba0555....',
+            '....544baba435abac33aaaa243aa4544b12222222222104344aa243aaaa33aaaa444b0a0445....',
+            '....433aaaa10baaab0baaaa121aa4434aabbaaaaaabbaa4334aa12baaaa00aaaa20baaab334....',
+            '...4444224333333343333324333444444444444444444354344334423333333333333324334c...',
+            '...422232112212211111222322222222112b1111221112212231112211112111111111231235...',
+            '..c433343445c4455454454445444444454444555545445544445545444544454445454444434c..',
+            '..3222232323233333333223333333332433333434333333333233333223332333422232323324..',
+            '.320b1bbbbb0bb0bbbbbbbbb11bbb0b11101bbbbb00bbbbb000bbbbbbbbb0bbb1bbbbbbbbb1112c.',
+            '.baaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabb.',
+            '12101211121112121101b11121111112120221121212222b122121211111b101121011021122111c',
+            'b1bbbbb1bbb0b111bbbbb0b11b1bbbb212b11b01b1b1bb1bb111112bbbbbbbbbbbbbbbbbbbbcbb1c',
+            'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+        ];
+
         function setupOnePyeongGrid() {
-            console.log('setupOnePyeongGrid called');
             const gridContainer = document.getElementById('one-pyeong-grid-container');
-            if (!gridContainer) {
-                console.error('Grid container not found!');
-                return;
-            }
+            if (!gridContainer || gridContainer.childElementCount > 0) return;
 
-            const totalCells = 3002; // 38x79 = 3002
+            const records = [];
             const fragment = document.createDocumentFragment();
+            for (let r = 0; r < BULGUK_ROWS; r++) {
+                const rowStr = BULGUK_GRID[r];
+                for (let c = 0; c < BULGUK_COLS; c++) {
+                    const ch = rowStr[c];
+                    if (ch === '.') continue;
+                    const cell = document.createElement('div');
+                    cell.style.gridColumnStart = c + 1;
+                    cell.style.gridRowStart = r + 1;
+                    if (ch >= '0' && ch <= '9') {
+                        // 점등 가능한 금빛 셀 (1평)
+                        cell.className = 'pagoda-cell-dim';
+                        records.push({ el: cell, row: r, col: c, tone: BULGUK_GOLD[+ch] });
+                    } else {
+                        // 상시 장식 점 (회색 면 채움)
+                        cell.className = 'pagoda-cell-deco';
+                        cell.style.backgroundColor = BULGUK_DECO['abc'.indexOf(ch)];
+                    }
+                    fragment.appendChild(cell);
+                }
+            }
+            gridContainer.appendChild(fragment);
 
-            // Create shuffled indices for random fill effect
-            const indices = Array.from({ length: totalCells }, (_, i) => i);
-            // Fisher-Yates Shuffle with seeded random
-            // Seeded Random Generator (Linear Congruential Generator)
-            let seed = 123456789;
+            // 시드 랜덤 셔플 → 매 로드 동일한 랜덤 점등 순서
+            let seed = 987654321;
             const random = () => {
                 seed = (1103515245 * seed + 12345) % 2147483648;
                 return seed / 2147483648;
             };
-
-            for (let i = indices.length - 1; i > 0; i--) {
+            for (let i = records.length - 1; i > 0; i--) {
                 const j = Math.floor(random() * (i + 1));
-                [indices[i], indices[j]] = [indices[j], indices[i]];
+                [records[i], records[j]] = [records[j], records[i]];
             }
-            window.onePyeongShuffledIndices = indices;
-            console.log('Shuffled indices created:', indices.length);
-
-            for (let i = 0; i < totalCells; i++) {
-                const cell = document.createElement('div');
-                cell.className = 'w-full h-full bg-slate-700/50 rounded-[1px] transition-all duration-1000';
-                fragment.appendChild(cell);
-            }
-
-            gridContainer.appendChild(fragment);
-            console.log('Grid cells appended:', gridContainer.children.length);
+            window.onePyeongPagodaCells = records;
         }
 
-        // --- 한평 불사 진행률 업데이트 (Grid Version) ---
+        // --- 한평 불사 진행률 업데이트 (불국사 도트 아트 Version) ---
         function updateOnePyeongProgressBar(count, goal, percent) {
             console.log('updateOnePyeongProgressBar called with:', count, goal, percent);
+            setupOnePyeongGrid();
+
             const gridContainer = document.getElementById('one-pyeong-grid-container');
-            const statusText = document.getElementById('one-pyeong-status');
+            const records = window.onePyeongPagodaCells;
+            if (!gridContainer || !records) return;
 
-            if (gridContainer && window.onePyeongShuffledIndices) {
-                const activeIndices = new Set(window.onePyeongShuffledIndices.slice(0, count));
-                const cells = gridContainer.children;
-                console.log('Active indices count:', activeIndices.size);
+            const litCount = Math.round(records.length * count / goal);
 
-                // #5: 새로 활성화된 셀(이전 업데이트 이후 추가된 동참자)을 추적
-                const prevCount = window.prevOnePyeongCount;
-                const newlyAddedIndices = new Set();
-                if (prevCount !== undefined && count > prevCount) {
-                    for (let pos = prevCount; pos < count; pos++) {
-                        newlyAddedIndices.add(window.onePyeongShuffledIndices[pos]);
-                    }
-                }
-
+            const runFill = () => {
                 requestAnimationFrame(() => {
-                    for (let i = 0; i < cells.length; i++) {
-                        if (activeIndices.has(i)) {
-                            // Filled State - Lantern Effect (Amber/Gold)
-                            // Use inline style for background color to ensure it applies
-                            if (!cells[i].classList.contains('lantern-on')) {
-                                // #1: 위치 기반 wave delay (왼쪽 위 → 오른쪽 아래로 물결처럼)
-                                const col = i % 79;
-                                const row = Math.floor(i / 79);
-                                const positionDelay = (col + row) * 0.015; // 0~1.75s 사이
-
-                                const isJustLit = newlyAddedIndices.has(i);
-                                const baseClass = 'w-full h-full shadow-[0_0_4px_rgba(251,191,36,0.8)] rounded-[1px] transition-all duration-1000 lantern-on';
-                                cells[i].className = isJustLit ? `${baseClass} just-lit` : baseClass;
-                                cells[i].style.backgroundColor = '#fbbf24'; // amber-400 단색
-
-                                if (isJustLit) {
-                                    // #5: 새 등불은 wave delay 없이 즉시 강조 (just-lit 1.2s + flicker)
-                                    cells[i].style.animationDelay = '0s, 1.2s';
-                                } else {
-                                    // 옵션 B: ignite는 wave (스태거), flicker는 모두 같은 시각에 시작 (sync)
-                                    // 마지막 cell의 ignite 종료 시각(=max positionDelay + 0.8s) ≈ 2.55s 에 일제히 flicker 시작
-                                    cells[i].style.animationDelay = `${positionDelay}s, 2.55s`;
-                                }
+                    for (let k = 0; k < records.length; k++) {
+                        const rec = records[k];
+                        const cell = rec.el;
+                        if (k < litCount) {
+                            if (!cell.classList.contains('lantern-on')) {
+                                const positionDelay = (rec.col + rec.row) * 0.012;
+                                cell.className = 'lantern-on pagoda-cell-lit';
+                                cell.style.backgroundColor = rec.tone;
+                                cell.style.animationDelay = `${positionDelay}s`;
                             }
                         } else {
-                            // Empty State
-                            cells[i].className = 'w-full h-full bg-slate-700/50 rounded-[1px] transition-colors duration-700';
-                            cells[i].style.backgroundColor = ''; // Remove inline style
-                            cells[i].style.animationDelay = '';
+                            cell.className = 'pagoda-cell-dim';
+                            cell.style.backgroundColor = '';
+                            cell.style.animationDelay = '';
                         }
                     }
                 });
-            } else {
-                console.error('Grid container or indices missing in update function');
-            }
+            };
 
-            if (statusText) {
-                statusText.textContent = `현재 ${count.toLocaleString()}명 동참 (${percent}%) / 목표 ${goal.toLocaleString()}명`;
-            }
+            const observer = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    runFill();
+                    observer.disconnect();
+                }
+            }, { threshold: 0.2 });
+            observer.observe(gridContainer);
 
             // Update existing top section stats if they exist
             const progressStats = document.getElementById('one-pyeong-stats');
-            const progressGoal = document.getElementById('one-pyeong-goal');
 
-            if (progressStats && progressGoal) {
-                progressStats.setAttribute('data-kr', `현재 ${count.toLocaleString()}평 동참 (${percent}%)`);
-                progressStats.setAttribute('data-en', `Current: ${count.toLocaleString()} pyeong (${percent}%)`);
-
-                progressGoal.setAttribute('data-kr', `1차 목표: ${goal.toLocaleString()}평`);
-                progressGoal.setAttribute('data-en', `Goal: ${goal.toLocaleString()} pyeong`);
+            if (progressStats) {
+                const bigCount = `<span class="font-serif font-bold text-3xl md:text-4xl bg-gradient-to-br from-amber-500 to-amber-700 bg-clip-text text-transparent tracking-tight tabular-nums">${count.toLocaleString()}</span>`;
+                const pct = `<span class="text-amber-600 font-semibold">(${percent}%)</span>`;
+                progressStats.setAttribute('data-kr', `현재 ${bigCount} / ${goal.toLocaleString()}평 동참 ${pct}`);
+                progressStats.setAttribute('data-en', `${bigCount} / ${goal.toLocaleString()} pyeong ${pct}`);
 
                 const currentLang = document.documentElement.lang;
-                if (currentLang === 'en') {
-                    progressStats.textContent = progressStats.getAttribute('data-en');
-                    progressGoal.textContent = progressGoal.getAttribute('data-en');
-                } else {
-                    progressStats.textContent = progressStats.getAttribute('data-kr');
-                    progressGoal.textContent = progressGoal.getAttribute('data-kr');
-                }
+                progressStats.innerHTML = progressStats.getAttribute(currentLang === 'en' ? 'data-en' : 'data-kr');
             }
         }
 
@@ -5052,7 +5134,7 @@
             const closeBtn = document.getElementById('close-buddha-road-modal');
 
             if (!modal || !closeBtn) {
-                console.log('Buddha Road modal elements not found');
+                console.log('Buddha Way modal elements not found');
                 return;
             }
 
@@ -5712,7 +5794,6 @@
             setupCacheBustedImages(); // 캐시 버스팅 이미지 로드
             // 핵심 기능 초기화
             setupCacheBustedImages(); // 캐시 버스팅 이미지 로드
-            setupOnePyeongGrid(); // 한평 불사 그리드 초기화
             loadDonorData(); // JSON에서 데이터 로드 (내부적으로 updateProgressBar 호출)
             setupCopyButton();
             setupYaksaCopyButton();
@@ -5724,7 +5805,7 @@
             setupExpeditionModal(); // 원정대 모달
             setupExpeditionModal2(); // 2차 원정대 모달
             setupExpeditionModal3(); // 3차 원정대 모달
-            setupBuddhaRoadModal(); // 붓다로드 모달
+            setupBuddhaRoadModal(); // 붓다웨이 모달
             setupSpecialPilgrimageModal(); // 네팔 부처님 오신날 특별 순례 모달
             setupAprilTempleStayModal(); // 4월 템플스테이 모달
             setupChuseokPilgrimageModal(); // 한가위 세계 성지순례 모달
@@ -5815,9 +5896,9 @@
 
                     <div class="border-l-4 border-amber-500 pl-4 mb-8">
                         <p class="font-semibold text-gray-800 mb-2"
-                            data-kr="Q. 히말라야 붓다로드를 복원한다는 것이 부처님의 본래 뜻과 무슨 관련이 있습니까?"
-                            data-en="Q. How does restoring the Himalayan Buddha Road relate to the Buddha's original intention?">
-                            Q. 히말라야 붓다로드를 복원한다는 것이 부처님의 본래 뜻과 무슨 관련이 있습니까?</p>
+                            data-kr="Q. 히말라야 붓다웨이를 복원한다는 것이 부처님의 본래 뜻과 무슨 관련이 있습니까?"
+                            data-en="Q. How does restoring the Himalayan Buddha Way relate to the Buddha's original intention?">
+                            Q. 히말라야 붓다웨이를 복원한다는 것이 부처님의 본래 뜻과 무슨 관련이 있습니까?</p>
                         <p class="text-gray-600"
                             data-kr="A. 부처님의 본래 뜻은 자기를 바로 보라는 것. 자기 자신의 마음에 무한한 힘과 지혜, 사랑이 충만해 있다는 것을 깨닫는 것이 이 순례길 복원의 대의입니다."
                             data-en="A. The Buddha's original intention is to see oneself correctly. Realizing that infinite power, wisdom, and love are abundant in one's own mind is the great purpose of restoring this pilgrimage path.">
