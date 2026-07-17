@@ -4662,7 +4662,12 @@
             litCount: 0,
             waveStarted: false,
             waveDone: false,
-            glowSprite: null
+            glowSprite: null,
+            base: null,          // 웨이브 완료 후 정적 스냅샷 (트윙클의 바탕)
+            twinkles: [],        // 반짝이는 등불 목록
+            twinkleActive: false,
+            canvasVisible: false,
+            lastTwinkleFrame: 0
         };
 
         function setupOnePyeongGrid() {
@@ -4697,9 +4702,16 @@
             const canvas = document.getElementById('one-pyeong-canvas');
             if (canvas && window.ResizeObserver) {
                 new ResizeObserver(() => {
-                    if (BULGUK_STATE.waveDone) renderBulguk(null);
+                    if (BULGUK_STATE.waveDone) refreshBulgukBase();
                     else if (!BULGUK_STATE.waveStarted) renderBulguk(0);
                 }).observe(canvas);
+            }
+            // 화면에 보일 때만 트윙클 (밖으로 나가면 완전 정지)
+            if (canvas && window.IntersectionObserver) {
+                new IntersectionObserver((entries) => {
+                    BULGUK_STATE.canvasVisible = entries[0].isIntersecting;
+                    if (BULGUK_STATE.canvasVisible && BULGUK_STATE.waveDone) startBulgukTwinkle();
+                }, { threshold: 0.05 }).observe(canvas);
             }
         }
 
@@ -4815,13 +4827,117 @@
             return done;
         }
 
+        // 최종 상태를 그려 스냅샷으로 보관 (트윙클이 이 위에 덧그림)
+        function refreshBulgukBase() {
+            const canvas = document.getElementById('one-pyeong-canvas');
+            if (!canvas) return;
+            renderBulguk(null);
+            if (!BULGUK_STATE.base) BULGUK_STATE.base = document.createElement('canvas');
+            const base = BULGUK_STATE.base;
+            base.width = canvas.width;
+            base.height = canvas.height;
+            base.getContext('2d').drawImage(canvas, 0, 0);
+        }
+
+        // --- 등불 트윙클: 소수의 점등 셀만 은은하게 반짝임 ---
+        // 스냅샷 blit + 소량 덧그리기라 프레임 비용이 극히 낮고,
+        // 화면 밖이면 루프 자체가 정지한다.
+        const TWINKLE_COUNT = 24;      // 동시에 반짝이는 등불 수
+        const TWINKLE_FPS_MS = 33;     // ~30fps로 제한
+
+        function spawnTwinkle(now) {
+            const lit = Math.min(BULGUK_STATE.litCount, BULGUK_STATE.gold.length);
+            if (lit === 0) return null;
+            return {
+                idx: Math.floor(Math.random() * lit),
+                t0: now + Math.random() * 800,       // 시작 시점 분산
+                dur: 1200 + Math.random() * 1400     // 1.2~2.6초
+            };
+        }
+
+        function startBulgukTwinkle() {
+            if (BULGUK_STATE.twinkleActive || !BULGUK_STATE.base) return;
+            const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (reduceMotion) return;
+            BULGUK_STATE.twinkleActive = true;
+
+            const canvas = document.getElementById('one-pyeong-canvas');
+            const ctx = canvas.getContext('2d');
+            const now0 = performance.now();
+            if (BULGUK_STATE.twinkles.length === 0) {
+                for (let i = 0; i < TWINKLE_COUNT; i++) {
+                    const tw = spawnTwinkle(now0);
+                    if (tw) BULGUK_STATE.twinkles.push(tw);
+                }
+            }
+
+            const frame = (now) => {
+                if (!BULGUK_STATE.canvasVisible || !BULGUK_STATE.base) {
+                    BULGUK_STATE.twinkleActive = false; // 화면 밖 → 정지 (재진입 시 IO가 재시작)
+                    return;
+                }
+                if (now - BULGUK_STATE.lastTwinkleFrame < TWINKLE_FPS_MS) {
+                    requestAnimationFrame(frame);
+                    return;
+                }
+                BULGUK_STATE.lastTwinkleFrame = now;
+
+                const base = BULGUK_STATE.base;
+                if (canvas.width !== base.width || canvas.height !== base.height) {
+                    refreshBulgukBase(); // 리사이즈 직후 안전망
+                }
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.drawImage(base, 0, 0);
+
+                const W = canvas.width, H = canvas.height;
+                const cw = W / BULGUK_COLS, chh = H / BULGUK_ROWS;
+                const dotW = cw * 0.82, dotH = chh * 0.82;
+                const rad = Math.min(dotW, dotH) * 0.3;
+                const canRound = typeof ctx.roundRect === 'function';
+                const glow = BULGUK_STATE.glowSprite;
+
+                const tws = BULGUK_STATE.twinkles;
+                for (let i = 0; i < tws.length; i++) {
+                    let tw = tws[i];
+                    const t = (now - tw.t0) / tw.dur;
+                    if (t >= 1) { // 수명 종료 → 다른 등불로 교체
+                        tws[i] = spawnTwinkle(now) || tw;
+                        continue;
+                    }
+                    if (t <= 0) continue;
+                    const s = Math.sin(Math.PI * t); // 0 → 1 → 0 부드러운 맥동
+                    const cell = BULGUK_STATE.gold[tw.idx];
+                    const cx = (cell.col + 0.5) * cw, cy = (cell.row + 0.5) * chh;
+                    if (glow) {
+                        ctx.globalAlpha = 0.55 * s;
+                        const gsz = glow.width * (1 + 0.35 * s);
+                        ctx.drawImage(glow, cx - gsz / 2, cy - gsz / 2, gsz, gsz);
+                    }
+                    // 하이라이트: 점이 순간적으로 밝아짐
+                    ctx.globalAlpha = 0.85 * s;
+                    ctx.fillStyle = '#fef3c7';
+                    const w = dotW, h = dotH;
+                    if (canRound) {
+                        ctx.beginPath();
+                        ctx.roundRect(cx - w / 2, cy - h / 2, w, h, rad);
+                        ctx.fill();
+                    } else {
+                        ctx.fillRect(cx - w / 2, cy - h / 2, w, h);
+                    }
+                    ctx.globalAlpha = 1;
+                }
+                requestAnimationFrame(frame);
+            };
+            requestAnimationFrame(frame);
+        }
+
         function startBulgukWave() {
             if (BULGUK_STATE.waveStarted) return;
             BULGUK_STATE.waveStarted = true;
             const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
             if (reduceMotion) {
                 BULGUK_STATE.waveDone = true;
-                renderBulguk(null);
+                refreshBulgukBase();
                 return;
             }
             const t0 = performance.now();
@@ -4831,7 +4947,8 @@
                     requestAnimationFrame(tick);
                 } else {
                     BULGUK_STATE.waveDone = true;
-                    renderBulguk(null); // 최종 프레임 확정 후 정지
+                    refreshBulgukBase();      // 최종 프레임 확정 + 스냅샷
+                    startBulgukTwinkle();     // 은은한 반짝임 시작
                 }
             };
             requestAnimationFrame(tick);
@@ -4847,7 +4964,7 @@
             BULGUK_STATE.litCount = Math.round(BULGUK_STATE.gold.length * count / goal);
 
             if (BULGUK_STATE.waveDone) {
-                renderBulguk(null); // 이미 점등 완료 → 새 수치로 즉시 갱신
+                refreshBulgukBase(); // 이미 점등 완료 → 새 수치로 스냅샷 갱신
             } else if (!BULGUK_STATE.waveStarted) {
                 renderBulguk(0); // 점등 전 실루엣
                 const observer = new IntersectionObserver((entries) => {
