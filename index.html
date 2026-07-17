@@ -4723,15 +4723,15 @@
             const rad = Math.min(dotW, dotH) * 0.3;    // border-radius 30% 재현
             const canRound = typeof ctx.roundRect === 'function';
 
-            // 글로우 스프라이트 (이중 box-shadow 재현: 안쪽 선명 + 바깥 번짐)
+            // 글로우 스프라이트: 점 주변에만 은은하게 (타이트한 falloff)
             if (!BULGUK_STATE.glowSprite) {
-                const gs = Math.max(8, Math.ceil(Math.max(dotW, dotH) * 4));
+                const gs = Math.max(8, Math.ceil(Math.max(dotW, dotH) * 2.6));
                 const g = document.createElement('canvas');
                 g.width = gs; g.height = gs;
                 const gc = g.getContext('2d');
                 const grad = gc.createRadialGradient(gs / 2, gs / 2, 0, gs / 2, gs / 2, gs / 2);
-                grad.addColorStop(0, 'rgba(251, 191, 36, 0.9)');
-                grad.addColorStop(0.35, 'rgba(245, 158, 11, 0.45)');
+                grad.addColorStop(0, 'rgba(251, 191, 36, 0.55)');
+                grad.addColorStop(0.5, 'rgba(245, 158, 11, 0.22)');
                 grad.addColorStop(1, 'rgba(245, 158, 11, 0)');
                 gc.fillStyle = grad;
                 gc.fillRect(0, 0, gs, gs);
@@ -4751,9 +4751,45 @@
                 }
             };
 
+            // 셀 진행도 계산 (미점등 -1, 점등 완료 1, 진행 중 0~1)
+            const gold = BULGUK_STATE.gold;
+            const lit = BULGUK_STATE.litCount;
+            let done = true;
+            const progress = (cell, k) => {
+                if (k >= lit) return -1;
+                if (elapsedMs === null) return 1;
+                const delay = (cell.col + cell.row) * 12; // 좌상→우하 웨이브 (기존 0.012s 스태거)
+                let p = (elapsedMs - delay) / 800;        // ignite 0.8s
+                if (p < 1) done = false;
+                return p > 1 ? 1 : p;
+            };
+            // 기존 lantern-ignite 키프레임 재현: ease-out, 60% 지점 scale 1.15 오버슈트
+            const igniteCurve = (p) => {
+                const pe = 1 - (1 - p) * (1 - p);
+                if (pe < 0.6) {
+                    const t = pe / 0.6;
+                    return { alpha: t, scale: 0.3 + 0.85 * t };
+                }
+                const t = (pe - 0.6) / 0.4;
+                return { alpha: 1, scale: 1.15 - 0.15 * t };
+            };
+
             ctx.clearRect(0, 0, W, H);
 
-            // 상시 장식 점 (회색 면 채움)
+            // PASS 1 — 글로우 층: 점 위를 덮지 않도록 모든 점보다 먼저 깐다
+            for (let k = 0; k < gold.length; k++) {
+                const cell = gold[k];
+                const p = progress(cell, k);
+                if (p <= 0) continue;
+                const { alpha, scale } = igniteCurve(p);
+                ctx.globalAlpha = alpha;
+                const cx = (cell.col + 0.5) * cw, cy = (cell.row + 0.5) * chh;
+                const gsz = glow.width * scale;
+                ctx.drawImage(glow, cx - gsz / 2, cy - gsz / 2, gsz, gsz);
+            }
+            ctx.globalAlpha = 1;
+
+            // PASS 2 — 점 층: 장식·미점등·점등 모두 글로우 위에 선명하게
             ctx.globalAlpha = 0.5;
             for (const d of BULGUK_STATE.deco) {
                 ctx.fillStyle = d.tone;
@@ -4761,41 +4797,17 @@
             }
             ctx.globalAlpha = 1;
 
-            // 금빛 셀
-            const gold = BULGUK_STATE.gold;
-            const lit = BULGUK_STATE.litCount;
-            let done = true;
+            done = true; // progress를 다시 계산하므로 리셋
             for (let k = 0; k < gold.length; k++) {
                 const cell = gold[k];
-                let p = 1;
-                if (k >= lit) p = -1; // 미점등
-                else if (elapsedMs !== null) {
-                    const delay = (cell.col + cell.row) * 12; // 좌상→우하 웨이브 (기존 0.012s 스태거)
-                    p = (elapsedMs - delay) / 800;            // ignite 0.8s
-                    if (p < 1) done = false;
-                }
+                const p = progress(cell, k);
                 if (p <= 0) {
                     ctx.fillStyle = 'rgba(71, 85, 105, 0.3)'; // 미점등 실루엣
                     drawDot(cell.col, cell.row, 1);
                     continue;
                 }
-                if (p > 1) p = 1;
-                // 기존 lantern-ignite 키프레임 재현: ease-out, 60% 지점 scale 1.15 오버슈트
-                const pe = 1 - (1 - p) * (1 - p);
-                let alpha, scale;
-                if (pe < 0.6) {
-                    const t = pe / 0.6;
-                    alpha = t;
-                    scale = 0.3 + 0.85 * t;
-                } else {
-                    const t = (pe - 0.6) / 0.4;
-                    alpha = 1;
-                    scale = 1.15 - 0.15 * t;
-                }
+                const { alpha, scale } = igniteCurve(p);
                 ctx.globalAlpha = alpha;
-                const cx = (cell.col + 0.5) * cw, cy = (cell.row + 0.5) * chh;
-                const gsz = glow.width * scale;
-                ctx.drawImage(glow, cx - gsz / 2, cy - gsz / 2, gsz, gsz);
                 ctx.fillStyle = cell.tone;
                 drawDot(cell.col, cell.row, scale);
                 ctx.globalAlpha = 1;
