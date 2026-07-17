@@ -146,8 +146,14 @@
         }
 
         /* 커스텀 폰트 적용 */
+        html {
+            /* 카톡/삼성 인앱브라우저의 폰트 자동 확대(font boosting) 차단 */
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+        }
+
         body {
-            font-family: 'Noto Sans KR', sans-serif;
+            font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', system-ui, sans-serif;
             word-break: keep-all;
             overflow-wrap: break-word;
             color: var(--color-text-main);
@@ -155,7 +161,7 @@
         }
 
         h1 {
-            font-family: 'Noto Serif KR', serif;
+            font-family: 'Noto Serif KR', 'Apple SD Gothic Neo', 'Malgun Gothic', serif;
             word-break: keep-all;
             overflow-wrap: break-word;
         }
@@ -165,13 +171,18 @@
         h4,
         h5,
         h6 {
-            font-family: 'Noto Sans KR', sans-serif;
+            font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', system-ui, sans-serif;
             word-break: keep-all;
             overflow-wrap: break-word;
         }
 
+        /* 제목이 여러 줄로 나뉠 때 줄 길이 균형 (미지원 브라우저는 무시) */
+        h1, h2, h3, h4 {
+            text-wrap: balance;
+        }
+
         .font-serif {
-            font-family: 'Noto Serif KR', serif;
+            font-family: 'Noto Serif KR', 'Apple SD Gothic Neo', 'Malgun Gothic', serif;
             word-break: keep-all;
             overflow-wrap: break-word;
         }
@@ -517,7 +528,9 @@
             .overflow-x-auto table td,
             .overflow-x-auto table th {
                 padding: 0.5rem;
-                word-break: break-word;
+                /* 한글 단어 중간 끊김 방지 — 단어 단위로만 줄바꿈 */
+                word-break: keep-all;
+                overflow-wrap: break-word;
             }
         }
 
@@ -869,7 +882,7 @@
                     </p>
 
                     <div class="mb-6 text-center">
-                        <a href="https://www.google.com/maps/d/edit?mid=1x_ykXFgtzCgyzLZte1n2xURV26KylQU&usp=sharing"
+                        <a href="https://www.google.com/maps/d/viewer?mid=1x_ykXFgtzCgyzLZte1n2xURV26KylQU"
                             target="_blank"
                             class="inline-flex items-center text-blue-600 hover:text-blue-800 transition-colors">
                             <span class="mr-2">📍</span>
@@ -1379,40 +1392,40 @@
                         <table class="w-full bg-white border border-slate-300 rounded-lg shadow-md">
                             <tbody class="divide-y divide-slate-200">
                                 <tr class="hover:bg-slate-50">
-                                    <td class="px-6 py-4 font-semibold text-amber-700" data-kr="붓다웨이"
+                                    <td class="px-4 md:px-6 py-4 font-semibold text-amber-700 whitespace-nowrap" data-kr="붓다웨이"
                                         data-en="Buddha Way">붓다웨이</td>
-                                    <td class="px-6 py-4 text-gray-600"
+                                    <td class="px-4 md:px-6 py-4 text-gray-600"
                                         data-kr="룸비니~포카라 160km 태자 싯다르타 순례길 복원<br>지자체/사찰/공익단체 협업 모델"
                                         data-en="Restoring the 160km Prince Siddhartha pilgrimage route from Lumbini to Pokhara<br>Collaborative model with local governments, temples, and NGOs">
                                         룸비니~포카라 160km 태자 싯다르타 순례길 복원<br>지자체/사찰/공익단체 협업 모델</td>
                                 </tr>
                                 <tr class="hover:bg-slate-50">
-                                    <td class="px-6 py-4 font-semibold text-amber-700" data-kr="JustBe Temple 히말라야"
+                                    <td class="px-4 md:px-6 py-4 font-semibold text-amber-700 whitespace-nowrap" data-kr="JustBe Temple 히말라야"
                                         data-en="JustBe Temple Himalaya">JustBe Temple 히말라야</td>
-                                    <td class="px-6 py-4 text-gray-600"
+                                    <td class="px-4 md:px-6 py-4 text-gray-600"
                                         data-kr="JustBe Himalaya Temple: 360° 명상홀, 공양간, 숙소, 법당"
                                         data-en="JustBe Himalaya Temple: 360° meditation hall, kitchen, accommodation, dharma hall">
                                         JustBe Himalaya Temple: 360° 명상홀, 공양간, 숙소, 법당</td>
                                 </tr>
                                 <tr class="hover:bg-slate-50">
-                                    <td class="px-6 py-4 font-semibold text-amber-700" data-kr="수행마을"
+                                    <td class="px-4 md:px-6 py-4 font-semibold text-amber-700 whitespace-nowrap" data-kr="수행마을"
                                         data-en="Practice Village">수행마을</td>
-                                    <td class="px-6 py-4 text-gray-600"
+                                    <td class="px-4 md:px-6 py-4 text-gray-600"
                                         data-kr="Himalaya Korean Basecamp<br>장기체류형 숙소, 공동체 공간, 사찰식 부엌, 에코팜"
                                         data-en="Himalaya Korean Basecamp<br>Long-term accommodation, community spaces, temple kitchen, eco-farm">
                                         Himalaya Korean Basecamp<br>장기체류형 숙소, 공동체 공간, 사찰식 부엌, 에코팜</td>
                                 </tr>
                                 <tr class="hover:bg-slate-50">
-                                    <td class="px-6 py-4 font-semibold text-amber-700" data-kr="디지털 플랫폼"
+                                    <td class="px-4 md:px-6 py-4 font-semibold text-amber-700 whitespace-nowrap" data-kr="디지털 플랫폼"
                                         data-en="Digital Platform">디지털 플랫폼</td>
-                                    <td class="px-6 py-4 text-gray-600" data-kr="글로벌 법회, 명상 콘텐츠, 커뮤니티 운영"
+                                    <td class="px-4 md:px-6 py-4 text-gray-600" data-kr="글로벌 법회, 명상 콘텐츠, 커뮤니티 운영"
                                         data-en="Global dharma talks, meditation content, community management">글로벌 법회,
                                         명상 콘텐츠, 커뮤니티 운영</td>
                                 </tr>
                                 <tr class="hover:bg-slate-50">
-                                    <td class="px-6 py-4 font-semibold text-amber-700" data-kr="사회공헌"
+                                    <td class="px-4 md:px-6 py-4 font-semibold text-amber-700 whitespace-nowrap" data-kr="사회공헌"
                                         data-en="Social Contribution">사회공헌</td>
-                                    <td class="px-6 py-4 text-gray-600"
+                                    <td class="px-4 md:px-6 py-4 text-gray-600"
                                         data-kr="친환경 운동, 연령별 명상 캠프, 사찰음식 교육,<br>한국어 교육, 자원봉사 프로그램"
                                         data-en="Environmental initiatives, age-specific meditation camps, temple food education,<br>Korean language education, volunteer programs">
                                         친환경 운동, 연령별 명상 캠프, 사찰음식 교육,<br>한국어 교육, 자원봉사 프로그램</td>
