@@ -4839,18 +4839,26 @@
             base.getContext('2d').drawImage(canvas, 0, 0);
         }
 
-        // --- 등불 트윙클: 페이지 로드 시 등불 하나를 정해 그 자리에서 계속 맥동 ---
+        // --- 등불 트윙클: 아직 켜지지 않은 자리 하나가 맥동 ---
+        // "이 자리가 당신의 등불이 될 수 있습니다" — 빈 칸 하나가 숨쉬며 동참을 청한다.
         // 스냅샷 blit + 소량 덧그리기라 프레임 비용이 극히 낮고,
         // 화면 밖이면 루프 자체가 정지한다.
-        const TWINKLE_COUNT = 1;       // 동시에 반짝이는 등불 수
+        const TWINKLE_COUNT = 1;       // 동시에 반짝이는 자리 수
         const TWINKLE_FPS_MS = 33;     // ~30fps로 제한
 
         function spawnTwinkle(now) {
-            const lit = Math.min(BULGUK_STATE.litCount, BULGUK_STATE.gold.length);
-            if (lit === 0) return null;
-            // 등불은 최초 1회만 무작위 선택 → 이후 같은 등불이 계속 숨쉼
+            const total = BULGUK_STATE.gold.length;
+            const lit = Math.min(BULGUK_STATE.litCount, total);
+            // 미점등 칸 중 최초 1회만 무작위 선택 → 이후 같은 자리가 계속 숨쉼
+            // (만평 달성으로 빈 칸이 없으면 점등된 등불 중 하나로)
             if (BULGUK_STATE.twinkleIdx === undefined) {
-                BULGUK_STATE.twinkleIdx = Math.floor(Math.random() * lit);
+                if (lit < total) {
+                    BULGUK_STATE.twinkleIdx = lit + Math.floor(Math.random() * (total - lit));
+                } else if (lit > 0) {
+                    BULGUK_STATE.twinkleIdx = Math.floor(Math.random() * lit);
+                } else {
+                    return null;
+                }
             }
             return {
                 idx: BULGUK_STATE.twinkleIdx,
