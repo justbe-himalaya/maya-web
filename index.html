@@ -4839,10 +4839,10 @@
             base.getContext('2d').drawImage(canvas, 0, 0);
         }
 
-        // --- 등불 트윙클: 소수의 점등 셀만 은은하게 반짝임 ---
+        // --- 등불 트윙클: 무작위 등불 하나가 맥동, 사그라들면 다른 등불로 ---
         // 스냅샷 blit + 소량 덧그리기라 프레임 비용이 극히 낮고,
         // 화면 밖이면 루프 자체가 정지한다.
-        const TWINKLE_COUNT = 24;      // 동시에 반짝이는 등불 수
+        const TWINKLE_COUNT = 1;       // 동시에 반짝이는 등불 수
         const TWINKLE_FPS_MS = 33;     // ~30fps로 제한
 
         function spawnTwinkle(now) {
