@@ -4839,7 +4839,7 @@
             base.getContext('2d').drawImage(canvas, 0, 0);
         }
 
-        // --- 등불 트윙클: 무작위 등불 하나가 맥동, 사그라들면 다른 등불로 ---
+        // --- 등불 트윙클: 페이지 로드 시 등불 하나를 정해 그 자리에서 계속 맥동 ---
         // 스냅샷 blit + 소량 덧그리기라 프레임 비용이 극히 낮고,
         // 화면 밖이면 루프 자체가 정지한다.
         const TWINKLE_COUNT = 1;       // 동시에 반짝이는 등불 수
@@ -4848,10 +4848,14 @@
         function spawnTwinkle(now) {
             const lit = Math.min(BULGUK_STATE.litCount, BULGUK_STATE.gold.length);
             if (lit === 0) return null;
+            // 등불은 최초 1회만 무작위 선택 → 이후 같은 등불이 계속 숨쉼
+            if (BULGUK_STATE.twinkleIdx === undefined) {
+                BULGUK_STATE.twinkleIdx = Math.floor(Math.random() * lit);
+            }
             return {
-                idx: Math.floor(Math.random() * lit),
-                t0: now + Math.random() * 800,       // 시작 시점 분산
-                dur: 1200 + Math.random() * 1400     // 1.2~2.6초
+                idx: BULGUK_STATE.twinkleIdx,
+                t0: now + 400 + Math.random() * 800, // 맥동 사이 잠깐의 숨 고르기
+                dur: 1600 + Math.random() * 800      // 1.6~2.4초
             };
         }
 
@@ -4909,17 +4913,22 @@
                     const cell = BULGUK_STATE.gold[tw.idx];
                     const cx = (cell.col + 0.5) * cw, cy = (cell.row + 0.5) * chh;
                     if (glow) {
-                        ctx.globalAlpha = 0.55 * s;
-                        const gsz = glow.width * (1 + 0.35 * s);
+                        // 확 퍼지는 후광: 두 겹으로 강조
+                        ctx.globalAlpha = 0.9 * s;
+                        const gsz = glow.width * (1 + 2.2 * s);
                         ctx.drawImage(glow, cx - gsz / 2, cy - gsz / 2, gsz, gsz);
+                        ctx.globalAlpha = 0.7 * s;
+                        const gsz2 = glow.width * (1 + 0.6 * s);
+                        ctx.drawImage(glow, cx - gsz2 / 2, cy - gsz2 / 2, gsz2, gsz2);
                     }
-                    // 하이라이트: 점이 순간적으로 밝아짐
-                    ctx.globalAlpha = 0.85 * s;
-                    ctx.fillStyle = '#fef3c7';
-                    const w = dotW, h = dotH;
+                    // 하이라이트: 등불이 확 커지며 흰빛으로 타오름
+                    const flare = 1 + 0.6 * s; // 최대 1.6배
+                    ctx.globalAlpha = 0.95 * s;
+                    ctx.fillStyle = '#fffbeb';
+                    const w = dotW * flare, h = dotH * flare;
                     if (canRound) {
                         ctx.beginPath();
-                        ctx.roundRect(cx - w / 2, cy - h / 2, w, h, rad);
+                        ctx.roundRect(cx - w / 2, cy - h / 2, w, h, rad * flare);
                         ctx.fill();
                     } else {
                         ctx.fillRect(cx - w / 2, cy - h / 2, w, h);
