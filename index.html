@@ -1647,6 +1647,599 @@
             pointer-events: none;
         }
 
+        /* ---------- 창건주 소식방 엿보기 ---------- */
+        .ed-live-dot {
+            display: inline-block;
+            width: 7px;
+            height: 7px;
+            margin-right: 0.5rem;
+            border-radius: 9999px;
+            background: var(--ochre);
+            box-shadow: 0 0 0 0 rgba(169, 121, 58, 0.5);
+            animation: ed-live 2.2s ease-out infinite;
+            vertical-align: 1px;
+        }
+
+        @keyframes ed-live {
+            0% { box-shadow: 0 0 0 0 rgba(169, 121, 58, 0.5); }
+            70% { box-shadow: 0 0 0 9px rgba(169, 121, 58, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(169, 121, 58, 0); }
+        }
+
+        .ed-event-now::before {
+            background: var(--forest);
+        }
+
+        .ed-peek {
+            display: block;
+            width: 100%;
+            margin-top: 1.75rem;
+            padding: 0.4rem 1.25rem 1.1rem;
+            text-align: left;
+            background: #FBFAF6;
+            border: 1px solid var(--line);
+            transition: border-color 0.3s ease, transform 0.4s ease;
+        }
+
+        .ed-peek:hover {
+            border-color: var(--charcoal);
+        }
+
+        .ed-peek:focus-visible {
+            outline: 2px solid var(--ochre);
+            outline-offset: 3px;
+        }
+
+        .ed-peek-list {
+            display: block;
+        }
+
+        .ed-peek-row {
+            display: grid;
+            grid-template-columns: 3.4rem 1fr;
+            gap: 0.9rem;
+            align-items: baseline;
+            padding: 0.85rem 0;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .ed-peek-row.is-skeleton {
+            height: 3.2rem;
+            background: linear-gradient(90deg, transparent, rgba(37, 37, 34, 0.04), transparent);
+        }
+
+        .ed-peek-date {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 0.95rem;
+            color: var(--charcoal-soft);
+            font-variant-numeric: tabular-nums;
+        }
+
+        .ed-peek-title {
+            display: block;
+            font-size: 0.98rem;
+            font-weight: 600;
+            line-height: 1.5;
+            color: var(--charcoal);
+        }
+
+        .ed-peek-sub {
+            display: block;
+            margin-top: 0.15rem;
+            font-size: 0.78rem;
+            color: var(--charcoal-soft);
+        }
+
+        .ed-peek-foot {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            padding-top: 1rem;
+        }
+
+        .ed-peek-meta {
+            font-size: 0.78rem;
+            color: var(--charcoal-soft);
+        }
+
+        #sosik-modal {
+            background-color: rgba(27, 27, 25, 0.72);
+            -webkit-backdrop-filter: blur(6px);
+            backdrop-filter: blur(6px);
+        }
+
+        #sosik-modal:not(.hidden) {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        #sosik-modal > .sosik-panel {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 64rem;
+            height: min(52rem, calc(100vh - 2rem));
+            height: min(52rem, calc(100dvh - 2rem));
+            background: #FBFAF6;
+            border-radius: 2px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+            overflow: hidden;
+        }
+
+        @media (max-width: 640px) {
+            #sosik-modal:not(.hidden) {
+                padding: 0;
+            }
+
+            #sosik-modal > .sosik-panel {
+                height: 100%;
+                max-width: none;
+                padding-top: env(safe-area-inset-top, 0px);
+            }
+        }
+
+        .sosik-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 1.1rem 1.25rem;
+            border-bottom: 1px solid var(--line);
+        }
+
+        @media (min-width: 768px) {
+            .sosik-head {
+                padding: 1.4rem 2rem;
+            }
+        }
+
+        .sosik-head-id {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+        }
+
+        .sosik-room-mark {
+            display: grid;
+            place-items: center;
+            flex-shrink: 0;
+            width: 2.6rem;
+            height: 2.6rem;
+            border-radius: 9999px;
+            background: var(--forest);
+        }
+
+        .sosik-room-mark img {
+            width: 1.5rem;
+            filter: brightness(0) invert(1);
+        }
+
+        .sosik-title {
+            font-family: var(--font-serif);
+            font-size: clamp(1.2rem, 2.4vw, 1.5rem);
+            font-weight: 500;
+            line-height: 1.25;
+            color: var(--charcoal);
+        }
+
+        .sosik-close {
+            width: 2.5rem;
+            height: 2.5rem;
+            padding: 0.55rem;
+            color: var(--charcoal-soft);
+        }
+
+        .sosik-close:hover {
+            color: var(--charcoal);
+        }
+
+        .sosik-filters {
+            display: flex;
+            gap: 0.5rem;
+            padding: 0.85rem 1.25rem;
+            overflow-x: auto;
+            scrollbar-width: none;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .sosik-filters::-webkit-scrollbar {
+            display: none;
+        }
+
+        @media (min-width: 768px) {
+            .sosik-filters {
+                padding: 0.9rem 2rem;
+                flex-wrap: wrap;
+            }
+        }
+
+        .sosik-chip {
+            flex-shrink: 0;
+            padding: 0.4rem 0.85rem;
+            border: 1px solid var(--line);
+            border-radius: 9999px;
+            font-size: 0.8rem;
+            color: var(--charcoal-soft);
+            white-space: nowrap;
+            transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+        }
+
+        .sosik-chip:hover {
+            border-color: var(--charcoal);
+            color: var(--charcoal);
+        }
+
+        .sosik-chip[aria-pressed="true"] {
+            background: var(--charcoal);
+            border-color: var(--charcoal);
+            color: #F5F2EA;
+        }
+
+        .sosik-chip .n {
+            margin-left: 0.35rem;
+            opacity: 0.6;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .sosik-body {
+            flex: 1;
+            min-height: 0;
+            display: grid;
+            grid-template-columns: 1fr;
+        }
+
+        @media (min-width: 768px) {
+            .sosik-body {
+                grid-template-columns: 9rem 1fr;
+            }
+        }
+
+        .sosik-months {
+            display: none;
+        }
+
+        @media (min-width: 768px) {
+            .sosik-months {
+                display: flex;
+                flex-direction: column;
+                gap: 0.15rem;
+                padding: 1.5rem 0 1.5rem 2rem;
+                border-right: 1px solid var(--line);
+                overflow-y: auto;
+            }
+        }
+
+        .sosik-month {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            padding: 0.45rem 1rem 0.45rem 0;
+            text-align: left;
+            font-family: 'Noto Serif KR', serif;
+            font-size: 1.05rem;
+            color: #A8A294;
+            transition: color 0.25s ease;
+        }
+
+        .sosik-month small {
+            font-family: var(--font-sans);
+            font-size: 0.7rem;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .sosik-month:hover,
+        .sosik-month.is-current {
+            color: var(--charcoal);
+        }
+
+        .sosik-month.is-current::after {
+            content: '';
+        }
+
+        .sosik-month[disabled] {
+            opacity: 0.35;
+            pointer-events: none;
+        }
+
+        .sosik-stream {
+            overflow-y: auto;
+            overscroll-behavior: contain;
+            padding: 0.5rem 1.25rem 2rem;
+            scroll-padding-top: 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .sosik-stream {
+                padding: 0.5rem 2.5rem 3rem 2rem;
+            }
+        }
+
+        .sosik-loading,
+        .sosik-empty {
+            padding: 3rem 0;
+            text-align: center;
+            color: var(--charcoal-soft);
+        }
+
+        .sosik-month-head {
+            position: sticky;
+            top: 0;
+            z-index: 2;
+            display: flex;
+            align-items: baseline;
+            gap: 0.75rem;
+            padding: 1.1rem 0 0.6rem;
+            background: #FBFAF6;
+            border-bottom: 1px solid var(--charcoal);
+        }
+
+        .sosik-month-head b {
+            font-family: 'Noto Serif KR', serif;
+            font-weight: 400;
+            font-size: 1.5rem;
+            color: var(--charcoal);
+        }
+
+        .sosik-month-head span {
+            font-size: 0.72rem;
+            letter-spacing: 0.14em;
+            color: var(--ochre);
+        }
+
+        .sosik-story {
+            border-bottom: 1px solid var(--line);
+        }
+
+        .sosik-story > summary {
+            display: grid;
+            grid-template-columns: 2.6rem 1fr;
+            gap: 0.9rem;
+            padding: 1.25rem 0;
+            cursor: pointer;
+            list-style: none;
+        }
+
+        @media (min-width: 768px) {
+            .sosik-story > summary {
+                grid-template-columns: 3.25rem 1fr 7.5rem;
+                gap: 1.25rem;
+            }
+        }
+
+        .sosik-story > summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .sosik-day {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 1.6rem;
+            line-height: 1;
+            color: var(--charcoal);
+            font-variant-numeric: tabular-nums;
+        }
+
+        .sosik-day small {
+            display: block;
+            margin-top: 0.35rem;
+            font-family: var(--font-sans);
+            font-size: 0.66rem;
+            letter-spacing: 0.08em;
+            color: var(--charcoal-soft);
+        }
+
+        .sosik-s-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            line-height: 1.5;
+            color: var(--charcoal);
+            transition: color 0.25s ease;
+        }
+
+        .sosik-story > summary:hover .sosik-s-title {
+            color: var(--ochre);
+        }
+
+        .sosik-s-meta {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.35rem 0.6rem;
+            margin-top: 0.35rem;
+            font-size: 0.76rem;
+            color: var(--charcoal-soft);
+        }
+
+        .sosik-tag {
+            color: var(--forest);
+            font-weight: 600;
+        }
+
+        .sosik-excerpt {
+            margin-top: 0.55rem;
+            font-size: 0.9rem;
+            line-height: 1.75;
+            color: var(--charcoal-soft);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .sosik-story[open] .sosik-excerpt {
+            display: none;
+        }
+
+        .sosik-thumb {
+            display: none;
+        }
+
+        @media (min-width: 768px) {
+            .sosik-thumb {
+                display: grid;
+                place-items: center;
+                align-self: start;
+                aspect-ratio: 4 / 3;
+                overflow: hidden;
+                background: var(--forest);
+                color: #D6B788;
+                font-size: 0.7rem;
+                letter-spacing: 0.08em;
+                text-align: center;
+            }
+
+            .sosik-thumb img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .sosik-thumb.is-empty {
+                background: transparent;
+            }
+        }
+
+        .sosik-full {
+            padding: 0 0 1.75rem 3.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .sosik-full {
+                padding: 0 8.75rem 2rem 4.5rem;
+            }
+        }
+
+        .sosik-story[open] .sosik-full {
+            animation: ed-open 0.45s ease;
+        }
+
+        .sosik-text {
+            max-width: 36rem;
+            white-space: pre-line;
+            font-size: 0.96rem;
+            line-height: 1.75;
+            color: var(--charcoal);
+        }
+
+        .sosik-text a {
+            color: var(--forest);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            word-break: break-all;
+        }
+
+        .sosik-media {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1.25rem;
+        }
+
+        .sosik-media-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.5rem 0.8rem;
+            background: var(--ivory-deep);
+            font-size: 0.78rem;
+            color: var(--charcoal-soft);
+        }
+
+        .sosik-media-chip svg {
+            width: 0.95rem;
+            height: 0.95rem;
+        }
+
+        .sosik-cards {
+            display: grid;
+            gap: 0.75rem;
+            margin-top: 1rem;
+            max-width: 36rem;
+        }
+
+        .sosik-card {
+            display: grid;
+            grid-template-columns: 7.5rem 1fr;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.5rem;
+            border: 1px solid var(--line);
+            background: #fff;
+            transition: border-color 0.25s ease;
+        }
+
+        .sosik-card:hover {
+            border-color: var(--charcoal);
+        }
+
+        .sosik-card-img {
+            aspect-ratio: 16 / 9;
+            background: var(--forest) center / cover no-repeat;
+        }
+
+        .sosik-card.is-link {
+            grid-template-columns: 1fr;
+            padding: 0.85rem 1rem;
+        }
+
+        .sosik-card b {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--charcoal);
+        }
+
+        .sosik-card span {
+            display: block;
+            margin-top: 0.15rem;
+            font-size: 0.74rem;
+            color: var(--charcoal-soft);
+            word-break: break-all;
+        }
+
+        .sosik-members-note {
+            margin-top: 1rem;
+            font-size: 0.76rem;
+            color: var(--charcoal-soft);
+        }
+
+        .sosik-foot {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1.25rem calc(0.75rem + env(safe-area-inset-bottom, 0px));
+            border-top: 1px solid var(--line);
+            background: #F5F2EA;
+        }
+
+        @media (min-width: 768px) {
+            .sosik-foot {
+                padding: 0.9rem 2rem;
+            }
+        }
+
+        .sosik-foot-input {
+            flex: 1;
+            min-width: 0;
+            padding: 0.7rem 1rem;
+            border: 1px solid var(--line);
+            border-radius: 9999px;
+            background: #fff;
+            font-size: 0.82rem;
+            color: #A8A294;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .sosik-join {
+            flex-shrink: 0;
+            padding: 0.75rem 1.1rem;
+        }
+
         /* 배경 이미지 스타일 */
         .hero-bg {
             background-image: url('resource/img/hero_bg_88.jpeg');
@@ -2225,6 +2818,28 @@
                                 </p>
                                 <a href="#yaksa-donation" class="btn-secondary mt-6" data-kr="동참하기 →" data-en="Join →">동참하기 →</a>
                             </li>
+
+                            <!-- 소식방 엿보기: data/sosik.json (scripts/build-sosik.py로 생성) -->
+                            <li class="ed-event ed-event-now scroll-reveal">
+                                <p class="ed-event-date"><span class="ed-live-dot" aria-hidden="true"></span><span
+                                        data-kr="지금, 히말라야에서" data-en="Now, from the Himalayas">지금, 히말라야에서</span></p>
+                                <h3 class="ed-event-title" data-kr="창건주 소식방 엿보기" data-en="A Peek into the Founders' Room">창건주 소식방 엿보기</h3>
+                                <p class="ed-body" data-kr="한평 불사 동참자분들께 스님과 현지 식구들이 직접 전하는 소식방입니다. 최근 이야기를 살짝 보여드려요."
+                                    data-en="The chat room where the monks and our team in Pokhara share news with Han-pyeong participants. Here is a small peek.">
+                                    한평 불사 동참자분들께 스님과 현지 식구들이 직접 전하는 소식방입니다. 최근 이야기를 살짝 보여드려요.
+                                </p>
+                                <button type="button" class="ed-peek" onclick="openSosikModal()" aria-haspopup="dialog">
+                                    <span class="ed-peek-list" id="sosik-peek-list">
+                                        <span class="ed-peek-row is-skeleton"></span>
+                                        <span class="ed-peek-row is-skeleton"></span>
+                                        <span class="ed-peek-row is-skeleton"></span>
+                                    </span>
+                                    <span class="ed-peek-foot">
+                                        <span id="sosik-peek-meta" class="ed-peek-meta"></span>
+                                        <span class="btn-secondary" data-kr="소식방 들여다보기 →" data-en="Open the Room →">소식방 들여다보기 →</span>
+                                    </span>
+                                </button>
+                            </li>
                         </ol>
                     </div>
                 </div>
@@ -2542,6 +3157,41 @@
             </div>
         </section>
     </main>
+
+    <!-- 창건주 소식방 엿보기 모달 -->
+    <div id="sosik-modal" class="fixed inset-0 z-50 hidden" role="dialog" aria-modal="true" aria-labelledby="sosik-title">
+        <div class="sosik-panel">
+            <header class="sosik-head">
+                <div class="sosik-head-id">
+                    <span class="sosik-room-mark" aria-hidden="true"><img src="resource/img/justbe_img.png" alt=""></span>
+                    <div>
+                        <p class="ed-modal-kicker" data-kr="창건주 전용 · 엿보기" data-en="Founders only · Peek">창건주 전용 · 엿보기</p>
+                        <h3 id="sosik-title" class="sosik-title" data-kr="JustBe 히말라야 소식방" data-en="JustBe Himalaya News Room">JustBe 히말라야 소식방</h3>
+                    </div>
+                </div>
+                <button type="button" class="sosik-close" onclick="closeSosikModal()" aria-label="닫기">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+                        <path d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </header>
+
+            <div class="sosik-filters" id="sosik-filters" role="group" aria-label="주제별 보기"></div>
+
+            <div class="sosik-body">
+                <nav class="sosik-months" id="sosik-months" aria-label="월별 이동"></nav>
+                <div class="sosik-stream" id="sosik-stream" tabindex="0">
+                    <p class="sosik-loading" data-kr="소식을 불러오는 중…" data-en="Loading…">소식을 불러오는 중…</p>
+                </div>
+            </div>
+
+            <footer class="sosik-foot">
+                <p class="sosik-foot-input" data-kr="소식방은 한평 불사 창건주 도반만 함께할 수 있어요"
+                    data-en="The room is open to Han-pyeong founders">소식방은 한평 불사 창건주 도반만 함께할 수 있어요</p>
+                <a href="#yaksa-donation" class="btn-primary sosik-join" onclick="closeSosikModal()" data-kr="동참하기 →" data-en="Join →">동참하기 →</a>
+            </footer>
+        </div>
+    </div>
 
     <!-- 자세히 알아보기 모달 -->
     <div id="learn-more-modal"
@@ -7594,6 +8244,207 @@
                 requestAnimationFrame(tick);
             }, { threshold: 0.6 });
             io.observe(stats);
+        })();
+    </script>
+    <script>
+        // --- 창건주 소식방 엿보기: data/sosik.json (scripts/build-sosik.py) ---
+        (function () {
+            const TOPIC_EN = { '순례': 'Pilgrimage', '수행·법회': 'Practice', '불사 현장': 'On Site', '사람들': 'People', '라이브·영상': 'Live & Video', '언론': 'Press', '나눔·구호': 'Relief' };
+            const WHO_EN = { '준한 스님': 'Ven. Junhan', '승원': 'Seungwon', '마승': 'Maseung', '중현': 'Junghyun', '이슬기': 'Seulgi', '지웅': 'Jiwoong' };
+            const MONTH_EN = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+            const DOW_KO = ['일', '월', '화', '수', '목', '금', '토'];
+            const DOW_EN = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+            const ICON = {
+                photo: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 16l5-5 4 4 3-3 6 6"/></svg>',
+                video: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M10 9l5 3-5 3z"/></svg>'
+            };
+
+            let data = null, loading = null, topic = 'all', renderedLang = null;
+            const en = () => document.documentElement.lang === 'en';
+            const esc = (t) => t.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+            const linkify = (t) => esc(t).replace(/https?:\/\/[^\s<]+/g, u => `<a href="${u}" target="_blank" rel="noopener">${u.length > 48 ? u.slice(0, 45) + '…' : u}</a>`);
+            const topicLabel = (t) => en() ? (TOPIC_EN[t] || t) : t;
+            const whoLabel = (w) => en() ? (WHO_EN[w] || w) : w;
+            const parse = (id) => new Date(id + ':00');
+            const monthKey = (id) => id.slice(0, 7);
+
+            const load = () => loading || (loading = fetch('./data/sosik.json?' + Date.now())
+                .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+                .then(d => { d.stories.sort((a, b) => b.id.localeCompare(a.id)); data = d; return d; }));
+
+            const mediaText = (s) => [
+                s.photos ? (en() ? `${s.photos} photo${s.photos > 1 ? 's' : ''}` : `사진 ${s.photos}`) : '',
+                s.videos ? (en() ? `${s.videos} video${s.videos > 1 ? 's' : ''}` : `영상 ${s.videos}`) : ''
+            ].filter(Boolean);
+
+            // ---- 타임라인 옆 엿보기 카드 ----
+            function renderPeek() {
+                const list = document.getElementById('sosik-peek-list');
+                const meta = document.getElementById('sosik-peek-meta');
+                if (!list || !data) return;
+                const days = new Set();
+                const latest = data.stories.filter(s => !days.has(s.id.slice(0, 10)) && days.add(s.id.slice(0, 10))).slice(0, 3);
+                list.innerHTML = latest.map(s => {
+                    const d = parse(s.id);
+                    const date = `${d.getMonth() + 1}.${String(d.getDate()).padStart(2, '0')}`;
+                    const sub = [whoLabel(s.who), ...s.tags.map(topicLabel)].join(' · ');
+                    return `<span class="ed-peek-row"><span class="ed-peek-date">${date}</span><span><span class="ed-peek-title">${esc(s.title)}</span><span class="ed-peek-sub">${esc(sub)}</span></span></span>`;
+                }).join('');
+                const last = parse(data.stories[0].id);
+                meta.textContent = en()
+                    ? `${data.stories.length} stories · updated ${MONTH_EN[last.getMonth()].charAt(0) + MONTH_EN[last.getMonth()].slice(1).toLowerCase()} ${last.getDate()}`
+                    : `이야기 ${data.stories.length}편 · ${last.getMonth() + 1}월 ${last.getDate()}일 업데이트`;
+            }
+
+            // ---- 모달 ----
+            function storyHTML(s) {
+                const d = parse(s.id);
+                const yt = s.cards.find(c => c.kind === 'youtube');
+                const media = mediaText(s);
+                const excerpt = s.text.replace(/\s+/g, ' ').slice(0, 160);
+                let thumb = '<span class="sosik-thumb is-empty" aria-hidden="true"></span>';
+                if (yt) thumb = `<span class="sosik-thumb" aria-hidden="true"><img src="https://i.ytimg.com/vi/${yt.id}/mqdefault.jpg" alt="" loading="lazy"></span>`;
+                else if (media.length) thumb = `<span class="sosik-thumb" aria-hidden="true">${esc(media.join(' · '))}</span>`;
+
+                const cards = s.cards.map(c => c.kind === 'youtube'
+                    ? `<a class="sosik-card" href="${esc(c.url)}" target="_blank" rel="noopener"><span class="sosik-card-img" style="background-image:url('https://i.ytimg.com/vi/${c.id}/mqdefault.jpg')"></span><span><b>${en() ? 'Watch on YouTube ↗' : 'YouTube에서 보기 ↗'}</b><span>youtube.com</span></span></a>`
+                    : `<a class="sosik-card is-link" href="${esc(c.url)}" target="_blank" rel="noopener"><span><b>${en() ? 'Read the article ↗' : '기사·글 보기 ↗'}</b><span>${esc(c.host)}</span></span></a>`).join('');
+                const chips = [
+                    s.photos ? `<span class="sosik-media-chip">${ICON.photo}${en() ? `${s.photos} photo${s.photos > 1 ? 's' : ''}` : `사진 ${s.photos}장`}</span>` : '',
+                    s.videos ? `<span class="sosik-media-chip">${ICON.video}${en() ? `${s.videos} video${s.videos > 1 ? 's' : ''}` : `영상 ${s.videos}편`}</span>` : ''
+                ].join('');
+
+                return `<details class="sosik-story" data-tags="${esc(s.tags.join('|'))}" data-month="${monthKey(s.id)}">
+                    <summary>
+                        <span class="sosik-day">${String(d.getDate()).padStart(2, '0')}<small>${en() ? DOW_EN[d.getDay()] : DOW_KO[d.getDay()] + '요일'}</small></span>
+                        <span>
+                            <span class="sosik-s-title">${esc(s.title)}</span>
+                            <span class="sosik-s-meta"><span>${esc(whoLabel(s.who))}</span>${s.tags.map(t => `<span class="sosik-tag">${esc(topicLabel(t))}</span>`).join('')}${media.length ? `<span>${esc(media.join(' · '))}</span>` : ''}</span>
+                            ${s.text ? `<span class="sosik-excerpt">${esc(excerpt)}</span>` : ''}
+                        </span>
+                        ${thumb}
+                    </summary>
+                    <div class="sosik-full">
+                        ${s.text ? `<p class="sosik-text">${linkify(s.text.replace(/\n{3,}/g, '\n\n'))}</p>` : ''}
+                        ${chips ? `<div class="sosik-media">${chips}</div>` : ''}
+                        ${cards ? `<div class="sosik-cards">${cards}</div>` : ''}
+                        ${chips ? `<p class="sosik-members-note">${en() ? 'Photos and videos are shared in the founders’ room.' : '사진과 영상은 창건주 소식방에서 함께 보고 있어요.'}</p>` : ''}
+                    </div>
+                </details>`;
+            }
+
+            function renderModal() {
+                const stream = document.getElementById('sosik-stream');
+                const months = document.getElementById('sosik-months');
+                const filters = document.getElementById('sosik-filters');
+                const counts = {};
+                data.stories.forEach(s => s.tags.forEach(t => { counts[t] = (counts[t] || 0) + 1; }));
+                filters.innerHTML = [`<button type="button" class="sosik-chip" data-topic="all" aria-pressed="${topic === 'all'}">${en() ? 'All' : '전체'}<span class="n">${data.stories.length}</span></button>`]
+                    .concat(data.topics.filter(t => counts[t]).map(t => `<button type="button" class="sosik-chip" data-topic="${esc(t)}" aria-pressed="${topic === t}">${esc(topicLabel(t))}<span class="n">${counts[t]}</span></button>`)).join('');
+
+                const byMonth = [];
+                data.stories.forEach(s => {
+                    const k = monthKey(s.id);
+                    if (!byMonth.length || byMonth[byMonth.length - 1].k !== k) byMonth.push({ k, items: [] });
+                    byMonth[byMonth.length - 1].items.push(s);
+                });
+                stream.innerHTML = byMonth.map(m => {
+                    const [y, mo] = m.k.split('-').map(Number);
+                    return `<section class="sosik-month-group" data-month="${m.k}" id="sosik-m-${m.k}">
+                        <h4 class="sosik-month-head"><b>${en() ? MONTH_EN[mo - 1] : mo + '월'}</b><span>${y}</span></h4>
+                        ${m.items.map(storyHTML).join('')}
+                    </section>`;
+                }).join('');
+                months.innerHTML = byMonth.map(m => {
+                    const mo = Number(m.k.slice(5));
+                    return `<button type="button" class="sosik-month" data-month="${m.k}">${en() ? MONTH_EN[mo - 1] : mo + '월'}<small>${m.items.length}</small></button>`;
+                }).join('');
+                renderedLang = document.documentElement.lang;
+                applyTopic();
+            }
+
+            function applyTopic() {
+                const stream = document.getElementById('sosik-stream');
+                document.querySelectorAll('#sosik-filters .sosik-chip').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.topic === topic)));
+                stream.querySelectorAll('.sosik-story').forEach(el => {
+                    el.hidden = topic !== 'all' && !el.dataset.tags.split('|').includes(topic);
+                });
+                stream.querySelectorAll('.sosik-month-group').forEach(g => {
+                    const visible = g.querySelectorAll('.sosik-story:not([hidden])').length;
+                    g.hidden = !visible;
+                    const btn = document.querySelector(`#sosik-months [data-month="${g.dataset.month}"]`);
+                    if (btn) { btn.disabled = !visible; btn.querySelector('small').textContent = visible; }
+                });
+                stream.scrollTop = 0;
+                syncMonth();
+            }
+
+            function syncMonth() {
+                const stream = document.getElementById('sosik-stream');
+                const top = stream.getBoundingClientRect().top + 60;
+                let current = null;
+                stream.querySelectorAll('.sosik-month-group:not([hidden])').forEach(g => {
+                    if (g.getBoundingClientRect().top <= top) current = g.dataset.month;
+                });
+                if (!current) current = stream.querySelector('.sosik-month-group:not([hidden])')?.dataset.month;
+                document.querySelectorAll('#sosik-months .sosik-month').forEach(b => b.classList.toggle('is-current', b.dataset.month === current));
+            }
+
+            window.openSosikModal = function () {
+                const modal = document.getElementById('sosik-modal');
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+                load().then(() => {
+                    if (renderedLang !== document.documentElement.lang || !document.querySelector('#sosik-stream .sosik-story')) renderModal();
+                    document.getElementById('sosik-stream').focus({ preventScroll: true });
+                }).catch(() => {
+                    document.getElementById('sosik-stream').innerHTML = `<p class="sosik-empty">${en() ? 'Could not load the news. Please try again shortly.' : '소식을 불러오지 못했어요. 잠시 후 다시 열어 주세요.'}</p>`;
+                    loading = null;
+                });
+                if (window.gtag) gtag('event', 'sosik_open', { event_category: 'engagement' });
+            };
+
+            window.closeSosikModal = function () {
+                document.getElementById('sosik-modal').classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            };
+
+            document.addEventListener('DOMContentLoaded', () => {
+                const modal = document.getElementById('sosik-modal');
+                if (!modal) return;
+                modal.addEventListener('click', (e) => { if (e.target === modal) closeSosikModal(); });
+                document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeSosikModal(); });
+                document.getElementById('sosik-filters').addEventListener('click', (e) => {
+                    const b = e.target.closest('.sosik-chip');
+                    if (b) { topic = b.dataset.topic; applyTopic(); }
+                });
+                document.getElementById('sosik-months').addEventListener('click', (e) => {
+                    const b = e.target.closest('.sosik-month');
+                    if (!b) return;
+                    const g = document.getElementById('sosik-m-' + b.dataset.month);
+                    const stream = document.getElementById('sosik-stream');
+                    stream.scrollTo({ top: g.offsetTop - stream.offsetTop, behavior: 'smooth' });
+                });
+                document.getElementById('sosik-stream').addEventListener('scroll', syncMonth, { passive: true });
+
+                // 엿보기 카드: 타임라인 근처에 오면 불러오기
+                const peek = document.getElementById('sosik-peek-list');
+                const start = () => load().then(renderPeek).catch(() => { peek.closest('.ed-event-now').hidden = true; });
+                if ('IntersectionObserver' in window) {
+                    const io = new IntersectionObserver((entries) => {
+                        if (entries[0].isIntersecting) { io.disconnect(); start(); }
+                    }, { rootMargin: '600px 0px' });
+                    io.observe(peek);
+                } else start();
+
+                // 언어 전환 시 동적으로 만든 문구 다시 그리기
+                new MutationObserver(() => {
+                    if (!data) return;
+                    renderPeek();
+                    if (!modal.classList.contains('hidden')) renderModal();
+                    else renderedLang = null;
+                }).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+            });
         })();
     </script>
 </body>
