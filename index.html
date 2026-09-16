@@ -489,10 +489,15 @@
         }
 
         .ed-brand-mark {
-            height: 2.1rem;
+            height: 1.75rem;
             width: auto;
-            filter: brightness(0) invert(1);
             transition: filter 0.4s ease;
+        }
+
+        @media (min-width: 768px) {
+            .ed-brand-mark {
+                height: 2.15rem;
+            }
         }
 
         .ed-nav.is-solid .ed-brand-mark,
@@ -1795,8 +1800,8 @@
     <nav class="ed-nav" id="main-nav" aria-label="주요 메뉴">
         <div class="ed-nav-inner">
             <a href="#top" class="ed-brand" aria-label="JustBe Himalaya">
-                <img src="resource/img/justbe_img.png" alt="JustBe Logo" class="ed-brand-mark">
-                <span class="ed-brand-text">JustBe<br>Himalaya</span>
+                <img src="resource/img/JustBe_Himalaya_header_logo_white_REALLY_CLEAN.png" alt="JustBe Himalaya"
+                    class="ed-brand-mark" width="437" height="93">
             </a>
 
             <div class="ed-nav-links">
