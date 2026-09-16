@@ -1460,6 +1460,142 @@
             color: #A8A294;
         }
 
+        /* ---------- Modals (공통) ---------- */
+        div[id$="-modal"].fixed {
+            background-color: rgba(27, 27, 25, 0.72);
+            -webkit-backdrop-filter: blur(6px);
+            backdrop-filter: blur(6px);
+        }
+
+        div[id$="-modal"].fixed > div {
+            border-radius: 2px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+            background-color: #FBFAF6;
+        }
+
+        div[id$="-modal"] .sticky.top-0 {
+            background-color: rgba(251, 250, 246, 0.95);
+            border-color: var(--line);
+        }
+
+        div[id$="-modal"] .sticky.top-0 h3 {
+            font-family: var(--font-serif);
+            font-weight: 500;
+            letter-spacing: -0.01em;
+        }
+
+        @media (min-width: 768px) {
+            div[id$="-modal"] .sticky.top-0 h3 {
+                font-size: 1.85rem;
+                line-height: 1.25;
+            }
+        }
+
+        div[id$="-modal"] h4 {
+            font-family: var(--font-serif);
+            font-weight: 500;
+        }
+
+        div[id$="-modal"] h5,
+        .ed-modal-h {
+            font-size: 0.74rem;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--ochre);
+        }
+
+        div[id$="-modal"] section {
+            box-shadow: none;
+        }
+
+        div[id$="-modal"] table {
+            border-collapse: collapse;
+        }
+
+        div[id$="-modal"] table th {
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            color: var(--charcoal-soft);
+            background: transparent;
+        }
+
+        div[id$="-modal"] table td,
+        div[id$="-modal"] table th {
+            border-bottom: 1px solid var(--line);
+        }
+
+        div[id$="-modal"] h3.font-serif {
+            font-weight: 500;
+            color: var(--charcoal);
+            padding-inline: 2.5rem;
+        }
+
+        /* 기존 details(한가위/개원법회 FAQ)와 변환된 Q&A 공통 */
+        div[id$="-modal"] details {
+            border-radius: 0;
+            border-width: 0 0 1px 0;
+            border-color: var(--line);
+            background: transparent;
+        }
+
+        div[id$="-modal"] details > summary {
+            cursor: pointer;
+            list-style: none;
+        }
+
+        div[id$="-modal"] details > summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .ed-faq summary {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 1.05rem 0;
+        }
+
+        .ed-faq-q {
+            font-weight: 600;
+            line-height: 1.6;
+            color: var(--charcoal);
+            transition: color 0.3s ease;
+        }
+
+        .ed-faq summary:hover .ed-faq-q {
+            color: var(--ochre);
+        }
+
+        .ed-faq .ed-plus {
+            flex-shrink: 0;
+        }
+
+        .ed-faq-a {
+            padding: 0 2rem 1.25rem 0;
+            line-height: 1.85;
+            color: var(--charcoal-soft);
+        }
+
+        /* 신청 방법 바로가기 (모달 하단 고정) */
+        .ed-modal-cta {
+            position: sticky;
+            bottom: 0;
+            z-index: 10;
+            display: flex;
+            justify-content: center;
+            padding: 0.85rem 1rem calc(0.85rem + env(safe-area-inset-bottom, 0px));
+            background: linear-gradient(to top, rgba(251, 250, 246, 1) 55%, rgba(251, 250, 246, 0));
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .ed-modal-cta.is-hidden {
+            opacity: 0;
+            transform: translateY(100%);
+            pointer-events: none;
+        }
+
         /* 배경 이미지 스타일 */
         .hero-bg {
             background-image: url('resource/img/hero_bg_88.jpeg');
@@ -2560,102 +2696,56 @@
                         <span data-kr="자주 묻는 질문" data-en="Frequently Asked Questions">자주 묻는 질문</span>
                     </h4>
                     <div class="grid gap-3 text-sm">
-                        <div class="bg-white p-3 rounded border-l-3 border-gray-300">
-                            <p class="font-semibold text-gray-700 mb-1" data-kr="Q. 누가 참여할 수 있나요?"
-                                data-en="Q. Who can participate?">Q. 누가 참여할 수 있나요?</p>
-                            <p class="text-gray-600" data-kr="→ 미륵보살 혹은 약사여래 화주에 동참하신 모든 분"
-                                data-en="→ Anyone who has participated in the Maitreya or Medicine Buddha merit-making">
-                                → 미륵보살 혹은 약사여래 화주에 동참하신 모든 분</p>
-                        </div>
-                        <div class="bg-white p-3 rounded border-l-3 border-gray-300">
-                            <p class="font-semibold text-gray-700 mb-1" data-kr="Q. 일반인도 참여 가능한가요?"
-                                data-en="Q. Can the general public participate?">Q. 일반인도 참여 가능한가요?</p>
-                            <p class="text-gray-600" data-kr="→ 네, 불자가 아니어도 누구나 동참 가능합니다"
+                        <details class="ed-faq"><summary><span class="ed-faq-q" data-kr="Q. 누가 참여할 수 있나요?"
+                                data-en="Q. Who can participate?">Q. 누가 참여할 수 있나요?</span><span class="ed-plus" aria-hidden="true"></span></summary><div class="ed-faq-a" data-kr="→ 미륵보살 혹은 약사여래 화주에 동참하신 모든 분"
+                                data-en="→ Anyone who has participated in the Maitreya or Medicine Buddha merit-making">→ 미륵보살 혹은 약사여래 화주에 동참하신 모든 분</div></details>
+                        <details class="ed-faq"><summary><span class="ed-faq-q" data-kr="Q. 일반인도 참여 가능한가요?"
+                                data-en="Q. Can the general public participate?">Q. 일반인도 참여 가능한가요?</span><span class="ed-plus" aria-hidden="true"></span></summary><div class="ed-faq-a" data-kr="→ 네, 불자가 아니어도 누구나 동참 가능합니다"
                                 data-en="→ Yes, anyone can participate even if they are not Buddhist">→ 네, 불자가 아니어도 누구나
-                                동참 가능합니다</p>
-                        </div>
-                        <div class="bg-white p-3 rounded border-l-3 border-gray-300">
-                            <p class="font-semibold text-gray-700 mb-1" data-kr="Q. 아이와 함께 가도 되나요?"
-                                data-en="Q. Can I bring my child?">Q. 아이와 함께 가도 되나요?</p>
-                            <p class="text-gray-600" data-kr="→ 가능합니다. 가족 단위도 환영합니다"
-                                data-en="→ Yes, families are welcome">→ 가능합니다. 가족 단위도 환영합니다</p>
-                        </div>
-                        <div class="bg-white p-3 rounded border-l-3 border-gray-300">
-                            <p class="font-semibold text-gray-700 mb-1" data-kr="Q. 어디서 진행되나요?"
-                                data-en="Q. Where does it take place?">Q. 어디서 진행되나요?</p>
-                            <p class="text-gray-600" data-kr="→ 네팔 포카라 품디콧(Pumdikot, 해발 1336m)의 JustBe Temple"
+                                동참 가능합니다</div></details>
+                        <details class="ed-faq"><summary><span class="ed-faq-q" data-kr="Q. 아이와 함께 가도 되나요?"
+                                data-en="Q. Can I bring my child?">Q. 아이와 함께 가도 되나요?</span><span class="ed-plus" aria-hidden="true"></span></summary><div class="ed-faq-a" data-kr="→ 가능합니다. 가족 단위도 환영합니다"
+                                data-en="→ Yes, families are welcome">→ 가능합니다. 가족 단위도 환영합니다</div></details>
+                        <details class="ed-faq"><summary><span class="ed-faq-q" data-kr="Q. 어디서 진행되나요?"
+                                data-en="Q. Where does it take place?">Q. 어디서 진행되나요?</span><span class="ed-plus" aria-hidden="true"></span></summary><div class="ed-faq-a" data-kr="→ 네팔 포카라 품디콧(Pumdikot, 해발 1336m)의 JustBe Temple"
                                 data-en="→ JustBe Temple in Pumdikot (1336m), Pokhara, Nepal">→ 네팔 포카라 품디콧(Pumdikot, 해발
-                                1336m)의 JustBe Temple</p>
-                        </div>
-                        <div class="bg-white p-3 rounded border-l-3 border-gray-300">
-                            <p class="font-semibold text-gray-700 mb-1" data-kr="Q. 미륵보살 점안식은 언제인가요?"
-                                data-en="Q. When is the Maitreya Consecration?">Q. 미륵보살 점안식은 언제인가요?</p>
-                            <p class="text-gray-600" data-kr="→ 2025년 9월 28일" data-en="→ September 28, 2025">→ 2025년 9월
-                                28일</p>
-                        </div>
-                        <div class="bg-white p-3 rounded border-l-3 border-gray-300">
-                            <p class="font-semibold text-gray-700 mb-1" data-kr="Q. 약사여래 점안 및 고불식은 언제인가요?"
-                                data-en="Q. When is the Medicine Buddha Consecration?">Q. 약사여래 점안 및 고불식은 언제인가요?</p>
-                            <p class="text-gray-600" data-kr="→ 2025년 11월 7일" data-en="→ November 7, 2025">→ 2025년 11월
-                                7일</p>
-                        </div>
-                        <div class="bg-white p-3 rounded border-l-3 border-gray-300">
-                            <p class="font-semibold text-gray-700 mb-1" data-kr="Q. 점안이란 무엇인가요?"
-                                data-en="Q. What is Consecration (Jeoman)?">Q. 점안이란 무엇인가요?</p>
-                            <p class="text-gray-600" data-kr="→ 불보살님을 모시며 마음의 눈을 여는 영적 의식입니다"
-                                data-en="→ It is a spiritual ceremony to enshrine the Buddha and open the eye of the mind">
-                                → 불보살님을 모시며 마음의 눈을 여는 영적 의식입니다</p>
-                        </div>
-                        <div class="bg-white p-3 rounded border-l-3 border-gray-300">
-                            <p class="font-semibold text-gray-700 mb-1" data-kr="Q. 법회는 어떻게 진행되나요?"
-                                data-en="Q. How is the ceremony conducted?">Q. 법회는 어떻게 진행되나요?</p>
-                            <p class="text-gray-600" data-kr="→ 점안의식, 예불, 독송, 축원, 참선 등으로 구성됩니다"
+                                1336m)의 JustBe Temple</div></details>
+                        <details class="ed-faq"><summary><span class="ed-faq-q" data-kr="Q. 미륵보살 점안식은 언제인가요?"
+                                data-en="Q. When is the Maitreya Consecration?">Q. 미륵보살 점안식은 언제인가요?</span><span class="ed-plus" aria-hidden="true"></span></summary><div class="ed-faq-a" data-kr="→ 2025년 9월 28일" data-en="→ September 28, 2025">→ 2025년 9월
+                                28일</div></details>
+                        <details class="ed-faq"><summary><span class="ed-faq-q" data-kr="Q. 약사여래 점안 및 고불식은 언제인가요?"
+                                data-en="Q. When is the Medicine Buddha Consecration?">Q. 약사여래 점안 및 고불식은 언제인가요?</span><span class="ed-plus" aria-hidden="true"></span></summary><div class="ed-faq-a" data-kr="→ 2025년 11월 7일" data-en="→ November 7, 2025">→ 2025년 11월
+                                7일</div></details>
+                        <details class="ed-faq"><summary><span class="ed-faq-q" data-kr="Q. 점안이란 무엇인가요?"
+                                data-en="Q. What is Consecration (Jeoman)?">Q. 점안이란 무엇인가요?</span><span class="ed-plus" aria-hidden="true"></span></summary><div class="ed-faq-a" data-kr="→ 불보살님을 모시며 마음의 눈을 여는 영적 의식입니다"
+                                data-en="→ It is a spiritual ceremony to enshrine the Buddha and open the eye of the mind">→ 불보살님을 모시며 마음의 눈을 여는 영적 의식입니다</div></details>
+                        <details class="ed-faq"><summary><span class="ed-faq-q" data-kr="Q. 법회는 어떻게 진행되나요?"
+                                data-en="Q. How is the ceremony conducted?">Q. 법회는 어떻게 진행되나요?</span><span class="ed-plus" aria-hidden="true"></span></summary><div class="ed-faq-a" data-kr="→ 점안의식, 예불, 독송, 축원, 참선 등으로 구성됩니다"
                                 data-en="→ It consists of consecration ritual, chanting, prayer, and meditation">→ 점안의식,
-                                예불, 독송, 축원, 참선 등으로 구성됩니다</p>
-                        </div>
-                        <div class="bg-white p-3 rounded border-l-3 border-gray-300">
-                            <p class="font-semibold text-gray-700 mb-1" data-kr="Q. 법명 없이도 참여 가능한가요?"
-                                data-en="Q. Can I participate without a Dharma name?">Q. 법명 없이도 참여 가능한가요?</p>
-                            <p class="text-gray-600" data-kr="→ 네, 법명이 없어도 공덕 동참 가능합니다"
+                                예불, 독송, 축원, 참선 등으로 구성됩니다</div></details>
+                        <details class="ed-faq"><summary><span class="ed-faq-q" data-kr="Q. 법명 없이도 참여 가능한가요?"
+                                data-en="Q. Can I participate without a Dharma name?">Q. 법명 없이도 참여 가능한가요?</span><span class="ed-plus" aria-hidden="true"></span></summary><div class="ed-faq-a" data-kr="→ 네, 법명이 없어도 공덕 동참 가능합니다"
                                 data-en="→ Yes, you can participate in merit-making without a Dharma name">→ 네, 법명이 없어도
-                                공덕 동참 가능합니다</p>
-                        </div>
-                        <div class="bg-white p-3 rounded border-l-3 border-gray-300">
-                            <p class="font-semibold text-gray-700 mb-1" data-kr="Q. 참가자 이름이 축원문에 기록되나요?"
-                                data-en="Q. Is the participant's name recorded in the prayer?">Q. 참가자 이름이 축원문에 기록되나요?
-                            </p>
-                            <p class="text-gray-600" data-kr="→ 화주 동참 시 이름 또는 단체명이 붓글씨로 봉헌됩니다"
+                                공덕 동참 가능합니다</div></details>
+                        <details class="ed-faq"><summary><span class="ed-faq-q" data-kr="Q. 참가자 이름이 축원문에 기록되나요?"
+                                data-en="Q. Is the participant's name recorded in the prayer?">Q. 참가자 이름이 축원문에 기록되나요?</span><span class="ed-plus" aria-hidden="true"></span></summary><div class="ed-faq-a" data-kr="→ 화주 동참 시 이름 또는 단체명이 붓글씨로 봉헌됩니다"
                                 data-en="→ Names or group names will be inscribed in calligraphy when participating">→
-                                화주 동참 시 이름 또는 단체명이 붓글씨로 봉헌됩니다</p>
-                        </div>
-                        <div class="bg-white p-3 rounded border-l-3 border-gray-300">
-                            <p class="font-semibold text-gray-700 mb-1" data-kr="Q. 정해진 일정 외에 방문 가능하나요?"
-                                data-en="Q. Can I visit outside the scheduled dates?">Q. 정해진 일정 외에 방문 가능하나요?</p>
-                            <p class="text-gray-600" data-kr="→ 네, 집중 일정 외에도 '한달살기' 등 개별 방문 가능합니다"
+                                화주 동참 시 이름 또는 단체명이 붓글씨로 봉헌됩니다</div></details>
+                        <details class="ed-faq"><summary><span class="ed-faq-q" data-kr="Q. 정해진 일정 외에 방문 가능하나요?"
+                                data-en="Q. Can I visit outside the scheduled dates?">Q. 정해진 일정 외에 방문 가능하나요?</span><span class="ed-plus" aria-hidden="true"></span></summary><div class="ed-faq-a" data-kr="→ 네, 집중 일정 외에도 '한달살기' 등 개별 방문 가능합니다"
                                 data-en="→ Yes, individual visits like 'Month-long Stay' are possible">→ 네, 집중 일정 외에도
-                                '한달살기' 등 개별 방문 가능합니다</p>
-                        </div>
-                        <div class="bg-white p-3 rounded border-l-3 border-gray-300">
-                            <p class="font-semibold text-gray-700 mb-1" data-kr="Q. 현지 숙소는 있나요?"
-                                data-en="Q. Is there local accommodation?">Q. 현지 숙소는 있나요?</p>
-                            <p class="text-gray-600" data-kr="→ 근처 숙소를 예약해드리고 가이드를 지원합니다"
+                                '한달살기' 등 개별 방문 가능합니다</div></details>
+                        <details class="ed-faq"><summary><span class="ed-faq-q" data-kr="Q. 현지 숙소는 있나요?"
+                                data-en="Q. Is there local accommodation?">Q. 현지 숙소는 있나요?</span><span class="ed-plus" aria-hidden="true"></span></summary><div class="ed-faq-a" data-kr="→ 근처 숙소를 예약해드리고 가이드를 지원합니다"
                                 data-en="→ We can book nearby accommodation and provide guide support">→ 근처 숙소를 예약해드리고
-                                가이드를 지원합니다</p>
-                        </div>
-                        <div class="bg-white p-3 rounded border-l-3 border-gray-300">
-                            <p class="font-semibold text-gray-700 mb-1" data-kr="Q. 직접 가지 않아도 동참 가능한가요?"
-                                data-en="Q. Can I participate without going in person?">Q. 직접 가지 않아도 동참 가능한가요?</p>
-                            <p class="text-gray-600" data-kr="→ 가능합니다. 화주 동참자 모두 원격 축원 드립니다"
+                                가이드를 지원합니다</div></details>
+                        <details class="ed-faq"><summary><span class="ed-faq-q" data-kr="Q. 직접 가지 않아도 동참 가능한가요?"
+                                data-en="Q. Can I participate without going in person?">Q. 직접 가지 않아도 동참 가능한가요?</span><span class="ed-plus" aria-hidden="true"></span></summary><div class="ed-faq-a" data-kr="→ 가능합니다. 화주 동참자 모두 원격 축원 드립니다"
                                 data-en="→ Yes, we offer remote prayers for all merit-making participants">→ 가능합니다. 화주
-                                동참자 모두 원격 축원 드립니다</p>
-                        </div>
-                        <div class="bg-white p-3 rounded border-l-3 border-gray-300">
-                            <p class="font-semibold text-gray-700 mb-1" data-kr="Q. JustBe Temple은 어떤 곳인가요?"
-                                data-en="Q. What is JustBe Temple?">Q. JustBe Temple은 어떤 곳인가요?</p>
-                            <p class="text-gray-600" data-kr="→ 한국 불교, 히말라야 도량. 명상홀, 숙소, 법당 등 완비"
-                                data-en="→ Korean Buddhist Himalaya Temple. Equipped with meditation hall, accommodation, dharma hall, etc.">
-                                → 한국 불교, 히말라야 도량. 명상홀, 숙소, 법당 등 완비</p>
-                        </div>
+                                동참자 모두 원격 축원 드립니다</div></details>
+                        <details class="ed-faq"><summary><span class="ed-faq-q" data-kr="Q. JustBe Temple은 어떤 곳인가요?"
+                                data-en="Q. What is JustBe Temple?">Q. JustBe Temple은 어떤 곳인가요?</span><span class="ed-plus" aria-hidden="true"></span></summary><div class="ed-faq-a" data-kr="→ 한국 불교, 히말라야 도량. 명상홀, 숙소, 법당 등 완비"
+                                data-en="→ Korean Buddhist Himalaya Temple. Equipped with meditation hall, accommodation, dharma hall, etc.">→ 한국 불교, 히말라야 도량. 명상홀, 숙소, 법당 등 완비</div></details>
                     </div>
                 </div>
 
@@ -3371,8 +3461,6 @@
             <div class="p-10 md:p-10 space-y-10">
                 <!-- Intro -->
                 <section class="text-center max-w-3xl mx-auto space-y-4">
-                    <div class="inline-block p-3 rounded-full bg-purple-50 mb-2">
-                        </div>
                     <h4 class="text-xl md:text-2xl font-bold text-gray-800 leading-relaxed"
                         data-kr="히말라야 도량에 약사여래 부처님을 잘 모셨고, 드디어 여러분과 함께 히말라야를 향해 첫 발을 내딛고자 합니다."
                         data-en="We have enshrined the Medicine Buddha at the Himalaya Temple, and finally, we wish to take the first step towards the Himalayas with you.">
@@ -3400,8 +3488,6 @@
                     <div
                         class="group bg-slate-50 rounded-2xl p-10 border border-slate-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
                         <div class="flex items-center justify-between mb-8">
-                            <div class="bg-white p-3 rounded-xl shadow-sm">
-                                </div>
                             <span
                                 class="bg-slate-200 text-slate-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Team
                                 1</span>
@@ -3450,8 +3536,6 @@
                     <div
                         class="group bg-emerald-50 rounded-2xl p-10 border border-emerald-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
                         <div class="flex items-center justify-between mb-8">
-                            <div class="bg-white p-3 rounded-xl shadow-sm">
-                                </div>
                             <span
                                 class="bg-emerald-200 text-emerald-800 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Team
                                 2</span>
@@ -3586,8 +3670,6 @@
             <div class="p-10 md:p-10 space-y-10">
                 <!-- Intro -->
                 <section class="text-center max-w-3xl mx-auto space-y-4">
-                    <div class="inline-block p-3 rounded-full bg-blue-50 mb-2">
-                        </div>
                     <h4 class="text-xl md:text-2xl font-serif font-bold text-gray-800 leading-relaxed"
                         data-kr="히말라야의 봄, 함께 걸어볼까요?"
                         data-en="Spring in the Himalayas - shall we walk together?">
@@ -3621,8 +3703,6 @@
                     <div
                         class="group bg-slate-50 rounded-2xl p-10 border border-slate-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
                         <div class="flex items-center justify-between mb-8">
-                            <div class="bg-white p-3 rounded-xl shadow-sm">
-                                </div>
                             <span
                                 class="bg-slate-200 text-slate-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Team
                                 2</span>
@@ -3751,8 +3831,6 @@
                     <div
                         class="group bg-emerald-50 rounded-2xl p-10 border border-emerald-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
                         <div class="flex items-center justify-between mb-8">
-                            <div class="bg-white p-3 rounded-xl shadow-sm">
-                                </div>
                             <span
                                 class="bg-emerald-200 text-emerald-800 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Team
                                 3</span>
@@ -4104,8 +4182,6 @@
             <div class="p-4 md:p-10 space-y-6 md:space-y-10">
                 <!-- Intro -->
                 <section class="text-center max-w-3xl mx-auto space-y-4">
-                    <div class="inline-block p-3 rounded-full bg-amber-50 mb-2">
-                        </div>
                     <h4 class="text-xl md:text-2xl font-serif font-bold text-gray-800 leading-relaxed"
                         data-kr="5월 1일, 네팔에서 맞이하는 또 다른 부처님 오신 날"
                         data-en="May 1st, Another Buddha's Birthday Celebrated in Nepal">
@@ -4126,8 +4202,6 @@
                     <div
                         class="group bg-slate-50 rounded-2xl p-5 md:p-10 border border-slate-100 hover:shadow-lg transition-all duration-300 md:hover:-translate-y-1">
                         <div class="flex items-center justify-between mb-4 md:mb-8">
-                            <div class="bg-white p-3 rounded-xl shadow-sm">
-                                </div>
                             <span
                                 class="bg-slate-200 text-slate-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">A코스</span>
                         </div>
@@ -4312,8 +4386,6 @@
                     <div
                         class="group bg-amber-50 rounded-2xl p-5 md:p-10 border border-amber-100 hover:shadow-lg transition-all duration-300 md:hover:-translate-y-1">
                         <div class="flex items-center justify-between mb-4 md:mb-8">
-                            <div class="bg-white p-3 rounded-xl shadow-sm">
-                                </div>
                             <span
                                 class="bg-amber-200 text-amber-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">B코스</span>
                         </div>
@@ -4547,8 +4619,6 @@
             <div class="p-4 md:p-10 space-y-6 md:space-y-10">
                 <!-- Intro -->
                 <section class="text-center max-w-3xl mx-auto space-y-4">
-                    <div class="inline-block p-3 rounded-full bg-amber-50 mb-2">
-                        </div>
                     <h4 class="text-lg md:text-2xl font-serif font-bold text-gray-800 leading-relaxed"
                         data-kr="인생 버킷리스트, 히말라야<br>한가위 설산에서 나를 비추는 시간"
                         data-en="The Himalayas, a Bucket-List Journey<br>A Chuseok Beneath the Snow Peaks, Reflecting on Yourself">
@@ -4579,8 +4649,6 @@
                 <section
                     class="bg-amber-50 rounded-2xl p-5 md:p-10 border border-amber-100">
                     <div class="flex items-center justify-between mb-4 md:mb-8">
-                        <div class="bg-white p-3 rounded-xl shadow-sm">
-                            </div>
                         <span
                             class="bg-amber-200 text-amber-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider"
                             data-kr="프로그램 요약" data-en="Program Overview">프로그램 요약</span>
@@ -4900,8 +4968,6 @@
             <div class="p-4 md:p-10 space-y-6 md:space-y-10">
                 <!-- Intro -->
                 <section class="text-center max-w-3xl mx-auto space-y-4">
-                    <div class="inline-block p-3 rounded-full bg-rose-50 mb-2">
-                        </div>
                     <h4 class="text-lg md:text-2xl font-serif font-bold text-gray-800 leading-relaxed"
                         data-kr="히말라야 선원 개원, 원력의 결실<br>그 뜻깊은 회향의 자리에 초대합니다"
                         data-en="The Himalaya Temple Opens — a Vow Fulfilled<br>You Are Invited to This Meaningful Dedication">
@@ -4932,8 +4998,6 @@
                 <section
                     class="bg-slate-50 rounded-2xl p-5 md:p-10 border border-slate-100">
                     <div class="flex items-center justify-between mb-4 md:mb-8">
-                        <div class="bg-white p-3 rounded-xl shadow-sm">
-                            </div>
                         <span
                             class="bg-slate-200 text-slate-700 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider"
                             data-kr="프로그램 요약" data-en="Program Overview">프로그램 요약</span>
@@ -5420,22 +5484,19 @@
 
                 <!-- FAQ 토글 -->
                 <section>
-                    <button onclick="document.getElementById('april-ts-faq').classList.toggle('hidden')"
-                        class="w-full py-2.5 px-4 bg-emerald-100 border border-emerald-200 text-emerald-700 font-medium rounded-xl text-sm text-center hover:bg-emerald-200 transition-colors flex items-center justify-center gap-2">
-                        <span data-kr="자주 묻는 질문 (FAQ)" data-en="FAQ">자주 묻는 질문 (FAQ)</span>
-                    </button>
-                    <div id="april-ts-faq" class="hidden mt-4">
+                    <h5 class="ed-modal-h"><span data-kr="자주 묻는 질문 (FAQ)" data-en="FAQ">자주 묻는 질문 (FAQ)</span></h5>
+                    <div id="april-ts-faq" class="mt-2">
                         <div class="bg-white rounded-xl border border-emerald-200 overflow-hidden divide-y divide-emerald-50 text-xs">
-                            <div class="p-3"><p class="font-bold text-emerald-700 mb-1" data-kr="Q. 특정 날짜에 맞춰 신청해야 하나요?" data-en="Q. Do I need to apply for specific dates?">Q. 특정 날짜에 맞춰 신청해야 하나요?</p><p class="text-gray-600" data-kr="A. 상시 접수로 운영되어 원하시는 날짜에 자유롭게 신청하실 수 있으며, 1박부터 참가 가능합니다." data-en="A. Applications are open year-round for any dates you like, with stays from just one night.">A. 상시 접수로 운영되어 원하시는 날짜에 자유롭게 신청하실 수 있으며, 1박부터 참가 가능합니다.</p></div>
-                            <div class="p-3"><p class="font-bold text-emerald-700 mb-1" data-kr="Q. 연령 제한이 있나요?" data-en="Q. Is there an age limit?">Q. 연령 제한이 있나요?</p><p class="text-gray-600" data-kr="A. 남녀노소 연령 무관하게 누구나 참가하실 수 있습니다." data-en="A. Everyone is welcome, regardless of age or gender.">A. 남녀노소 연령 무관하게 누구나 참가하실 수 있습니다.</p></div>
-                            <div class="p-3"><p class="font-bold text-emerald-700 mb-1" data-kr="Q. 고산병 위험이 있나요?" data-en="Q. Is altitude sickness a concern?">Q. 고산병 위험이 있나요?</p><p class="text-gray-600" data-kr="A. 선원은 해발 약 1,400m에 위치해 있어 고산병 걱정 없이 편안하게 참가하실 수 있습니다." data-en="A. The temple sits at about 1,400m above sea level, so you can join comfortably without altitude concerns.">A. 선원은 해발 약 1,400m에 위치해 있어 고산병 걱정 없이 편안하게 참가하실 수 있습니다.</p></div>
-                            <div class="p-3"><p class="font-bold text-emerald-700 mb-1" data-kr="Q. 예약 변경이나 취소는 어떻게 하나요?" data-en="Q. How do I change or cancel a booking?">Q. 예약 변경이나 취소는 어떻게 하나요?</p><p class="text-gray-600" data-kr="A. 아래 '환불 규정 및 안내사항'을 참고해 주시고, 궁금하신 점은 문의처로 편하게 연락 주시면 안내해 드립니다." data-en="A. Please see the 'Refund Policy &amp; Notes' section below, and feel free to contact us with any questions.">A. 아래 '환불 규정 및 안내사항'을 참고해 주시고, 궁금하신 점은 문의처로 편하게 연락 주시면 안내해 드립니다.</p></div>
-                            <div class="p-3"><p class="font-bold text-emerald-700 mb-1" data-kr="Q. 항공권과 비자도 준비해 주시나요?" data-en="Q. Do you arrange flights and visas?">Q. 항공권과 비자도 준비해 주시나요?</p><p class="text-gray-600" data-kr="A. 항공권·비자·여행자보험은 참가자께서 개별적으로 준비하시면 됩니다. 원하시면 협력 여행사를 통한 일괄 예약도 도와드릴 수 있습니다." data-en="A. Flights, visa, and travel insurance are arranged individually. If you wish, our partner travel agency can book everything for you.">A. 항공권·비자·여행자보험은 참가자께서 개별적으로 준비하시면 됩니다. 원하시면 협력 여행사를 통한 일괄 예약도 도와드릴 수 있습니다.</p></div>
-                            <div class="p-3"><p class="font-bold text-emerald-700 mb-1" data-kr="Q. 계절별로 준비물이 다른가요?" data-en="Q. Does packing differ by season?">Q. 계절별로 준비물이 다른가요?</p><p class="text-gray-600" data-kr="A. 네, 차이가 있습니다. '수행처 안내'의 날씨 항목을 참고해 주세요." data-en="A. Yes — please see the Weather row in the 'Facilities Guide' above.">A. 네, 차이가 있습니다. '수행처 안내'의 날씨 항목을 참고해 주세요.</p></div>
-                            <div class="p-3"><p class="font-bold text-emerald-700 mb-1" data-kr="Q. 방 배정은 어떻게 되나요?" data-en="Q. How are rooms assigned?">Q. 방 배정은 어떻게 되나요?</p><p class="text-gray-600" data-kr="A. 기본적으로 2인 1실로 배정되며, 독방(집중 수행용)을 원하실 경우 문의 주시면 안내해 드립니다." data-en="A. Twin-share by default; contact us if you would like a private room for intensive practice.">A. 기본적으로 2인 1실로 배정되며, 독방(집중 수행용)을 원하실 경우 문의 주시면 안내해 드립니다.</p></div>
-                            <div class="p-3"><p class="font-bold text-emerald-700 mb-1" data-kr="Q. 식사는 어떻게 제공되나요?" data-en="Q. What are meals like?">Q. 식사는 어떻게 제공되나요?</p><p class="text-gray-600" data-kr="A. 네팔식 기반의 건강한 채식 위주 식단(1일 2식 + 간식)이 제공되며, 상황에 따라 한국식 반찬도 준비됩니다." data-en="A. Healthy, mostly vegetarian Nepali meals (2 meals + snacks daily), with Korean side dishes when available.">A. 네팔식 기반의 건강한 채식 위주 식단(1일 2식 + 간식)이 제공되며, 상황에 따라 한국식 반찬도 준비됩니다.</p></div>
-                            <div class="p-3"><p class="font-bold text-emerald-700 mb-1" data-kr="Q. 와이파이와 전기 사용이 가능한가요?" data-en="Q. Are Wi-Fi and electricity available?">Q. 와이파이와 전기 사용이 가능한가요?</p><p class="text-gray-600" data-kr="A. 선원 내에서 와이파이 및 전기 사용이 가능합니다. 다만 정전 시 이용이 어려울 수 있으니, 공항 등에서 유심을 미리 구입해 오시는 것도 좋은 방법입니다." data-en="A. Yes, both are available at the temple. Power outages can interrupt them, so buying a SIM card at the airport is a good backup.">A. 선원 내에서 와이파이 및 전기 사용이 가능합니다. 다만 정전 시 이용이 어려울 수 있으니, 공항 등에서 유심을 미리 구입해 오시는 것도 좋은 방법입니다.</p></div>
-                            <div class="p-3"><p class="font-bold text-emerald-700 mb-1" data-kr="Q. 순례 프로그램과 연계하여 참여할 수 있나요?" data-en="Q. Can I combine this with a pilgrimage program?">Q. 순례 프로그램과 연계하여 참여할 수 있나요?</p><p class="text-gray-600" data-kr="A. 네, 가능합니다. 순례 전후 일정에 맞춰 템플스테이를 연계하여 머무실 수 있습니다. 현지 방사 현황을 확인하여 예약 가능 여부를 안내해 드리겠습니다." data-en="A. Yes — you can stay before or after a pilgrimage. We will check room availability on site and confirm your booking.">A. 네, 가능합니다. 순례 전후 일정에 맞춰 템플스테이를 연계하여 머무실 수 있습니다. 현지 방사 현황을 확인하여 예약 가능 여부를 안내해 드리겠습니다.</p></div>
+                            <details class="ed-faq"><summary><span class="ed-faq-q" data-kr="Q. 특정 날짜에 맞춰 신청해야 하나요?" data-en="Q. Do I need to apply for specific dates?">Q. 특정 날짜에 맞춰 신청해야 하나요?</span><span class="ed-plus" aria-hidden="true"></span></summary><div class="ed-faq-a" data-kr="A. 상시 접수로 운영되어 원하시는 날짜에 자유롭게 신청하실 수 있으며, 1박부터 참가 가능합니다." data-en="A. Applications are open year-round for any dates you like, with stays from just one night.">A. 상시 접수로 운영되어 원하시는 날짜에 자유롭게 신청하실 수 있으며, 1박부터 참가 가능합니다.</div></details>
+                            <details class="ed-faq"><summary><span class="ed-faq-q" data-kr="Q. 연령 제한이 있나요?" data-en="Q. Is there an age limit?">Q. 연령 제한이 있나요?</span><span class="ed-plus" aria-hidden="true"></span></summary><div class="ed-faq-a" data-kr="A. 남녀노소 연령 무관하게 누구나 참가하실 수 있습니다." data-en="A. Everyone is welcome, regardless of age or gender.">A. 남녀노소 연령 무관하게 누구나 참가하실 수 있습니다.</div></details>
+                            <details class="ed-faq"><summary><span class="ed-faq-q" data-kr="Q. 고산병 위험이 있나요?" data-en="Q. Is altitude sickness a concern?">Q. 고산병 위험이 있나요?</span><span class="ed-plus" aria-hidden="true"></span></summary><div class="ed-faq-a" data-kr="A. 선원은 해발 약 1,400m에 위치해 있어 고산병 걱정 없이 편안하게 참가하실 수 있습니다." data-en="A. The temple sits at about 1,400m above sea level, so you can join comfortably without altitude concerns.">A. 선원은 해발 약 1,400m에 위치해 있어 고산병 걱정 없이 편안하게 참가하실 수 있습니다.</div></details>
+                            <details class="ed-faq"><summary><span class="ed-faq-q" data-kr="Q. 예약 변경이나 취소는 어떻게 하나요?" data-en="Q. How do I change or cancel a booking?">Q. 예약 변경이나 취소는 어떻게 하나요?</span><span class="ed-plus" aria-hidden="true"></span></summary><div class="ed-faq-a" data-kr="A. 아래 '환불 규정 및 안내사항'을 참고해 주시고, 궁금하신 점은 문의처로 편하게 연락 주시면 안내해 드립니다." data-en="A. Please see the 'Refund Policy &amp; Notes' section below, and feel free to contact us with any questions.">A. 아래 '환불 규정 및 안내사항'을 참고해 주시고, 궁금하신 점은 문의처로 편하게 연락 주시면 안내해 드립니다.</div></details>
+                            <details class="ed-faq"><summary><span class="ed-faq-q" data-kr="Q. 항공권과 비자도 준비해 주시나요?" data-en="Q. Do you arrange flights and visas?">Q. 항공권과 비자도 준비해 주시나요?</span><span class="ed-plus" aria-hidden="true"></span></summary><div class="ed-faq-a" data-kr="A. 항공권·비자·여행자보험은 참가자께서 개별적으로 준비하시면 됩니다. 원하시면 협력 여행사를 통한 일괄 예약도 도와드릴 수 있습니다." data-en="A. Flights, visa, and travel insurance are arranged individually. If you wish, our partner travel agency can book everything for you.">A. 항공권·비자·여행자보험은 참가자께서 개별적으로 준비하시면 됩니다. 원하시면 협력 여행사를 통한 일괄 예약도 도와드릴 수 있습니다.</div></details>
+                            <details class="ed-faq"><summary><span class="ed-faq-q" data-kr="Q. 계절별로 준비물이 다른가요?" data-en="Q. Does packing differ by season?">Q. 계절별로 준비물이 다른가요?</span><span class="ed-plus" aria-hidden="true"></span></summary><div class="ed-faq-a" data-kr="A. 네, 차이가 있습니다. '수행처 안내'의 날씨 항목을 참고해 주세요." data-en="A. Yes — please see the Weather row in the 'Facilities Guide' above.">A. 네, 차이가 있습니다. '수행처 안내'의 날씨 항목을 참고해 주세요.</div></details>
+                            <details class="ed-faq"><summary><span class="ed-faq-q" data-kr="Q. 방 배정은 어떻게 되나요?" data-en="Q. How are rooms assigned?">Q. 방 배정은 어떻게 되나요?</span><span class="ed-plus" aria-hidden="true"></span></summary><div class="ed-faq-a" data-kr="A. 기본적으로 2인 1실로 배정되며, 독방(집중 수행용)을 원하실 경우 문의 주시면 안내해 드립니다." data-en="A. Twin-share by default; contact us if you would like a private room for intensive practice.">A. 기본적으로 2인 1실로 배정되며, 독방(집중 수행용)을 원하실 경우 문의 주시면 안내해 드립니다.</div></details>
+                            <details class="ed-faq"><summary><span class="ed-faq-q" data-kr="Q. 식사는 어떻게 제공되나요?" data-en="Q. What are meals like?">Q. 식사는 어떻게 제공되나요?</span><span class="ed-plus" aria-hidden="true"></span></summary><div class="ed-faq-a" data-kr="A. 네팔식 기반의 건강한 채식 위주 식단(1일 2식 + 간식)이 제공되며, 상황에 따라 한국식 반찬도 준비됩니다." data-en="A. Healthy, mostly vegetarian Nepali meals (2 meals + snacks daily), with Korean side dishes when available.">A. 네팔식 기반의 건강한 채식 위주 식단(1일 2식 + 간식)이 제공되며, 상황에 따라 한국식 반찬도 준비됩니다.</div></details>
+                            <details class="ed-faq"><summary><span class="ed-faq-q" data-kr="Q. 와이파이와 전기 사용이 가능한가요?" data-en="Q. Are Wi-Fi and electricity available?">Q. 와이파이와 전기 사용이 가능한가요?</span><span class="ed-plus" aria-hidden="true"></span></summary><div class="ed-faq-a" data-kr="A. 선원 내에서 와이파이 및 전기 사용이 가능합니다. 다만 정전 시 이용이 어려울 수 있으니, 공항 등에서 유심을 미리 구입해 오시는 것도 좋은 방법입니다." data-en="A. Yes, both are available at the temple. Power outages can interrupt them, so buying a SIM card at the airport is a good backup.">A. 선원 내에서 와이파이 및 전기 사용이 가능합니다. 다만 정전 시 이용이 어려울 수 있으니, 공항 등에서 유심을 미리 구입해 오시는 것도 좋은 방법입니다.</div></details>
+                            <details class="ed-faq"><summary><span class="ed-faq-q" data-kr="Q. 순례 프로그램과 연계하여 참여할 수 있나요?" data-en="Q. Can I combine this with a pilgrimage program?">Q. 순례 프로그램과 연계하여 참여할 수 있나요?</span><span class="ed-plus" aria-hidden="true"></span></summary><div class="ed-faq-a" data-kr="A. 네, 가능합니다. 순례 전후 일정에 맞춰 템플스테이를 연계하여 머무실 수 있습니다. 현지 방사 현황을 확인하여 예약 가능 여부를 안내해 드리겠습니다." data-en="A. Yes — you can stay before or after a pilgrimage. We will check room availability on site and confirm your booking.">A. 네, 가능합니다. 순례 전후 일정에 맞춰 템플스테이를 연계하여 머무실 수 있습니다. 현지 방사 현황을 확인하여 예약 가능 여부를 안내해 드리겠습니다.</div></details>
                         </div>
                     </div>
                 </section>
@@ -7145,267 +7206,146 @@
                 </div>
 
                 <div class="space-y-6 text-sm md:text-base">
-                    <div class="border-l-4 border-amber-500 pl-4 mb-8">
-                        <p class="font-semibold text-gray-800 mb-2" data-kr="Q. 이 불사는 어떤 마음으로 시작해야 하는가?"
-                            data-en="Q. With what mind should this dharma work begin?">Q. 이 불사는 어떤 마음으로 시작해야 하는가?</p>
-                        <p class="text-gray-600" data-kr="A. 한바탕 꿈 속에 깨달음의 큰 궁전(적멸보궁)을 짓는다는 마음"
-                            data-en="A. With the mind of building a great palace of enlightenment (Jeokmeol-bogung) within one magnificent dream">
-                            A. 한바탕 꿈 속에 깨달음의 큰 궁전(적멸보궁)을 짓는다는 마음</p>
-                    </div>
+                    <details class="ed-faq"><summary><span class="ed-faq-q" data-kr="Q. 이 불사는 어떤 마음으로 시작해야 하는가?"
+                            data-en="Q. With what mind should this dharma work begin?">Q. 이 불사는 어떤 마음으로 시작해야 하는가?</span><span class="ed-plus" aria-hidden="true"></span></summary><div class="ed-faq-a" data-kr="A. 한바탕 꿈 속에 깨달음의 큰 궁전(적멸보궁)을 짓는다는 마음"
+                            data-en="A. With the mind of building a great palace of enlightenment (Jeokmeol-bogung) within one magnificent dream">A. 한바탕 꿈 속에 깨달음의 큰 궁전(적멸보궁)을 짓는다는 마음</div></details>
 
-                    <div class="border-l-4 border-amber-500 pl-4 mb-8">
-                        <p class="font-semibold text-gray-800 mb-2" data-kr="Q. 왜 히말라야인가?"
-                            data-en="Q. Why the Himalayas?">Q. 왜 히말라야인가?</p>
-                        <p class="text-gray-600" data-kr="A. 시절인연. 대자연 만년설산 히말라야 산 위에서 기지개를 펴고 소리를 질러보자. 야~호"
-                            data-en="A. It's the right time and conditions. Let's stretch and shout on top of the Himalayas, the eternal snow mountains of great nature. Yay-ho!">
-                            A. 시절인연. 대자연 만년설산 히말라야 산 위에서 기지개를 펴고 소리를 질러보자. 야~호</p>
-                    </div>
+                    <details class="ed-faq"><summary><span class="ed-faq-q" data-kr="Q. 왜 히말라야인가?"
+                            data-en="Q. Why the Himalayas?">Q. 왜 히말라야인가?</span><span class="ed-plus" aria-hidden="true"></span></summary><div class="ed-faq-a" data-kr="A. 시절인연. 대자연 만년설산 히말라야 산 위에서 기지개를 펴고 소리를 질러보자. 야~호"
+                            data-en="A. It's the right time and conditions. Let's stretch and shout on top of the Himalayas, the eternal snow mountains of great nature. Yay-ho!">A. 시절인연. 대자연 만년설산 히말라야 산 위에서 기지개를 펴고 소리를 질러보자. 야~호</div></details>
 
-                    <div class="border-l-4 border-amber-500 pl-4 mb-8">
-                        <p class="font-semibold text-gray-800 mb-2"
+                    <details class="ed-faq"><summary><span class="ed-faq-q"
                             data-kr="Q. 히말라야 싯다르타웨이를 복원한다는 것이 부처님의 본래 뜻과 무슨 관련이 있습니까?"
-                            data-en="Q. How does restoring the Himalayan Siddhartha Way relate to the Buddha's original intention?">
-                            Q. 히말라야 싯다르타웨이를 복원한다는 것이 부처님의 본래 뜻과 무슨 관련이 있습니까?</p>
-                        <p class="text-gray-600"
+                            data-en="Q. How does restoring the Himalayan Siddhartha Way relate to the Buddha's original intention?">Q. 히말라야 싯다르타웨이를 복원한다는 것이 부처님의 본래 뜻과 무슨 관련이 있습니까?</span><span class="ed-plus" aria-hidden="true"></span></summary><div class="ed-faq-a"
                             data-kr="A. 부처님의 본래 뜻은 자기를 바로 보라는 것. 자기 자신의 마음에 무한한 힘과 지혜, 사랑이 충만해 있다는 것을 깨닫는 것이 이 순례길 복원의 대의입니다."
-                            data-en="A. The Buddha's original intention is to see oneself correctly. Realizing that infinite power, wisdom, and love are abundant in one's own mind is the great purpose of restoring this pilgrimage path.">
-                            A. 부처님의 본래 뜻은 자기를 바로 보라는 것. 자기 자신의 마음에 무한한 힘과 지혜, 사랑이 충만해 있다는 것을 깨닫는 것이 이 순례길 복원의 대의입니다.</p>
-                    </div>
+                            data-en="A. The Buddha's original intention is to see oneself correctly. Realizing that infinite power, wisdom, and love are abundant in one's own mind is the great purpose of restoring this pilgrimage path.">A. 부처님의 본래 뜻은 자기를 바로 보라는 것. 자기 자신의 마음에 무한한 힘과 지혜, 사랑이 충만해 있다는 것을 깨닫는 것이 이 순례길 복원의 대의입니다.</div></details>
 
-                    <div class="border-l-4 border-amber-500 pl-4 mb-8">
-                        <p class="font-semibold text-gray-800 mb-2" data-kr="Q. 이 길은 누구를 위한 것인가?"
-                            data-en="Q. Who is this path for?">Q. 이 길은 누구를 위한 것인가?</p>
-                        <p class="text-gray-600" data-kr="A. 길을 걷는 자들을 위한 길. 길은 걷는 자의 것이다."
+                    <details class="ed-faq"><summary><span class="ed-faq-q" data-kr="Q. 이 길은 누구를 위한 것인가?"
+                            data-en="Q. Who is this path for?">Q. 이 길은 누구를 위한 것인가?</span><span class="ed-plus" aria-hidden="true"></span></summary><div class="ed-faq-a" data-kr="A. 길을 걷는 자들을 위한 길. 길은 걷는 자의 것이다."
                             data-en="A. A path for those who walk the path. The path belongs to those who walk it.">A.
-                            길을 걷는 자들을 위한 길. 길은 걷는 자의 것이다.</p>
-                    </div>
+                            길을 걷는 자들을 위한 길. 길은 걷는 자의 것이다.</div></details>
 
-                    <div class="border-l-4 border-amber-500 pl-4 mb-8">
-                        <p class="font-semibold text-gray-800 mb-2" data-kr="Q. 순례길의 돌부리는 무엇을 상징하는가?"
-                            data-en="Q. What do the stones on the pilgrimage path symbolize?">Q. 순례길의 돌부리는 무엇을 상징하는가?
-                        </p>
-                        <p class="text-gray-600" data-kr="A. 마장이 없는 길은 순례길이 아니다."
-                            data-en="A. A path without obstacles is not a pilgrimage path.">A. 마장이 없는 길은 순례길이 아니다.</p>
-                    </div>
+                    <details class="ed-faq"><summary><span class="ed-faq-q" data-kr="Q. 순례길의 돌부리는 무엇을 상징하는가?"
+                            data-en="Q. What do the stones on the pilgrimage path symbolize?">Q. 순례길의 돌부리는 무엇을 상징하는가?</span><span class="ed-plus" aria-hidden="true"></span></summary><div class="ed-faq-a" data-kr="A. 마장이 없는 길은 순례길이 아니다."
+                            data-en="A. A path without obstacles is not a pilgrimage path.">A. 마장이 없는 길은 순례길이 아니다.</div></details>
 
-                    <div class="border-l-4 border-amber-500 pl-4 mb-8">
-                        <p class="font-semibold text-gray-800 mb-2" data-kr="Q. 순례길을 걷는 자는 무엇을 얻게 되는가?"
-                            data-en="Q. What does one gain from walking the pilgrimage path?">Q. 순례길을 걷는 자는 무엇을 얻게 되는가?
-                        </p>
-                        <p class="text-gray-600" data-kr="A. 모두 각자의 몫. 무엇을 얻고자 하는가? 크게 놓으면 크게 얻는다."
-                            data-en="A. Each person receives their own share. What do you seek to gain? Let go greatly, and you will gain greatly.">
-                            A. 모두 각자의 몫. 무엇을 얻고자 하는가? 크게 놓으면 크게 얻는다.</p>
-                    </div>
+                    <details class="ed-faq"><summary><span class="ed-faq-q" data-kr="Q. 순례길을 걷는 자는 무엇을 얻게 되는가?"
+                            data-en="Q. What does one gain from walking the pilgrimage path?">Q. 순례길을 걷는 자는 무엇을 얻게 되는가?</span><span class="ed-plus" aria-hidden="true"></span></summary><div class="ed-faq-a" data-kr="A. 모두 각자의 몫. 무엇을 얻고자 하는가? 크게 놓으면 크게 얻는다."
+                            data-en="A. Each person receives their own share. What do you seek to gain? Let go greatly, and you will gain greatly.">A. 모두 각자의 몫. 무엇을 얻고자 하는가? 크게 놓으면 크게 얻는다.</div></details>
 
-                    <div class="border-l-4 border-amber-500 pl-4 mb-8">
-                        <p class="font-semibold text-gray-800 mb-2" data-kr="Q. 이 불사가 이루고자 하는 최종 목적은 무엇인가?"
-                            data-en="Q. What is the ultimate goal of this dharma work?">Q. 이 불사가 이루고자 하는 최종 목적은 무엇인가?
-                        </p>
-                        <p class="text-gray-600" data-kr="A. 무소득. 얻을 바 본래 없음을 얻어 자리이타의 대 자유인으로 사는 것이 불사의 최종 목적이다."
-                            data-en="A. Non-attainment. The ultimate goal is to live as a great free person, benefiting oneself and others, by attaining that which is originally unattainable.">
-                            A. 무소득. 얻을 바 본래 없음을 얻어 자리이타의 대 자유인으로 사는 것이 불사의 최종 목적이다.</p>
-                    </div>
+                    <details class="ed-faq"><summary><span class="ed-faq-q" data-kr="Q. 이 불사가 이루고자 하는 최종 목적은 무엇인가?"
+                            data-en="Q. What is the ultimate goal of this dharma work?">Q. 이 불사가 이루고자 하는 최종 목적은 무엇인가?</span><span class="ed-plus" aria-hidden="true"></span></summary><div class="ed-faq-a" data-kr="A. 무소득. 얻을 바 본래 없음을 얻어 자리이타의 대 자유인으로 사는 것이 불사의 최종 목적이다."
+                            data-en="A. Non-attainment. The ultimate goal is to live as a great free person, benefiting oneself and others, by attaining that which is originally unattainable.">A. 무소득. 얻을 바 본래 없음을 얻어 자리이타의 대 자유인으로 사는 것이 불사의 최종 목적이다.</div></details>
 
-                    <div class="border-l-4 border-amber-500 pl-4 mb-8">
-                        <p class="font-semibold text-gray-800 mb-2" data-kr="Q. 이 불사는 어디에서 시작되어, 어디까지 가며, 언제 완성되는가?"
-                            data-en="Q. Where does this dharma work begin, where does it go, and when is it completed?">
-                            Q. 이 불사는 어디에서 시작되어, 어디까지 가며, 언제 완성되는가?</p>
-                        <p class="text-gray-600"
+                    <details class="ed-faq"><summary><span class="ed-faq-q" data-kr="Q. 이 불사는 어디에서 시작되어, 어디까지 가며, 언제 완성되는가?"
+                            data-en="Q. Where does this dharma work begin, where does it go, and when is it completed?">Q. 이 불사는 어디에서 시작되어, 어디까지 가며, 언제 완성되는가?</span><span class="ed-plus" aria-hidden="true"></span></summary><div class="ed-faq-a"
                             data-kr="A. 부처님의 한 생각에서 시작되어, 지금 나의 한 생각으로 이어진다.<br>매 순간이 이미 도착지요, 완성이요, 다시 시작입니다."
-                            data-en="A. It begins with a single thought of the Buddha and continues with my single thought now.<br>Every moment is already the arrival, the completion, and a new beginning.">
-                            A. 부처님의 한 생각에서 시작되어, 지금 나의 한 생각으로 이어진다.<br>매 순간이 이미 도착지요, 완성이요, 다시 시작입니다.</p>
-                    </div>
+                            data-en="A. It begins with a single thought of the Buddha and continues with my single thought now.<br>Every moment is already the arrival, the completion, and a new beginning.">A. 부처님의 한 생각에서 시작되어, 지금 나의 한 생각으로 이어진다.<br>매 순간이 이미 도착지요, 완성이요, 다시 시작입니다.</div></details>
 
-                    <div class="border-l-4 border-amber-500 pl-4 mb-8">
-                        <p class="font-semibold text-gray-800 mb-2" data-kr="Q. 이 불사는 성공과 실패가 있겠는가?"
-                            data-en="Q. Will this dharma work have success and failure?">Q. 이 불사는 성공과 실패가 있겠는가?</p>
-                        <p class="text-gray-600" data-kr="A. 성공과 실패를 생각하지 않는다. 오직 할 뿐이다."
-                            data-en="A. I do not think of success or failure. I only do.">A. 성공과 실패를 생각하지 않는다. 오직 할 뿐이다.
-                        </p>
-                    </div>
+                    <details class="ed-faq"><summary><span class="ed-faq-q" data-kr="Q. 이 불사는 성공과 실패가 있겠는가?"
+                            data-en="Q. Will this dharma work have success and failure?">Q. 이 불사는 성공과 실패가 있겠는가?</span><span class="ed-plus" aria-hidden="true"></span></summary><div class="ed-faq-a" data-kr="A. 성공과 실패를 생각하지 않는다. 오직 할 뿐이다."
+                            data-en="A. I do not think of success or failure. I only do.">A. 성공과 실패를 생각하지 않는다. 오직 할 뿐이다.</div></details>
 
-                    <div class="border-l-4 border-amber-500 pl-4 mb-8">
-                        <p class="font-semibold text-gray-800 mb-2" data-kr="Q. 만약 이 불사가 실패한다면 무엇을 얻었다고 생각하시겠습니까?"
+                    <details class="ed-faq"><summary><span class="ed-faq-q" data-kr="Q. 만약 이 불사가 실패한다면 무엇을 얻었다고 생각하시겠습니까?"
                             data-en="Q. If this dharma work fails, what do you think you will have gained?">Q. 만약 이 불사가
-                            실패한다면 무엇을 얻었다고 생각하시겠습니까?</p>
-                        <p class="text-gray-600" data-kr="A. 실패를 두려워하지 않는 마음을 깨닫는 것, 그것이 핵심이다."
+                            실패한다면 무엇을 얻었다고 생각하시겠습니까?</span><span class="ed-plus" aria-hidden="true"></span></summary><div class="ed-faq-a" data-kr="A. 실패를 두려워하지 않는 마음을 깨닫는 것, 그것이 핵심이다."
                             data-en="A. Realizing the mind that does not fear failure, that is the core.">A. 실패를 두려워하지
-                            않는 마음을 깨닫는 것, 그것이 핵심이다.</p>
-                    </div>
+                            않는 마음을 깨닫는 것, 그것이 핵심이다.</div></details>
 
-                    <div class="border-l-4 border-amber-500 pl-4 mb-8">
-                        <p class="font-semibold text-gray-800 mb-2" data-kr="Q. 이 불사는 결국 한 세대의 꿈에 불과한 것은 아닙니까?"
+                    <details class="ed-faq"><summary><span class="ed-faq-q" data-kr="Q. 이 불사는 결국 한 세대의 꿈에 불과한 것은 아닙니까?"
                             data-en="Q. Isn't this dharma work ultimately just the dream of one generation?">Q. 이 불사는 결국
-                            한 세대의 꿈에 불과한 것은 아닙니까?</p>
-                        <p class="text-gray-600" data-kr="A. 한 세대의 꿈이 얼마나 위대한가? 사람 살리는 꿈보다 위대한 꿈은 없다."
-                            data-en="A. How great is the dream of one generation? There is no greater dream than a dream that saves people.">
-                            A. 한 세대의 꿈이 얼마나 위대한가? 사람 살리는 꿈보다 위대한 꿈은 없다.</p>
-                    </div>
+                            한 세대의 꿈에 불과한 것은 아닙니까?</span><span class="ed-plus" aria-hidden="true"></span></summary><div class="ed-faq-a" data-kr="A. 한 세대의 꿈이 얼마나 위대한가? 사람 살리는 꿈보다 위대한 꿈은 없다."
+                            data-en="A. How great is the dream of one generation? There is no greater dream than a dream that saves people.">A. 한 세대의 꿈이 얼마나 위대한가? 사람 살리는 꿈보다 위대한 꿈은 없다.</div></details>
 
-                    <div class="border-l-4 border-amber-500 pl-4 mb-8">
-                        <p class="font-semibold text-gray-800 mb-2" data-kr="Q. 이 불사는 누구의 것이며 누구의 소유도 아닌가?"
+                    <details class="ed-faq"><summary><span class="ed-faq-q" data-kr="Q. 이 불사는 누구의 것이며 누구의 소유도 아닌가?"
                             data-en="Q. To whom does this dharma work belong, and is it not owned by anyone?">Q. 이 불사는
-                            누구의 것이며 누구의 소유도 아닌가?</p>
-                        <p class="text-gray-600" data-kr="A. 나를 세움에 집착하는 순간 더이상 佛事가 아니다. 함께 꿈꾸는 사람들의 꿈이다."
-                            data-en="A. The moment one becomes attached to establishing oneself, it is no longer Dharma work. It is the dream of those who dream together.">
-                            A. 나를 세움에 집착하는 순간 더이상 佛事가 아니다. 함께 꿈꾸는 사람들의 꿈이다.</p>
-                    </div>
+                            누구의 것이며 누구의 소유도 아닌가?</span><span class="ed-plus" aria-hidden="true"></span></summary><div class="ed-faq-a" data-kr="A. 나를 세움에 집착하는 순간 더이상 佛事가 아니다. 함께 꿈꾸는 사람들의 꿈이다."
+                            data-en="A. The moment one becomes attached to establishing oneself, it is no longer Dharma work. It is the dream of those who dream together.">A. 나를 세움에 집착하는 순간 더이상 佛事가 아니다. 함께 꿈꾸는 사람들의 꿈이다.</div></details>
 
-                    <div class="border-l-4 border-amber-500 pl-4 mb-8">
-                        <p class="font-semibold text-gray-800 mb-2" data-kr="Q. 이 불사의 가장 큰 자산은 무엇인가?"
-                            data-en="Q. What is the greatest asset of this dharma work?">Q. 이 불사의 가장 큰 자산은 무엇인가?</p>
-                        <p class="text-gray-600" data-kr="A. 내 마음과 이 글을 읽는 그대의 마음입니다."
+                    <details class="ed-faq"><summary><span class="ed-faq-q" data-kr="Q. 이 불사의 가장 큰 자산은 무엇인가?"
+                            data-en="Q. What is the greatest asset of this dharma work?">Q. 이 불사의 가장 큰 자산은 무엇인가?</span><span class="ed-plus" aria-hidden="true"></span></summary><div class="ed-faq-a" data-kr="A. 내 마음과 이 글을 읽는 그대의 마음입니다."
                             data-en="A. It is my mind and the mind of you who are reading this.">A. 내 마음과 이 글을 읽는 그대의
-                            마음입니다.</p>
-                    </div>
+                            마음입니다.</div></details>
 
-                    <div class="border-l-4 border-amber-500 pl-4 mb-8">
-                        <p class="font-semibold text-gray-800 mb-2" data-kr="Q. 이 불사의 가장 큰 적은 누구인가?"
-                            data-en="Q. Who is the greatest enemy of this dharma work?">Q. 이 불사의 가장 큰 적은 누구인가?</p>
-                        <p class="text-gray-600" data-kr="A. 내 마음의 두려움, 집착, 거만함이다."
-                            data-en="A. The fear, attachment, and arrogance in my own mind.">A. 내 마음의 두려움, 집착, 거만함이다.
-                        </p>
-                    </div>
+                    <details class="ed-faq"><summary><span class="ed-faq-q" data-kr="Q. 이 불사의 가장 큰 적은 누구인가?"
+                            data-en="Q. Who is the greatest enemy of this dharma work?">Q. 이 불사의 가장 큰 적은 누구인가?</span><span class="ed-plus" aria-hidden="true"></span></summary><div class="ed-faq-a" data-kr="A. 내 마음의 두려움, 집착, 거만함이다."
+                            data-en="A. The fear, attachment, and arrogance in my own mind.">A. 내 마음의 두려움, 집착, 거만함이다.</div></details>
 
-                    <div class="border-l-4 border-amber-500 pl-4 mb-8">
-                        <p class="font-semibold text-gray-800 mb-2" data-kr="Q. 이 불사의 경쟁자는 누구인가?"
-                            data-en="Q. Who is the competitor of this dharma work?">Q. 이 불사의 경쟁자는 누구인가?</p>
-                        <p class="text-gray-600" data-kr="A. 경쟁자는 없다. 오직 함께 가는 이들이 있을 뿐이다. 경쟁심은 과한 욕심과 두려움에서 오는 것이다."
-                            data-en="A. There are no competitors. There are only those who walk together. Competitiveness comes from excessive greed and fear.">
-                            A. 경쟁자는 없다. 오직 함께 가는 이들이 있을 뿐이다. 경쟁심은 과한 욕심과 두려움에서 오는 것이다.</p>
-                    </div>
+                    <details class="ed-faq"><summary><span class="ed-faq-q" data-kr="Q. 이 불사의 경쟁자는 누구인가?"
+                            data-en="Q. Who is the competitor of this dharma work?">Q. 이 불사의 경쟁자는 누구인가?</span><span class="ed-plus" aria-hidden="true"></span></summary><div class="ed-faq-a" data-kr="A. 경쟁자는 없다. 오직 함께 가는 이들이 있을 뿐이다. 경쟁심은 과한 욕심과 두려움에서 오는 것이다."
+                            data-en="A. There are no competitors. There are only those who walk together. Competitiveness comes from excessive greed and fear.">A. 경쟁자는 없다. 오직 함께 가는 이들이 있을 뿐이다. 경쟁심은 과한 욕심과 두려움에서 오는 것이다.</div></details>
 
-                    <div class="border-l-4 border-amber-500 pl-4 mb-8">
-                        <p class="font-semibold text-gray-800 mb-2" data-kr="Q. 성공의 기준은 무엇인가?"
-                            data-en="Q. What is the standard of success?">Q. 성공의 기준은 무엇인가?</p>
-                        <p class="text-gray-600" data-kr="A. 프로젝트 성공의 기준은 구성원 각자가 지금을 환희심나게 살 수 있는가에 달려있다."
-                            data-en="A. The standard for the project's success depends on whether each member can live the present moment with joy.">
-                            A. 프로젝트 성공의 기준은 구성원 각자가 지금을 환희심나게 살 수 있는가에 달려있다.</p>
-                    </div>
+                    <details class="ed-faq"><summary><span class="ed-faq-q" data-kr="Q. 성공의 기준은 무엇인가?"
+                            data-en="Q. What is the standard of success?">Q. 성공의 기준은 무엇인가?</span><span class="ed-plus" aria-hidden="true"></span></summary><div class="ed-faq-a" data-kr="A. 프로젝트 성공의 기준은 구성원 각자가 지금을 환희심나게 살 수 있는가에 달려있다."
+                            data-en="A. The standard for the project's success depends on whether each member can live the present moment with joy.">A. 프로젝트 성공의 기준은 구성원 각자가 지금을 환희심나게 살 수 있는가에 달려있다.</div></details>
 
-                    <div class="border-l-4 border-amber-500 pl-4 mb-8">
-                        <p class="font-semibold text-gray-800 mb-2" data-kr="Q. 수행과 사업의 경계는 어디에 있습니까?"
+                    <details class="ed-faq"><summary><span class="ed-faq-q" data-kr="Q. 수행과 사업의 경계는 어디에 있습니까?"
                             data-en="Q. Where is the boundary between spiritual practice and business?">Q. 수행과 사업의 경계는
-                            어디에 있습니까?</p>
-                        <p class="text-gray-600" data-kr="A. 수행과 사업의 경계를 나는 알지 못한다. 따로 있지 않다. 들고 놓음이 즉해 있다."
-                            data-en="A. I do not know the boundary between practice and business. They are not separate. The picking up and letting go are immediate.">
-                            A. 수행과 사업의 경계를 나는 알지 못한다. 따로 있지 않다. 들고 놓음이 즉해 있다.</p>
-                    </div>
+                            어디에 있습니까?</span><span class="ed-plus" aria-hidden="true"></span></summary><div class="ed-faq-a" data-kr="A. 수행과 사업의 경계를 나는 알지 못한다. 따로 있지 않다. 들고 놓음이 즉해 있다."
+                            data-en="A. I do not know the boundary between practice and business. They are not separate. The picking up and letting go are immediate.">A. 수행과 사업의 경계를 나는 알지 못한다. 따로 있지 않다. 들고 놓음이 즉해 있다.</div></details>
 
-                    <div class="border-l-4 border-amber-500 pl-4 mb-8">
-                        <p class="font-semibold text-gray-800 mb-2" data-kr="Q. 수행자의 마음과 이 사업의 마음은 하나인가 둘인가?"
+                    <details class="ed-faq"><summary><span class="ed-faq-q" data-kr="Q. 수행자의 마음과 이 사업의 마음은 하나인가 둘인가?"
                             data-en="Q. Are the mind of a practitioner and the mind of this business one or two?">Q.
-                            수행자의 마음과 이 사업의 마음은 하나인가 둘인가?</p>
-                        <p class="text-gray-600" data-kr="A. 하나인지 둘인지를 따지지 않는다. 오직 공심으로 임한다. 승가는 공인이고, 공익인이며, 공심이다."
-                            data-en="A. I do not question whether they are one or two. I only approach it with a public mind. The Sangha is public, for the public good, and has a public mind.">
-                            A. 하나인지 둘인지를 따지지 않는다. 오직 공심으로 임한다. 승가는 공인이고, 공익인이며, 공심이다.</p>
-                    </div>
+                            수행자의 마음과 이 사업의 마음은 하나인가 둘인가?</span><span class="ed-plus" aria-hidden="true"></span></summary><div class="ed-faq-a" data-kr="A. 하나인지 둘인지를 따지지 않는다. 오직 공심으로 임한다. 승가는 공인이고, 공익인이며, 공심이다."
+                            data-en="A. I do not question whether they are one or two. I only approach it with a public mind. The Sangha is public, for the public good, and has a public mind.">A. 하나인지 둘인지를 따지지 않는다. 오직 공심으로 임한다. 승가는 공인이고, 공익인이며, 공심이다.</div></details>
 
-                    <div class="border-l-4 border-amber-500 pl-4 mb-8">
-                        <p class="font-semibold text-gray-800 mb-2" data-kr="Q. 수행과 불사의 공통점은 무엇인가?"
+                    <details class="ed-faq"><summary><span class="ed-faq-q" data-kr="Q. 수행과 불사의 공통점은 무엇인가?"
                             data-en="Q. What do spiritual practice and dharma work have in common?">Q. 수행과 불사의 공통점은
-                            무엇인가?</p>
-                        <p class="text-gray-600" data-kr="A. 크게 내려놓음은 수행, 크게 들어올림은 불사다."
+                            무엇인가?</span><span class="ed-plus" aria-hidden="true"></span></summary><div class="ed-faq-a" data-kr="A. 크게 내려놓음은 수행, 크게 들어올림은 불사다."
                             data-en="A. Greatly letting go is spiritual practice; greatly lifting up is dharma work.">A.
-                            크게 내려놓음은 수행, 크게 들어올림은 불사다.</p>
-                    </div>
+                            크게 내려놓음은 수행, 크게 들어올림은 불사다.</div></details>
 
-                    <div class="border-l-4 border-amber-500 pl-4 mb-8">
-                        <p class="font-semibold text-gray-800 mb-2" data-kr="Q. 이 불사는 왜 지역과 함께 해야 하는가?"
+                    <details class="ed-faq"><summary><span class="ed-faq-q" data-kr="Q. 이 불사는 왜 지역과 함께 해야 하는가?"
                             data-en="Q. Why must this dharma work be done with the local community?">Q. 이 불사는 왜 지역과 함께
-                            해야 하는가?</p>
-                        <p class="text-gray-600" data-kr="A. 가장 가까운 사람과 잘 지내지 못하면서 세상의 평화를 논할 수가 있는가?"
-                            data-en="A. Can one discuss world peace without getting along with the people closest to them?">
-                            A. 가장 가까운 사람과 잘 지내지 못하면서 세상의 평화를 논할 수가 있는가?</p>
-                    </div>
+                            해야 하는가?</span><span class="ed-plus" aria-hidden="true"></span></summary><div class="ed-faq-a" data-kr="A. 가장 가까운 사람과 잘 지내지 못하면서 세상의 평화를 논할 수가 있는가?"
+                            data-en="A. Can one discuss world peace without getting along with the people closest to them?">A. 가장 가까운 사람과 잘 지내지 못하면서 세상의 평화를 논할 수가 있는가?</div></details>
 
-                    <div class="border-l-4 border-amber-500 pl-4 mb-8">
-                        <p class="font-semibold text-gray-800 mb-2" data-kr="Q. 지역사회와의 상생은 무엇을 의미하는가?"
-                            data-en="Q. What does coexistence with the local community mean?">Q. 지역사회와의 상생은 무엇을 의미하는가?
-                        </p>
-                        <p class="text-gray-600" data-kr="A. 지혜로 기틀을 잡고 웃음을 잃지 않으며 함께 이익되는 선한 마음이다."
-                            data-en="A. It is a good heart that establishes a foundation with wisdom, does not lose laughter, and benefits everyone together.">
-                            A. 지혜로 기틀을 잡고 웃음을 잃지 않으며 함께 이익되는 선한 마음이다.</p>
-                    </div>
+                    <details class="ed-faq"><summary><span class="ed-faq-q" data-kr="Q. 지역사회와의 상생은 무엇을 의미하는가?"
+                            data-en="Q. What does coexistence with the local community mean?">Q. 지역사회와의 상생은 무엇을 의미하는가?</span><span class="ed-plus" aria-hidden="true"></span></summary><div class="ed-faq-a" data-kr="A. 지혜로 기틀을 잡고 웃음을 잃지 않으며 함께 이익되는 선한 마음이다."
+                            data-en="A. It is a good heart that establishes a foundation with wisdom, does not lose laughter, and benefits everyone together.">A. 지혜로 기틀을 잡고 웃음을 잃지 않으며 함께 이익되는 선한 마음이다.</div></details>
 
-                    <div class="border-l-4 border-amber-500 pl-4 mb-8">
-                        <p class="font-semibold text-gray-800 mb-2" data-kr="Q. 불사의 길에서 동반자는 어떤 존재인가?"
+                    <details class="ed-faq"><summary><span class="ed-faq-q" data-kr="Q. 불사의 길에서 동반자는 어떤 존재인가?"
                             data-en="Q. On the path of dharma work, what kind of existence is a companion?">Q. 불사의 길에서
-                            동반자는 어떤 존재인가?</p>
-                        <p class="text-gray-600" data-kr="A. 전부이다. 이를 살아있는 승가. 삼보중에 가장 빛나는 보석이다."
-                            data-en="A. They are everything. This is the living Sangha. The most shining jewel among the Three Treasures.">
-                            A. 전부이다. 이를 살아있는 승가. 삼보중에 가장 빛나는 보석이다.</p>
-                    </div>
+                            동반자는 어떤 존재인가?</span><span class="ed-plus" aria-hidden="true"></span></summary><div class="ed-faq-a" data-kr="A. 전부이다. 이를 살아있는 승가. 삼보중에 가장 빛나는 보석이다."
+                            data-en="A. They are everything. This is the living Sangha. The most shining jewel among the Three Treasures.">A. 전부이다. 이를 살아있는 승가. 삼보중에 가장 빛나는 보석이다.</div></details>
 
-                    <div class="border-l-4 border-amber-500 pl-4 mb-8">
-                        <p class="font-semibold text-gray-800 mb-2" data-kr="Q. 지역 주민이 이 불사를 반대한다면 어떻게 하시겠습니까?"
+                    <details class="ed-faq"><summary><span class="ed-faq-q" data-kr="Q. 지역 주민이 이 불사를 반대한다면 어떻게 하시겠습니까?"
                             data-en="Q. What would you do if the local residents oppose this dharma work?">Q. 지역 주민이 이
-                            불사를 반대한다면 어떻게 하시겠습니까?</p>
-                        <p class="text-gray-600" data-kr="A. 떠날 것이다. 그 마음도 얻지 못하면 이 불사를 감당하기 어렵다."
-                            data-en="A. I would leave. If I cannot even win their hearts, it would be difficult to handle this dharma work.">
-                            A. 떠날 것이다. 그 마음도 얻지 못하면 이 불사를 감당하기 어렵다.</p>
-                    </div>
+                            불사를 반대한다면 어떻게 하시겠습니까?</span><span class="ed-plus" aria-hidden="true"></span></summary><div class="ed-faq-a" data-kr="A. 떠날 것이다. 그 마음도 얻지 못하면 이 불사를 감당하기 어렵다."
+                            data-en="A. I would leave. If I cannot even win their hearts, it would be difficult to handle this dharma work.">A. 떠날 것이다. 그 마음도 얻지 못하면 이 불사를 감당하기 어렵다.</div></details>
 
-                    <div class="border-l-4 border-amber-500 pl-4 mb-8">
-                        <p class="font-semibold text-gray-800 mb-2" data-kr="Q. 공익 불사라면 왜 돈이 필요하다는 말을 합니까?"
+                    <details class="ed-faq"><summary><span class="ed-faq-q" data-kr="Q. 공익 불사라면 왜 돈이 필요하다는 말을 합니까?"
                             data-en="Q. If it is a public dharma work, why do you say that money is needed?">Q. 공익 불사라면
-                            왜 돈이 필요하다는 말을 합니까?</p>
-                        <p class="text-gray-600" data-kr="A. 공익 불사이기 때문에 돈이 많을수록 좋다."
+                            왜 돈이 필요하다는 말을 합니까?</span><span class="ed-plus" aria-hidden="true"></span></summary><div class="ed-faq-a" data-kr="A. 공익 불사이기 때문에 돈이 많을수록 좋다."
                             data-en="A. Because it is a public dharma work, the more money, the better.">A. 공익 불사이기 때문에
-                            돈이 많을수록 좋다.</p>
-                    </div>
+                            돈이 많을수록 좋다.</div></details>
 
-                    <div class="border-l-4 border-amber-500 pl-4 mb-8">
-                        <p class="font-semibold text-gray-800 mb-2" data-kr="Q. 이 불사의 재정은 어디에서 오고 어디로 가야 하는가?"
-                            data-en="Q. Where does the finance for this dharma work come from, and where should it go?">
-                            Q. 이 불사의 재정은 어디에서 오고 어디로 가야 하는가?</p>
-                        <p class="text-gray-600" data-kr="A. 사람의 마음에서 오고, 사람의 마음으로 돌아가야 한다."
+                    <details class="ed-faq"><summary><span class="ed-faq-q" data-kr="Q. 이 불사의 재정은 어디에서 오고 어디로 가야 하는가?"
+                            data-en="Q. Where does the finance for this dharma work come from, and where should it go?">Q. 이 불사의 재정은 어디에서 오고 어디로 가야 하는가?</span><span class="ed-plus" aria-hidden="true"></span></summary><div class="ed-faq-a" data-kr="A. 사람의 마음에서 오고, 사람의 마음으로 돌아가야 한다."
                             data-en="A. It comes from people's hearts and must return to people's hearts.">A. 사람의 마음에서
-                            오고, 사람의 마음으로 돌아가야 한다.</p>
-                    </div>
+                            오고, 사람의 마음으로 돌아가야 한다.</div></details>
 
-                    <div class="border-l-4 border-amber-500 pl-4 mb-8">
-                        <p class="font-semibold text-gray-800 mb-2" data-kr="Q. 재정의 안정성을 어떻게 담보할 것인가?"
-                            data-en="Q. How will financial stability be secured?">Q. 재정의 안정성을 어떻게 담보할 것인가?</p>
-                        <p class="text-gray-600" data-kr="A. 진실함과 원력이 담보이다."
-                            data-en="A. Sincerity and strong aspiration are the collateral.">A. 진실함과 원력이 담보이다.</p>
-                    </div>
+                    <details class="ed-faq"><summary><span class="ed-faq-q" data-kr="Q. 재정의 안정성을 어떻게 담보할 것인가?"
+                            data-en="Q. How will financial stability be secured?">Q. 재정의 안정성을 어떻게 담보할 것인가?</span><span class="ed-plus" aria-hidden="true"></span></summary><div class="ed-faq-a" data-kr="A. 진실함과 원력이 담보이다."
+                            data-en="A. Sincerity and strong aspiration are the collateral.">A. 진실함과 원력이 담보이다.</div></details>
 
-                    <div class="border-l-4 border-amber-500 pl-4 mb-8">
-                        <p class="font-semibold text-gray-800 mb-2" data-kr="Q. 공익 불사는 어떻게 진정성을 증명하는가?"
-                            data-en="Q. How does a public dharma work prove its authenticity?">Q. 공익 불사는 어떻게 진정성을 증명하는가?
-                        </p>
-                        <p class="text-gray-600" data-kr="A. 감추지 않는다." data-en="A. By not hiding anything.">A. 감추지 않는다.
-                        </p>
-                    </div>
+                    <details class="ed-faq"><summary><span class="ed-faq-q" data-kr="Q. 공익 불사는 어떻게 진정성을 증명하는가?"
+                            data-en="Q. How does a public dharma work prove its authenticity?">Q. 공익 불사는 어떻게 진정성을 증명하는가?</span><span class="ed-plus" aria-hidden="true"></span></summary><div class="ed-faq-a" data-kr="A. 감추지 않는다." data-en="A. By not hiding anything.">A. 감추지 않는다.</div></details>
 
-                    <div class="border-l-4 border-amber-500 pl-4 mb-8">
-                        <p class="font-semibold text-gray-800 mb-2" data-kr="Q. 글로벌 시장에서 이 프로젝트의 차별점은 무엇인가?"
+                    <details class="ed-faq"><summary><span class="ed-faq-q" data-kr="Q. 글로벌 시장에서 이 프로젝트의 차별점은 무엇인가?"
                             data-en="Q. What is the differentiating factor of this project in the global market?">Q. 글로벌
-                            시장에서 이 프로젝트의 차별점은 무엇인가?</p>
-                        <p class="text-gray-600" data-kr="A. 부처님 걸으셨던 순례길이고, 수도하셨던 히말라야산이다."
-                            data-en="A. It is the pilgrimage path the Buddha walked and the Himalayan mountains where he practiced.">
-                            A. 부처님 걸으셨던 순례길이고, 수도하셨던 히말라야산이다.</p>
-                    </div>
+                            시장에서 이 프로젝트의 차별점은 무엇인가?</span><span class="ed-plus" aria-hidden="true"></span></summary><div class="ed-faq-a" data-kr="A. 부처님 걸으셨던 순례길이고, 수도하셨던 히말라야산이다."
+                            data-en="A. It is the pilgrimage path the Buddha walked and the Himalayan mountains where he practiced.">A. 부처님 걸으셨던 순례길이고, 수도하셨던 히말라야산이다.</div></details>
 
-                    <div class="border-l-4 border-amber-500 pl-4 mb-8">
-                        <p class="font-semibold text-gray-800 mb-2" data-kr="Q. 디지털 플랫폼에 법을 담는 것은 법을 오히려 흐리는 일이 아닙니까?"
-                            data-en="Q. Isn't putting the Dharma on a digital platform an act that clouds the Dharma?">
-                            Q. 디지털 플랫폼에 법을 담는 것은 법을 오히려 흐리는 일이 아닙니까?</p>
-                        <p class="text-gray-600" data-kr="A. 법이 본래 실체가 없는데 흐려질 일이 있겠는가. 법에 걸리지 않기를."
-                            data-en="A. The Dharma originally has no substance, so how can it be clouded? I hope you do not get caught up in the Dharma.">
-                            A. 법이 본래 실체가 없는데 흐려질 일이 있겠는가. 법에 걸리지 않기를.</p>
-                    </div>
+                    <details class="ed-faq"><summary><span class="ed-faq-q" data-kr="Q. 디지털 플랫폼에 법을 담는 것은 법을 오히려 흐리는 일이 아닙니까?"
+                            data-en="Q. Isn't putting the Dharma on a digital platform an act that clouds the Dharma?">Q. 디지털 플랫폼에 법을 담는 것은 법을 오히려 흐리는 일이 아닙니까?</span><span class="ed-plus" aria-hidden="true"></span></summary><div class="ed-faq-a" data-kr="A. 법이 본래 실체가 없는데 흐려질 일이 있겠는가. 법에 걸리지 않기를."
+                            data-en="A. The Dharma originally has no substance, so how can it be clouded? I hope you do not get caught up in the Dharma.">A. 법이 본래 실체가 없는데 흐려질 일이 있겠는가. 법에 걸리지 않기를.</div></details>
 
-                    <div class="border-l-4 border-amber-500 pl-4 mb-8">
-                        <p class="font-semibold text-gray-800 mb-2" data-kr="Q. 불사를 준비하며 가장 먼저 해야 할 일은 무엇인가?"
+                    <details class="ed-faq"><summary><span class="ed-faq-q" data-kr="Q. 불사를 준비하며 가장 먼저 해야 할 일은 무엇인가?"
                             data-en="Q. What is the very first thing to do when preparing for the dharma work?">Q. 불사를
-                            준비하며 가장 먼저 해야 할 일은 무엇인가?</p>
-                        <p class="text-gray-600"
+                            준비하며 가장 먼저 해야 할 일은 무엇인가?</span><span class="ed-plus" aria-hidden="true"></span></summary><div class="ed-faq-a"
                             data-kr="A. 지금 해야 할 일을, 하고자 하는 일을 할 뿐이다. 쉴 줄 아는 연습이 이 불사의 가장 먼저 다져가야 할 지혜이다."
-                            data-en="A. Just do what needs to be done now, what one wants to do. The practice of knowing how to rest is the first wisdom to cultivate for this dharma work.">
-                            A. 지금 해야 할 일을, 하고자 하는 일을 할 뿐이다. 쉴 줄 아는 연습이 이 불사의 가장 먼저 다져가야 할 지혜이다.</p>
-                    </div>
+                            data-en="A. Just do what needs to be done now, what one wants to do. The practice of knowing how to rest is the first wisdom to cultivate for this dharma work.">A. 지금 해야 할 일을, 하고자 하는 일을 할 뿐이다. 쉴 줄 아는 연습이 이 불사의 가장 먼저 다져가야 할 지혜이다.</div></details>
                 </div>
             </div>
         </div>
@@ -7556,6 +7496,27 @@
                 d.classList.remove('ed-anim');
                 if (d.open) { void d.offsetWidth; d.classList.add('ed-anim'); }
             }));
+
+            // 신청 가능한 프로그램 모달: 하단 고정 "신청 방법" 바로가기
+            ['opening-ceremony-modal', 'april-templestay-modal'].forEach((id) => {
+                const modal = document.getElementById(id);
+                const panel = modal && modal.querySelector('.overflow-y-auto');
+                const heading = panel && panel.querySelector('h5[data-kr="신청 방법"]');
+                if (!heading) return;
+                const target = heading.closest('section') || heading;
+                const bar = document.createElement('div');
+                bar.className = 'ed-modal-cta';
+                bar.innerHTML = '<button type="button" class="btn-primary" data-kr="신청 방법 보기 ↓" data-en="How to Apply ↓"></button>';
+                const btn = bar.firstChild;
+                btn.innerHTML = btn.getAttribute(document.documentElement.lang === 'en' ? 'data-en' : 'data-kr');
+                btn.addEventListener('click', () => target.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+                panel.appendChild(bar);
+                if ('IntersectionObserver' in window) {
+                    new IntersectionObserver((entries) => {
+                        bar.classList.toggle('is-hidden', entries[0].isIntersecting);
+                    }, { root: panel, threshold: 0.05 }).observe(target);
+                }
+            });
 
             // 한평 불사 동참 수: 화면에 들어오면 0부터 카운트업 (최초 1회)
             const stats = document.getElementById('one-pyeong-stats');
