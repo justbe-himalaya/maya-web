@@ -3,3 +3,6 @@ tmp/
 
 # 카카오톡 소식방 원본 내보내기 (회원 이름 포함, 공개 금지) -> scripts/build-sosik.py 로 data/sosik.json 생성
 resource/doc/sosik.csv
+
+# Claude Code 로컬 설정·미리보기 서버 설정
+.claude/
