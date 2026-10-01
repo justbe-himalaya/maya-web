@@ -51,6 +51,10 @@ def link_card(url):
 
 
 rows = list(csv.DictReader(open(src, encoding="utf-8-sig")))
+warnings = []
+missing_team = set(TEAM) - {r["User"] for r in rows}
+if missing_team:  # 카톡 표시 이름이 바뀌면 그 사람 글이 조용히 빠진다
+    warnings.append(f"TEAM 이름이 CSV에 없음: {sorted(missing_team)}")
 items, seen_text = [], set()
 for r in rows:
     user, msg, date = r["User"], r["Message"].strip(), r["Date"].strip()
@@ -172,6 +176,11 @@ for x in items:
         groups.append({"id": x["t"], "who": x["who"], "av": x["av"], "_last": t, "_items": [x]})
 
 by_id = {g["id"]: g for g in groups}
+# 키는 '첫 게시 시각(분)'이라 재내보내기로 시각이 밀리면 조용히 어긋난다 (특히 DROP: 비공개 글이 다시 공개됨)
+for label, keys in (("DROP", DROP), ("STORIES", STORIES), ("MERGE", list(MERGE) + list(MERGE.values()))):
+    stale = sorted(set(keys) - set(by_id))
+    if stale:
+        warnings.append(f"{label} 키가 어떤 스토리와도 맞지 않음: {stale}")
 for src_id, dst_id in MERGE.items():
     if src_id in by_id and dst_id in by_id:
         by_id[dst_id]["_items"] += by_id.pop(src_id)["_items"]
@@ -203,6 +212,11 @@ for g in sorted(groups, key=lambda g: g["id"]):
     title, tags = STORIES.get(g["id"], (auto_title("\n".join(texts)), []))
     stories.append({"id": g["id"], "who": g["who"], "av": g["av"], "title": title, "tags": tags,
                     "text": "\n\n".join(texts), "photos": photos, "videos": videos, "cards": cards})
+
+if warnings:  # 비공개로 뺀 글이 다시 섞일 수 있으니 파일을 쓰지 않고 멈춘다
+    for w in warnings:
+        print("경고:", w, file=sys.stderr)
+    sys.exit(1)
 
 json.dump({"generated": datetime.now().strftime("%Y-%m-%d"), "topics": TOPICS, "stories": stories},
           open(dst, "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))

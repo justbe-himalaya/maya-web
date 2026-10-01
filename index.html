@@ -130,7 +130,7 @@
         // 기존 마크업의 Tailwind 색상 계열을 4색 팔레트(Ivory · Charcoal · Ochre · Forest)로 재매핑하고,
         // 모서리 라운드를 0~4px로 평탄화한다. 마크업 클래스는 그대로 두고 토큰만 바꾸는 방식.
         (function () {
-            const stone = { 50: '#F7F4EE', 100: '#EFEBE2', 200: '#E3DED3', 300: '#CFC9BC', 400: '#A8A294', 500: '#7F7A6E', 600: '#5E5A51', 700: '#45423B', 800: '#33312C', 900: '#252522', 950: '#1B1B19' };
+            const stone = { 50: '#F7F4EE', 100: '#EFEBE2', 200: '#E3DED3', 300: '#CFC9BC', 400: '#A8A294', 500: '#6E695E', 600: '#5E5A51', 700: '#45423B', 800: '#33312C', 900: '#252522', 950: '#1B1B19' };
             const ochre = { 50: '#FAF6EE', 100: '#F3E9D6', 200: '#E7D4B2', 300: '#D6B788', 400: '#C29B61', 500: '#B3884B', 600: '#A9793A', 700: '#8A6230', 800: '#6C4D27', 900: '#4F3920', 950: '#352617' };
             const forest = { 50: '#F1F4F1', 100: '#DFE6E0', 200: '#BFCDC3', 300: '#97AE9E', 400: '#6D8C76', 500: '#4F6F59', 600: '#3B5946', 700: '#2E4738', 800: '#23382D', 900: '#1A2A22', 950: '#121D17' };
             const clay = { 50: '#FBF3EF', 100: '#F4E2DA', 200: '#E8C4B5', 300: '#D69E88', 400: '#C27A60', 500: '#A95D43', 600: '#8F4A34', 700: '#743B2A', 800: '#5A2E21', 900: '#422219', 950: '#2C1610' };
@@ -144,7 +144,7 @@
                             amber: ochre, orange: ochre, yellow: ochre,
                             emerald: forest, green: forest, teal: forest,
                             blue: forest, indigo: forest, purple: forest, pink: clay,
-                            rose: ochre, red: clay
+                            rose: clay, red: clay
                         },
                         fontFamily: {
                             sans: ['Pretendard Variable', 'Pretendard', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', 'system-ui', 'sans-serif'],
@@ -160,7 +160,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Serif+KR:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Serif+KR:wght@400;500;600;700&display=swap"
         rel="stylesheet">
     <link
         href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
@@ -229,7 +229,6 @@
         }
 
         /* Cormorant 웹폰트는 올드스타일 숫자만 제공 → 큰 숫자는 Noto Serif KR로 */
-        .ed-num-serif,
         .ed-title .tabular-nums,
         .ed-price,
         .ed-stats-num,
@@ -275,7 +274,7 @@
             font-weight: 600;
             letter-spacing: 0.22em;
             text-transform: uppercase;
-            color: var(--ochre);
+            color: var(--ochre-deep);
         }
 
         .ed-label .ed-num {
@@ -303,11 +302,6 @@
             font-size: clamp(1.02rem, 1.5vw, 1.2rem);
             line-height: 1.85;
             color: var(--charcoal-soft);
-        }
-
-        .ed-rule-full {
-            border: 0;
-            border-top: 1px solid var(--line);
         }
 
         /* Buttons: primary (단 하나의 색 버튼) / secondary (밑줄 텍스트) / tertiary (작은 링크) */
@@ -362,16 +356,6 @@
             color: var(--ochre);
         }
 
-        .btn-muted {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--charcoal-soft);
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 0.04em;
-        }
-
         /* 이미지: 천천히 확대 */
         .ed-media {
             overflow: hidden;
@@ -388,14 +372,6 @@
         .group:hover .ed-media img,
         .ed-media:hover img {
             transform: scale(1.06);
-        }
-
-        /* Glassmorphism Utilities */
-        .glass {
-            background: rgba(255, 255, 255, 0.12);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.28);
         }
 
         /* 스크롤 애니메이션: fade + 20px 상승 */
@@ -419,6 +395,12 @@
 
             html {
                 scroll-behavior: auto;
+            }
+
+            .ed-scroll i,
+            .ed-live-dot,
+            details.ed-anim > :not(summary) {
+                animation: none !important;
             }
         }
 
@@ -503,14 +485,6 @@
         .ed-nav.is-solid .ed-brand-mark,
         .ed-nav.is-open .ed-brand-mark {
             filter: brightness(0) invert(0.14);
-        }
-
-        .ed-brand-text {
-            font-size: 0.66rem;
-            font-weight: 700;
-            letter-spacing: 0.2em;
-            line-height: 1.25;
-            text-transform: uppercase;
         }
 
         .ed-nav-links {
@@ -727,7 +701,7 @@
             font-weight: 600;
             letter-spacing: 0.2em;
             text-transform: uppercase;
-            color: var(--ochre);
+            color: var(--ochre-deep);
         }
 
         .ed-card-title {
@@ -843,19 +817,12 @@
             font-size: 0.82rem;
             font-weight: 600;
             letter-spacing: 0.04em;
-            color: var(--ochre);
+            color: var(--ochre-deep);
             white-space: nowrap;
         }
 
         .ed-status.is-closed {
-            color: #A8A294;
-        }
-
-        .ed-sign {
-            margin-top: 2rem;
-            font-family: var(--font-serif);
-            font-size: 1.25rem;
-            color: var(--charcoal);
+            color: #6E695E;
         }
 
         /* ---------- 02 Project ---------- */
@@ -907,7 +874,7 @@
             font-size: 0.72rem;
             font-weight: 600;
             letter-spacing: 0.2em;
-            color: var(--ochre);
+            color: var(--ochre-deep);
         }
 
         /* ---------- 03 Campaign ---------- */
@@ -964,6 +931,7 @@
             font-size: clamp(1.35rem, 2.3vw, 1.75rem);
             line-height: 1.6;
             color: #F5F2EA;
+            text-wrap: balance;
         }
 
         .ed-campaign-link {
@@ -1278,7 +1246,7 @@
             font-size: 0.74rem;
             font-weight: 600;
             letter-spacing: 0.16em;
-            color: var(--ochre);
+            color: var(--ochre-deep);
             font-variant-numeric: tabular-nums;
         }
 
@@ -1359,7 +1327,7 @@
             font-size: 0.72rem;
             font-weight: 600;
             letter-spacing: 0.16em;
-            color: var(--ochre);
+            color: var(--ochre-deep);
         }
 
         .ed-plan-name {
@@ -1415,28 +1383,6 @@
         @keyframes ed-open {
             from { opacity: 0; transform: translateY(-6px); }
             to { opacity: 1; transform: none; }
-        }
-
-        .ed-quote {
-            margin-top: clamp(4rem, 9vw, 7rem);
-            padding-top: 3rem;
-            border-top: 1px solid var(--line);
-            text-align: center;
-        }
-
-        .ed-quote p {
-            font-family: var(--font-serif);
-            font-size: clamp(1.35rem, 2.6vw, 2rem);
-            line-height: 1.6;
-            color: var(--charcoal);
-        }
-
-        .ed-quote footer {
-            margin-top: 1.5rem;
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 0.18em;
-            color: var(--ochre);
         }
 
         /* ---------- Closing & footer ---------- */
@@ -1527,7 +1473,7 @@
             font-weight: 600;
             letter-spacing: 0.2em;
             text-transform: uppercase;
-            color: var(--ochre);
+            color: var(--ochre-deep);
         }
 
         div[id$="-modal"] .sticky.top-0 h3.ed-modal-title {
@@ -1553,7 +1499,7 @@
             font-weight: 600;
             letter-spacing: 0.16em;
             text-transform: uppercase;
-            color: var(--ochre);
+            color: var(--ochre-deep);
         }
 
         div[id$="-modal"] section {
@@ -1959,6 +1905,15 @@
         }
 
         .sosik-loading,
+        .sosik-lang-note {
+            margin-bottom: 1.25rem;
+            padding: 0.7rem 0.9rem;
+            border-left: 2px solid var(--ochre);
+            background: var(--ivory);
+            font-size: 0.82rem;
+            color: var(--charcoal-soft);
+        }
+
         .sosik-empty {
             padding: 3rem 0;
             text-align: center;
@@ -1987,7 +1942,7 @@
         .sosik-month-head span {
             font-size: 0.72rem;
             letter-spacing: 0.14em;
-            color: var(--ochre);
+            color: var(--ochre-deep);
         }
 
         .sosik-story {
@@ -2257,32 +2212,6 @@
             inset: 0;
         }
 
-        /* Text Reveal Animation */
-        .reveal-text {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: reveal 1s cubic-bezier(0.5, 0, 0, 1) forwards;
-        }
-
-        .reveal-delay-1 {
-            animation-delay: 0.2s;
-        }
-
-        .reveal-delay-2 {
-            animation-delay: 0.4s;
-        }
-
-        .reveal-delay-3 {
-            animation-delay: 0.6s;
-        }
-
-        @keyframes reveal {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
         /* 모바일 반응형 최적화 */
         @media (max-width: 768px) {
             .hero-bg {
@@ -2296,31 +2225,6 @@
                 height: 100vh;
                 min-height: 400px;
             }
-
-            /* 헤더 높이 조정 */
-            .hero-bg h1 {
-                font-size: 3rem !important;
-                line-height: 1.1;
-                margin-bottom: 1rem;
-            }
-
-            /* 패딩 감소 */
-            .hero-bg .text-center {
-                padding: 2rem 1rem;
-            }
-
-            /* 언어 토글 버튼 크기 조정 */
-            .fixed.top-4.right-4 button {
-                padding: 0.5rem;
-                font-size: 0.875rem;
-            }
-        }
-
-        /* 태블릿 가로 화면 */
-        @media screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
-            .hero-bg h1 {
-                font-size: 4.5rem;
-            }
         }
 
         /* 초소형 모바일 화면 */
@@ -2329,15 +2233,7 @@
                 font-size: 14px;
             }
 
-            .hero-bg h1 {
-                font-size: 2.5rem !important;
-            }
-
             /* 패딩 조정 */
-            .p-10 {
-                padding: 1rem !important;
-            }
-
             .p-10 {
                 padding: 1rem !important;
             }
@@ -2390,10 +2286,10 @@
 <body class="text-gray-800">
 
     <!-- Navigation -->
-    <nav class="ed-nav" id="main-nav" aria-label="주요 메뉴">
+    <nav class="ed-nav" id="main-nav" aria-label="주요 메뉴" data-kr-aria="주요 메뉴" data-en-aria="Main menu">
         <div class="ed-nav-inner">
             <a href="#top" class="ed-brand" aria-label="JustBe Himalaya">
-                <img src="resource/img/JustBe_Himalaya_header_logo_white_REALLY_CLEAN.png" alt="JustBe Himalaya"
+                <img src="resource/img/justbe-himalaya-logo-white.png" alt="JustBe Himalaya"
                     class="ed-brand-mark" width="437" height="93">
             </a>
 
@@ -2407,13 +2303,13 @@
 
             <div class="ed-nav-actions">
                 <!-- Language Toggle -->
-                <button id="lang-toggle" class="ed-lang" aria-label="언어 전환 버튼">
+                <button id="lang-toggle" class="ed-lang" aria-label="언어 전환 버튼" data-kr-aria="언어 전환 버튼" data-en-aria="Switch language">
                     <span id="lang-flag" class="ed-lang-opt is-active">KR</span>
                     <span class="ed-lang-sep">/</span>
                     <span id="lang-text" class="ed-lang-opt">EN</span>
                 </button>
                 <a href="#yaksa-donation" class="ed-nav-cta" data-kr="동참하기 →" data-en="Join →">동참하기 →</a>
-                <button id="nav-menu-btn" class="ed-menu-btn" aria-label="메뉴 열기" aria-expanded="false"
+                <button id="nav-menu-btn" class="ed-menu-btn" aria-label="메뉴 열기" data-kr-aria="메뉴 열기" data-en-aria="Open menu" aria-expanded="false"
                     aria-controls="nav-mobile-panel">
                     <span></span><span></span>
                 </button>
@@ -2432,8 +2328,11 @@
 
     <!-- Hero Section: 사진에 로고와 카피가 포함되어 있어 텍스트는 얹지 않는다 -->
     <header id="top" class="hero-bg h-screen text-white relative overflow-hidden" role="banner"
-        aria-label="JustBe 히말라야 프로젝트 메인 배너">
+        aria-label="JustBe 히말라야 프로젝트 메인 배너" data-kr-aria="JustBe 히말라야 프로젝트 메인 배너" data-en-aria="JustBe Himalaya Project main banner">
         <div class="hero-overlay"></div>
+        <!-- 로고·타이틀이 배경 사진에 들어 있어 검색엔진·스크린리더용 제목만 숨겨서 둔다 -->
+        <h1 class="sr-only" data-kr="JustBe 히말라야 프로젝트 — 히말라야, 싯다르타의 옛 순례길을 걷다"
+            data-en="JustBe Himalaya Project — Walking Siddhartha's Ancient Pilgrimage Route in the Himalayas">JustBe 히말라야 프로젝트 — 히말라야, 싯다르타의 옛 순례길을 걷다</h1>
 
         <div class="ed-hero-caption">
             <span class="ed-hero-kicker">Spiritual Journey</span>
@@ -2441,22 +2340,22 @@
                 data-en="The Pilgrimage Back to the Home of Our Hearts">우리 마음의 고향으로 돌아가는 순례</span>
         </div>
 
-        <a href="#invitation" class="ed-scroll" aria-label="아래로 스크롤">
+        <a href="#invitation" class="ed-scroll" aria-label="아래로 스크롤" data-kr-aria="아래로 스크롤" data-en-aria="Scroll down">
             <span>Scroll</span>
             <i aria-hidden="true"></i>
         </a>
     </header>
 
-    <main class="w-full" role="main" aria-label="메인 콘텐츠">
+    <main class="w-full" role="main" aria-label="메인 콘텐츠" data-kr-aria="메인 콘텐츠" data-en-aria="Main content">
         <!-- 01 초대장 -->
         <section id="invitation" class="ed-section bg-ivory">
             <div class="ed-wrap">
                 <div class="ed-head scroll-reveal">
                     <span class="ed-label"><span class="ed-num">01</span><span class="ed-rule"></span>Invitation</span>
                     <h2 class="ed-title mt-5" data-kr="초대장" data-en="Invitation">초대장</h2>
-                    <p class="ed-lead mt-4" data-kr="불사에 인연 맺어주신 모든 분들께,"
-                        data-en="To all those who have formed a connection with this dharma work,">
-                        불사에 인연 맺어주신 모든 분들께,
+                    <p class="ed-lead mt-4" data-kr="불사에 인연 맺어주신 모든 분들을, JustBe 히말라야로 초대합니다."
+                        data-en="We invite all who have formed a connection with this dharma work to JustBe Himalaya.">
+                        불사에 인연 맺어주신 모든 분들을, JustBe 히말라야로 초대합니다.
                     </p>
                 </div>
 
@@ -2504,9 +2403,6 @@
                             <span class="ed-status" data-kr="추가모집 →" data-en="More Spots Open →">추가모집 →</span>
                         </button>
 
-                        <p class="ed-sign" data-kr="JustBe 히말라야로 초대합니다." data-en="We invite you to JustBe Himalaya.">
-                            JustBe 히말라야로 초대합니다.
-                        </p>
                     </div>
                 </div>
             </div>
@@ -2570,7 +2466,7 @@
                                     data-en="Restoring the 160km pilgrimage route connecting Lumbini and the Himalayas to join the journey of seeking truth.">
                                     부처님 탄생지 룸비니와 히말라야를 연결하는 160km 순례길을 복원하여 진리를 구하는 여정을 함께합니다.
                                 </p>
-                                <span class="btn-secondary mt-5" data-kr="자세히 보기 →" data-en="View Details →">자세히 보기 →</span>
+                                <button type="button" class="btn-secondary mt-5" data-kr="자세히 보기 →" data-en="View Details →">자세히 보기 →</button>
                             </div>
                         </article>
 
@@ -2578,7 +2474,7 @@
                         <article class="ed-project group scroll-reveal">
                             <div class="ed-media aspect-[4/3]">
                                 <img src="resource/img/bridge2.jpeg" alt="JustBe 브릿지" data-kr-alt="JustBe 브릿지"
-                                    data-en-alt="JustBe Bridge" loading="lazy" width="2048" height="1366" style="object-position: center 55%;">
+                                    data-en-alt="JustBe Bridge" loading="lazy" width="1200" height="800" style="object-position: center 55%;">
                             </div>
                             <div class="ed-project-body">
                                 <span class="ed-project-num">03</span>
@@ -2739,7 +2635,7 @@
         </section>
 
         <!-- Gallery Section -->
-        <section class="ed-panorama" aria-label="히말라야 파노라마">
+        <section class="ed-panorama" aria-label="히말라야 파노라마" data-kr-aria="히말라야 파노라마" data-en-aria="Himalaya panorama">
             <figure class="scroll-reveal">
                 <div class="ed-media ed-panorama-media">
                     <img src="resource/img/panorama.jpeg" alt="히말라야 파노라마" data-kr-alt="히말라야 파노라마"
@@ -3061,9 +2957,6 @@
             </div>
         </div>
 
-        </div>
-        </section>
-
 
         <!-- 05 Master Plan -->
         <section id="master-plan" class="ed-section bg-white">
@@ -3169,17 +3062,17 @@
                         <h3 id="sosik-title" class="sosik-title" data-kr="JustBe 히말라야 소식방" data-en="JustBe Himalaya News Room">JustBe 히말라야 소식방</h3>
                     </div>
                 </div>
-                <button type="button" class="sosik-close" onclick="closeSosikModal()" aria-label="닫기">
+                <button type="button" class="sosik-close" onclick="closeSosikModal()" aria-label="닫기" data-kr-aria="닫기" data-en-aria="Close">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
                         <path d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
             </header>
 
-            <div class="sosik-filters" id="sosik-filters" role="group" aria-label="주제별 보기"></div>
+            <div class="sosik-filters" id="sosik-filters" role="group" aria-label="주제별 보기" data-kr-aria="주제별 보기" data-en-aria="Filter by topic"></div>
 
             <div class="sosik-body">
-                <nav class="sosik-months" id="sosik-months" aria-label="월별 이동"></nav>
+                <nav class="sosik-months" id="sosik-months" aria-label="월별 이동" data-kr-aria="월별 이동" data-en-aria="Jump to month"></nav>
                 <div class="sosik-stream" id="sosik-stream" tabindex="0">
                     <p class="sosik-loading" data-kr="소식을 불러오는 중…" data-en="Loading…">소식을 불러오는 중…</p>
                 </div>
@@ -3531,7 +3424,7 @@
 
     <footer id="contact" class="ed-footer py-16 md:py-20">
         <div class="max-w-6xl mx-auto px-6 text-center text-gray-400">
-            <p>© 2025 JustBe Himalaya. All rights reserved.</p>
+            <p>© 2026 JustBe Himalaya. All rights reserved.</p>
             <p class="mt-3 text-sm md:text-base text-gray-300"
                 data-kr="주관 · 책임 · 회향<br><strong class='text-white'>대한불교조계종 홍대선원</strong>"
                 data-en="Organized &amp; Guaranteed by<br><strong class='text-white'>Hongdae Zen Center (Jogye Order)</strong>">
@@ -3850,7 +3743,7 @@
                     <h4 class="text-xl md:text-2xl font-bold text-gray-800 leading-relaxed"
                         data-kr="히말라야 도량에 약사여래 부처님을 잘 모셨고, 드디어 여러분과 함께 히말라야를 향해 첫 발을 내딛고자 합니다."
                         data-en="We have enshrined the Medicine Buddha at the Himalaya Temple, and finally, we wish to take the first step towards the Himalayas with you.">
-                        드디어 여러분과 함께 히말라야를 향해 첫 발을 내딛고자 합니다.
+                        히말라야 도량에 약사여래 부처님을 잘 모셨고, 드디어 여러분과 함께 히말라야를 향해 첫 발을 내딛고자 합니다.
                     </h4>
                     <p class="text-gray-600 leading-relaxed">
                         <span data-kr="이번 제1차 히말라야 원정대는 트레킹, 힐링, 템플스테이 3가지 테마로 진행되며 각각 소수 정원으로 구성됩니다."
@@ -7562,6 +7455,11 @@
                 img.alt = img.getAttribute('data-en-alt');
             });
 
+            // 스크린리더용 라벨
+            document.querySelectorAll('[data-en-aria]').forEach(el => {
+                el.setAttribute('aria-label', el.getAttribute('data-en-aria'));
+            });
+
             // Support JustBe 버튼 링크를 영문용으로 변경
             const supportBtn = document.getElementById('support-justbe-btn');
             if (supportBtn) {
@@ -7585,6 +7483,11 @@
             const images = document.querySelectorAll('[data-kr-alt]');
             images.forEach(img => {
                 img.alt = img.getAttribute('data-kr-alt');
+            });
+
+            // 스크린리더용 라벨
+            document.querySelectorAll('[data-kr-aria]').forEach(el => {
+                el.setAttribute('aria-label', el.getAttribute('data-kr-aria'));
             });
 
             // Support JustBe 버튼 링크를 한글용으로 변경
@@ -7825,8 +7728,6 @@
 
             // 핵심 기능 초기화
             setupCacheBustedImages(); // 캐시 버스팅 이미지 로드
-            // 핵심 기능 초기화
-            setupCacheBustedImages(); // 캐시 버스팅 이미지 로드
             loadDonorData(); // JSON에서 데이터 로드 (내부적으로 updateProgressBar 호출)
             setupCopyButton();
             setupYaksaCopyButton();
@@ -7906,7 +7807,7 @@
             <div class="p-10">
                 <div class="text-center mb-8">
                     <h3 class="text-2xl md:text-3xl font-serif font-bold text-amber-800"
-                        data-kr="JustBe 히말라야 프로젝트: 준한스님 즉문즉설 30문 30답"
+                        data-kr="JustBe 히말라야 프로젝트: 준한스님 30문 30답"
                         data-en="JustBe Himalaya Temple: Ven. Junhan's 30 Q&A">JustBe 히말라야 프로젝트: 준한스님 30문 30답</h3>
                 </div>
 
@@ -8195,6 +8096,9 @@
             menuBtn.addEventListener('click', () => setMenu(panel.hidden));
             panel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
             window.addEventListener('resize', () => { if (window.innerWidth >= 1024) setMenu(false); });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !panel.hidden) { setMenu(false); menuBtn.focus(); }
+            });
 
             // 아코디언: 열릴 때 부드럽게
             document.querySelectorAll('details').forEach(d => d.addEventListener('toggle', () => {
@@ -8238,7 +8142,9 @@
                     const cur = stats.querySelector('.ed-stats-num'); // 언어 전환 시 요소가 교체될 수 있음
                     if (!cur) return;
                     const t = Math.min(1, (now - start) / dur);
-                    cur.textContent = Math.round(target * (1 - Math.pow(1 - t, 3))).toLocaleString();
+                    // 애니메이션 도중 donors.json이 도착해 data-count-to가 바뀌면 그 값을 따라간다
+                    const goal = parseInt(cur.dataset.countTo, 10) || target;
+                    cur.textContent = Math.round(goal * (1 - Math.pow(1 - t, 3))).toLocaleString();
                     if (t < 1) requestAnimationFrame(tick);
                 };
                 requestAnimationFrame(tick);
@@ -8292,7 +8198,7 @@
                 }).join('');
                 const last = parse(data.stories[0].id);
                 meta.textContent = en()
-                    ? `${data.stories.length} stories · updated ${MONTH_EN[last.getMonth()].charAt(0) + MONTH_EN[last.getMonth()].slice(1).toLowerCase()} ${last.getDate()}`
+                    ? `${data.stories.length} stories in Korean · updated ${MONTH_EN[last.getMonth()].charAt(0) + MONTH_EN[last.getMonth()].slice(1).toLowerCase()} ${last.getDate()}`
                     : `이야기 ${data.stories.length}편 · ${last.getMonth() + 1}월 ${last.getDate()}일 업데이트`;
             }
 
@@ -8348,7 +8254,8 @@
                     if (!byMonth.length || byMonth[byMonth.length - 1].k !== k) byMonth.push({ k, items: [] });
                     byMonth[byMonth.length - 1].items.push(s);
                 });
-                stream.innerHTML = byMonth.map(m => {
+                // 소식 본문은 카톡 원문(한국어) 그대로라 EN 모드에서는 안내 한 줄을 붙인다
+                stream.innerHTML = (en() ? '<p class="sosik-lang-note">Stories are shared in Korean, as posted by the monks and our team in Pokhara.</p>' : '') + byMonth.map(m => {
                     const [y, mo] = m.k.split('-').map(Number);
                     return `<section class="sosik-month-group" data-month="${m.k}" id="sosik-m-${m.k}">
                         <h4 class="sosik-month-head"><b>${en() ? MONTH_EN[mo - 1] : mo + '월'}</b><span>${y}</span></h4>
