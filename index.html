@@ -1052,6 +1052,17 @@
             padding-top: 2.5rem;
         }
 
+        /* 영문 모드에서 금액 뒤에 한 번 붙는 통화 표기 */
+        .ed-cur {
+            margin-left: 0.3em;
+            font-family: var(--font-sans);
+            font-size: 0.38em;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            vertical-align: 0.35em;
+            opacity: 0.75;
+        }
+
         /* 동참 안내: 금액 안내 + 납부 방법 카드 2장 */
         .ed-join-grid {
             display: grid;
@@ -1123,7 +1134,7 @@
 
         .ed-join-card-amount {
             margin-top: 0.75rem;
-            font-family: var(--font-serif);
+            font-family: 'Noto Serif KR', serif; /* Cormorant는 올드스타일 숫자뿐 */
             font-size: 1.75rem;
             line-height: 1.2;
         }
@@ -3112,7 +3123,7 @@
                     <div class="ed-join-grid">
                         <div class="ed-join-intro">
                             <h3 class="ed-campaign-h" data-kr="동참 안내" data-en="How to Join">동참 안내</h3>
-                            <p class="ed-join-price tabular-nums">₩1,080,000</p>
+                            <p class="ed-join-price tabular-nums" data-kr="₩1,080,000" data-en="₩1,080,000 <span class='ed-cur'>KRW</span>">₩1,080,000</p>
                             <p class="ed-join-unit" data-kr="1구좌 = 1평 (3.3㎡)" data-en="1 share = 1 pyeong (3.3㎡)">1구좌 = 1평 (3.3㎡)</p>
                             <p class="ed-join-desc" data-kr="월 3만원씩 36개월, 또는 108만원 한 번에.<br>어느 쪽이든 한 평의 창건주가 됩니다."
                                 data-en="₩30,000 a month for 36 months, or ₩1,080,000 at once.<br>Either way, you become the founder of one pyeong.">
@@ -4050,7 +4061,7 @@
         <div class="ed-sheet-head">
             <div>
                 <p class="ed-sheet-kicker" data-kr="한평 불사 · 1구좌 = 1평" data-en="Han-pyeong · 1 share = 1 pyeong">한평 불사 · 1구좌 = 1평</p>
-                <h2 id="ed-sheet-title" class="ed-sheet-price tabular-nums">₩1,080,000</h2>
+                <h2 id="ed-sheet-title" class="ed-sheet-price tabular-nums" data-kr="₩1,080,000" data-en="₩1,080,000 <span class='ed-cur'>KRW</span>">₩1,080,000</h2>
                 <ol class="ed-sheet-benefits">
                     <li><span>01</span><span data-kr="창건주 명부 및 복전 탑에 봉안" data-en="Your name enshrined in the founders' register and merit pagoda">창건주 명부 및 복전 탑에 봉안</span></li>
                     <li><span>02</span><span data-kr="템플스테이·행사 우선 초대" data-en="Priority invitations to temple stays and events">템플스테이·행사 우선 초대</span></li>
