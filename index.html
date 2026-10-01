@@ -1398,19 +1398,20 @@
             background: #fff;
         }
 
+        /* 혜택은 1구좌에 딸린 것이라 금액 바로 아래 캡션처럼 */
         .ed-sheet-benefits {
             display: flex;
             flex-direction: column;
-            gap: 0.6rem;
-            margin-top: 1.25rem;
-            font-size: 0.9rem;
-            line-height: 1.6;
+            gap: 0.2rem;
+            margin-top: 0.75rem;
+            font-size: 0.82rem;
+            line-height: 1.55;
             color: #45423B;
         }
 
         .ed-sheet-benefits li {
             display: flex;
-            gap: 0.75rem;
+            gap: 0.6rem;
         }
 
         .ed-sheet-benefits li > span:first-child {
@@ -3798,6 +3799,11 @@
             <div>
                 <p class="ed-sheet-kicker" data-kr="한평 불사 · 1구좌 = 1평" data-en="Han-pyeong · 1 share = 1 pyeong">한평 불사 · 1구좌 = 1평</p>
                 <h2 id="ed-sheet-title" class="ed-sheet-price tabular-nums">₩1,080,000</h2>
+                <ol class="ed-sheet-benefits">
+                    <li><span>01</span><span data-kr="창건주 명부 및 복전 탑에 봉안" data-en="Your name enshrined in the founders' register and merit pagoda">창건주 명부 및 복전 탑에 봉안</span></li>
+                    <li><span>02</span><span data-kr="템플스테이·행사 우선 초대" data-en="Priority invitations to temple stays and events">템플스테이·행사 우선 초대</span></li>
+                    <li><span>03</span><span data-kr="JustBe 순례 프로그램 10% 할인" data-en="10% off JustBe pilgrimage programs">JustBe 순례 프로그램 10% 할인</span></li>
+                </ol>
             </div>
             <button type="button" class="ed-sheet-close" aria-label="닫기" data-kr-aria="닫기" data-en-aria="Close">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
@@ -3823,11 +3829,6 @@
             </div>
 
 
-            <ol class="ed-sheet-benefits">
-                <li><span>01</span><span data-kr="창건주 명부 및 복전 탑에 봉안" data-en="Your name enshrined in the founders' register and merit pagoda">창건주 명부 및 복전 탑에 봉안</span></li>
-                <li><span>02</span><span data-kr="템플스테이·행사 우선 초대" data-en="Priority invitations to temple stays and events">템플스테이·행사 우선 초대</span></li>
-                <li><span>03</span><span data-kr="JustBe 순례 프로그램 10% 할인" data-en="10% off JustBe pilgrimage programs">JustBe 순례 프로그램 10% 할인</span></li>
-            </ol>
 
             <div class="ed-sheet-account" data-panel="once" hidden>
                 <span class="ed-sheet-bank" data-kr="농협 · 예금주 대한불교조계종 홍대선원" data-en="Nonghyup Bank · Hongdae Zen Center, Jogye Order">농협 · 예금주 대한불교조계종 홍대선원</span>
