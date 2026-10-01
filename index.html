@@ -1488,63 +1488,156 @@
             color: var(--charcoal-soft);
         }
 
-        /* ---------- 04 Journey timeline ---------- */
-        .ed-year-group {
-            display: grid;
+        /* ---------- 04 Journey timeline (가로) ---------- */
+        .ed-journey-bar {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
             gap: 1.5rem;
-            padding-top: 2.5rem;
+            padding-bottom: 1.25rem;
+        }
+
+        .ed-journey-years {
+            display: flex;
+            gap: 1.75rem;
+        }
+
+        .ed-journey-year {
+            padding: 0.25rem 0 0.4rem;
+            border-bottom: 2px solid transparent;
+            font-family: 'Noto Serif KR', serif;
+            font-weight: 300;
+            font-size: clamp(1.6rem, 3vw, 2.4rem);
+            line-height: 1;
+            letter-spacing: -0.03em;
+            color: #6E695E;
+            cursor: pointer;
+            transition: color 0.25s ease, border-color 0.25s ease;
+        }
+
+        .ed-journey-year:hover {
+            color: var(--charcoal);
+        }
+
+        .ed-journey-year[aria-pressed="true"] {
+            color: var(--charcoal);
+            border-bottom-color: var(--ochre-deep);
+        }
+
+        .ed-journey-nav {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .ed-journey-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.75rem;
+            height: 2.75rem;
+            border: 1px solid var(--charcoal);
+            color: var(--charcoal);
+            cursor: pointer;
+            transition: background-color 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+        }
+
+        .ed-journey-arrow:hover:not(:disabled) {
+            background: var(--charcoal);
+            color: var(--ivory);
+        }
+
+        .ed-journey-arrow:disabled {
+            opacity: 0.3;
+            cursor: default;
+        }
+
+        .ed-journey-track {
+            overflow-x: auto;
+            overscroll-behavior-x: contain;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            /* 가로 스크롤 영역은 위아래도 잘라내므로, 선 위에 걸친 점이 반쪽 나지 않게 위쪽 여백 */
+            padding: 0.5rem 0;
+        }
+
+        .ed-journey-track::-webkit-scrollbar {
+            display: none;
+        }
+
+        .ed-journey-track:focus-visible {
+            outline: 2px solid var(--ochre);
+            outline-offset: 4px;
+        }
+
+        /* 시간선: 목록 전체 너비만큼 위쪽에 선을 긋고, 각 항목 점을 그 위에 */
+        .ed-journey-list {
+            position: relative;
+            display: flex;
+            align-items: flex-start;
+            gap: clamp(1.75rem, 3.5vw, 3rem);
+            width: max-content;
+            padding: 2.25rem 2rem 0 0;
             border-top: 1px solid var(--charcoal);
         }
 
-        .ed-year-group + .ed-year-group {
-            margin-top: 5rem;
+        .ed-journey-list > li {
+            flex: 0 0 auto;
+            scroll-snap-align: start;
         }
 
-        @media (min-width: 900px) {
-            .ed-year-group {
-                grid-template-columns: 16rem 1fr;
-                gap: 4rem;
-            }
-
-            /* 데스크톱: 연도는 고정, 오른쪽 이벤트만 스크롤 */
-            .ed-year span {
-                position: sticky;
-                top: 7rem;
-            }
-        }
-
-        .ed-year span {
+        .ed-journey-mark span {
             display: block;
             font-family: 'Noto Serif KR', serif;
             font-weight: 300;
-            font-size: clamp(3rem, 7vw, 5.5rem);
-            line-height: 1;
+            font-size: clamp(3rem, 6vw, 4.75rem);
+            line-height: 0.9;
             letter-spacing: -0.04em;
             color: var(--charcoal);
         }
 
-        .ed-events {
-            position: relative;
-            display: grid;
-            gap: 3.5rem;
-            padding-left: 1.75rem;
-            border-left: 1px solid var(--line);
-        }
-
+        .ed-journey-mark,
         .ed-event {
             position: relative;
-            max-width: 44rem;
         }
 
+        .ed-journey-mark::before,
         .ed-event::before {
             content: '';
             position: absolute;
-            left: calc(-1.75rem - 4px);
-            top: 0.45rem;
+            left: 0;
+            top: calc(-2.25rem - 4px);
             width: 7px;
             height: 7px;
             border-radius: 9999px;
             background: var(--ochre);
+        }
+
+        .ed-journey-mark::before {
+            top: calc(-2.25rem - 6px);
+            width: 11px;
+            height: 11px;
+            background: var(--charcoal);
+        }
+
+        .ed-event {
+            width: min(82vw, 25rem);
+        }
+
+        /* 모바일: 연도 표식은 세로로 좁게, 카드는 다음 카드가 살짝 보이도록 */
+        @media (max-width: 767px) {
+            .ed-journey-list {
+                gap: 1.5rem;
+            }
+
+            .ed-journey-mark span {
+                writing-mode: vertical-rl;
+                transform: rotate(180deg);
+                font-size: 2.25rem;
+            }
+
+            .ed-event {
+                width: min(calc(100vw - 7rem), 25rem);
+            }
         }
 
         .ed-event-date {
@@ -1558,13 +1651,36 @@
         .ed-event-title {
             margin-top: 0.5rem;
             font-family: var(--font-serif);
-            font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+            font-size: clamp(1.35rem, 2vw, 1.6rem);
             font-weight: 500;
-            line-height: 1.3;
+            line-height: 1.35;
             color: var(--charcoal);
         }
 
         .ed-event-media {
+            margin-top: 1.25rem;
+        }
+
+        /* 카드 사진 비율 통일 */
+        .ed-journey .ed-event-media {
+            max-width: none;
+        }
+
+        .ed-journey .ed-media {
+            aspect-ratio: 4 / 3;
+        }
+
+        /* 약사여래불 + 금강역사 두 분처럼 옆으로 긴 사진은 세 분이 다 보이게 */
+        .ed-journey .ed-media.is-wide {
+            aspect-ratio: 23 / 10;
+        }
+
+        .ed-event .ed-body {
+            margin-top: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .ed-event .ed-video {
             margin-top: 1.5rem;
         }
 
@@ -1917,58 +2033,143 @@
             100% { box-shadow: 0 0 0 0 rgba(169, 121, 58, 0); }
         }
 
-        .ed-event-now::before {
-            background: var(--forest);
+        /* 소식방 엿보기: 실천 여정 아래 작은 띠 */
+        .ed-sosik-strip {
+            margin-top: clamp(2.5rem, 5vw, 3.5rem);
         }
 
-        .ed-peek {
-            display: block;
+        .ed-sosik-card {
+            display: grid;
+            gap: 1rem;
             width: 100%;
-            margin-top: 1.75rem;
-            padding: 0.4rem 1.25rem 1.1rem;
+            padding: 1.1rem 1.25rem;
             text-align: left;
             background: #FBFAF6;
             border: 1px solid var(--line);
-            transition: border-color 0.3s ease, transform 0.4s ease;
+            transition: border-color 0.3s ease;
         }
 
-        .ed-peek:hover {
+        .ed-sosik-card:hover {
             border-color: var(--charcoal);
         }
 
-        .ed-peek:focus-visible {
+        .ed-sosik-card:focus-visible {
             outline: 2px solid var(--ochre);
             outline-offset: 3px;
         }
 
+        @media (min-width: 1024px) {
+            .ed-sosik-card {
+                grid-template-columns: 15rem 1fr auto;
+                align-items: center;
+                gap: 2rem;
+                padding: 1.25rem 1.75rem;
+            }
+        }
+
+        .ed-sosik-id {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+        }
+
+        .ed-sosik-mark {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.75rem;
+            height: 2.75rem;
+            border-radius: 9999px;
+            background: var(--forest);
+            overflow: hidden;
+        }
+
+        .ed-sosik-mark img {
+            width: 1.5rem;
+            height: auto;
+            filter: brightness(0) invert(1);
+        }
+
+        .ed-sosik-name {
+            display: flex;
+            flex-direction: column;
+            gap: 0.15rem;
+        }
+
+        .ed-sosik-live {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            color: var(--ochre-deep);
+        }
+
+        .ed-sosik-title {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            color: var(--charcoal);
+        }
+
+        /* 최근 이야기: 데스크톱은 가로 3칸, 모바일은 2줄만 */
         .ed-peek-list {
-            display: block;
+            display: grid;
+        }
+
+        @media (min-width: 1024px) {
+            .ed-peek-list {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 1.5rem;
+            }
         }
 
         .ed-peek-row {
             display: grid;
-            grid-template-columns: 3.4rem 1fr;
-            gap: 0.9rem;
+            grid-template-columns: 2.6rem 1fr;
+            gap: 0.6rem;
             align-items: baseline;
-            padding: 0.85rem 0;
-            border-bottom: 1px solid var(--line);
+            padding: 0.6rem 0;
+            border-top: 1px solid var(--line);
+        }
+
+        @media (max-width: 1023px) {
+            .ed-peek-row:nth-child(n+3) {
+                display: none;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            /* 칸이 좁으니 날짜를 제목 위로 */
+            .ed-peek-row {
+                grid-template-columns: 1fr;
+                gap: 0.2rem;
+                padding: 0 0 0 1.25rem;
+                border-top: 0;
+                border-left: 1px solid var(--line);
+            }
+
+            .ed-sosik-card {
+                grid-template-columns: 13.5rem 1fr auto;
+            }
         }
 
         .ed-peek-row.is-skeleton {
-            height: 3.2rem;
+            height: 2.6rem;
             background: linear-gradient(90deg, transparent, rgba(37, 37, 34, 0.04), transparent);
         }
 
         .ed-peek-date {
             font-family: 'Noto Serif KR', serif;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             color: var(--charcoal-soft);
             font-variant-numeric: tabular-nums;
         }
 
         .ed-peek-title {
-            display: block;
-            font-size: 0.98rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            font-size: 0.9rem;
             font-weight: 600;
             line-height: 1.5;
             color: var(--charcoal);
@@ -1976,23 +2177,39 @@
 
         .ed-peek-sub {
             display: block;
-            margin-top: 0.15rem;
-            font-size: 0.78rem;
+            margin-top: 0.1rem;
+            font-size: 0.75rem;
             color: var(--charcoal-soft);
         }
 
-        .ed-peek-foot {
+        .ed-sosik-foot {
             display: flex;
-            flex-wrap: wrap;
             align-items: center;
             justify-content: space-between;
-            gap: 0.75rem;
-            padding-top: 1rem;
+            gap: 1rem;
+        }
+
+        @media (min-width: 1024px) {
+            .ed-sosik-foot {
+                flex-direction: column;
+                align-items: flex-end;
+                gap: 0.35rem;
+            }
         }
 
         .ed-peek-meta {
-            font-size: 0.78rem;
+            font-size: 0.75rem;
             color: var(--charcoal-soft);
+            white-space: nowrap;
+        }
+
+        .ed-sosik-go {
+            font-size: 0.85rem;
+            font-weight: 600;
+            white-space: nowrap;
+            color: var(--charcoal);
+            border-bottom: 1px solid currentColor;
+            padding-bottom: 2px;
         }
 
         #sosik-modal {
@@ -2961,103 +3178,119 @@
                     <h2 class="ed-title mt-5" data-kr="프로젝트 실천 여정" data-en="Project Implementation Journey">프로젝트 실천 여정</h2>
                 </div>
 
-                <div class="ed-timeline mt-12 md:mt-20">
-                    <!-- 2025 -->
-                    <div class="ed-year-group">
-                        <div class="ed-year"><span>2025</span></div>
-                        <ol class="ed-events">
-                            <li class="ed-event scroll-reveal">
-                                <p class="ed-event-date">2025. 09. 01 —</p>
-                                <h3 class="ed-event-title" data-kr="약사여래 부처님 화주 모연"
-                                    data-en="Medicine Buddha Dana Campaign">약사여래 부처님 화주 모연</h3>
-                                <p class="ed-body"
-                                    data-kr="홍대선원 개원 3주년의 뜻깊은 날을 맞이하여 히말라야에 <strong class='text-charcoal font-semibold'>약사여래 부처님과 금강역사 두 분</strong>을 모시기 위한 화주 불사를 시작합니다."
-                                    data-en="On the meaningful occasion of the 3rd anniversary of Hongdae Zen Center's opening, we begin the merit-making campaign to enshrine the <strong class='text-charcoal font-semibold'>Medicine Buddha and two Guardian Kings</strong> in the Himalayas.">
-                                    홍대선원 개원 3주년의 뜻깊은 날을 맞이하여 히말라야에 <strong class="text-charcoal font-semibold">약사여래 부처님과 금강역사 두 분</strong>을 모시기 위한 화주 불사를 시작합니다.
-                                </p>
-                            </li>
-
-                            <!-- 고불식 -->
-                            <li class="ed-event scroll-reveal">
-                                <p class="ed-event-date">2025. 11. 07</p>
-                                <h3 class="ed-event-title" data-kr="약사여래 고불식" data-en="Medicine Buddha Gobulsik">약사여래 고불식</h3>
-                                <div class="ed-event-media">
-                                    <div class="ed-media aspect-[16/9]">
-                                        <img src="resource/img/gobul.jpeg" alt="2025년 11월 7일 고불식" data-kr-alt="2025년 11월 7일 고불식"
-                                            data-en-alt="November 7, 2025 Gobulsik Ceremony" width="800" height="450" loading="lazy"
-                                            onerror="handleImgError(this, 'flex items-center justify-center h-full bg-gray-200 text-gray-600 text-center p-4')">
-                                    </div>
-                                </div>
-                                <p class="ed-body"
-                                    data-kr="佛母 서칠교 작가님의 공방에서 화마를 이겨내신 네 분의 불보살님(<strong class='text-charcoal font-semibold'>약사여래불</strong>, <strong class='text-charcoal font-semibold'>미륵연화보살</strong>, 두 분의 금강역사) 화주를 많은 분들의 동참(<strong class='text-charcoal font-semibold'>약사여래불</strong> <span class='ed-link-num' onclick='openDonorModal(&quot;yaksa&quot;)' title='동참자 명단 보기'>2038</span>명, <strong class='text-charcoal font-semibold'>미륵연화보살</strong> <span class='ed-link-num' onclick='openDonorModal(&quot;maya&quot;)' title='동참자 명단 보기'>391</span>명)으로 <strong class='text-charcoal font-semibold'>원만 성취</strong>하였고, JustBe 히말라야에서 고불식을 성공적으로 봉행하였습니다."
-                                    data-en="Thanks to the participation of many (<strong class='text-charcoal font-semibold'><span class='ed-link-num' onclick='openDonorModal(&quot;yaksa&quot;)' title='View Donor List'>2,038</span> for Medicine Buddha</strong>, <strong class='text-charcoal font-semibold'><span class='ed-link-num' onclick='openDonorModal(&quot;maya&quot;)' title='View Donor List'>391</span> for Maitreya Lotus Bodhisattva</strong>), we <strong class='text-charcoal font-semibold'>successfully completed</strong> the merit-making for the four Buddhas and Bodhisattvas (<strong>Medicine Buddha</strong>, <strong>Maitreya Lotus Bodhisattva</strong>, and two Guardian Kings) who survived the fire at Artist Seo Chil-gyo's workshop, and successfully held the consecration ceremony at JustBe Himalaya.">
-                                    佛母 서칠교 작가님의 공방에서 화마를 이겨내신 네 분의 불보살님(<strong class="text-charcoal font-semibold">약사여래불</strong>, <strong class="text-charcoal font-semibold">미륵연화보살</strong>, 두 분의 금강역사) 화주를 많은 분들의 동참(<strong class="text-charcoal font-semibold">약사여래불</strong> <span class="ed-link-num" onclick="openDonorModal('yaksa')" title="동참자 명단 보기">2038</span>명, <strong class="text-charcoal font-semibold">미륵연화보살</strong> <span class="ed-link-num" onclick="openDonorModal('maya')" title="동참자 명단 보기">391</span>명)으로 <strong class="text-charcoal font-semibold">원만 성취</strong>하였고, JustBe 히말라야에서 고불식을 성공적으로 봉행하였습니다.
-                                </p>
-                                <div class="ed-video mt-8">
-                                    <iframe src="https://www.youtube.com/embed/rayvtZKHHYM?si=UeWzLNWiM3b9xTq8"
-                                        title="YouTube video player" frameborder="0" loading="lazy"
-                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                        referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
-                                </div>
-                            </li>
-                        </ol>
+                <div class="ed-journey mt-12 md:mt-16 scroll-reveal">
+                    <div class="ed-journey-bar">
+                        <div class="ed-journey-years" aria-label="연도로 이동" data-kr-aria="연도로 이동" data-en-aria="Jump to year">
+                            <button type="button" class="ed-journey-year" data-year="2025" aria-pressed="true">2025</button>
+                            <button type="button" class="ed-journey-year" data-year="2026" aria-pressed="false">2026</button>
+                        </div>
+                        <div class="ed-journey-nav">
+                            <button type="button" class="ed-journey-arrow" data-dir="-1" aria-label="이전" data-kr-aria="이전" data-en-aria="Previous">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+                            </button>
+                            <button type="button" class="ed-journey-arrow" data-dir="1" aria-label="다음" data-kr-aria="다음" data-en-aria="Next">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+                            </button>
+                        </div>
                     </div>
 
-                    <!-- 2026 -->
-                    <div class="ed-year-group">
-                        <div class="ed-year"><span>2026</span></div>
-                        <ol class="ed-events">
-                            <li class="ed-event scroll-reveal">
-                                <p class="ed-event-date" data-kr="진행 중" data-en="Ongoing">진행 중</p>
-                                <h3 class="ed-event-title" data-kr="히말라야 한평 불사" data-en="Himalaya Han-pyeong Merit-Making">히말라야 한평 불사</h3>
-                                <p class="ed-body"
-                                    data-kr="부처님 고향에 세워지는 JustBe 도량, 한 평(3.3㎡)의 땅 위에 자기의 이름으로 부처님 가르침이 다시 피어나는 자리를 짓습니다."
-                                    data-en="Building a place where the Buddha's teachings bloom again in your name on one pyeong (3.3㎡) of land at the JustBe Temple in the Buddha's hometown.">
-                                    부처님 고향에 세워지는 JustBe 도량, 한 평(3.3㎡)의 땅 위에 자기의 이름으로 부처님 가르침이 다시 피어나는 자리를 짓습니다.
-                                </p>
-                                <a href="#yaksa-donation" class="btn-secondary mt-6" data-kr="동참하기 →" data-en="Join →">동참하기 →</a>
-                            </li>
-
-                            <li class="ed-event scroll-reveal">
-                                <p class="ed-event-date">2026. 08. 29 —</p>
-                                <h3 class="ed-event-title" data-kr="네팔 수해 긴급구호 성금" data-en="Nepal Flood Emergency Relief">네팔 수해 긴급구호 성금</h3>
-                                <div class="ed-event-media max-w-md">
-                                    <div class="ed-media aspect-[4/5]">
-                                        <img src="resource/img/relief-bridge-map.jpg" alt="누와콧–라수와 트리슐리강 출렁다리 제안 위치 지도" data-kr-alt="누와콧–라수와 트리슐리강 출렁다리 제안 위치 지도"
-                                            data-en-alt="Map of the proposed suspension bridge site across the Trishuli River between Nuwakot and Rasuwa" width="1000" height="1250" loading="lazy">
-                                    </div>
+                    <!-- 가로 타임라인: 연도 표식 + 이벤트 카드가 한 줄로 이어진다 -->
+                    <div class="ed-journey-track" tabindex="0" aria-label="프로젝트 실천 여정 타임라인" data-kr-aria="프로젝트 실천 여정 타임라인" data-en-aria="Project journey timeline">
+                        <ol class="ed-journey-list">
+                        <li class="ed-journey-mark" data-year="2025"><span>2025</span></li>
+                        <li class="ed-event" data-year="2025">
+                            <p class="ed-event-date">2025. 09. 01 —</p>
+                            <h3 class="ed-event-title" data-kr="약사여래 부처님 화주 모연"
+                                data-en="Medicine Buddha Dana Campaign">약사여래 부처님 화주 모연</h3>
+                            <div class="ed-event-media">
+                                <div class="ed-media is-wide">
+                                    <img src="resource/img/yaksa-3bul.jpg" alt="약사여래불과 금강역사 두 분" data-kr-alt="약사여래불과 금강역사 두 분" data-en-alt="The Medicine Buddha flanked by two Guardian Kings" width="1400" height="609" loading="lazy">
                                 </div>
-                                <p class="ed-body"
-                                    data-kr="네팔 중북부 수해에 약 600명이 함께해 홍대선원 이름으로 8천만 원이 모였고, 불교여성개발원의 2천만 원을 더해 <strong class='text-charcoal font-semibold'>총 약 1억 원</strong>의 긴급구호 성금이 마련되었습니다. 현지에서 가장 시급한 것은 무너진 다리였기에, 성금은 <strong class='text-charcoal font-semibold'>누와콧–라수와 사이 트리슐리강을 잇는 출렁다리(약 500m)</strong> 건설에 우선 쓰일 수 있도록 현지 국회의원과 함께 추진하고 있습니다. 정부 협의가 공식화되면 네팔 정부 공식 계좌로 지정기부해 교량 사업에 정확히 쓰이도록 하겠습니다."
-                                    data-en="About 600 people joined to raise ₩80 million under the Hongdae Zen Center, and with an additional ₩20 million from the Buddhist Women's Development Institute, <strong class='text-charcoal font-semibold'>about ₩100 million</strong> in emergency relief was raised for the floods in north-central Nepal. Since collapsed bridges were the most urgent need, we are working with the local member of parliament to put the funds first toward <strong class='text-charcoal font-semibold'>a suspension bridge (about 500m) across the Trishuli River between Nuwakot and Rasuwa</strong>. Once the government agreement is formalized, the funds will be sent as a designated donation to an official Nepal government account for the bridge project.">
-                                    네팔 중북부 수해에 약 600명이 함께해 홍대선원 이름으로 8천만 원이 모였고, 불교여성개발원의 2천만 원을 더해 <strong class="text-charcoal font-semibold">총 약 1억 원</strong>의 긴급구호 성금이 마련되었습니다. 현지에서 가장 시급한 것은 무너진 다리였기에, 성금은 <strong class="text-charcoal font-semibold">누와콧–라수와 사이 트리슐리강을 잇는 출렁다리(약 500m)</strong> 건설에 우선 쓰일 수 있도록 현지 국회의원과 함께 추진하고 있습니다. 정부 협의가 공식화되면 네팔 정부 공식 계좌로 지정기부해 교량 사업에 정확히 쓰이도록 하겠습니다.
-                                </p>
-                                <button type="button" class="btn-secondary mt-6" onclick="openSosikModal()" data-kr="소식방에서 자세히 보기 →" data-en="Read More in the News Room →">소식방에서 자세히 보기 →</button>
-                            </li>
+                            </div>
+                            <p class="ed-body"
+                                data-kr="홍대선원 개원 3주년의 뜻깊은 날을 맞이하여 히말라야에 <strong class='text-charcoal font-semibold'>약사여래 부처님과 금강역사 두 분</strong>을 모시기 위한 화주 불사를 시작합니다."
+                                data-en="On the meaningful occasion of the 3rd anniversary of Hongdae Zen Center's opening, we begin the merit-making campaign to enshrine the <strong class='text-charcoal font-semibold'>Medicine Buddha and two Guardian Kings</strong> in the Himalayas.">
+                                홍대선원 개원 3주년의 뜻깊은 날을 맞이하여 히말라야에 <strong class="text-charcoal font-semibold">약사여래 부처님과 금강역사 두 분</strong>을 모시기 위한 화주 불사를 시작합니다.
+                            </p>
+                        </li>
 
-                            <!-- 소식방 엿보기: data/sosik.json (scripts/build-sosik.py로 생성) -->
-                            <li class="ed-event ed-event-now scroll-reveal">
-                                <p class="ed-event-date"><span class="ed-live-dot" aria-hidden="true"></span><span
-                                        data-kr="지금, 히말라야에서" data-en="Now, from the Himalayas">지금, 히말라야에서</span></p>
-                                <h3 class="ed-event-title" data-kr="창건주 소식방 엿보기" data-en="A Peek into the Founders' Room">창건주 소식방 엿보기</h3>
-                                <p class="ed-body" data-kr="한평 불사 동참자분들께 스님과 현지 식구들이 직접 전하는 소식방입니다. 최근 이야기를 살짝 보여드려요."
-                                    data-en="The chat room where the monks and our team in Pokhara share news with Han-pyeong participants. Here is a small peek.">
-                                    한평 불사 동참자분들께 스님과 현지 식구들이 직접 전하는 소식방입니다. 최근 이야기를 살짝 보여드려요.
-                                </p>
-                                <button type="button" class="ed-peek" onclick="openSosikModal()" aria-haspopup="dialog">
-                                    <span class="ed-peek-list" id="sosik-peek-list">
-                                        <span class="ed-peek-row is-skeleton"></span>
-                                        <span class="ed-peek-row is-skeleton"></span>
-                                        <span class="ed-peek-row is-skeleton"></span>
-                                    </span>
-                                    <span class="ed-peek-foot">
-                                        <span id="sosik-peek-meta" class="ed-peek-meta"></span>
-                                        <span class="btn-secondary" data-kr="소식방 들여다보기 →" data-en="Open the Room →">소식방 들여다보기 →</span>
-                                    </span>
-                                </button>
-                            </li>
+                        <!-- 고불식 -->
+                        <li class="ed-event" data-year="2025">
+                            <p class="ed-event-date">2025. 11. 07</p>
+                            <h3 class="ed-event-title" data-kr="약사여래 고불식" data-en="Medicine Buddha Gobulsik">약사여래 고불식</h3>
+                            <p class="ed-body"
+                                data-kr="佛母 서칠교 작가님의 공방에서 화마를 이겨내신 네 분의 불보살님(<strong class='text-charcoal font-semibold'>약사여래불</strong>, <strong class='text-charcoal font-semibold'>미륵연화보살</strong>, 두 분의 금강역사) 화주를 많은 분들의 동참(<strong class='text-charcoal font-semibold'>약사여래불</strong> <span class='ed-link-num' onclick='openDonorModal(&quot;yaksa&quot;)' title='동참자 명단 보기'>2038</span>명, <strong class='text-charcoal font-semibold'>미륵연화보살</strong> <span class='ed-link-num' onclick='openDonorModal(&quot;maya&quot;)' title='동참자 명단 보기'>391</span>명)으로 <strong class='text-charcoal font-semibold'>원만 성취</strong>하였고, JustBe 히말라야에서 고불식을 성공적으로 봉행하였습니다."
+                                data-en="Thanks to the participation of many (<strong class='text-charcoal font-semibold'><span class='ed-link-num' onclick='openDonorModal(&quot;yaksa&quot;)' title='View Donor List'>2,038</span> for Medicine Buddha</strong>, <strong class='text-charcoal font-semibold'><span class='ed-link-num' onclick='openDonorModal(&quot;maya&quot;)' title='View Donor List'>391</span> for Maitreya Lotus Bodhisattva</strong>), we <strong class='text-charcoal font-semibold'>successfully completed</strong> the merit-making for the four Buddhas and Bodhisattvas (<strong>Medicine Buddha</strong>, <strong>Maitreya Lotus Bodhisattva</strong>, and two Guardian Kings) who survived the fire at Artist Seo Chil-gyo's workshop, and successfully held the consecration ceremony at JustBe Himalaya.">
+                                佛母 서칠교 작가님의 공방에서 화마를 이겨내신 네 분의 불보살님(<strong class="text-charcoal font-semibold">약사여래불</strong>, <strong class="text-charcoal font-semibold">미륵연화보살</strong>, 두 분의 금강역사) 화주를 많은 분들의 동참(<strong class="text-charcoal font-semibold">약사여래불</strong> <span class="ed-link-num" onclick="openDonorModal('yaksa')" title="동참자 명단 보기">2038</span>명, <strong class="text-charcoal font-semibold">미륵연화보살</strong> <span class="ed-link-num" onclick="openDonorModal('maya')" title="동참자 명단 보기">391</span>명)으로 <strong class="text-charcoal font-semibold">원만 성취</strong>하였고, JustBe 히말라야에서 고불식을 성공적으로 봉행하였습니다.
+                            </p>
+                            <div class="ed-video mt-8">
+                                <iframe src="https://www.youtube.com/embed/rayvtZKHHYM?si=UeWzLNWiM3b9xTq8"
+                                    title="YouTube video player" frameborder="0" loading="lazy"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+                            </div>
+                        </li>
+
+                        <li class="ed-journey-mark" data-year="2026"><span>2026</span></li>
+
+                        <li class="ed-event" data-year="2026">
+                            <p class="ed-event-date">2026. 08. 29 —</p>
+                            <h3 class="ed-event-title" data-kr="네팔 수해 긴급구호 성금" data-en="Nepal Flood Emergency Relief">네팔 수해 긴급구호 성금</h3>
+                            <div class="ed-event-media max-w-md">
+                                <div class="ed-media aspect-[4/5]">
+                                    <img src="resource/img/relief-bridge-map.jpg" alt="누와콧–라수와 트리슐리강 출렁다리 제안 위치 지도" data-kr-alt="누와콧–라수와 트리슐리강 출렁다리 제안 위치 지도"
+                                        data-en-alt="Map of the proposed suspension bridge site across the Trishuli River between Nuwakot and Rasuwa" width="1000" height="1250" loading="lazy" style="object-position: center 42%;">
+                                </div>
+                            </div>
+                            <p class="ed-body"
+                                data-kr="네팔 중북부 수해에 약 600명이 함께해 홍대선원 이름으로 8천만 원이 모였고, 불교여성개발원의 2천만 원을 더해 <strong class='text-charcoal font-semibold'>총 약 1억 원</strong>의 긴급구호 성금이 마련되었습니다. 현지에서 가장 시급한 것은 무너진 다리였기에, 성금은 <strong class='text-charcoal font-semibold'>누와콧–라수와 사이 트리슐리강을 잇는 출렁다리(약 500m)</strong> 건설에 우선 쓰일 수 있도록 현지 국회의원과 함께 추진하고 있습니다. 정부 협의가 공식화되면 네팔 정부 공식 계좌로 지정기부해 교량 사업에 정확히 쓰이도록 하겠습니다."
+                                data-en="About 600 people joined to raise ₩80 million under the Hongdae Zen Center, and with an additional ₩20 million from the Buddhist Women's Development Institute, <strong class='text-charcoal font-semibold'>about ₩100 million</strong> in emergency relief was raised for the floods in north-central Nepal. Since collapsed bridges were the most urgent need, we are working with the local member of parliament to put the funds first toward <strong class='text-charcoal font-semibold'>a suspension bridge (about 500m) across the Trishuli River between Nuwakot and Rasuwa</strong>. Once the government agreement is formalized, the funds will be sent as a designated donation to an official Nepal government account for the bridge project.">
+                                네팔 중북부 수해에 약 600명이 함께해 홍대선원 이름으로 8천만 원이 모였고, 불교여성개발원의 2천만 원을 더해 <strong class="text-charcoal font-semibold">총 약 1억 원</strong>의 긴급구호 성금이 마련되었습니다. 현지에서 가장 시급한 것은 무너진 다리였기에, 성금은 <strong class="text-charcoal font-semibold">누와콧–라수와 사이 트리슐리강을 잇는 출렁다리(약 500m)</strong> 건설에 우선 쓰일 수 있도록 현지 국회의원과 함께 추진하고 있습니다. 정부 협의가 공식화되면 네팔 정부 공식 계좌로 지정기부해 교량 사업에 정확히 쓰이도록 하겠습니다.
+                            </p>
+                            <button type="button" class="btn-secondary mt-6" onclick="openSosikModal()" data-kr="소식방에서 자세히 보기 →" data-en="Read More in the News Room →">소식방에서 자세히 보기 →</button>
+                        </li>
+
+                        <!-- 진행 중인 불사는 항상 타임라인 맨 끝 (스크립트도 끝으로 옮겨 둔다) -->
+                        <li class="ed-event is-ongoing" data-year="2026">
+                            <p class="ed-event-date" data-kr="진행 중" data-en="Ongoing">진행 중</p>
+                            <h3 class="ed-event-title" data-kr="히말라야 한평 불사" data-en="Himalaya Han-pyeong Merit-Making">히말라야 한평 불사</h3>
+                            <div class="ed-event-media">
+                                <div class="ed-media">
+                                    <img src="resource/img/ecofarm.jpg" alt="히말라야 한평 불사 도량 부지" data-kr-alt="히말라야 한평 불사 도량 부지" data-en-alt="Himalaya Han-pyeong temple grounds" width="1200" height="900" loading="lazy">
+                                </div>
+                            </div>
+                            <p class="ed-body"
+                                data-kr="부처님 고향에 세워지는 JustBe 도량, 한 평(3.3㎡)의 땅 위에 자기의 이름으로 부처님 가르침이 다시 피어나는 자리를 짓습니다."
+                                data-en="Building a place where the Buddha's teachings bloom again in your name on one pyeong (3.3㎡) of land at the JustBe Temple in the Buddha's hometown.">
+                                부처님 고향에 세워지는 JustBe 도량, 한 평(3.3㎡)의 땅 위에 자기의 이름으로 부처님 가르침이 다시 피어나는 자리를 짓습니다.
+                            </p>
+                            <a href="#yaksa-donation" class="btn-secondary mt-6" data-kr="동참하기 →" data-en="Join →">동참하기 →</a>
+                        </li>
                         </ol>
                     </div>
+                </div>
+
+                <!-- 소식방 엿보기: 타임라인 아래 작은 띠 (data/sosik.json, scripts/build-sosik.py로 생성) -->
+                <div class="ed-sosik-strip scroll-reveal">
+                    <button type="button" class="ed-sosik-card" onclick="openSosikModal()" aria-haspopup="dialog">
+                        <span class="ed-sosik-id">
+                            <span class="ed-sosik-mark" aria-hidden="true"><img src="resource/img/justbe_img.png" alt=""></span>
+                            <span class="ed-sosik-name">
+                                <span class="ed-sosik-live"><span class="ed-live-dot" aria-hidden="true"></span><span
+                                        data-kr="지금, 히말라야에서" data-en="Now, from the Himalayas">지금, 히말라야에서</span></span>
+                                <span class="ed-sosik-title" data-kr="창건주 소식방 엿보기" data-en="Peek into the Founders' Room">창건주 소식방 엿보기</span>
+                            </span>
+                        </span>
+                        <span class="ed-peek-list" id="sosik-peek-list">
+                            <span class="ed-peek-row is-skeleton"></span>
+                            <span class="ed-peek-row is-skeleton"></span>
+                            <span class="ed-peek-row is-skeleton"></span>
+                        </span>
+                        <span class="ed-sosik-foot">
+                            <span id="sosik-peek-meta" class="ed-peek-meta"></span>
+                            <span class="ed-sosik-go" data-kr="소식 모두 보기 →" data-en="See all stories →">소식 모두 보기 →</span>
+                        </span>
+                    </button>
                 </div>
             </div>
         </section>
@@ -8529,6 +8762,58 @@
                 }
             }
 
+            // 실천 여정: 가로 타임라인 (연도 버튼 + 좌우 화살표 + 스와이프)
+            const track = document.querySelector('.ed-journey-track');
+            if (track) {
+                const list = track.querySelector('.ed-journey-list');
+                list.querySelectorAll('.is-ongoing').forEach(li => list.appendChild(li));
+                const items = [...track.querySelectorAll('.ed-journey-list > li')];
+                const marks = items.filter(li => li.classList.contains('ed-journey-mark'));
+                const years = [...document.querySelectorAll('.ed-journey-year')];
+                const [prevBtn, nextBtn] = document.querySelectorAll('.ed-journey-arrow');
+                const smooth = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+                const go = (li) => track.scrollTo({ left: li.offsetLeft, behavior: smooth });
+
+                years.forEach(btn => btn.addEventListener('click', () => {
+                    const mark = marks.find(m => m.dataset.year === btn.dataset.year);
+                    if (mark) go(mark);
+                }));
+                prevBtn.addEventListener('click', () => {
+                    const x = track.scrollLeft;
+                    const target = items.filter(li => li.offsetLeft < x - 2).pop();
+                    go(target || items[0]);
+                });
+                nextBtn.addEventListener('click', () => {
+                    const x = track.scrollLeft;
+                    const target = items.find(li => li.offsetLeft > x + 2);
+                    if (target) go(target);
+                });
+
+                let ticking = false;
+                const sync = () => {
+                    ticking = false;
+                    const x = track.scrollLeft;
+                    const max = track.scrollWidth - track.clientWidth;
+                    prevBtn.disabled = x <= 2;
+                    nextBtn.disabled = x >= max - 2;
+                    // 화면 왼쪽 1/3 지점을 지난 마지막 연도 표식이 현재 연도 (끝까지 가면 마지막 연도)
+                    const probe = x >= max - 2 ? Infinity : x + track.clientWidth / 3;
+                    const current = marks.filter(m => m.offsetLeft <= probe).pop() || marks[0];
+                    years.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.year === current.dataset.year)));
+                };
+                track.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(sync); } }, { passive: true });
+                window.addEventListener('resize', sync);
+
+                // 처음에는 가장 최근(맨 오른쪽)부터 보여 준다. 사진·폰트가 늦게 와서 폭이 바뀌어도 손대기 전까지는 끝에 붙여 둔다
+                let touched = false;
+                const toEnd = () => { if (!touched) { track.scrollLeft = track.scrollWidth; sync(); } };
+                ['pointerdown', 'wheel', 'keydown'].forEach(ev => track.addEventListener(ev, () => { touched = true; }, { passive: true }));
+                document.querySelectorAll('.ed-journey-year, .ed-journey-arrow').forEach(b => b.addEventListener('click', () => { touched = true; }));
+                toEnd();
+                window.addEventListener('load', toEnd);
+                if (document.fonts) document.fonts.ready.then(toEnd);
+            }
+
             // 아코디언: 열릴 때 부드럽게
             document.querySelectorAll('details').forEach(d => d.addEventListener('toggle', () => {
                 d.classList.remove('ed-anim');
@@ -8765,7 +9050,7 @@
 
                 // 엿보기 카드: 타임라인 근처에 오면 불러오기
                 const peek = document.getElementById('sosik-peek-list');
-                const start = () => load().then(renderPeek).catch(() => { peek.closest('.ed-event-now').hidden = true; });
+                const start = () => load().then(renderPeek).catch(() => { peek.closest('.ed-sosik-strip').hidden = true; });
                 if ('IntersectionObserver' in window) {
                     const io = new IntersectionObserver((entries) => {
                         if (entries[0].isIntersecting) { io.disconnect(); start(); }
