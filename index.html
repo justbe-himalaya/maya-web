@@ -2028,58 +2028,143 @@
             100% { box-shadow: 0 0 0 0 rgba(169, 121, 58, 0); }
         }
 
-        .ed-event-now::before {
-            background: var(--forest);
+        /* 소식방 엿보기: 실천 여정 아래 작은 띠 */
+        .ed-sosik-strip {
+            margin-top: clamp(2.5rem, 5vw, 3.5rem);
         }
 
-        .ed-peek {
-            display: block;
+        .ed-sosik-card {
+            display: grid;
+            gap: 1rem;
             width: 100%;
-            margin-top: 1.75rem;
-            padding: 0.4rem 1.25rem 1.1rem;
+            padding: 1.1rem 1.25rem;
             text-align: left;
             background: #FBFAF6;
             border: 1px solid var(--line);
-            transition: border-color 0.3s ease, transform 0.4s ease;
+            transition: border-color 0.3s ease;
         }
 
-        .ed-peek:hover {
+        .ed-sosik-card:hover {
             border-color: var(--charcoal);
         }
 
-        .ed-peek:focus-visible {
+        .ed-sosik-card:focus-visible {
             outline: 2px solid var(--ochre);
             outline-offset: 3px;
         }
 
+        @media (min-width: 1024px) {
+            .ed-sosik-card {
+                grid-template-columns: 15rem 1fr auto;
+                align-items: center;
+                gap: 2rem;
+                padding: 1.25rem 1.75rem;
+            }
+        }
+
+        .ed-sosik-id {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+        }
+
+        .ed-sosik-mark {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.75rem;
+            height: 2.75rem;
+            border-radius: 9999px;
+            background: var(--forest);
+            overflow: hidden;
+        }
+
+        .ed-sosik-mark img {
+            width: 1.5rem;
+            height: auto;
+            filter: brightness(0) invert(1);
+        }
+
+        .ed-sosik-name {
+            display: flex;
+            flex-direction: column;
+            gap: 0.15rem;
+        }
+
+        .ed-sosik-live {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            color: var(--ochre-deep);
+        }
+
+        .ed-sosik-title {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            color: var(--charcoal);
+        }
+
+        /* 최근 이야기: 데스크톱은 가로 3칸, 모바일은 2줄만 */
         .ed-peek-list {
-            display: block;
+            display: grid;
+        }
+
+        @media (min-width: 1024px) {
+            .ed-peek-list {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 1.5rem;
+            }
         }
 
         .ed-peek-row {
             display: grid;
-            grid-template-columns: 3.4rem 1fr;
-            gap: 0.9rem;
+            grid-template-columns: 2.6rem 1fr;
+            gap: 0.6rem;
             align-items: baseline;
-            padding: 0.85rem 0;
-            border-bottom: 1px solid var(--line);
+            padding: 0.6rem 0;
+            border-top: 1px solid var(--line);
+        }
+
+        @media (max-width: 1023px) {
+            .ed-peek-row:nth-child(n+3) {
+                display: none;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            /* 칸이 좁으니 날짜를 제목 위로 */
+            .ed-peek-row {
+                grid-template-columns: 1fr;
+                gap: 0.2rem;
+                padding: 0 0 0 1.25rem;
+                border-top: 0;
+                border-left: 1px solid var(--line);
+            }
+
+            .ed-sosik-card {
+                grid-template-columns: 13.5rem 1fr auto;
+            }
         }
 
         .ed-peek-row.is-skeleton {
-            height: 3.2rem;
+            height: 2.6rem;
             background: linear-gradient(90deg, transparent, rgba(37, 37, 34, 0.04), transparent);
         }
 
         .ed-peek-date {
             font-family: 'Noto Serif KR', serif;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             color: var(--charcoal-soft);
             font-variant-numeric: tabular-nums;
         }
 
         .ed-peek-title {
-            display: block;
-            font-size: 0.98rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            font-size: 0.9rem;
             font-weight: 600;
             line-height: 1.5;
             color: var(--charcoal);
@@ -2087,23 +2172,39 @@
 
         .ed-peek-sub {
             display: block;
-            margin-top: 0.15rem;
-            font-size: 0.78rem;
+            margin-top: 0.1rem;
+            font-size: 0.75rem;
             color: var(--charcoal-soft);
         }
 
-        .ed-peek-foot {
+        .ed-sosik-foot {
             display: flex;
-            flex-wrap: wrap;
             align-items: center;
             justify-content: space-between;
-            gap: 0.75rem;
-            padding-top: 1rem;
+            gap: 1rem;
+        }
+
+        @media (min-width: 1024px) {
+            .ed-sosik-foot {
+                flex-direction: column;
+                align-items: flex-end;
+                gap: 0.35rem;
+            }
         }
 
         .ed-peek-meta {
-            font-size: 0.78rem;
+            font-size: 0.75rem;
             color: var(--charcoal-soft);
+            white-space: nowrap;
+        }
+
+        .ed-sosik-go {
+            font-size: 0.85rem;
+            font-weight: 600;
+            white-space: nowrap;
+            color: var(--charcoal);
+            border-bottom: 1px solid currentColor;
+            padding-bottom: 2px;
         }
 
         #sosik-modal {
@@ -3158,30 +3259,31 @@
                             </p>
                             <button type="button" class="btn-secondary mt-6" onclick="openSosikModal()" data-kr="소식방에서 자세히 보기 →" data-en="Read More in the News Room →">소식방에서 자세히 보기 →</button>
                         </li>
-
-                        <!-- 소식방 엿보기: data/sosik.json (scripts/build-sosik.py로 생성) -->
-                        <li class="ed-event ed-event-now" data-year="2026">
-                            <p class="ed-event-date"><span class="ed-live-dot" aria-hidden="true"></span><span
-                                    data-kr="지금, 히말라야에서" data-en="Now, from the Himalayas">지금, 히말라야에서</span></p>
-                            <h3 class="ed-event-title" data-kr="창건주 소식방 엿보기" data-en="A Peek into the Founders' Room">창건주 소식방 엿보기</h3>
-                            <p class="ed-body" data-kr="한평 불사 동참자분들께 스님과 현지 식구들이 직접 전하는 소식방입니다. 최근 이야기를 살짝 보여드려요."
-                                data-en="The chat room where the monks and our team in Pokhara share news with Han-pyeong participants. Here is a small peek.">
-                                한평 불사 동참자분들께 스님과 현지 식구들이 직접 전하는 소식방입니다. 최근 이야기를 살짝 보여드려요.
-                            </p>
-                            <button type="button" class="ed-peek" onclick="openSosikModal()" aria-haspopup="dialog">
-                                <span class="ed-peek-list" id="sosik-peek-list">
-                                    <span class="ed-peek-row is-skeleton"></span>
-                                    <span class="ed-peek-row is-skeleton"></span>
-                                    <span class="ed-peek-row is-skeleton"></span>
-                                </span>
-                                <span class="ed-peek-foot">
-                                    <span id="sosik-peek-meta" class="ed-peek-meta"></span>
-                                    <span class="btn-secondary" data-kr="소식방 들여다보기 →" data-en="Open the Room →">소식방 들여다보기 →</span>
-                                </span>
-                            </button>
-                        </li>
                         </ol>
                     </div>
+                </div>
+
+                <!-- 소식방 엿보기: 타임라인 아래 작은 띠 (data/sosik.json, scripts/build-sosik.py로 생성) -->
+                <div class="ed-sosik-strip scroll-reveal">
+                    <button type="button" class="ed-sosik-card" onclick="openSosikModal()" aria-haspopup="dialog">
+                        <span class="ed-sosik-id">
+                            <span class="ed-sosik-mark" aria-hidden="true"><img src="resource/img/justbe_img.png" alt=""></span>
+                            <span class="ed-sosik-name">
+                                <span class="ed-sosik-live"><span class="ed-live-dot" aria-hidden="true"></span><span
+                                        data-kr="지금, 히말라야에서" data-en="Now, from the Himalayas">지금, 히말라야에서</span></span>
+                                <span class="ed-sosik-title" data-kr="창건주 소식방 엿보기" data-en="Peek into the Founders' Room">창건주 소식방 엿보기</span>
+                            </span>
+                        </span>
+                        <span class="ed-peek-list" id="sosik-peek-list">
+                            <span class="ed-peek-row is-skeleton"></span>
+                            <span class="ed-peek-row is-skeleton"></span>
+                            <span class="ed-peek-row is-skeleton"></span>
+                        </span>
+                        <span class="ed-sosik-foot">
+                            <span id="sosik-peek-meta" class="ed-peek-meta"></span>
+                            <span class="ed-sosik-go" data-kr="들여다보기 →" data-en="Open →">들여다보기 →</span>
+                        </span>
+                    </button>
                 </div>
             </div>
         </section>
@@ -8931,7 +9033,7 @@
 
                 // 엿보기 카드: 타임라인 근처에 오면 불러오기
                 const peek = document.getElementById('sosik-peek-list');
-                const start = () => load().then(renderPeek).catch(() => { peek.closest('.ed-event-now').hidden = true; });
+                const start = () => load().then(renderPeek).catch(() => { peek.closest('.ed-sosik-strip').hidden = true; });
                 if ('IntersectionObserver' in window) {
                     const io = new IntersectionObserver((entries) => {
                         if (entries[0].isIntersecting) { io.disconnect(); start(); }
