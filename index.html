@@ -1052,6 +1052,15 @@
             padding-top: 2.5rem;
         }
 
+        /* 영문 모드 해외 송금 안내 (SWIFT) */
+        .ed-swift {
+            display: block;
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px dashed rgba(37, 37, 34, 0.2);
+            color: #45423B;
+        }
+
         /* 영문 모드에서 금액 뒤에 한 번 붙는 통화 표기 */
         .ed-cur {
             margin-left: 0.3em;
@@ -3135,7 +3144,7 @@
                             <div class="ed-join-card is-featured">
                                 <p class="ed-join-card-kicker" data-kr="매월" data-en="Monthly">매월</p>
                                 <p class="ed-join-card-amount" data-kr="월 3만원" data-en="₩30,000 / mo">월 3만원</p>
-                                <p class="ed-join-card-sub" data-kr="36개월 CMS 자동이체" data-en="36-month automatic transfer (CMS)">36개월 CMS 자동이체</p>
+                                <p class="ed-join-card-sub" data-kr="36개월 CMS 자동이체" data-en="36-month automatic transfer (CMS, Korean bank accounts only)">36개월 CMS 자동이체</p>
                                 <a href="https://my.bankcms.co.kr/i83pFB" target="_blank" rel="noopener"
                                     onclick="gtag('event', 'cms_signup_click', {'event_category': 'donation', 'event_label': 'hanpyeong_bulsa', 'value': 800, 'currency': 'USD', 'transport_type': 'beacon'});"
                                     class="btn-primary ed-join-card-btn" data-kr="자동이체 신청 →" data-en="Sign Up →">자동이체 신청 →</a>
@@ -3148,7 +3157,7 @@
                                     <span data-kr="농협" data-en="Nonghyup Bank">농협</span> <span class="tabular-nums">301-0373-8315-51</span>
                                 </p>
                                 <p class="ed-join-card-note" data-kr="예금주 대한불교조계종 홍대선원 · 입금 시 이름 / '한평' 기재"
-                                    data-en="Holder: Hongdae Zen Center, Jogye Order · include your name / 'Hanpyeong'">예금주 대한불교조계종 홍대선원 · 입금 시 이름 / '한평' 기재</p>
+                                    data-en="Holder: Hongdae Zen Center, Jogye Order · include your name / 'Hanpyeong'<br><span class='ed-swift'>From abroad: SWIFT/BIC <strong>NACFKRSE</strong> (NongHyup Bank). Korean accounts have no IBAN, so enter the account number.</span>">예금주 대한불교조계종 홍대선원 · 입금 시 이름 / '한평' 기재</p>
                                 <button type="button" class="ed-join-card-btn ed-join-copy"
                                     onclick="copyToClipboard('301-0373-8315-51'); gtag('event', 'account_copy', {'event_category': 'donation', 'event_label': 'hanpyeong_account', 'value': 800, 'currency': 'USD', 'transport_type': 'beacon'});"
                                     data-kr="계좌번호 복사" data-en="Copy Account Number">계좌번호 복사</button>
@@ -3998,7 +4007,7 @@
             </p>
             <p class="mt-1 text-sm md:text-base"
                 data-kr="<span class='inline-block'>계좌: 농협 <span class='text-white font-mono'>301-0373-8315-51</span></span> <span class='inline-block'>(예금주: 대한불교조계종 홍대선원)</span>"
-                data-en="<span class='inline-block'>Account: Nonghyup <span class='text-white font-mono'>301-0373-8315-51</span></span> <span class='inline-block'>(Account holder: Hongdae Zen Center, Jogye Order)</span>">
+                data-en="<span class='inline-block'>Account: Nonghyup <span class='text-white font-mono'>301-0373-8315-51</span></span> <span class='inline-block'>(Account holder: Hongdae Zen Center, Jogye Order)</span> <span class='inline-block'>SWIFT/BIC: <span class='text-white font-mono'>NACFKRSE</span></span>">
                 <span class="inline-block">계좌: 농협 <span class="text-white font-mono">301-0373-8315-51</span></span> <span class="inline-block">(예금주: 대한불교조계종 홍대선원)</span>
             </p>
             <p class="mt-1 mb-8 text-sm md:text-base"
@@ -4094,9 +4103,9 @@
 
 
             <div class="ed-sheet-account" data-panel="once" hidden>
-                <span class="ed-sheet-bank" data-kr="농협 · 예금주 대한불교조계종 홍대선원" data-en="Nonghyup Bank · Hongdae Zen Center, Jogye Order">농협 · 예금주 대한불교조계종 홍대선원</span>
+                <span class="ed-sheet-bank" data-kr="농협 · 예금주 대한불교조계종 홍대선원" data-en="NongHyup Bank (SWIFT/BIC: NACFKRSE) · Hongdae Zen Center, Jogye Order">농협 · 예금주 대한불교조계종 홍대선원</span>
                 <span class="ed-sheet-acct tabular-nums">301-0373-8315-51</span>
-                <span class="ed-sheet-bank" data-kr="입금 시 이름 / '한평'을 함께 적어 주세요." data-en="Please include your name and 'Hanpyeong'.">입금 시 이름 / '한평'을 함께 적어 주세요.</span>
+                <span class="ed-sheet-bank" data-kr="입금 시 이름 / '한평'을 함께 적어 주세요." data-en="Please include your name and 'Hanpyeong'. Korean accounts have no IBAN, so enter the account number.">입금 시 이름 / '한평'을 함께 적어 주세요.</span>
             </div>
         </div>
 
