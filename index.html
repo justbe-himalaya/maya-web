@@ -230,7 +230,7 @@
 
         /* Cormorant 웹폰트는 올드스타일 숫자만 제공 → 큰 숫자는 Noto Serif KR로 */
         .ed-title .tabular-nums,
-        .ed-price,
+        .ed-join-price,
         .ed-stats-num,
         .ed-date {
             font-family: 'Noto Serif KR', serif;
@@ -1051,100 +1051,131 @@
             padding-top: 2.5rem;
         }
 
-        .ed-join-head {
-            display: flex;
-            align-items: baseline;
-            justify-content: space-between;
-            gap: 1rem;
+        /* 동참 안내: 금액 안내 + 납부 방법 카드 2장 */
+        .ed-join-grid {
+            display: grid;
+            gap: 2.5rem;
         }
 
-        .ed-join-unit {
-            font-size: 0.9rem;
-            color: #A7B2A9;
+        @media (min-width: 1024px) {
+            .ed-join-grid {
+                grid-template-columns: 5fr 7fr;
+                gap: 4rem;
+                align-items: center;
+            }
         }
 
         .ed-join-price {
-            display: grid;
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-            padding-bottom: 2.5rem;
-            border-bottom: 1px solid rgba(233, 228, 216, 0.16);
-        }
-
-        @media (min-width: 768px) {
-            .ed-join-price {
-                grid-template-columns: auto 1fr;
-                gap: 4rem;
-                align-items: end;
-            }
-        }
-
-        .ed-price {
-            font-family: var(--font-serif);
-            font-size: clamp(2.8rem, 6.5vw, 5rem);
-            line-height: 1;
+            font-size: clamp(2.6rem, 5vw, 3.75rem);
+            line-height: 1.05;
             color: #F5F2EA;
-            font-variant-numeric: lining-nums;
         }
 
-        .ed-price-options p {
-            display: flex;
-            gap: 1rem;
-            padding: 0.55rem 0;
-            font-size: 1rem;
+        .ed-join-unit {
+            margin-top: 0.75rem;
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
             color: #E9E4D8;
         }
 
-        .ed-opt-label {
-            min-width: 3.5rem;
-            font-size: 0.72rem;
-            font-weight: 600;
-            letter-spacing: 0.15em;
-            color: #D6B788;
-            padding-top: 0.2rem;
+        .ed-join-desc {
+            margin-top: 1.5rem;
+            font-size: 0.98rem;
+            line-height: 1.8;
+            color: #BFCDC3;
         }
 
-        .ed-join-methods {
+        .ed-join-cards {
             display: grid;
-            gap: 2.5rem;
-            padding-top: 2.5rem;
+            gap: 1rem;
         }
 
-        @media (min-width: 768px) {
-            .ed-join-methods {
+        @media (min-width: 640px) {
+            .ed-join-cards {
                 grid-template-columns: 1fr 1fr;
-                gap: 4rem;
             }
         }
 
-        .ed-kicker-light {
-            color: #D6B788;
+        .ed-join-card {
+            display: flex;
+            flex-direction: column;
+            padding: 1.75rem;
+            background: var(--ivory);
+            color: var(--charcoal);
+            border: 1px solid transparent;
         }
 
-        .ed-method-main {
+        .ed-join-card.is-featured {
+            border: 2px solid #C29B61;
+        }
+
+        .ed-join-card-kicker {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            color: var(--charcoal-soft);
+        }
+
+        .ed-join-card.is-featured .ed-join-card-kicker {
+            color: var(--ochre-deep);
+        }
+
+        .ed-join-card-amount {
             margin-top: 0.75rem;
-            font-size: 1.15rem;
-            line-height: 1.7;
-            color: #F5F2EA;
+            font-family: var(--font-serif);
+            font-size: 1.75rem;
+            line-height: 1.2;
         }
 
-        .ed-method-sub {
-            font-size: 0.85rem;
-            color: #A7B2A9;
+        .ed-join-card-sub {
+            margin-top: 0.5rem;
+            font-size: 0.92rem;
+            color: #45423B;
         }
 
-        .ed-method-warn {
-            margin-top: 0.4rem;
-            font-size: 0.85rem;
-            color: #E7B39C;
+        .ed-join-card-note {
+            margin-top: 0.35rem;
+            font-size: 0.8rem;
+            line-height: 1.6;
+            color: var(--charcoal-soft);
         }
 
-        .ed-btn-light {
-            color: #F5F2EA;
+        .ed-join-card-btn {
+            margin-top: auto;
+            width: 100%;
+            min-height: 3.25rem;
         }
 
-        .ed-btn-light:hover {
-            color: #D6B788;
+        /* 두 카드의 버튼 높이를 맞추기 위해 버튼은 아래로 밀고, 본문과는 최소 간격 확보 */
+        .ed-join-card > p:last-of-type {
+            margin-bottom: 1.5rem;
+        }
+
+        .ed-join-card .btn-primary {
+            background: var(--ochre-deep);
+        }
+
+        .ed-join-card .btn-primary:hover {
+            background: #6C4D27;
+        }
+
+        .ed-join-copy {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--charcoal);
+            background: transparent;
+            color: var(--charcoal);
+            font-size: 0.92rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            cursor: pointer;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        .ed-join-copy:hover {
+            background: var(--charcoal);
+            color: var(--ivory);
         }
 
         .ed-join-contact {
@@ -2585,43 +2616,41 @@
                     </div>
                 </div>
 
-                <!-- 동참 안내 -->
+                <!-- 동참 안내: 왼쪽 금액 안내 + 오른쪽 납부 방법 카드 2장 (각자 바로 실행) -->
                 <div class="ed-join mt-16 md:mt-28 scroll-reveal">
-                    <div class="ed-join-head">
-                        <h3 class="ed-campaign-h" data-kr="동참 안내" data-en="Participation Guide">동참 안내</h3>
-                        <p class="ed-join-unit" data-kr="1구좌 (1평)" data-en="1 Share (1 Pyeong)">1구좌 (1평)</p>
-                    </div>
-
-                    <div class="ed-join-price">
-                        <p class="ed-price tabular-nums">₩1,080,000</p>
-                        <div class="ed-price-options">
-                            <p><span class="ed-opt-label" data-kr="분납" data-en="Installment">분납</span><span
-                                    data-kr="월 3만원 × 36개월" data-en="₩30,000 / month × 36 months">월 3만원 × 36개월</span></p>
-                            <p><span class="ed-opt-label" data-kr="일시불" data-en="Lump Sum">일시불</span><span
-                                    data-kr="108 만원" data-en="₩1,080,000">108 만원</span></p>
-                        </div>
-                    </div>
-
-                    <div class="ed-join-methods">
-                        <div class="ed-method">
-                            <p class="ed-kicker ed-kicker-light" data-kr="CMS 자동이체" data-en="Auto Transfer">CMS 자동이체</p>
-                            <p class="ed-method-main" data-kr="매월 자동 납부" data-en="Auto Monthly Payment">매월 자동 납부</p>
-                            <a href="https://my.bankcms.co.kr/i83pFB" target="_blank" rel="noopener"
-                                onclick="gtag('event', 'cms_signup_click', {'event_category': 'donation', 'event_label': 'hanpyeong_bulsa', 'value': 800, 'currency': 'USD', 'transport_type': 'beacon'});"
-                                class="btn-primary mt-6" data-kr="신청하기 →" data-en="Apply →">신청하기 →</a>
-                        </div>
-                        <div class="ed-method">
-                            <p class="ed-kicker ed-kicker-light" data-kr="계좌 이체" data-en="Bank Transfer">계좌 이체</p>
-                            <p class="ed-method-main"
-                                data-kr="농협 <span class='font-mono tracking-wide'>301-0373-8315-51</span><br><span class='ed-method-sub'>예금주: 대한불교조계종 홍대선원</span>"
-                                data-en="Nonghyup Bank <span class='font-mono tracking-wide'>301-0373-8315-51</span><br><span class='ed-method-sub'>Account holder: Hongdae Zen Center, Jogye Order</span>">
-                                농협 <span class="font-mono tracking-wide">301-0373-8315-51</span><br><span class="ed-method-sub">예금주: 대한불교조계종 홍대선원</span>
+                    <div class="ed-join-grid">
+                        <div class="ed-join-intro">
+                            <h3 class="ed-campaign-h" data-kr="동참 안내" data-en="How to Join">동참 안내</h3>
+                            <p class="ed-join-price tabular-nums">₩1,080,000</p>
+                            <p class="ed-join-unit" data-kr="1구좌 = 1평 (3.3㎡)" data-en="1 share = 1 pyeong (3.3㎡)">1구좌 = 1평 (3.3㎡)</p>
+                            <p class="ed-join-desc" data-kr="월 3만원씩 36개월, 또는 108만원 한 번에.<br>어느 쪽이든 한 평의 창건주가 됩니다."
+                                data-en="₩30,000 a month for 36 months, or ₩1,080,000 at once.<br>Either way, you become the founder of one pyeong.">
+                                월 3만원씩 36개월, 또는 108만원 한 번에.<br>어느 쪽이든 한 평의 창건주가 됩니다.
                             </p>
-                            <p class="ed-method-warn" data-kr="입금 시 이름 / '한평' 기재" data-en="Name / 'Hanpyeong' required">
-                                입금 시 이름 / '한평' 기재
-                            </p>
-                            <button onclick="copyToClipboard('301-0373-8315-51'); gtag('event', 'account_copy', {'event_category': 'donation', 'event_label': 'hanpyeong_account', 'value': 800, 'currency': 'USD', 'transport_type': 'beacon'});"
-                                class="btn-secondary ed-btn-light mt-6" data-kr="계좌번호 복사" data-en="Copy Account">계좌번호 복사</button>
+                        </div>
+
+                        <div class="ed-join-cards">
+                            <div class="ed-join-card is-featured">
+                                <p class="ed-join-card-kicker" data-kr="매월" data-en="Monthly">매월</p>
+                                <p class="ed-join-card-amount" data-kr="월 3만원" data-en="₩30,000 / mo">월 3만원</p>
+                                <p class="ed-join-card-sub" data-kr="36개월 CMS 자동이체" data-en="36-month automatic transfer (CMS)">36개월 CMS 자동이체</p>
+                                <a href="https://my.bankcms.co.kr/i83pFB" target="_blank" rel="noopener"
+                                    onclick="gtag('event', 'cms_signup_click', {'event_category': 'donation', 'event_label': 'hanpyeong_bulsa', 'value': 800, 'currency': 'USD', 'transport_type': 'beacon'});"
+                                    class="btn-primary ed-join-card-btn" data-kr="자동이체 신청 →" data-en="Sign Up →">자동이체 신청 →</a>
+                            </div>
+
+                            <div class="ed-join-card">
+                                <p class="ed-join-card-kicker" data-kr="일시불" data-en="One-time">일시불</p>
+                                <p class="ed-join-card-amount" data-kr="108만원" data-en="₩1,080,000">108만원</p>
+                                <p class="ed-join-card-sub">
+                                    <span data-kr="농협" data-en="Nonghyup Bank">농협</span> <span class="tabular-nums">301-0373-8315-51</span>
+                                </p>
+                                <p class="ed-join-card-note" data-kr="예금주 대한불교조계종 홍대선원 · 입금 시 이름 / '한평' 기재"
+                                    data-en="Holder: Hongdae Zen Center, Jogye Order · include your name / 'Hanpyeong'">예금주 대한불교조계종 홍대선원 · 입금 시 이름 / '한평' 기재</p>
+                                <button type="button" class="ed-join-card-btn ed-join-copy"
+                                    onclick="copyToClipboard('301-0373-8315-51'); gtag('event', 'account_copy', {'event_category': 'donation', 'event_label': 'hanpyeong_account', 'value': 800, 'currency': 'USD', 'transport_type': 'beacon'});"
+                                    data-kr="계좌번호 복사" data-en="Copy Account Number">계좌번호 복사</button>
+                            </div>
                         </div>
                     </div>
 
