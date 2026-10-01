@@ -1556,8 +1556,8 @@
             overscroll-behavior-x: contain;
             scroll-snap-type: x mandatory;
             scrollbar-width: none;
-            /* 마지막 카드 오른쪽 여백, 포커스 링이 잘리지 않게 */
-            padding: 0 0 0.5rem;
+            /* 가로 스크롤 영역은 위아래도 잘라내므로, 선 위에 걸친 점이 반쪽 나지 않게 위쪽 여백 */
+            padding: 0.5rem 0;
         }
 
         .ed-journey-track::-webkit-scrollbar {
@@ -3227,21 +3227,6 @@
                         </li>
 
                         <li class="ed-journey-mark" data-year="2026"><span>2026</span></li>
-                        <li class="ed-event" data-year="2026">
-                            <p class="ed-event-date" data-kr="진행 중" data-en="Ongoing">진행 중</p>
-                            <h3 class="ed-event-title" data-kr="히말라야 한평 불사" data-en="Himalaya Han-pyeong Merit-Making">히말라야 한평 불사</h3>
-                            <div class="ed-event-media">
-                                <div class="ed-media">
-                                    <img src="resource/img/ecofarm.jpg" alt="히말라야 한평 불사 도량 부지" data-kr-alt="히말라야 한평 불사 도량 부지" data-en-alt="Himalaya Han-pyeong temple grounds" width="1200" height="900" loading="lazy">
-                                </div>
-                            </div>
-                            <p class="ed-body"
-                                data-kr="부처님 고향에 세워지는 JustBe 도량, 한 평(3.3㎡)의 땅 위에 자기의 이름으로 부처님 가르침이 다시 피어나는 자리를 짓습니다."
-                                data-en="Building a place where the Buddha's teachings bloom again in your name on one pyeong (3.3㎡) of land at the JustBe Temple in the Buddha's hometown.">
-                                부처님 고향에 세워지는 JustBe 도량, 한 평(3.3㎡)의 땅 위에 자기의 이름으로 부처님 가르침이 다시 피어나는 자리를 짓습니다.
-                            </p>
-                            <a href="#yaksa-donation" class="btn-secondary mt-6" data-kr="동참하기 →" data-en="Join →">동참하기 →</a>
-                        </li>
 
                         <li class="ed-event" data-year="2026">
                             <p class="ed-event-date">2026. 08. 29 —</p>
@@ -3258,6 +3243,23 @@
                                 네팔 중북부 수해에 약 600명이 함께해 홍대선원 이름으로 8천만 원이 모였고, 불교여성개발원의 2천만 원을 더해 <strong class="text-charcoal font-semibold">총 약 1억 원</strong>의 긴급구호 성금이 마련되었습니다. 현지에서 가장 시급한 것은 무너진 다리였기에, 성금은 <strong class="text-charcoal font-semibold">누와콧–라수와 사이 트리슐리강을 잇는 출렁다리(약 500m)</strong> 건설에 우선 쓰일 수 있도록 현지 국회의원과 함께 추진하고 있습니다. 정부 협의가 공식화되면 네팔 정부 공식 계좌로 지정기부해 교량 사업에 정확히 쓰이도록 하겠습니다.
                             </p>
                             <button type="button" class="btn-secondary mt-6" onclick="openSosikModal()" data-kr="소식방에서 자세히 보기 →" data-en="Read More in the News Room →">소식방에서 자세히 보기 →</button>
+                        </li>
+
+                        <!-- 진행 중인 불사는 항상 타임라인 맨 끝 (스크립트도 끝으로 옮겨 둔다) -->
+                        <li class="ed-event is-ongoing" data-year="2026">
+                            <p class="ed-event-date" data-kr="진행 중" data-en="Ongoing">진행 중</p>
+                            <h3 class="ed-event-title" data-kr="히말라야 한평 불사" data-en="Himalaya Han-pyeong Merit-Making">히말라야 한평 불사</h3>
+                            <div class="ed-event-media">
+                                <div class="ed-media">
+                                    <img src="resource/img/ecofarm.jpg" alt="히말라야 한평 불사 도량 부지" data-kr-alt="히말라야 한평 불사 도량 부지" data-en-alt="Himalaya Han-pyeong temple grounds" width="1200" height="900" loading="lazy">
+                                </div>
+                            </div>
+                            <p class="ed-body"
+                                data-kr="부처님 고향에 세워지는 JustBe 도량, 한 평(3.3㎡)의 땅 위에 자기의 이름으로 부처님 가르침이 다시 피어나는 자리를 짓습니다."
+                                data-en="Building a place where the Buddha's teachings bloom again in your name on one pyeong (3.3㎡) of land at the JustBe Temple in the Buddha's hometown.">
+                                부처님 고향에 세워지는 JustBe 도량, 한 평(3.3㎡)의 땅 위에 자기의 이름으로 부처님 가르침이 다시 피어나는 자리를 짓습니다.
+                            </p>
+                            <a href="#yaksa-donation" class="btn-secondary mt-6" data-kr="동참하기 →" data-en="Join →">동참하기 →</a>
                         </li>
                         </ol>
                     </div>
@@ -8758,6 +8760,8 @@
             // 실천 여정: 가로 타임라인 (연도 버튼 + 좌우 화살표 + 스와이프)
             const track = document.querySelector('.ed-journey-track');
             if (track) {
+                const list = track.querySelector('.ed-journey-list');
+                list.querySelectorAll('.is-ongoing').forEach(li => list.appendChild(li));
                 const items = [...track.querySelectorAll('.ed-journey-list > li')];
                 const marks = items.filter(li => li.classList.contains('ed-journey-mark'));
                 const years = [...document.querySelectorAll('.ed-journey-year')];
@@ -8794,7 +8798,15 @@
                 };
                 track.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(sync); } }, { passive: true });
                 window.addEventListener('resize', sync);
-                sync();
+
+                // 처음에는 가장 최근(맨 오른쪽)부터 보여 준다. 사진·폰트가 늦게 와서 폭이 바뀌어도 손대기 전까지는 끝에 붙여 둔다
+                let touched = false;
+                const toEnd = () => { if (!touched) { track.scrollLeft = track.scrollWidth; sync(); } };
+                ['pointerdown', 'wheel', 'keydown'].forEach(ev => track.addEventListener(ev, () => { touched = true; }, { passive: true }));
+                document.querySelectorAll('.ed-journey-year, .ed-journey-arrow').forEach(b => b.addEventListener('click', () => { touched = true; }));
+                toEnd();
+                window.addEventListener('load', toEnd);
+                if (document.fonts) document.fonts.ready.then(toEnd);
             }
 
             // 아코디언: 열릴 때 부드럽게
