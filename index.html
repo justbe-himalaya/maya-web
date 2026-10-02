@@ -2908,23 +2908,33 @@
                 -->
 
                 <div class="ed-invite-grid mt-12 md:mt-16">
-                    <!-- 상시 템플스테이 -->
-                    <article class="ed-invite-feature group scroll-reveal" onclick="openAprilTempleStayModal()">
+                    <!-- 대표 일정: 개원법회 & 싯다르타 순례길 -->
+                    <article class="ed-invite-feature group scroll-reveal" onclick="openOpeningCeremonyModal()">
                         <div class="ed-media aspect-[3/2]">
-                            <img src="resource/img/ecofarm.jpg" alt="JustBe 히말라야 템플스테이" data-kr-alt="JustBe 히말라야 템플스테이"
-                                data-en-alt="JustBe Himalaya Temple Stay" loading="lazy" width="1200" height="900">
+                            <img src="resource/img/gobul.jpeg" alt="JustBe 히말라야 선원 법회" data-kr-alt="JustBe 히말라야 선원 법회"
+                                data-en-alt="Dharma ceremony at JustBe Himalaya Temple" loading="lazy" width="800" height="450">
                         </div>
                         <div class="ed-invite-feature-body">
-                            <p class="ed-kicker">Temple Stay · 365 Days</p>
-                            <h3 class="ed-card-title" data-kr="JustBe 히말라야 템플스테이"
-                                data-en="JustBe Himalaya Temple Stay">JustBe 히말라야 템플스테이</h3>
-                            <p class="ed-meta" data-kr="상시 운영" data-en="Year-round">상시 운영</p>
-                            <button type="button" class="btn-secondary mt-6" data-kr="참가하기 →" data-en="Join →">참가하기 →</button>
+                            <p class="ed-kicker">2026 · 11.03 — 11.11</p>
+                            <h3 class="ed-card-title" data-kr="히말라야 선원 개원법회 & 싯다르타 순례길"
+                                data-en="Himalaya Temple Opening & Siddhartha Trail">히말라야 선원 개원법회 & 싯다르타 순례길</h3>
+                            <p class="ed-meta" data-kr="11월 6일 개원법회 · 공동 주관 BBS 추가모집 중" data-en="Opening ceremony on Nov 6 · More spots open with co-organizer BBS">11월 6일 개원법회 · 공동 주관 BBS 추가모집 중</p>
+                            <button type="button" class="btn-secondary mt-6" data-kr="추가모집 안내 →" data-en="More Spots Open →">추가모집 안내 →</button>
                         </div>
                     </article>
 
-                    <!-- 일정 리스트 -->
+                    <!-- 일정 리스트: 상시 템플스테이 + 지난 순례 -->
                     <div class="ed-invite-list scroll-reveal">
+                        <button type="button" class="ed-invite-row" onclick="openAprilTempleStayModal()">
+                            <span class="ed-date" data-kr="상시" data-en="Year-round">상시</span>
+                            <span class="ed-row-body">
+                                <span class="ed-row-year">Temple Stay · 365 Days</span>
+                                <span class="ed-row-title" data-kr="JustBe 히말라야 템플스테이"
+                                    data-en="JustBe Himalaya Temple Stay">JustBe 히말라야 템플스테이</span>
+                            </span>
+                            <span class="ed-status" data-kr="참가하기 →" data-en="Join →">참가하기 →</span>
+                        </button>
+
                         <button type="button" class="ed-invite-row" onclick="openChuseokPilgrimageModal()">
                             <span class="ed-date">09.22 — 09.30</span>
                             <span class="ed-row-body">
@@ -2933,16 +2943,6 @@
                                     data-en="Chuseok Himalaya Pilgrimage">한가위 히말라야 성지순례</span>
                             </span>
                             <span class="ed-status is-closed" data-kr="신청 마감" data-en="Closed">신청 마감</span>
-                        </button>
-
-                        <button type="button" class="ed-invite-row" onclick="openOpeningCeremonyModal()">
-                            <span class="ed-date">11.03 — 11.11</span>
-                            <span class="ed-row-body">
-                                <span class="ed-row-year">2026</span>
-                                <span class="ed-row-title" data-kr="히말라야 선원 개원법회 & 싯다르타 순례길"
-                                    data-en="Himalaya Temple Opening & Siddhartha Trail">히말라야 선원 개원법회 & 싯다르타 순례길</span>
-                            </span>
-                            <span class="ed-status" data-kr="추가모집 →" data-en="More Spots Open →">추가모집 →</span>
                         </button>
 
                     </div>
