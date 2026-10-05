@@ -1643,20 +1643,20 @@
             width: min(82vw, 25rem);
         }
 
-        /* 모바일: 연도 표식은 세로로 좁게, 카드는 다음 카드가 살짝 보이도록 */
+        /* 모바일: 연도 표식은 작게, 첫 카드가 화면 안에 들어오도록 */
         @media (max-width: 767px) {
             .ed-journey-list {
                 gap: 1.5rem;
             }
 
+            /* 세로쓰기(writing-mode)는 iOS Safari에서 폭 계산이 틀려 옆 카드와 겹친다 → 가로로 작게 */
             .ed-journey-mark span {
-                writing-mode: vertical-rl;
-                transform: rotate(180deg);
-                font-size: 2.25rem;
+                font-size: 1.6rem;
+                letter-spacing: -0.03em;
             }
 
             .ed-event {
-                width: min(calc(100vw - 7rem), 25rem);
+                width: min(calc(100vw - 8.75rem), 25rem);
             }
         }
 
