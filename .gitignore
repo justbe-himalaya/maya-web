@@ -6,3 +6,6 @@ resource/doc/sosik.csv
 
 # Claude Code 로컬 설정·미리보기 서버 설정
 .claude/
+
+# 드론 영상 원본(4K, ~100MB). 웹에는 resource/video/hero-drone-*.mp4 로 줄인 것만 올린다
+resource/video/drone.MP4

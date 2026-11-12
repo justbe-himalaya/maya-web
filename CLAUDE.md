@@ -56,7 +56,7 @@ The site contains Korean content about:
 ## Local Development
 
 To work on this project locally:
-1. Serve the folder with `python3 -m http.server 8765` and open http://localhost:8765 (opening `index.html` via `file://` breaks the `fetch` of `data/donors.json` and `data/sosik.json`, so the donor count and the 소식방 peek won't load)
+1. Serve the folder with `python3 scripts/serve.py` (port 8765; unlike `python3 -m http.server` it answers Range requests, which iOS Safari needs to play the hero video) and open http://localhost:8765 (opening `index.html` via `file://` breaks the `fetch` of `data/donors.json` and `data/sosik.json`, so the donor count and the 소식방 peek won't load)
 2. No build process required
 3. Edit the HTML file directly for any changes
 4. Refresh browser to see changes
