@@ -1710,6 +1710,29 @@
             font-size: 0.95rem;
         }
 
+        /* 긴 카드 본문: "더보기"로 접어 둔다 */
+        .ed-event-more > summary {
+            cursor: pointer;
+            list-style: none;
+        }
+
+        .ed-event-more > summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .ed-event-more .ed-more-close,
+        .ed-event-more[open] .ed-more-open {
+            display: none;
+        }
+
+        .ed-event-more[open] .ed-more-close {
+            display: inline;
+        }
+
+        .ed-event-more[open] > summary {
+            margin-bottom: 0.25rem;
+        }
+
         .ed-event .ed-video {
             margin-top: 1.5rem;
         }
@@ -3272,6 +3295,45 @@
                                 네팔 중북부 수해에 약 600명이 함께해 홍대선원 이름으로 8천만 원이 모였고, 불교여성개발원의 2천만 원을 더해 <strong class="text-charcoal font-semibold">총 약 1억 원</strong>의 긴급구호 성금이 마련되었습니다. 현지에서 가장 시급한 것은 무너진 다리였기에, 성금은 <strong class="text-charcoal font-semibold">누와콧–라수와 사이 트리슐리강을 잇는 출렁다리(약 500m)</strong> 건설에 우선 쓰일 수 있도록 현지 국회의원과 함께 추진하고 있습니다. 정부 협의가 공식화되면 네팔 정부 공식 계좌로 지정기부해 교량 사업에 정확히 쓰이도록 하겠습니다.
                             </p>
                             <button type="button" class="btn-secondary mt-6" onclick="openSosikModal()" data-kr="소식방에서 자세히 보기 →" data-en="Read More in the News Room →">소식방에서 자세히 보기 →</button>
+                        </li>
+
+                        <!-- 개원법회 -->
+                        <li class="ed-event" data-year="2026">
+                            <p class="ed-event-date">2026. 11. 06</p>
+                            <h3 class="ed-event-title" data-kr="JustBe 히말라야 선원 개원법회" data-en="JustBe Himalaya Temple Opening Ceremony">JustBe 히말라야 선원 개원법회</h3>
+                            <div class="ed-event-media">
+                                <div class="ed-media">
+                                    <img src="resource/img/opening-ceremony.jpg" alt="약사여래불 앞에서 법문하시는 증명법사와 개원법회에 동참한 한국·네팔 스님들" data-kr-alt="약사여래불 앞에서 법문하시는 증명법사와 개원법회에 동참한 한국·네팔 스님들" data-en-alt="The certifying master giving a Dharma talk before the Medicine Buddha, with Korean and Nepali monastics at the opening ceremony" width="1200" height="900" loading="lazy">
+                                </div>
+                            </div>
+                            <p class="ed-body"
+                                data-kr="고불식으로부터 약 1년이 지난 2026년 11월 6일, <strong class='text-charcoal font-semibold'>해인사 율주 경성대율사</strong>를 증명법사로 모시고 <strong class='text-charcoal font-semibold'>JustBe 히말라야 선원 개원법회</strong>를 봉행하였습니다."
+                                data-en="On November 6, 2026, about a year after the consecration ceremony, we held the <strong class='text-charcoal font-semibold'>opening ceremony of JustBe Himalaya Temple</strong>, with <strong class='text-charcoal font-semibold'>Vinaya Master Gyeongseong of Haeinsa</strong> presiding as the certifying master.">
+                                고불식으로부터 약 1년이 지난 2026년 11월 6일, <strong class="text-charcoal font-semibold">해인사 율주 경성대율사</strong>를 증명법사로 모시고 <strong class="text-charcoal font-semibold">JustBe 히말라야 선원 개원법회</strong>를 봉행하였습니다.
+                            </p>
+                            <p class="ed-body"
+                                data-kr="오랜 순례의 발원이 오늘의 개원으로 이어지기까지 마음을 모아주신 여러 스님과 동참제자 여러분, 네팔의 도반들과 마을 주민 여러분께 깊이 감사드립니다."
+                                data-en="We are deeply grateful to the venerable monastics, all participating disciples, our Dharma companions in Nepal and the villagers, whose hearts carried a long pilgrim's vow all the way to this opening.">
+                                오랜 순례의 발원이 오늘의 개원으로 이어지기까지 마음을 모아주신 여러 스님과 동참제자 여러분, 네팔의 도반들과 마을 주민 여러분께 깊이 감사드립니다.
+                            </p>
+                            <details class="ed-event-more">
+                                <summary class="btn-secondary mt-6"><span class="ed-more-open" data-kr="선원 연혁 더보기" data-en="Read the Temple's History">선원 연혁 더보기</span><span class="ed-more-close" data-kr="연혁 접기" data-en="Hide History">연혁 접기</span></summary>
+                                <p class="ed-body"
+                                    data-kr="그 시작은 2013년, 차마고도와 히말라야, 룸비니와 보드가야를 잇는 18개월간의 순례로 거슬러 올라갑니다. 안나푸르나에서 합류한 도반 도명스님과 8개월을 함께하며 안나푸르나를 누비고 스승 부처님의 탄생지 룸비니까지 걸었습니다. 이 인연이 히말라야 순례길 프로젝트의 씨앗이 되었습니다."
+                                    data-en="It all began in 2013 with an 18-month pilgrimage linking the Tea Horse Road, the Himalayas, Lumbini and Bodh Gaya. Joined in the Annapurnas by Dharma companion Ven. Domyeong, we spent eight months together, crossing the Annapurna region and walking all the way to Lumbini, birthplace of our teacher the Buddha. That bond became the seed of the Himalaya Pilgrimage Project.">
+                                    그 시작은 2013년, 차마고도와 히말라야, 룸비니와 보드가야를 잇는 18개월간의 순례로 거슬러 올라갑니다. 안나푸르나에서 합류한 도반 도명스님과 8개월을 함께하며 안나푸르나를 누비고 스승 부처님의 탄생지 룸비니까지 걸었습니다. 이 인연이 히말라야 순례길 프로젝트의 씨앗이 되었습니다.
+                                </p>
+                                <p class="ed-body"
+                                    data-kr="2022년 서울에 홍대선원을 창건하고, 2025년 2월 포카라 품디콧의 해발 1,400미터 언덕에서 네팔 청년 라주가 운영하는 게스트하우스를 만나, 라주와 금타 윤지웅·중현 진태진 거사와 함께 히말라야 순례길 프로젝트를 발원했습니다. 같은 해 11월 7일에는 서칠교 불모가 조성하신 약사여래부처님과 미륵연화보살님, 금강역사를 한국에서 이운하여 화암사 혜광스님을 증명법사로 모시고 약 2,600명 동참제자의 정성으로 약사여래불 고불식을 봉행했습니다. 아울러 3,000평 도량을 마련하기 위한 한 평 불사를 시작해, 목표 3,000명 가운데 1,028명이 동참해 주셨습니다."
+                                    data-en="In 2022 we founded Hongdae Zen Center in Seoul. In February 2025, on a hillside 1,400 meters above sea level in Pumdikot, Pokhara, we came upon a guesthouse run by a young Nepali man, Raju, and there, together with Raju and lay practitioners Geumta Yoon Ji-woong and Junghyeon Jin Tae-jin, made the vow for the Himalaya Pilgrimage Project. On November 7 of that year, the Medicine Buddha, Maitreya Lotus Bodhisattva and Guardian Kings crafted by Buddhist sculptor Seo Chil-gyo were brought from Korea, and with Ven. Hyegwang of Hwaamsa as the certifying master, the Medicine Buddha consecration ceremony was held through the devotion of about 2,600 participants. We also began the Han-pyeong merit-making to secure a 3,000-pyeong temple ground; of the 3,000-person goal, 1,028 have joined so far.">
+                                    2022년 서울에 홍대선원을 창건하고, 2025년 2월 포카라 품디콧의 해발 1,400미터 언덕에서 네팔 청년 라주가 운영하는 게스트하우스를 만나, 라주와 금타 윤지웅·중현 진태진 거사와 함께 히말라야 순례길 프로젝트를 발원했습니다. 같은 해 11월 7일에는 서칠교 불모가 조성하신 약사여래부처님과 미륵연화보살님, 금강역사를 한국에서 이운하여 화암사 혜광스님을 증명법사로 모시고 약 2,600명 동참제자의 정성으로 약사여래불 고불식을 봉행했습니다. 아울러 3,000평 도량을 마련하기 위한 한 평 불사를 시작해, 목표 3,000명 가운데 1,028명이 동참해 주셨습니다.
+                                </p>
+                                <p class="ed-body"
+                                    data-kr="2026년 9월에는 히말라야 랑탕 지역 수해 복구를 위해 약 1억 5천만 원을 모금했으며, 누와콧과 라수와를 잇는 무너진 다리의 복원을 추진하고 있습니다."
+                                    data-en="In September 2026, about ₩150 million was raised for flood recovery in the Langtang region of the Himalayas, and we are working to restore the collapsed bridge linking Nuwakot and Rasuwa.">
+                                    2026년 9월에는 히말라야 랑탕 지역 수해 복구를 위해 약 1억 5천만 원을 모금했으며, 누와콧과 라수와를 잇는 무너진 다리의 복원을 추진하고 있습니다.
+                                </p>
+                            </details>
                         </li>
 
                         <!-- 진행 중인 불사는 항상 타임라인 맨 끝 (스크립트도 끝으로 옮겨 둔다) -->
