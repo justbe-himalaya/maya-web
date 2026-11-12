@@ -622,22 +622,21 @@
         }
 
         /* ---------- Hero ---------- */
+        /* 첫 화면(.ed-hero-screen) 바로 아래에 붙여 둔다: 스크롤을 시작하면 곧장 보이고,
+           캡션이 끝나는 곳에서 히어로도 끝난다 */
         .ed-hero-caption {
-            position: absolute;
-            left: 1.5rem;
-            bottom: 2.25rem;
+            position: relative;
             z-index: 10;
             display: flex;
             flex-direction: column;
             gap: 0.35rem;
-            max-width: 70%;
+            padding: 0.25rem 1.5rem 1.5rem;
             text-shadow: 0 1px 12px rgba(0, 0, 0, 0.35);
         }
 
         @media (min-width: 768px) {
             .ed-hero-caption {
-                left: 2.5rem;
-                bottom: 2.75rem;
+                padding: 0.25rem 2.5rem 1.75rem;
             }
         }
 
@@ -1244,10 +1243,15 @@
                 transition: transform 0.3s ease;
             }
 
-            /* 첫 화면 하단 문구·스크롤 표시가 고정 바에 가리지 않게 */
-            .ed-hero-caption,
+            /* 첫 화면 스크롤 표시가 고정 바에 가리지 않게 */
             .ed-scroll {
                 bottom: calc(6.25rem + env(safe-area-inset-bottom));
+            }
+
+            /* 캡션은 고정 바 바로 위 선에서 시작: 스크롤하자마자 바 위로 올라온다 */
+            .ed-hero-caption {
+                margin-top: calc(-4.6rem - env(safe-area-inset-bottom));
+                padding-top: 0.75rem;
             }
 
             /* 메뉴가 열렸거나 본문 동참 카드가 보이면 비켜 준다 */
@@ -2780,6 +2784,15 @@
             position: relative;
         }
 
+        /* iOS Safari의 100vh는 주소창·하단 막대가 숨었을 때 기준이라 첫 화면 아래(캡션·Scroll)가 잘린다
+           → 실제로 보이는 높이(svh)로. 미지원 브라우저는 h-screen(100vh) 그대로 */
+        /* 첫 화면 = 로고·Scroll. 히어로 전체는 첫 화면 + 그 아래 캡션 높이만큼 */
+        .ed-hero-screen {
+            position: relative;
+            height: 100vh;
+            height: 100svh;
+        }
+
         .hero-video {
             position: absolute;
             inset: 0;
@@ -2828,7 +2841,7 @@
         /* 가로로 눕힌 휴대폰: 키가 낮아 로고 묶음을 줄이고 위로 */
         @media (max-height: 500px) and (orientation: landscape) {
             .hero-bg .ed-hero-brand {
-                top: 4.25rem;
+                top: 34%;
                 font-size: 1.05rem;
             }
         }
@@ -2838,9 +2851,10 @@
         .ed-hero-brand {
             position: absolute;
             left: 50%;
-            top: clamp(5.5rem, 13vh, 9rem);
+            /* 설산 아래 어두운 능선 자리: 위쪽 설산도, 아래 건물도 가리지 않게 */
+            top: 37%;
             z-index: 10;
-            transform: translateX(-50%);
+            transform: translate(-50%, -50%);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -2850,6 +2864,16 @@
             font-family: 'Nanum Gothic', var(--font-sans);
             font-size: clamp(1.35rem, 2vw, 1.75rem);
             filter: drop-shadow(0 1px 8px rgba(0, 0, 0, 0.3));
+        }
+
+        /* 영상이 위로 움직이며 뒤 배경이 바뀌어도 글씨가 읽히게, 묶음 뒤에 옅은 그림자 */
+        .ed-hero-brand::before {
+            content: '';
+            position: absolute;
+            inset: -30% -35%;
+            z-index: -1;
+            background: radial-gradient(closest-side, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
+            pointer-events: none;
         }
 
         /* 전역 h1 글꼴(명조)을 덮어써야 나눔고딕이 나온다 */
@@ -2890,9 +2914,8 @@
 
         /* 모바일 가로 화면 최적화 */
         @media screen and (max-height: 500px) and (orientation: landscape) {
-            .hero-bg {
-                height: 100vh;
-                min-height: 400px;
+            .ed-hero-screen {
+                min-height: 320px;
             }
         }
 
@@ -2996,7 +3019,7 @@
     </nav>
 
     <!-- Hero Section: 드론 영상 배경 + 로고·타이틀 (예전 사진에 들어 있던 구성을 그대로 옮김) -->
-    <header id="top" class="hero-bg h-screen text-white relative overflow-hidden" role="banner"
+    <header id="top" class="hero-bg text-white relative overflow-hidden" role="banner"
         aria-label="JustBe 히말라야 프로젝트 메인 배너" data-kr-aria="JustBe 히말라야 프로젝트 메인 배너" data-en-aria="JustBe Himalaya Project main banner">
         <video class="hero-video" autoplay muted loop playsinline preload="auto"
             poster="resource/img/hero-drone-poster.jpg" aria-hidden="true">
@@ -3006,14 +3029,21 @@
         <div class="hero-poster" aria-hidden="true"></div>
         <div class="hero-overlay"></div>
 
-        <div class="ed-hero-brand">
-            <img src="resource/img/hero-justbe-mark.png" alt="" class="ed-hero-mark" width="360" height="276" aria-hidden="true">
-            <h1>
-                <img src="resource/img/hero-justbe-text.png" alt="JustBe" class="ed-hero-wordmark" width="497" height="162">
-                <span class="ed-hero-project">Himalaya Project</span>
-                <span class="ed-hero-tagline" data-kr="히말라야, 싯다르타의 옛 순례길을 걷다"
-                    data-en="Walking Siddhartha's Ancient Pilgrimage Route in the Himalayas">히말라야, 싯다르타의 옛 순례길을 걷다</span>
-            </h1>
+        <div class="ed-hero-screen">
+            <div class="ed-hero-brand">
+                <img src="resource/img/hero-justbe-mark.png" alt="" class="ed-hero-mark" width="360" height="276" aria-hidden="true">
+                <h1>
+                    <img src="resource/img/hero-justbe-text.png" alt="JustBe" class="ed-hero-wordmark" width="497" height="162">
+                    <span class="ed-hero-project">Himalaya Project</span>
+                    <span class="ed-hero-tagline" data-kr="히말라야, 싯다르타의 옛 순례길을 걷다"
+                        data-en="Walking Siddhartha's Ancient Pilgrimage Route in the Himalayas">히말라야, 싯다르타의 옛 순례길을 걷다</span>
+                </h1>
+            </div>
+
+            <a href="#invitation" class="ed-scroll" aria-label="아래로 스크롤" data-kr-aria="아래로 스크롤" data-en-aria="Scroll down">
+                <span>Scroll</span>
+                <i aria-hidden="true"></i>
+            </a>
         </div>
 
         <div class="ed-hero-caption">
@@ -3021,11 +3051,6 @@
             <span class="ed-hero-line" data-kr="우리 마음의 고향으로 돌아가는 순례"
                 data-en="The Pilgrimage Back to the Home of Our Hearts">우리 마음의 고향으로 돌아가는 순례</span>
         </div>
-
-        <a href="#invitation" class="ed-scroll" aria-label="아래로 스크롤" data-kr-aria="아래로 스크롤" data-en-aria="Scroll down">
-            <span>Scroll</span>
-            <i aria-hidden="true"></i>
-        </a>
     </header>
 
     <main class="w-full" role="main" aria-label="메인 콘텐츠" data-kr-aria="메인 콘텐츠" data-en-aria="Main content">
