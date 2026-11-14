@@ -178,7 +178,7 @@
             --line: rgba(37, 37, 34, 0.14);
             --font-sans: 'Pretendard Variable', 'Pretendard', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', system-ui, sans-serif;
             --font-serif: 'Cormorant Garamond', 'Noto Serif KR', 'Apple SD Gothic Neo', serif;
-            --section-y: clamp(4rem, 11vw, 10rem);
+            --section-y: clamp(3rem, 6vw, 5.5rem);
         }
 
         /* 한국어 모드: 한 제목 안에서 Cormorant(라틴)와 Noto Serif KR(한글)이 섞이면
@@ -741,7 +741,7 @@
         @media (min-width: 900px) {
             .ed-invite-grid {
                 grid-template-columns: 1.05fr 1fr;
-                gap: 4.5rem;
+                gap: 3.5rem;
                 align-items: end;
             }
         }
@@ -834,7 +834,7 @@
         @media (min-width: 1024px) {
             .ed-project-grid {
                 grid-template-columns: 0.8fr 1.4fr;
-                gap: 6rem;
+                gap: 4.5rem;
             }
 
             .ed-project-intro {
@@ -846,7 +846,7 @@
 
         .ed-project-list {
             display: grid;
-            gap: 4rem;
+            gap: 2.5rem;
         }
 
         @media (min-width: 640px) {
@@ -922,7 +922,7 @@
         @media (min-width: 1024px) {
             .ed-campaign-grid {
                 grid-template-columns: 1.1fr 0.9fr;
-                gap: 6rem;
+                gap: 4.5rem;
             }
         }
 
@@ -3073,7 +3073,7 @@
                 26.09.22~30 한가위 히말라야 성지순례 - 마감 (초대장 목록에서 내림, 모달은 유지)
                 -->
 
-                <div class="ed-invite-grid mt-12 md:mt-16">
+                <div class="ed-invite-grid mt-8 md:mt-10">
                     <!-- 대표 일정: 개원법회 & 싯다르타 순례길 -->
                     <article class="ed-invite-feature group scroll-reveal" onclick="openOpeningCeremonyModal()">
                         <div class="ed-media aspect-[3/2]">
@@ -3208,7 +3208,7 @@
                     </p>
                 </div>
 
-                <div class="ed-campaign-grid mt-12 md:mt-20">
+                <div class="ed-campaign-grid mt-8 md:mt-12">
                     <!-- 좌: 설명 -->
                     <div class="ed-campaign-copy scroll-reveal">
                         <p class="ed-campaign-lead"
@@ -3223,7 +3223,7 @@
                             data-en="Location: Pokhara Hill 1400m below Mt. Annapurna, Nepal ↗">장소: 네팔 안나푸르나산 아래 포카라 언덕 1400m 고지 ↗</a>
 
                         <!-- 한평 복전 불사 설명 -->
-                        <div class="ed-campaign-block mt-12">
+                        <div class="ed-campaign-block mt-8">
                             <h3 class="ed-campaign-h" data-kr="한평 복전 불사란?" data-en="What is Han-pyeong Merit-Making?">
                                 한평 복전 불사란?
                             </h3>
@@ -3245,7 +3245,7 @@
                         </div>
 
                         <!-- 동참 혜택 -->
-                        <div class="ed-campaign-block mt-12">
+                        <div class="ed-campaign-block mt-8">
                             <h3 class="ed-campaign-h" data-kr="동참 혜택" data-en="Benefits">동참 혜택</h3>
                             <ol class="ed-benefits">
                                 <li><span class="ed-num">01</span><span data-kr="모든 동참자는 도량 내 창건주 명부 및 복전 탑에 봉안"
@@ -3285,7 +3285,7 @@
                 </div>
 
                 <!-- 동참 안내: 왼쪽 금액 안내 + 오른쪽 납부 방법 카드 2장 (각자 바로 실행) -->
-                <div class="ed-join mt-16 md:mt-28 scroll-reveal">
+                <div class="ed-join mt-12 md:mt-16 scroll-reveal">
                     <div class="ed-join-grid">
                         <div class="ed-join-intro">
                             <h3 class="ed-campaign-h" data-kr="동참 안내" data-en="How to Join">동참 안내</h3>
@@ -3357,7 +3357,7 @@
                         data-en="How your offerings become a temple, shared openly.">보시가 도량이 되는 과정을 투명하게 전합니다.</p>
                 </div>
 
-                <div class="ed-journey mt-12 md:mt-16 scroll-reveal">
+                <div class="ed-journey mt-8 md:mt-10 scroll-reveal">
                     <div class="ed-journey-bar">
                         <div class="ed-journey-years" aria-label="연도로 이동" data-kr-aria="연도로 이동" data-en-aria="Jump to year">
                             <button type="button" class="ed-journey-year" data-year="2025" aria-pressed="true">2025</button>
