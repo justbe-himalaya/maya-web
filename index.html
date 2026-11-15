@@ -1562,6 +1562,11 @@
             height: clamp(14rem, 33vw, 30rem);
         }
 
+        /* 바로 아래 마무리 섹션(사진 배경)과 붙지 않게 설명 줄 아래 숨 쉴 자리 */
+        .ed-panorama .ed-caption {
+            padding-bottom: 1.5rem;
+        }
+
         .ed-caption {
             padding-top: 1rem;
             font-family: var(--font-serif);
@@ -3413,22 +3418,6 @@
             </div>
         </section>
 
-        <!-- Gallery Section -->
-        <section class="ed-panorama" aria-label="히말라야 파노라마" data-kr-aria="히말라야 파노라마" data-en-aria="Himalaya panorama">
-            <figure class="scroll-reveal">
-                <div class="ed-media ed-panorama-media">
-                    <img src="resource/img/panorama.jpeg" alt="히말라야 파노라마" data-kr-alt="히말라야 파노라마"
-                        data-en-alt="Himalaya Panorama" width="1440" height="432" loading="lazy"
-                        onerror="handleImgError(this, 'flex items-center justify-center h-full bg-gray-200 text-gray-600')">
-                </div>
-                <figcaption class="ed-wrap ed-caption"
-                    data-kr="Annapurna (8,091m), Himalaya — JustBe Temple Himalaya에서 바라본 전경"
-                    data-en="Annapurna (8,091m), Himalaya — View from JustBe Temple Himalaya">
-                    Annapurna (8,091m), Himalaya — JustBe Temple Himalaya에서 바라본 전경
-                </figcaption>
-            </figure>
-        </section>
-
         <!-- 04 Implementation Journey Section -->
         <section id="journey" class="ed-section bg-ivory">
             <div class="ed-wrap">
@@ -3880,6 +3869,22 @@
                 </div>
 
             </div>
+        </section>
+
+        <!-- Gallery Section: Master Plan(계획) → 그 자리에서 본 풍경 → 마무리 인사 -->
+        <section class="ed-panorama" aria-label="히말라야 파노라마" data-kr-aria="히말라야 파노라마" data-en-aria="Himalaya panorama">
+            <figure class="scroll-reveal">
+                <div class="ed-media ed-panorama-media">
+                    <img src="resource/img/panorama.jpeg" alt="히말라야 파노라마" data-kr-alt="히말라야 파노라마"
+                        data-en-alt="Himalaya Panorama" width="1440" height="432" loading="lazy"
+                        onerror="handleImgError(this, 'flex items-center justify-center h-full bg-gray-200 text-gray-600')">
+                </div>
+                <figcaption class="ed-wrap ed-caption"
+                    data-kr="Annapurna (8,091m), Himalaya — JustBe Temple Himalaya에서 바라본 전경"
+                    data-en="Annapurna (8,091m), Himalaya — View from JustBe Temple Himalaya">
+                    Annapurna (8,091m), Himalaya — JustBe Temple Himalaya에서 바라본 전경
+                </figcaption>
+            </figure>
         </section>
 
         <!-- Closing Section: 하단 카피는 "인연으로 다시 걷는 부처님의 순례길" (Hero는 "우리 마음의 고향으로 돌아가는 순례") -->
